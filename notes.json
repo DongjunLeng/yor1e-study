@@ -224,5 +224,57 @@
       "title": "每一步的信息都重要",
       "body": "即使终值看似有涨有跌，在 $t=1$ 若已经知道下一步价格，就可以按已知信息调仓。可预测允许使用当前已知信息，不允许使用尚未获得的未来信息。"
     }
+  ],
+  "3.3": [
+    {
+      "title": "风险中性测度 / Risk-neutral measure",
+      "body": "在有限状态且每状态 $P(\\{\\omega\\})>0$ 的课程模型中，$Q$ 必须给每状态正概率：$Q(\\{\\omega\\})>0$，且总概率为 1。不能把不利状态直接设为零概率。"
+    },
+    {
+      "title": "折现价格 / Discounted prices",
+      "body": "以银行资产 $B_t>0$ 作计价单位，$\\widetilde S_t^i=S_t^i/B_t$，$\\widetilde B_t=1$。风险中性条件作用于折现价格，不是直接要求原价格为鞅。"
+    },
+    {
+      "title": "条件鞅公式 / Conditional martingale condition",
+      "body": "对每一期、每个风险资产，要求 $\\mathbb E_Q[\\widetilde S_t^i\\mid\\mathcal F_{t-1}]=\\widetilde S_{t-1}^i$。先固定当前已知的节点，再按该节点下一步的条件概率加权。"
+    },
+    {
+      "title": "单节点怎样求概率",
+      "body": "若当前价为 $s$，下期为 $su$ 或 $sd$，银行增长因子 $1+r$，则 $qsu+(1-q)sd=s(1+r)$。除以 $s$，移项得到 $q(u-d)=1+r-d$，所以 $q=(1+r-d)/(u-d)$。不同节点的概率可以不同。"
+    },
+    {
+      "title": "自融资组合的折现价值",
+      "body": "自融资给出 $\\Delta\\widetilde V_t=\\sum_i\\varphi_t^i\\Delta\\widetilde S_t^i$。$\\varphi_t^i$ 对 $\\mathcal F_{t-1}$ 可测，可以移到条件期望外；每项折现价格增量的条件期望为零，所以 $\\widetilde V$ 也是 $Q$ 下的鞅。"
+    },
+    {
+      "title": "共用一个测度",
+      "body": "所有风险资产要在同一个 $Q$ 下满足鞅条件。单独解出每个资产各自的概率不够。若两个方程分别要求 $q=1/3$ 和 $q=1/4$，就不能组成同一个风险中性测度。"
+    }
+  ],
+  "3.4": [
+    {
+      "title": "终值索赔与复制 / Claim and replication",
+      "body": "衍生品终值写为 $X$。复制策略 $\\varphi$ 必须可预测、自融资，并满足 $V_T(\\varphi)=X$ 几乎处处。有限状态都有正概率时，就是每个状态相等。"
+    },
+    {
+      "title": "复制成本与无套利价格",
+      "body": "在 NA 市场中，复制组合的初值 $V_0(\\varphi)$ 就是索赔价格。若市场价更高，卖索赔、买复制组合；若更低，买索赔、卖复制组合。终值抵消，把初始差额存银行即可得到套利。"
+    },
+    {
+      "title": "复制策略不一定唯一",
+      "body": "若 $\\varphi,\\psi$ 复制同一索赔，NA 保证复制成本相同。在自融资与正概率节点条件下，价值过程也相同，但持仓未必相同：存在冗余资产时，多种持仓可以产生相同价值。"
+    },
+    {
+      "title": "由鞅得到条件定价",
+      "body": "若 $Q$ 是风险中性测度，复制组合的折现价值是鞅，所以 $\\frac{V_t(\\varphi)}{B_t}=\\mathbb E_Q[\\frac X{B_T}\\mid\\mathcal F_t]$。乘以 $B_t$，得到 $X_t=B_t\\mathbb E_Q[X/B_T\\mid\\mathcal F_t]$。初始信息平凡且 $B_0=1$ 时，$X_0=\\mathbb E_Q[X/B_T]$。"
+    },
+    {
+      "title": "逐节点向后复制 / Backward replication",
+      "body": "两状态节点的子节点价值为 $X_u,X_d$，当前股票价 $s$，下一期银行价 $B_{t+1}$。解 $\\alpha B_{t+1}+\\beta su=X_u$、$\\alpha B_{t+1}+\\beta sd=X_d$，得 $\\beta=(X_u-X_d)/(s(u-d))$，$\\alpha=(X_d-\\beta sd)/B_{t+1}$。当前节点价值是 $\\alpha B_t+\\beta s$。从最后一期向前重复。"
+    },
+    {
+      "title": "可复制与完备 / Replicability and completeness",
+      "body": "可复制说的是某一个索赔；完备说的是每一个到期索赔都能复制。不要把两者混为一谈。这里整理 3.3–3.4 的已提供课程内容，补充题为学习用自编练习。"
+    }
   ]
 }
