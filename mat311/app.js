@@ -1,0 +1,31 @@
+'use strict';
+let data,week=1,mode='notes',queue=[],index=0,choice=null;
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const selected=arr=>arr.filter(x=>!week||x.week===week);
+function math(){if(window.renderMathInElement)renderMathInElement($('workspace'),{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})}
+function solutions(e){return `<div class="answer-text"><strong>答案</strong><br>${fmt(e.answer)}</div><h3>详细解题步骤</h3><ol class="steps">${e.steps.map(s=>`<li>${fmt(s)}</li>`).join('')}</ol>`}
+function meta(e){return `<div class="week-tag">WEEK ${e.week}</div><p class="source">${esc(e.source)}</p>`}
+function resetQueue(){queue=shuffle(selected(data.exercises).filter(e=>data.strategies.includes(e.id))).map(e=>({...e,options:shuffle(e.choices)}));index=0;choice=null}
+function route(){const h=location.hash.match(/^#(all|week-[1-4])(?:\/(notes|practice|strategy))?$/);week=h?(h[1]==='all'?0:Number(h[1].slice(5))):1;mode=h?.[2]||'notes';resetQueue();draw()}
+function go(w,m){const hash=`#${w?'week-'+w:'all'}/${m}`;if(location.hash===hash){week=w;mode=m;resetQueue();draw()}else location.hash=hash}
+function draw(){const w=data.weeks.find(x=>x.id===week);$('title').textContent=w?`Week ${week} · ${w.title}`:'MAT311 · 全部周次';$('scope').textContent=w?'MAT311 / Week '+week:'MAT311 / 全部周次';$('week-source').textContent=w?w.lectures:'按现有 Lectures 1–7 的顺序分组';$('weeks').innerHTML=`<button data-week="0" class="${week===0?'active':''}">全部周次</button>`+data.weeks.map(w=>`<button data-week="${w.id}" class="${week===w.id?'active':''}">Week ${w.id}<small>${esc(w.title)}</small></button>`).join('');document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+if(mode==='notes'){const ns=selected(data.notes);$('count').textContent=`${ns.length} 组题型知识点`;$('workspace').innerHTML=ns.map(n=>`<article class="question"><div class="week-tag">WEEK ${n.week}</div><h2>${esc(n.title)}</h2><p><strong>看到什么题：</strong>${fmt(n.recognize)}</p><div class="method"><strong>选什么方法：</strong>${fmt(n.method)}</div><ol class="steps">${n.steps.map(s=>`<li>${fmt(s)}</li>`).join('')}</ol><p class="note"><strong>容易错：</strong>${fmt(n.pitfall)}</p><div class="links">${n.examples.map(id=>{const e=data.exercises.find(e=>e.id===id);return `<button data-exercise="${id}">练习 · ${esc(e.title)}</button>`}).join('')}</div></article>`).join('')}
+else if(mode==='practice'){const es=selected(data.exercises);$('count').textContent=`${es.length} 道练习题`;$('workspace').innerHTML='<p class="hint">先自己写出思路，再展开答案。每道题都附上计算与检验。</p>'+es.map(e=>`<article class="question" id="${e.id}">${meta(e)}<h2>${esc(e.title)}</h2><div class="problem">${fmt(e.question)}</div><details class="solution"><summary>查看答案与详细步骤</summary><div class="method"><strong>方法：</strong>${fmt(e.method)}</div>${solutions(e)}</details></article>`).join('')}
+else{drawStrategy()}
+math()}
+function drawStrategy(){const e=queue[index];$('count').textContent=`${queue.length} 道典型思路题`;
+if(!e){$('workspace').innerHTML='<p>当前范围暂无思路题。</p>';return}
+const correct=e.options.findIndex(x=>x.correct),letters=['A','B','C'];const answered=choice!==null;
+$('workspace').innerHTML=`<div class="strategy-tools"><span>当前${week?' Week '+week:'全部周次'} · 随机顺序<br>${index+1} / ${queue.length} · ← 上一题 / → 下一题</span><button id="shuffle">重新打乱</button></div><article class="question">${meta(e)}<h2>${esc(e.title)}</h2><div class="problem">${fmt(e.question)}</div><p class="hint">看到这类题，你会先选择哪种解题思路？</p><div class="choices">${e.options.map((c,i)=>`<button data-choice="${i}" ${answered?'disabled':''} class="${answered?(c.correct?'correct':choice===i?'incorrect':''):''}"><b>${letters[i]}</b><span>${fmt(c.text)}</span></button>`).join('')}</div>${answered?`<div role="status" class="feedback ${choice===correct?'':'wrong'}">${choice===correct?'✓ 答对了':'✕ 答错了'}<p>你选择 ${letters[choice]} · 正确思路是 ${letters[correct]}<br>${fmt(e.reason)}</p></div><div class="method"><strong>方法：</strong>${fmt(e.method)}</div>${solutions(e)}`:''}</article><div class="pagination"><button id="prev" ${index===0?'disabled':''}>上一题</button><span>${index+1} / ${queue.length}</span><button id="next" ${index===queue.length-1?'disabled':''}>下一题</button></div><p class="hint">题目与选项在进入此模式时随机排列。切换周次只练该周；“全部周次”混合练习。每次选择后都会显示完整答案。</p>`}
+$('weeks').onclick=e=>{const b=e.target.closest('[data-week]');if(b)go(Number(b.dataset.week),mode)};
+document.querySelector('.modes').onclick=e=>{const b=e.target.closest('[data-mode]');if(b)go(week,b.dataset.mode)};
+$('workspace').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.exercise){const id=b.dataset.exercise;mode='practice';history.replaceState(null,'',`#${week?'week-'+week:'all'}/practice`);draw();const article=$(id);article.querySelector('details').open=true;article.scrollIntoView({behavior:'smooth',block:'start'})}
+else if(b.dataset.choice!==undefined&&choice===null){choice=Number(b.dataset.choice);draw();document.querySelector('.feedback').scrollIntoView({behavior:'smooth',block:'start'})}
+else if(b.id==='shuffle'){resetQueue();draw()}
+else if(b.id==='prev'||b.id==='next'){const next=index+(b.id==='next'?1:-1);if(next>=0&&next<queue.length){index=next;choice=null;draw();$('workspace').scrollIntoView({behavior:'smooth',block:'start'})}}};
+window.addEventListener('keydown',e=>{if(mode!=='strategy'||!['ArrowLeft','ArrowRight'].includes(e.key)||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||e.isComposing||e.target?.closest('input,textarea,select,[contenteditable],details summary'))return;const b=$(e.key==='ArrowRight'?'next':'prev');if(b&&!b.disabled){e.preventDefault();b.click()}});
+window.addEventListener('hashchange',route);
+fetch('content.json?v=1').then(r=>{if(!r.ok)throw Error('加载失败');return r.json()}).then(d=>{data=d;$('week-note').textContent=d.weekNote;$('source-note').textContent=d.sourceNote;route()}).catch(()=>{$('workspace').innerHTML='<p>内容未能加载，请刷新重试。</p>'});
