@@ -11,3 +11,5 @@ main{padding:22px 16px calc(24px + env(safe-area-inset-bottom));width:100%;min-w
 }
 
 .choice-result{padding:18px 20px;border:2px solid;border-radius:10px;margin:20px 0}.choice-result strong{display:block;font-size:28px;font-weight:800;line-height:1.4;margin-bottom:8px}.choice-result span{display:block;font-size:15px;line-height:1.7}.choice-result.correct{background:#e5f5ec;border-color:#278455;color:#145c36}.choice-result.incorrect{background:#fff0ee;border-color:#c94035;color:#99281f}
+
+#card-range{padding:18px 20px;background:white;border:1px solid #d9e2ef;border-radius:12px;margin-bottom:20px}#card-range h2{font-size:18px;margin:0 0 16px}#card-range label{display:grid;grid-template-columns:28px 45px minmax(0,1fr);gap:12px;align-items:center;margin:12px 0}#card-range input{width:100%;min-width:0;min-height:44px;accent-color:#244f99;cursor:pointer}#card-range output{font-weight:700}#card-range p{font-size:13px;color:#63748d;margin-bottom:0}
