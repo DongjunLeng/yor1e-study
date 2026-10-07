@@ -2,241 +2,385 @@
   {
     "number": 1,
     "marks": 3,
-    "en": "Define a watershed. Distinguish the water cycle from the water balance. Why must the watershed boundary be specified before calculating inputs and outputs?"
+    "en": "Define a watershed. Distinguish the water cycle from the water balance. Why must the watershed boundary be specified before calculating inputs and outputs?",
+    "answerTitle": "Watershed、water cycle 和 water balance",
+    "answer": "A watershed is an area where surface water drains toward a common outlet. The water cycle describes water movement between different compartments. The water balance describes inputs, outputs and changes in storage. The boundary must be defined to identify which flows enter or leave the watershed.\n\n流域是地表水汇向共同出口的区域。Water cycle 描述水怎样移动；water balance 计算水进出多少、储量改变多少。先确定边界，才能判断水有没有进入或离开流域。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 2,
     "marks": 3,
-    "en": "A watershed receives more water through precipitation and inflow than it loses through evapotranspiration and outflow. Will its storage INCREASE / DECREASE / NOT CHANGE? Explain. Could outflow exceed current precipitation without violating the water balance?"
+    "en": "A watershed receives more water through precipitation and inflow than it loses through evapotranspiration and outflow. Will its storage INCREASE / DECREASE / NOT CHANGE? Explain. Could outflow exceed current precipitation without violating the water balance?",
+    "answerTitle": "储量变化",
+    "answer": "**INCREASE.** Inputs exceed outputs, so water storage increases. Outflow can exceed current precipitation because previously stored water may be released. This does not violate the water balance.\n\n进水比出水多，储量增加。出水也可以超过当前降雨，因为流域能够释放之前储存的水，此时储量可能减少。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 3,
     "marks": 3,
-    "en": "Distinguish water mass, water volume and water depth. Why must the collection area be known before water volume can be expressed as an equivalent depth? Explain without calculations."
+    "en": "Distinguish water mass, water volume and water depth. Why must the collection area be known before water volume can be expressed as an equivalent depth? Explain without calculations.",
+    "answerTitle": "Mass、volume 和 depth",
+    "answer": "Mass describes the amount of water by weight, usually in kilograms. Volume describes the space occupied by water, usually in cubic metres. Water depth expresses volume per unit area. The collection area is needed because the same volume produces different depths over different areas.\n\nMass 是质量，volume 是体积，depth 是把水均匀铺在某个面积上得到的深度。同样体积的水，铺得越广，深度越小。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 4,
     "marks": 3,
-    "en": "Two collectors receive the same volumetric flux, but one distributes the water over a larger area. Which has the higher intensity? Explain the difference between volumetric flux and intensity and give their typical units."
+    "en": "Two collectors receive the same volumetric flux, but one distributes the water over a larger area. Which has the higher intensity? Explain the difference between volumetric flux and intensity and give their typical units.",
+    "answerTitle": "Flux 与 intensity",
+    "answer": "The collector with the smaller area has the higher intensity. Volumetric flux is water volume transferred per unit time, measured in m³/s. Intensity is flux per unit area, measured in m/s or mm/h.\n\n相同的水量传输速率，集中在较小面积上，强度就更高。**Flux 看总速率；intensity 看单位面积的速率。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 5,
     "marks": 2,
-    "en": "In Q = −KiA, identify the roles of conductivity, hydraulic gradient and cross-sectional area. With other conditions unchanged, would greater conductivity lead to a GREATER / SMALLER flux magnitude? What does the negative sign represent?"
+    "en": "In Q = −KiA, identify the roles of conductivity, hydraulic gradient and cross-sectional area. With other conditions unchanged, would greater conductivity lead to a GREATER / SMALLER flux magnitude? What does the negative sign represent?",
+    "answerTitle": "\\(Q=-KiA\\)",
+    "answer": "Conductivity \\(K\\) describes how easily the medium transmits water. Hydraulic gradient \\(i\\) provides the driving force, and \\(A\\) is the cross-sectional area. Greater conductivity produces a **GREATER** flux magnitude. The negative sign indicates flow toward decreasing hydraulic potential.\n\n\\(K\\) 决定介质是否容易让水通过，\\(i\\) 决定推动水的梯度，\\(A\\) 是通过的截面积。负号表示水沿势能降低的方向流动。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 6,
     "marks": 2,
-    "en": "At constant actual vapour pressure, cooling an air mass will INCREASE / DECREASE / NOT AFFECT saturation vapour pressure, and INCREASE / DECREASE / NOT AFFECT relative humidity. Explain the two choices in one sentence."
+    "en": "At constant actual vapour pressure, cooling an air mass will INCREASE / DECREASE / NOT AFFECT saturation vapour pressure, and INCREASE / DECREASE / NOT AFFECT relative humidity. Explain the two choices in one sentence.",
+    "answerTitle": "降温与湿度",
+    "answer": "**DECREASE; INCREASE.** Cooling reduces saturation vapour pressure, so relative humidity increases when actual vapour pressure remains constant.\n\n\\[\nRH=\\frac{e}{e_s}\\times100\\%\n\\]\n\n实际水汽压 \\(e\\) 不变，降温使分母 \\(e_s\\) 变小，因此 RH 增加。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 7,
     "marks": 3,
-    "en": "An initially unsaturated air parcel rises until it becomes saturated and then continues rising. Describe how its temperature and relative humidity change before saturation. Why does its cooling rate become smaller after saturation?"
+    "en": "An initially unsaturated air parcel rises until it becomes saturated and then continues rising. Describe how its temperature and relative humidity change before saturation. Why does its cooling rate become smaller after saturation?",
+    "answerTitle": "空气上升至饱和",
+    "answer": "Before saturation, the rising air expands and cools, while its relative humidity increases. After saturation, condensation releases latent heat, which partly offsets cooling and reduces the cooling rate.\n\n未饱和空气上升时膨胀、降温，逐渐接近饱和。饱和后凝结释放热量，所以仍然降温，但降得更慢。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 8,
     "marks": 2,
-    "en": "At the dew point, relative humidity is ______ and actual vapour pressure is HIGHER THAN / LOWER THAN / EQUAL TO saturation vapour pressure. Does reaching the dew point alone guarantee rain reaches the ground? Explain."
+    "en": "At the dew point, relative humidity is ______ and actual vapour pressure is HIGHER THAN / LOWER THAN / EQUAL TO saturation vapour pressure. Does reaching the dew point alone guarantee rain reaches the ground? Explain.",
+    "answerTitle": "Dew point",
+    "answer": "**100%; EQUAL TO.** Reaching the dew point does not guarantee rain at the ground. Small droplets must grow large enough to fall against upward air movement.\n\n露点时 \\(e=e_s\\)，RH 为 100%。但达到饱和只是具备凝结条件，云滴还必须长大，才可能落下来。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 9,
     "marks": 2,
-    "en": "At the surface, air generally moves from HIGH / LOW pressure toward HIGH / LOW pressure. In the Northern Hemisphere, a low-pressure system is CYCLONIC / ANTICYCLONIC."
+    "en": "At the surface, air generally moves from HIGH / LOW pressure toward HIGH / LOW pressure. In the Northern Hemisphere, a low-pressure system is CYCLONIC / ANTICYCLONIC.",
+    "answerTitle": "气压与环流",
+    "answer": "**HIGH → LOW; CYCLONIC.**\n\n地面空气总体从高压流向低压。北半球低压系统为 cyclonic circulation，旋转方向为逆时针。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 10,
     "marks": 3,
-    "en": "Identify the process described in each case: (a) warm air slowly moves over cold air; (b) a heated land surface rapidly lifts moist air; (c) moist air is forced up a mountain; (d) warm moist air converges near the equator; (e) cold air advances into warm air; (f) a non-frontal cyclone sustained by evaporation and condensation over warm ocean water."
+    "en": "Identify the process described in each case: (a) warm air slowly moves over cold air; (b) a heated land surface rapidly lifts moist air; (c) moist air is forced up a mountain; (d) warm moist air converges near the equator; (e) cold air advances into warm air; (f) a non-frontal cyclone sustained by evaporation and condensation over warm ocean water.",
+    "answerTitle": "识别降水类型",
+    "answer": "| 情境 | 答案 |\n|---|---|\n| (a) 暖空气缓慢爬到冷空气上方 | Warm frontal precipitation |\n| (b) 地面加热使湿空气迅速上升 | Convectional precipitation |\n| (c) 山地迫使湿空气上升 | Orographic precipitation |\n| (d) 赤道附近暖湿空气汇合 | ITCZ precipitation |\n| (e) 冷空气推进到暖空气中 | Cold frontal precipitation |\n| (f) 暖海面上由蒸发和凝结维持的气旋 | Tropical cyclone |",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 11,
     "marks": 2,
-    "en": "Compared with a warm front, a cold front generally produces FASTER / SLOWER uplift and MORE / LESS intense precipitation. State one feature that distinguishes a localized convectional storm from a large frontal event."
+    "en": "Compared with a warm front, a cold front generally produces FASTER / SLOWER uplift and MORE / LESS intense precipitation. State one feature that distinguishes a localized convectional storm from a large frontal event.",
+    "answerTitle": "冷锋与局部对流",
+    "answer": "**FASTER; MORE.** A localized convectional storm generally affects a smaller area than a large frontal event.\n\n冷锋抬升更快，降水通常更强。局部对流的范围更小，也通常持续更短。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 12,
     "marks": 3,
-    "en": "Which generally has greater spatial variability: a localized thunderstorm or widespread steady snowfall? Why? At the same average monthly precipitation, which season has greater relative variability in the lecture graph: summer or winter?"
+    "en": "Which generally has greater spatial variability: a localized thunderstorm or widespread steady snowfall? Why? At the same average monthly precipitation, which season has greater relative variability in the lecture graph: summer or winter?",
+    "answerTitle": "空间与季节变异",
+    "answer": "A localized thunderstorm has greater spatial variability because rainfall changes sharply over short distances. At the same average monthly precipitation, **summer** has greater relative variability than winter in the lecture graph.\n\n局部雷暴可能让一个地方暴雨，旁边却没雨。课件图中，相同平均月降水量下，夏季的相对变异更大。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 13,
     "marks": 2,
-    "en": "Define interception, throughfall and stemflow. Explain how a forest canopy partitions incoming precipitation and why above-canopy precipitation is different from the water reaching the forest floor."
+    "en": "Define interception, throughfall and stemflow. Explain how a forest canopy partitions incoming precipitation and why above-canopy precipitation is different from the water reaching the forest floor.",
+    "answerTitle": "冠层分配",
+    "answer": "Interception is precipitation caught by the canopy. Throughfall passes through canopy gaps or drips from vegetation. Stemflow travels down stems and trunks. Some intercepted water is stored or evaporates, so not all above-canopy precipitation reaches the forest floor.\n\n雨水分成截留、穿透雨和树干流。冠层会暂存水，也会让部分水蒸发，因此森林地面收到的水不一定等于冠层上方的降雨。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 14,
     "marks": 4,
-    "en": "List four sources of rain-gauge error. For each, explain the mechanism and whether the lecture example causes overmeasurement or undermeasurement."
+    "en": "List four sources of rain-gauge error. For each, explain the mechanism and whether the lecture example causes overmeasurement or undermeasurement.",
+    "answerTitle": "雨量计四种误差",
+    "answer": "| Error | English answer | 记录方向 |\n|---|---|---|\n| Evaporation | Collected water evaporates before measurement. | 偏低 |\n| Wetting | Water remains on instrument surfaces and is not measured. | 偏低 |\n| Splash | Water splashes into the gauge from outside. | 偏高 |\n| Turbulence | Wind around the gauge deflects drops away from the opening. | 偏低 |\n\n这里 splash 按课件强调的**外部溅入**解释。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 15,
     "marks": 3,
-    "en": "Explain how a tipping-bucket rain gauge records precipitation. Why can trace rainfall fail to produce an immediate record, and why may very intense rainfall be underestimated? Distinguish total rainfall from rainfall intensity."
+    "en": "Explain how a tipping-bucket rain gauge records precipitation. Why can trace rainfall fail to produce an immediate record, and why may very intense rainfall be underestimated? Distinguish total rainfall from rainfall intensity.",
+    "answerTitle": "Tipping-bucket rain gauge",
+    "answer": "A bucket tips when it fills and sends a pulse to a recorder. Each tip represents a fixed rainfall depth. Trace rainfall may not fill the bucket enough to trigger a tip. Very intense rain may be missed during tipping. Total rainfall is accumulated depth, whereas intensity is rainfall depth per unit time.\n\n装满就倾倒并记录一次信号。小雨可能不够触发；强雨可能在倾倒过程中漏收。总降水量是累计水深，强度还包含时间因素。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 16,
     "marks": 2,
-    "en": "After similar snowfall, a hilltop has much less SWE than a valley. Explain how this can happen without assuming the valley received more falling snow."
+    "en": "After similar snowfall, a hilltop has much less SWE than a valley. Explain how this can happen without assuming the valley received more falling snow.",
+    "answerTitle": "山顶与谷地积雪",
+    "answer": "Wind removes snow from exposed hilltops and deposits it in sheltered valleys. This redistributes existing snow, so different SWE does not necessarily mean different snowfall.\n\n风能把山顶已有的雪搬到谷地。**这是降雪后的重新分配，不一定是谷地原本下雪更多。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 17,
     "marks": 3,
-    "en": "One snowpack is deep and low in density; another is shallower and high in density. Can snow depth alone determine which stores more water? Define snow water equivalent and explain which measurements are needed to determine it, without calculations."
+    "en": "One snowpack is deep and low in density; another is shallower and high in density. Can snow depth alone determine which stores more water? Define snow water equivalent and explain which measurements are needed to determine it, without calculations.",
+    "answerTitle": "Snow depth 与 SWE",
+    "answer": "Snow depth alone cannot determine water storage because snow density varies. SWE is the depth of water that would result if the snowpack melted. Snow depth and density are needed; density can be measured from the mass of a known-volume snow sample.\n\n雪深不能直接代表水量，因为松雪里面空气多。浅而密的雪也可能比深而松的雪含水更多。需要雪深和雪密度。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 18,
     "marks": 3,
-    "en": "Name the three main components of a snowpack. Give two reasons why it may be stratified, and explain one effect of an internal ice layer on meltwater movement."
+    "en": "Name the three main components of a snowpack. Give two reasons why it may be stratified, and explain one effect of an internal ice layer on meltwater movement.",
+    "answerTitle": "雪的组成与分层",
+    "answer": "A snowpack contains ice crystals, air and liquid water. Layers form because different snowfall events produce different snow, and melting and refreezing alter existing layers. An internal ice layer can restrict downward movement of meltwater.\n\n不同时间下的雪性质不同，再加上融化和再冻结，就会形成分层。冰层渗透性低，可能阻碍融水向下移动。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 19,
     "marks": 3,
-    "en": "Distinguish constructive and destructive metamorphism. Define firnification and ripening. Does a fully ripened snowpack mean all its ice has melted?"
+    "en": "Distinguish constructive and destructive metamorphism. Define firnification and ripening. Does a fully ripened snowpack mean all its ice has melted?",
+    "answerTitle": "Metamorphism、firnification 和 ripening",
+    "answer": "Constructive metamorphism involves the growth of new ice crystals. Destructive metamorphism rounds crystals, decreases porosity and increases density. In the lecture, firnification involves refreezing and densification. Ripening warms the snowpack toward an isothermal state at 0°C and its maximum liquid-water holding capacity. It does **not** mean all ice has melted.\n\nConstructive 强调冰晶生长；destructive 强调圆化、孔隙减少和密度增加。Ripening 是雪层变暖、变湿并达到持水能力，不是全部融完。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 20,
     "marks": 3,
-    "en": "Identify the heat-transfer process: (a) energy moves between adjacent ice crystals; (b) meltwater freezes in a colder layer and warms it; (c) ice becomes vapour in one place and forms ice elsewhere. Which releases latent heat of fusion, and why is radiation less important deep in a snowpack?"
+    "en": "Identify the heat-transfer process: (a) energy moves between adjacent ice crystals; (b) meltwater freezes in a colder layer and warms it; (c) ice becomes vapour in one place and forms ice elsewhere. Which releases latent heat of fusion, and why is radiation less important deep in a snowpack?",
+    "answerTitle": "热传递识别",
+    "answer": "(a) **Conduction**  \n(b) **Refreezing of meltwater**  \n(c) **Water vapour diffusion**\n\nRefreezing releases latent heat of fusion. Radiation becomes less important with depth because it is strongly attenuated near the snow surface.\n\n融水再冻结会放出融化潜热。辐射主要影响表层，进入雪层后迅速减弱。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 21,
     "marks": 4,
-    "en": "Explain how energy availability controls snowmelt. What do Qm, latent heat of fusion and water density represent in the lecture melt equation? With other conditions unchanged, would greater energy available for melting INCREASE / DECREASE / NOT AFFECT melt rate? Explain why energy used to warm cold snow is not yet energy used to melt it."
+    "en": "Explain how energy availability controls snowmelt. What do Qm, latent heat of fusion and water density represent in the lecture melt equation? With other conditions unchanged, would greater energy available for melting INCREASE / DECREASE / NOT AFFECT melt rate? Explain why energy used to warm cold snow is not yet energy used to melt it.",
+    "answerTitle": "能量控制融雪",
+    "answer": "Snowmelt depends on energy available for melting. \\(Q_m\\) is this energy flux per unit area, latent heat of fusion is the energy required to melt a unit mass of ice, and water density converts mass to water volume. Greater \\(Q_m\\) **INCREASES** melt rate. Energy used to warm cold snow raises its temperature rather than changing ice into water.\n\n先把低于 0°C 的雪加热，随后能量才可用于融化。**升温消耗的能量和融化消耗的能量不是同一用途。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 22,
     "marks": 2,
-    "en": "A cold snowpack receives energy and some meltwater enters a layer below 0°C. Explain why water output need not immediately equal the surface melt rate."
+    "en": "A cold snowpack receives energy and some meltwater enters a layer below 0°C. Explain why water output need not immediately equal the surface melt rate.",
+    "answerTitle": "表面融化不等于立即出水",
+    "answer": "Meltwater may refreeze in colder layers or remain stored in the snowpack. Therefore, water leaving the snowpack may be less than the surface melt rate.\n\n表面产生的融水可能在下面再冻结，也可能被暂时储存，所以不会全部马上流出。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 23,
     "marks": 3,
-    "en": "Distinguish volumetric flux from flux density (intensity). Give the dimensions and SI units of each. If the same volumetric flux is distributed over twice the area, what happens to intensity?"
+    "en": "Distinguish volumetric flux from flux density (intensity). Give the dimensions and SI units of each. If the same volumetric flux is distributed over twice the area, what happens to intensity?",
+    "answerTitle": "Flux 的量纲",
+    "answer": "Volumetric flux has dimensions \\([L^3T^{-1}]\\) and SI units m³/s. Intensity is flux per unit area, with dimensions \\([LT^{-1}]\\) and SI units m/s. If the same flux is spread over twice the area, intensity is halved.\n\n面积扩大一倍，而总通量不变，单位面积分到的水就减半。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 24,
     "marks": 2,
-    "en": "The wet adiabatic lapse rate is HIGHER THAN / LOWER THAN / EQUAL TO the dry adiabatic lapse rate because condensation RELEASES / REQUIRES / DOES NOT TRANSFER latent heat. Briefly explain your choices."
+    "en": "The wet adiabatic lapse rate is HIGHER THAN / LOWER THAN / EQUAL TO the dry adiabatic lapse rate because condensation RELEASES / REQUIRES / DOES NOT TRANSFER latent heat. Briefly explain your choices.",
+    "answerTitle": "干、湿递减率",
+    "answer": "**LOWER THAN; RELEASES.** Condensation releases latent heat, partly offsetting cooling in saturated rising air.\n\n凝结放热补回一部分能量，因此湿递减率小于干递减率。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 25,
     "marks": 6,
-    "en": "Fully explain how precipitation develops from an initially unsaturated parcel of moist air. Include the four formation requirements, dry and wet adiabatic lapse rates, relative humidity, condensation nuclei and latent heat."
+    "en": "Fully explain how precipitation develops from an initially unsaturated parcel of moist air. Include the four formation requirements, dry and wet adiabatic lapse rates, relative humidity, condensation nuclei and latent heat.",
+    "answerTitle": "长答：降水形成",
+    "answer": "An initially unsaturated parcel of moist air rises into lower atmospheric pressure. It expands and cools adiabatically at about 1°C per 100 m. Cooling lowers saturation vapour pressure and brings the air toward saturation. At the dew point, relative humidity reaches 100%. Water vapour condenses on nuclei such as dust, sea salt and smoke. Condensation releases latent heat, so saturated air cools more slowly, at about 0.6°C per 100 m. Droplets grow through continued condensation and collision/coalescence until they can fall against upward air movement. A continuing water-vapour supply is needed to sustain precipitation.\n\n中文顺序：**上升 → 膨胀降温 → 接近饱和 → 凝结核上形成云滴 → 凝结放热使冷却变慢 → 云滴长大 → 落下。** 持续降水还要持续供应水汽。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 26,
     "marks": 6,
-    "en": "Compare warm-front precipitation with convectional precipitation. Explain the cause of uplift, uplift rate, intensity, duration and spatial extent. Which is likely harder to characterize with a small rain-gauge network, and why?"
+    "en": "Compare warm-front precipitation with convectional precipitation. Explain the cause of uplift, uplift rate, intensity, duration and spatial extent. Which is likely harder to characterize with a small rain-gauge network, and why?",
+    "answerTitle": "长答：暖锋与对流降水",
+    "answer": "Warm-front precipitation forms when advancing warm air rises gradually over denser cold air. It generally produces gentle, long-duration precipitation over a relatively broad area. Convectional precipitation forms when surface heating rapidly lifts moist air. It is generally intense, short-lived and localized. A small rain-gauge network is more likely to miss a convectional storm because rainfall varies greatly over short distances.\n\n中文重点：暖锋缓慢抬升，所以较温和、持续久、范围较广；对流快速抬升，所以强、短、局部。少量测站更难捕捉局部暴雨。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 27,
     "marks": 6,
-    "en": "A researcher uses one tipping-bucket gauge in a forest clearing to estimate rainfall across a watershed. Explain how vegetation, spatial variability and instrumental errors could affect the estimate. Describe how the gauge works and identify its two rainfall-rate limitations."
+    "en": "A researcher uses one tipping-bucket gauge in a forest clearing to estimate rainfall across a watershed. Explain how vegetation, spatial variability and instrumental errors could affect the estimate. Describe how the gauge works and identify its two rainfall-rate limitations.",
+    "answerTitle": "长答：森林中的雨量测量",
+    "answer": "A gauge in a clearing measures rainfall at an open location, rather than the water reaching the forest floor beneath a canopy. Vegetation partitions rainfall into interception, throughfall and stemflow. A single gauge may also poorly represent a watershed because rainfall varies spatially. Evaporation and wetting cause undermeasurement, splash into the gauge causes overmeasurement, and wind-induced turbulence can cause undermeasurement. A tipping bucket records a pulse when it fills and tips; the lecture instrument records 0.2 mm per tip. Trace rain may not trigger a tip, while very intense rain may be underestimated during tipping.\n\n中文分三层：**植被改变水的分配；单站不一定代表整个流域；仪器本身还会有误差。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 28,
     "marks": 6,
-    "en": "Using the hydrological processes shown in Lectures 1–3, explain where water goes when it rains on a forested watershed. Include canopy partitioning, storage, surface-water and groundwater pathways, evapotranspiration, and a water-balance equation. Explain whether all rainfall must immediately leave the watershed."
+    "en": "Using the hydrological processes shown in Lectures 1–3, explain where water goes when it rains on a forested watershed. Include canopy partitioning, storage, surface-water and groundwater pathways, evapotranspiration, and a water-balance equation. Explain whether all rainfall must immediately leave the watershed.",
+    "answerTitle": "长答：雨水去哪了？",
+    "answer": "Rainfall is first partitioned into interception, throughfall and stemflow. Intercepted water may remain on vegetation temporarily and later evaporate. Water reaching the ground may enter surface, soil and groundwater storage or move through surface-water and groundwater pathways. Some water leaves the watershed through outflow, while evapotranspiration returns water to the atmosphere. The water balance is:\n\n\\[\nP+SW_{in}+GW_{in}-ET-SW_{out}-GW_{out}=\\Delta S\n\\]\n\nRainfall does not have to leave immediately. If inputs exceed outputs, storage increases.\n\n中文重点：雨水可以被截留、被储存、沿地表或地下流动、通过蒸发蒸腾回到大气。**不是所有雨水都马上变成出口流量。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 29,
     "marks": 6,
-    "en": "Explain why snow depth alone is insufficient for comparing water stored at two snow-survey sites. Define SWE and describe the field measurements required. Explain how wind redistribution and lake-effect snowfall can create spatial differences, distinguishing snow transported after deposition from new snowfall formation."
+    "en": "Explain why snow depth alone is insufficient for comparing water stored at two snow-survey sites. Define SWE and describe the field measurements required. Explain how wind redistribution and lake-effect snowfall can create spatial differences, distinguishing snow transported after deposition from new snowfall formation.",
+    "answerTitle": "长答：积雪储水与空间差异",
+    "answer": "Snow depth alone is insufficient because snow density varies. SWE is the equivalent water depth obtained by melting a snowpack. Surveys measure snow depth at multiple locations and determine density from the mass of a known-volume snow sample. Wind can remove existing snow from exposed locations and deposit it in sheltered areas. Lake-effect snowfall instead produces new snow when cold air gains heat and moisture over relatively warm open lake water, rises and cools, and delivers snow to downwind areas.\n\n中文重点：先解释为什么要密度，再区分两种空间机制：**风搬运已有雪；湖效应形成新的降雪。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 30,
     "marks": 6,
-    "en": "Explain how a cold, layered snowpack becomes ripe and begins releasing meltwater. Include metamorphism, conduction, vapour diffusion, meltwater refreezing and radiation penetration. Distinguish energy used to warm snow from energy used for melting, and explain why surface melt does not necessarily produce immediate water output."
+    "en": "Explain how a cold, layered snowpack becomes ripe and begins releasing meltwater. Include metamorphism, conduction, vapour diffusion, meltwater refreezing and radiation penetration. Distinguish energy used to warm snow from energy used for melting, and explain why surface melt does not necessarily produce immediate water output.",
+    "answerTitle": "长答：冷雪层如何成熟并出水？",
+    "answer": "A cold snowpack first requires energy to warm toward 0°C. Metamorphism changes crystal structure, porosity and density, while layers may warm at different rates. Conduction transfers heat between ice crystals. Vapour diffusion transfers latent heat through sublimation in one location and deposition in another. Meltwater can enter colder layers and refreeze, releasing latent heat of fusion and warming those layers. Radiation mainly affects the snow surface. As the snowpack becomes ripe, it approaches 0°C and its maximum liquid-water holding capacity. Additional meltwater can drain, although internal ice layers may restrict movement. Surface melting does not produce immediate outflow because water may be retained or refrozen.\n\n中文顺序：**先升温 → 热量传到不同雪层 → 融水下渗再冻结并放热 → 雪层逐渐成熟 → 超过持水能力的水更容易流出。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 31,
     "marks": 5,
-    "en": "Explain why London, Barrie and Buffalo typically receive more lake-effect snowfall than Toronto under the prevailing wind conditions shown in the lecture. Include lake heat capacity, moisture supply, uplift, wind direction and geographical setting."
+    "en": "Explain why London, Barrie and Buffalo typically receive more lake-effect snowfall than Toronto under the prevailing wind conditions shown in the lecture. Include lake heat capacity, moisture supply, uplift, wind direction and geographical setting.",
+    "answerTitle": "长答：London、Barrie、Buffalo 为什么雪更多？",
+    "answer": "Lakes have a higher heat capacity than land and may remain relatively warm when cold air arrives. Cold air crossing open lake water gains heat and moisture. It becomes unstable, rises and cools, producing lake-effect snow downwind. Under the typical winds shown in the lecture, London is influenced by Lake Huron, Barrie by Georgian Bay, and Buffalo by Lake Erie. Toronto is on the northwest side of Lake Ontario and is less favourably located along these typical downwind moisture paths, so it generally receives less lake-effect snow.\n\n中文重点：**湖水相对暖 → 冷空气过湖吸热吸水汽 → 上升形成雪云 → 风把雪带到下风岸。** 必须结合城市位置，不能只写因为湖效应。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 32,
     "marks": 5,
-    "en": "Moist air crosses a mountain from the windward slope to the leeward slope. Explain the changes in temperature, relative humidity and precipitation along this path. Why can a rain shadow develop? Distinguish this lifting mechanism from frontal uplift."
+    "en": "Moist air crosses a mountain from the windward slope to the leeward slope. Explain the changes in temperature, relative humidity and precipitation along this path. Why can a rain shadow develop? Distinguish this lifting mechanism from frontal uplift.",
+    "answerTitle": "长答：地形雨与雨影",
+    "answer": "On the windward slope, moist air is forced upward, expands and cools. It approaches saturation, condensation occurs and precipitation develops. On the leeward slope, air descends, compresses and warms. Its relative humidity decreases, creating drier conditions and a rain shadow. Orographic uplift is caused by terrain, whereas frontal uplift occurs when different air masses meet and warm air rises above denser cold air.\n\n中文重点：迎风坡上升冷却，容易降水；背风坡下降增温，RH 降低，形成雨影。地形雨由山抬升，锋面雨由气团相遇抬升。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 33,
     "marks": 3,
-    "en": "Water moves down an energy gradient. Explain why this is more general than saying water always moves downhill on the land surface. Why is an energy input needed to reverse the direction of transfer?"
+    "en": "Water moves down an energy gradient. Explain why this is more general than saying water always moves downhill on the land surface. Why is an energy input needed to reverse the direction of transfer?",
+    "answerTitle": "能量梯度为什么比地形更一般？",
+    "answer": "Water moves from higher to lower hydraulic potential, which includes both elevation and pressure effects. Therefore, flow is not determined only by land-surface slope. Moving water against its natural energy gradient requires an energy input, such as pumping.\n\n水流取决于水的势能，不只是地表高低。压力也会影响方向。要逆着梯度移动，就需要泵等外部能量。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 34,
     "marks": 3,
-    "en": "Explain how conductivity and resistance describe the effect of a medium on transfer. Compare gravel, sand, silt and clay qualitatively in the simplified sequence shown in Lecture 1. Why is a driving gradient alone insufficient to determine flux?"
+    "en": "Explain how conductivity and resistance describe the effect of a medium on transfer. Compare gravel, sand, silt and clay qualitatively in the simplified sequence shown in Lecture 1. Why is a driving gradient alone insufficient to determine flux?",
+    "answerTitle": "Conductivity 与 resistance",
+    "answer": "Conductivity describes how easily a medium allows transfer; resistance describes how strongly it restricts transfer. In the lecture’s simplified sequence, conductivity generally decreases from gravel to sand, silt and clay. A gradient alone cannot determine flux because conductivity and cross-sectional area also matter.\n\n同样的推动梯度，通过砂砾和黏土的流量会不同，因为介质让水通过的难易程度不同。这个排序是课件的简化比较。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 35,
     "marks": 4,
-    "en": "Distinguish dimensions from units. Can changing from metres to millimetres change the dimension of a quantity? State the dimensions and typical units of density, mass flux, volumetric flux, energy flux and energy flux density. No numerical calculation is required."
+    "en": "Distinguish dimensions from units. Can changing from metres to millimetres change the dimension of a quantity? State the dimensions and typical units of density, mass flux, volumetric flux, energy flux and energy flux density. No numerical calculation is required.",
+    "answerTitle": "Dimensions 与 units",
+    "answer": "Dimensions describe the physical type of a quantity; units describe how it is measured. Changing metres to millimetres does not change the length dimension.\n\n| Quantity | Dimensions | Typical SI units |\n|---|---|---|\n| Density | \\([ML^{-3}]\\) | kg/m³ |\n| Mass flux | \\([MT^{-1}]\\) | kg/s |\n| Volumetric flux | \\([L^3T^{-1}]\\) | m³/s |\n| Energy flux | \\([ML^2T^{-3}]\\) | J/s 或 W |\n| Energy flux density | \\([MT^{-3}]\\) | W/m² |\n\n单位可以换，但物理量的类型不变。能量通量密度就是能量通量再除以面积。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 36,
     "marks": 3,
-    "en": "Identify precipitation, evapotranspiration, surface-water inflow/outflow and groundwater inflow/outflow in a watershed water balance. Explain the difference between storage and change in storage. Why must all terms describe the same area and time interval?"
+    "en": "Identify precipitation, evapotranspiration, surface-water inflow/outflow and groundwater inflow/outflow in a watershed water balance. Explain the difference between storage and change in storage. Why must all terms describe the same area and time interval?",
+    "answerTitle": "水量平衡各项",
+    "answer": "Precipitation, surface-water inflow and groundwater inflow are inputs. Evapotranspiration, surface-water outflow and groundwater outflow are outputs. Storage is the amount of water present, whereas change in storage is the difference between two times. All terms must refer to the same area and time interval for a valid balance.\n\n\\(S\\) 是某时刻存了多少水；\\(\\Delta S\\) 是一段时间后改变多少。不同地区或不同时段的数据不能直接凑成同一套收支。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 37,
     "marks": 3,
-    "en": "Define actual vapour pressure, saturation vapour pressure and relative humidity. State two ways to bring an initially unsaturated air mass to saturation. Explain how each affects the ratio of actual to saturation vapour pressure."
+    "en": "Define actual vapour pressure, saturation vapour pressure and relative humidity. State two ways to bring an initially unsaturated air mass to saturation. Explain how each affects the ratio of actual to saturation vapour pressure.",
+    "answerTitle": "如何达到饱和？",
+    "answer": "Actual vapour pressure is the pressure exerted by water vapour present in the air. Saturation vapour pressure is the vapour pressure at saturation for a given temperature. Relative humidity is their ratio expressed as a percentage. Air can reach saturation by cooling, which lowers saturation vapour pressure, or by adding moisture, which raises actual vapour pressure.\n\n两条路：**降温使 \\(e_s\\) 降低；加水汽使 \\(e\\) 增加。** 两者都可以使 \\(e/e_s\\) 接近 1。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 38,
     "marks": 3,
-    "en": "State the dry and wet adiabatic lapse rates used in the lecture, without performing a calculation. What does adiabatic mean, and why can temperature change even when no heat is exchanged with the surroundings?"
+    "en": "State the dry and wet adiabatic lapse rates used in the lecture, without performing a calculation. What does adiabatic mean, and why can temperature change even when no heat is exchanged with the surroundings?",
+    "answerTitle": "Adiabatic lapse rates",
+    "answer": "The lecture uses a dry rate of approximately **1°C per 100 m** and a wet rate of approximately **0.6°C per 100 m**. Adiabatic means no heat exchange with the surroundings. Rising air can still cool because it expands and does work, reducing its internal energy.\n\nAdiabatic 不代表温度不变，而是没有与外界交换热量。空气膨胀做功，仍然可以降温。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 39,
     "marks": 3,
-    "en": "Why are condensation nuclei needed in the lecture explanation of precipitation formation? Give three examples. Describe two ways droplets grow, and explain why a continuing moisture supply is needed."
+    "en": "Why are condensation nuclei needed in the lecture explanation of precipitation formation? Give three examples. Describe two ways droplets grow, and explain why a continuing moisture supply is needed.",
+    "answerTitle": "Condensation nuclei 与云滴增长",
+    "answer": "Condensation nuclei provide surfaces on which water vapour can condense. Examples include dust, sea salt and smoke. Droplets grow through continued condensation and collision/coalescence. A continuing moisture supply replaces water removed by precipitation and allows rain to continue.\n\n凝结核提供形成水滴的表面。水滴继续吸收水汽，也会碰撞合并。没有持续水汽供应，降水就无法维持。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 40,
     "marks": 4,
-    "en": "Explain how unequal solar heating between the equator and poles drives air circulation. Relate air temperature to density and rising or sinking motion. Distinguish surface convergence in a low-pressure cell from divergence in a high-pressure cell, and identify cyclonic and anticyclonic circulation in the Northern Hemisphere."
+    "en": "Explain how unequal solar heating between the equator and poles drives air circulation. Relate air temperature to density and rising or sinking motion. Distinguish surface convergence in a low-pressure cell from divergence in a high-pressure cell, and identify cyclonic and anticyclonic circulation in the Northern Hemisphere.",
+    "answerTitle": "全球环流",
+    "answer": "The equator receives more solar energy than the poles, producing temperature and density differences. Warm air is less dense and tends to rise, while cold air is denser and tends to sink. Surface air converges toward low-pressure cells and diverges from high-pressure cells. In the Northern Hemisphere, low-pressure circulation is cyclonic and counterclockwise; high-pressure circulation is anticyclonic and clockwise.\n\n中文连接：**受热差异 → 密度差异 → 上升和下沉 → 地面气流汇合或分散。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 41,
     "marks": 4,
-    "en": "Compare ITCZ precipitation and tropical-cyclone precipitation. Include how each is sustained, typical intensity and duration, and the seasonal migration of the ITCZ. Why are both classified as non-frontal cyclonic convergence?"
+    "en": "Compare ITCZ precipitation and tropical-cyclone precipitation. Include how each is sustained, typical intensity and duration, and the seasonal migration of the ITCZ. Why are both classified as non-frontal cyclonic convergence?",
+    "answerTitle": "ITCZ 与 tropical cyclone",
+    "answer": "ITCZ precipitation occurs where warm, moist air converges near the equator, maintaining low pressure and uplift. The lecture describes moderate intensity and long duration, and the zone migrates seasonally. Tropical cyclones are supplied by rapid evaporation from warm ocean water and sustained by latent heat released during condensation. The lecture describes high intensity and moderate duration. Both involve convergence and uplift without requiring a boundary between contrasting air masses.\n\nITCZ 是赤道附近持续汇合的降水带；热带气旋是由暖海面水汽和凝结放热维持的风暴。两者都不要求冷暖锋相遇。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 42,
     "marks": 3,
-    "en": "State the approximate formation-latitude range of tropical cyclones given in the lecture. Describe the typical movement direction and possible change at higher latitudes. Contrast this with the typical movement of frontal systems in Northern Hemisphere temperate latitudes."
+    "en": "State the approximate formation-latitude range of tropical cyclones given in the lecture. Describe the typical movement direction and possible change at higher latitudes. Contrast this with the typical movement of frontal systems in Northern Hemisphere temperate latitudes.",
+    "answerTitle": "风暴形成纬度与移动方向",
+    "answer": "The lecture gives a tropical-cyclone formation range of approximately **5°–20° latitude**. They commonly move westward and may turn eastward after entering higher latitudes, particularly north of about 30° in the lecture example. Frontal systems in Northern Hemisphere temperate latitudes generally move west to east.\n\n这些是课件的典型路径描述，不表示每一个风暴都严格这样移动。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 43,
     "marks": 3,
-    "en": "In the seasonal-variability graph, rank summer, spring/fall and winter at the same average monthly precipitation. How does relative variability change as average monthly precipitation increases? Why is variability different from total precipitation?"
+    "en": "In the seasonal-variability graph, rank summer, spring/fall and winter at the same average monthly precipitation. How does relative variability change as average monthly precipitation increases? Why is variability different from total precipitation?",
+    "answerTitle": "季节变异图",
+    "answer": "At the same average monthly precipitation, the ranking is **summer > spring/fall > winter**. Relative variability decreases as average monthly precipitation increases in the lecture graph. Total precipitation describes the amount received, whereas variability describes how unevenly precipitation is distributed.\n\n降水量回答下了多少；变异回答不同地点或观测值之间差别有多大。两者不能混为一谈。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 44,
     "marks": 3,
-    "en": "Define snowpack metamorphism and list its four main drivers from the lecture. Explain how destructive metamorphism affects crystal shape, porosity and density."
+    "en": "Define snowpack metamorphism and list its four main drivers from the lecture. Explain how destructive metamorphism affects crystal shape, porosity and density.",
+    "answerTitle": "雪变质的驱动因素",
+    "answer": "Snowpack metamorphism is a change in snow structure. Its four drivers are pressure from new snow, heat transfer, meltwater circulation and refreezing, and wind action. Destructive metamorphism rounds ice crystals, reduces porosity and increases density.\n\n四个驱动：**新雪压力、热传递、融水与再冻结、风。** Destructive 并不是雪消失，而是结构圆化、压密。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 45,
     "marks": 3,
-    "en": "The lecture identifies hygroscopic, capillary and gravitational pressures acting on liquid water in snow. Name these three categories and explain why a snowpack can contain retained liquid water as well as ice and air. Why should maximum liquid-water holding capacity not be interpreted as complete melting?"
+    "en": "The lecture identifies hygroscopic, capillary and gravitational pressures acting on liquid water in snow. Name these three categories and explain why a snowpack can contain retained liquid water as well as ice and air. Why should maximum liquid-water holding capacity not be interpreted as complete melting?",
+    "answerTitle": "雪中的液态水",
+    "answer": "The three categories are hygroscopic, capillary and gravitational pressures. Water can be retained as films on ice surfaces and within small pore spaces, while gravity promotes downward drainage. Maximum liquid-water holding capacity means the snowpack has reached its capacity to retain liquid water; it does not mean all ice has melted.\n\n雪里面可以同时有冰、空气和液态水。部分水被表面和小孔隙留住，部分受重力向下流。**持水达到上限，不等于冰全部消失，也不等于所有孔隙都灌满水。**",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 46,
     "marks": 4,
-    "en": "Compare conduction and convection within a snowpack. Why is convection generally a minor heat-transfer process in the lecture? Explain why light, air-rich snow is more insulating than dense, wet snow."
+    "en": "Compare conduction and convection within a snowpack. Why is convection generally a minor heat-transfer process in the lecture? Explain why light, air-rich snow is more insulating than dense, wet snow.",
+    "answerTitle": "Conduction 与 convection",
+    "answer": "Conduction transfers heat through contact between ice crystals. Convection transfers heat through air movement in pore spaces and is generally a minor process in the lecture. Light snow contains more poorly conducting air and fewer connected ice pathways, making it more insulating than dense, wet snow.\n\n传导依靠接触，热对流依靠空气移动。松雪空气多，而空气导热差，因此更隔热；密实湿雪有更有效的传热路径。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 47,
     "marks": 4,
-    "en": "Distinguish melting, freezing, sublimation and deposition. Identify which require energy and which release it. Explain how movement of water vapour through snow pores can transfer heat from one location to another."
+    "en": "Distinguish melting, freezing, sublimation and deposition. Identify which require energy and which release it. Explain how movement of water vapour through snow pores can transfer heat from one location to another.",
+    "answerTitle": "四种相变与能量",
+    "answer": "| Process | State change | Energy |\n|---|---|---|\n| Melting | Solid → liquid | Requires energy |\n| Freezing | Liquid → solid | Releases energy |\n| Sublimation | Solid → gas | Requires energy |\n| Deposition | Gas → solid | Releases energy |\n\nIce can sublimate in one part of a snowpack, absorbing energy. The vapour moves through pores and deposits as ice elsewhere, releasing energy and transferring heat between locations.\n\n某处升华吸热，水汽移到另一处凝华放热，因此水汽移动也能传递热量。",
+    "answerSource": "你提供的中英文参考答案"
   },
   {
     "number": 48,
     "marks": 3,
-    "en": "Can the upper part of a snowpack be ripe while a deeper layer remains cold? Explain the role of internal ice layers. Why does meltwater refreezing become less important as the entire snowpack approaches an isothermal state at 0°C?"
+    "en": "Can the upper part of a snowpack be ripe while a deeper layer remains cold? Explain the role of internal ice layers. Why does meltwater refreezing become less important as the entire snowpack approaches an isothermal state at 0°C?",
+    "answerTitle": "上层成熟、下层仍冷",
+    "answer": "Yes. Upper layers may receive more energy and become ripe while deeper layers remain below 0°C. Internal ice layers can restrict downward movement of meltwater and make ripening uneven. As the entire snowpack approaches 0°C, fewer cold layers remain to freeze incoming meltwater, so heat transfer by refreezing becomes less important.\n\n上层先受到热量，可以先成熟；冰层阻碍融水向下传递，使深层仍冷。整层接近 0°C 后，没有足够冷的层让融水再冻结，这种放热机制就减弱了。",
+    "answerSource": "你提供的中英文参考答案"
   }
 ]
