@@ -1,0 +1,242 @@
+[
+  {
+    "number": 1,
+    "marks": 3,
+    "en": "Define a watershed. Distinguish the water cycle from the water balance. Why must the watershed boundary be specified before calculating inputs and outputs?"
+  },
+  {
+    "number": 2,
+    "marks": 3,
+    "en": "A watershed receives more water through precipitation and inflow than it loses through evapotranspiration and outflow. Will its storage INCREASE / DECREASE / NOT CHANGE? Explain. Could outflow exceed current precipitation without violating the water balance?"
+  },
+  {
+    "number": 3,
+    "marks": 3,
+    "en": "Distinguish water mass, water volume and water depth. Why must the collection area be known before water volume can be expressed as an equivalent depth? Explain without calculations."
+  },
+  {
+    "number": 4,
+    "marks": 3,
+    "en": "Two collectors receive the same volumetric flux, but one distributes the water over a larger area. Which has the higher intensity? Explain the difference between volumetric flux and intensity and give their typical units."
+  },
+  {
+    "number": 5,
+    "marks": 2,
+    "en": "In Q = −KiA, identify the roles of conductivity, hydraulic gradient and cross-sectional area. With other conditions unchanged, would greater conductivity lead to a GREATER / SMALLER flux magnitude? What does the negative sign represent?"
+  },
+  {
+    "number": 6,
+    "marks": 2,
+    "en": "At constant actual vapour pressure, cooling an air mass will INCREASE / DECREASE / NOT AFFECT saturation vapour pressure, and INCREASE / DECREASE / NOT AFFECT relative humidity. Explain the two choices in one sentence."
+  },
+  {
+    "number": 7,
+    "marks": 3,
+    "en": "An initially unsaturated air parcel rises until it becomes saturated and then continues rising. Describe how its temperature and relative humidity change before saturation. Why does its cooling rate become smaller after saturation?"
+  },
+  {
+    "number": 8,
+    "marks": 2,
+    "en": "At the dew point, relative humidity is ______ and actual vapour pressure is HIGHER THAN / LOWER THAN / EQUAL TO saturation vapour pressure. Does reaching the dew point alone guarantee rain reaches the ground? Explain."
+  },
+  {
+    "number": 9,
+    "marks": 2,
+    "en": "At the surface, air generally moves from HIGH / LOW pressure toward HIGH / LOW pressure. In the Northern Hemisphere, a low-pressure system is CYCLONIC / ANTICYCLONIC."
+  },
+  {
+    "number": 10,
+    "marks": 3,
+    "en": "Identify the process described in each case: (a) warm air slowly moves over cold air; (b) a heated land surface rapidly lifts moist air; (c) moist air is forced up a mountain; (d) warm moist air converges near the equator; (e) cold air advances into warm air; (f) a non-frontal cyclone sustained by evaporation and condensation over warm ocean water."
+  },
+  {
+    "number": 11,
+    "marks": 2,
+    "en": "Compared with a warm front, a cold front generally produces FASTER / SLOWER uplift and MORE / LESS intense precipitation. State one feature that distinguishes a localized convectional storm from a large frontal event."
+  },
+  {
+    "number": 12,
+    "marks": 3,
+    "en": "Which generally has greater spatial variability: a localized thunderstorm or widespread steady snowfall? Why? At the same average monthly precipitation, which season has greater relative variability in the lecture graph: summer or winter?"
+  },
+  {
+    "number": 13,
+    "marks": 2,
+    "en": "Define interception, throughfall and stemflow. Explain how a forest canopy partitions incoming precipitation and why above-canopy precipitation is different from the water reaching the forest floor."
+  },
+  {
+    "number": 14,
+    "marks": 4,
+    "en": "List four sources of rain-gauge error. For each, explain the mechanism and whether the lecture example causes overmeasurement or undermeasurement."
+  },
+  {
+    "number": 15,
+    "marks": 3,
+    "en": "Explain how a tipping-bucket rain gauge records precipitation. Why can trace rainfall fail to produce an immediate record, and why may very intense rainfall be underestimated? Distinguish total rainfall from rainfall intensity."
+  },
+  {
+    "number": 16,
+    "marks": 2,
+    "en": "After similar snowfall, a hilltop has much less SWE than a valley. Explain how this can happen without assuming the valley received more falling snow."
+  },
+  {
+    "number": 17,
+    "marks": 3,
+    "en": "One snowpack is deep and low in density; another is shallower and high in density. Can snow depth alone determine which stores more water? Define snow water equivalent and explain which measurements are needed to determine it, without calculations."
+  },
+  {
+    "number": 18,
+    "marks": 3,
+    "en": "Name the three main components of a snowpack. Give two reasons why it may be stratified, and explain one effect of an internal ice layer on meltwater movement."
+  },
+  {
+    "number": 19,
+    "marks": 3,
+    "en": "Distinguish constructive and destructive metamorphism. Define firnification and ripening. Does a fully ripened snowpack mean all its ice has melted?"
+  },
+  {
+    "number": 20,
+    "marks": 3,
+    "en": "Identify the heat-transfer process: (a) energy moves between adjacent ice crystals; (b) meltwater freezes in a colder layer and warms it; (c) ice becomes vapour in one place and forms ice elsewhere. Which releases latent heat of fusion, and why is radiation less important deep in a snowpack?"
+  },
+  {
+    "number": 21,
+    "marks": 4,
+    "en": "Explain how energy availability controls snowmelt. What do Qm, latent heat of fusion and water density represent in the lecture melt equation? With other conditions unchanged, would greater energy available for melting INCREASE / DECREASE / NOT AFFECT melt rate? Explain why energy used to warm cold snow is not yet energy used to melt it."
+  },
+  {
+    "number": 22,
+    "marks": 2,
+    "en": "A cold snowpack receives energy and some meltwater enters a layer below 0°C. Explain why water output need not immediately equal the surface melt rate."
+  },
+  {
+    "number": 23,
+    "marks": 3,
+    "en": "Distinguish volumetric flux from flux density (intensity). Give the dimensions and SI units of each. If the same volumetric flux is distributed over twice the area, what happens to intensity?"
+  },
+  {
+    "number": 24,
+    "marks": 2,
+    "en": "The wet adiabatic lapse rate is HIGHER THAN / LOWER THAN / EQUAL TO the dry adiabatic lapse rate because condensation RELEASES / REQUIRES / DOES NOT TRANSFER latent heat. Briefly explain your choices."
+  },
+  {
+    "number": 25,
+    "marks": 6,
+    "en": "Fully explain how precipitation develops from an initially unsaturated parcel of moist air. Include the four formation requirements, dry and wet adiabatic lapse rates, relative humidity, condensation nuclei and latent heat."
+  },
+  {
+    "number": 26,
+    "marks": 6,
+    "en": "Compare warm-front precipitation with convectional precipitation. Explain the cause of uplift, uplift rate, intensity, duration and spatial extent. Which is likely harder to characterize with a small rain-gauge network, and why?"
+  },
+  {
+    "number": 27,
+    "marks": 6,
+    "en": "A researcher uses one tipping-bucket gauge in a forest clearing to estimate rainfall across a watershed. Explain how vegetation, spatial variability and instrumental errors could affect the estimate. Describe how the gauge works and identify its two rainfall-rate limitations."
+  },
+  {
+    "number": 28,
+    "marks": 6,
+    "en": "Using the hydrological processes shown in Lectures 1–3, explain where water goes when it rains on a forested watershed. Include canopy partitioning, storage, surface-water and groundwater pathways, evapotranspiration, and a water-balance equation. Explain whether all rainfall must immediately leave the watershed."
+  },
+  {
+    "number": 29,
+    "marks": 6,
+    "en": "Explain why snow depth alone is insufficient for comparing water stored at two snow-survey sites. Define SWE and describe the field measurements required. Explain how wind redistribution and lake-effect snowfall can create spatial differences, distinguishing snow transported after deposition from new snowfall formation."
+  },
+  {
+    "number": 30,
+    "marks": 6,
+    "en": "Explain how a cold, layered snowpack becomes ripe and begins releasing meltwater. Include metamorphism, conduction, vapour diffusion, meltwater refreezing and radiation penetration. Distinguish energy used to warm snow from energy used for melting, and explain why surface melt does not necessarily produce immediate water output."
+  },
+  {
+    "number": 31,
+    "marks": 5,
+    "en": "Explain why London, Barrie and Buffalo typically receive more lake-effect snowfall than Toronto under the prevailing wind conditions shown in the lecture. Include lake heat capacity, moisture supply, uplift, wind direction and geographical setting."
+  },
+  {
+    "number": 32,
+    "marks": 5,
+    "en": "Moist air crosses a mountain from the windward slope to the leeward slope. Explain the changes in temperature, relative humidity and precipitation along this path. Why can a rain shadow develop? Distinguish this lifting mechanism from frontal uplift."
+  },
+  {
+    "number": 33,
+    "marks": 3,
+    "en": "Water moves down an energy gradient. Explain why this is more general than saying water always moves downhill on the land surface. Why is an energy input needed to reverse the direction of transfer?"
+  },
+  {
+    "number": 34,
+    "marks": 3,
+    "en": "Explain how conductivity and resistance describe the effect of a medium on transfer. Compare gravel, sand, silt and clay qualitatively in the simplified sequence shown in Lecture 1. Why is a driving gradient alone insufficient to determine flux?"
+  },
+  {
+    "number": 35,
+    "marks": 4,
+    "en": "Distinguish dimensions from units. Can changing from metres to millimetres change the dimension of a quantity? State the dimensions and typical units of density, mass flux, volumetric flux, energy flux and energy flux density. No numerical calculation is required."
+  },
+  {
+    "number": 36,
+    "marks": 3,
+    "en": "Identify precipitation, evapotranspiration, surface-water inflow/outflow and groundwater inflow/outflow in a watershed water balance. Explain the difference between storage and change in storage. Why must all terms describe the same area and time interval?"
+  },
+  {
+    "number": 37,
+    "marks": 3,
+    "en": "Define actual vapour pressure, saturation vapour pressure and relative humidity. State two ways to bring an initially unsaturated air mass to saturation. Explain how each affects the ratio of actual to saturation vapour pressure."
+  },
+  {
+    "number": 38,
+    "marks": 3,
+    "en": "State the dry and wet adiabatic lapse rates used in the lecture, without performing a calculation. What does adiabatic mean, and why can temperature change even when no heat is exchanged with the surroundings?"
+  },
+  {
+    "number": 39,
+    "marks": 3,
+    "en": "Why are condensation nuclei needed in the lecture explanation of precipitation formation? Give three examples. Describe two ways droplets grow, and explain why a continuing moisture supply is needed."
+  },
+  {
+    "number": 40,
+    "marks": 4,
+    "en": "Explain how unequal solar heating between the equator and poles drives air circulation. Relate air temperature to density and rising or sinking motion. Distinguish surface convergence in a low-pressure cell from divergence in a high-pressure cell, and identify cyclonic and anticyclonic circulation in the Northern Hemisphere."
+  },
+  {
+    "number": 41,
+    "marks": 4,
+    "en": "Compare ITCZ precipitation and tropical-cyclone precipitation. Include how each is sustained, typical intensity and duration, and the seasonal migration of the ITCZ. Why are both classified as non-frontal cyclonic convergence?"
+  },
+  {
+    "number": 42,
+    "marks": 3,
+    "en": "State the approximate formation-latitude range of tropical cyclones given in the lecture. Describe the typical movement direction and possible change at higher latitudes. Contrast this with the typical movement of frontal systems in Northern Hemisphere temperate latitudes."
+  },
+  {
+    "number": 43,
+    "marks": 3,
+    "en": "In the seasonal-variability graph, rank summer, spring/fall and winter at the same average monthly precipitation. How does relative variability change as average monthly precipitation increases? Why is variability different from total precipitation?"
+  },
+  {
+    "number": 44,
+    "marks": 3,
+    "en": "Define snowpack metamorphism and list its four main drivers from the lecture. Explain how destructive metamorphism affects crystal shape, porosity and density."
+  },
+  {
+    "number": 45,
+    "marks": 3,
+    "en": "The lecture identifies hygroscopic, capillary and gravitational pressures acting on liquid water in snow. Name these three categories and explain why a snowpack can contain retained liquid water as well as ice and air. Why should maximum liquid-water holding capacity not be interpreted as complete melting?"
+  },
+  {
+    "number": 46,
+    "marks": 4,
+    "en": "Compare conduction and convection within a snowpack. Why is convection generally a minor heat-transfer process in the lecture? Explain why light, air-rich snow is more insulating than dense, wet snow."
+  },
+  {
+    "number": 47,
+    "marks": 4,
+    "en": "Distinguish melting, freezing, sublimation and deposition. Identify which require energy and which release it. Explain how movement of water vapour through snow pores can transfer heat from one location to another."
+  },
+  {
+    "number": 48,
+    "marks": 3,
+    "en": "Can the upper part of a snowpack be ripe while a deeper layer remains cold? Explain the role of internal ice layers. Why does meltwater refreezing become less important as the entire snowpack approaches an isothermal state at 0°C?"
+  }
+]
