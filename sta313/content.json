@@ -1,0 +1,1182 @@
+{
+  "weeks": [
+    {
+      "id": 1,
+      "title": "线性与多元回归",
+      "lectures": "Regression · Class 1 · Regression practice"
+    },
+    {
+      "id": 2,
+      "title": "指数族与广义线性模型",
+      "lectures": "Exponential Family and GLMs · Class 2"
+    },
+    {
+      "id": 3,
+      "title": "二元 Logistic 回归",
+      "lectures": "Binary Logistic · Class 3–4 二元部分 · Diabetes Example"
+    },
+    {
+      "id": 4,
+      "title": "多项 Logistic 回归",
+      "lectures": "Multinomial Logistic · Class 4 多项部分"
+    }
+  ],
+  "notes": [
+    {
+      "week": 1,
+      "title": "回归输出：方程、单位、范围",
+      "recognize": "给 summary(lm) 或让解释 β̂。",
+      "method": "写条件平均响应，再用单位解释斜率与截距。",
+      "steps": [
+        "总体模型 \\(Y_i=\\beta_0+\\beta_1x_i+\\epsilon_i\\)，拟合式 \\(\\hat y_i=\\hat\\beta_0+\\hat\\beta_1x_i\\)。",
+        "残差 \\(e_i=y_i-\\hat y_i\\)。多元系数解释须说明其他预测变量保持不变。",
+        "预测先判断是否超出训练数据范围；回归关联不直接等于因果。"
+      ],
+      "pitfall": "误差 ε 是模型随机量，残差 e 是拟合后计算量；R² 不是准确率。",
+      "examples": [
+        "w1-1",
+        "w1-2"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "手算 OLS 与平方和",
+      "recognize": "给原始样本或 Σx、Σxy 等汇总。",
+      "method": "中心化和 → 系数 → 拟合与残差 → 方差。",
+      "steps": [
+        "\\(S_{xx}=\\sum x_i^2-n\\bar x^2,\\ S_{xy}=\\sum x_iy_i-n\\bar x\\bar y\\)。",
+        "\\(\\hat\\beta_1=S_{xy}/S_{xx},\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x\\)。",
+        "含截距时 \\(SST=SSR+SSE,R^2=1-SSE/SST\\)；p个斜率时 \\(s^2=SSE/(n-p-1)\\)。"
+      ],
+      "pitfall": "中间值保留精度；不要混淆回归平方和与残差平方和。",
+      "examples": [
+        "w1-2",
+        "w1-3"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "经典回归推断：t、F 与两类区间",
+      "recognize": "检验系数、比较嵌套模型或预测未来观测。",
+      "method": "先确定要检验的约束和目标量。",
+      "steps": [
+        "单系数 \\(t=(\\hat\\beta_j-\\beta_{j,0})/SE\\)，经典正态模型参考 \\(t_{n-p-1}\\)。",
+        "额外平方和 \\(F=\\{(SSE_R-SSE_F)/q\\}/\\{SSE_F/(n-p_F-1)\\}\\)；一个约束时 F=t²。",
+        "均值 CI 描述 E(Y|x₀)，新观测 PI 还含个体误差，因此更宽。"
+      ],
+      "pitfall": "使用同一数据比较嵌套模型；不拒绝不是证明零假设为真。",
+      "examples": [
+        "w1-4",
+        "w1-6",
+        "w1-10"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "Dummy 与交互：组间差是否恒定",
+      "recognize": "含分类自变量，或 x:d 项。",
+      "method": "代入各组指标，重新整理截距和斜率。",
+      "steps": [
+        "\\(\\beta_0+\\beta_1x+\\beta_2d\\) 给平行线；加 \\(\\beta_3xd\\) 允许斜率变化。",
+        "d=1 与 d=0 的均值差为 \\(\\beta_2+\\beta_3x\\)。",
+        "多水平分类变量加截距时常用 K−1 个指示变量。"
+      ],
+      "pitfall": "有交互时主效应取决于另一个变量的参照值。",
+      "examples": [
+        "w1-5",
+        "w1-6"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "矩阵证明、模型假设与共线性",
+      "recognize": "推导 β̂、hat matrix、无偏性、BLUE 或 ridge。",
+      "method": "正规方程与线性变换公式。",
+      "steps": [
+        "\\(\\hat\\beta=(X^TX)^{-1}X^TY\\)，要求 X 满列秩。",
+        "均值零误差、\\(Var(\\epsilon)=\\sigma^2I\\) 给无偏与方差；Gauss–Markov 不要求正态。",
+        "\\(X^Te=0\\)，有截距给 \\(\\sum e=0\\)；ridge 将 XᵀX 加惩罚以稳定估计。"
+      ],
+      "pitfall": "正态性用于经典精确推断，不是 OLS 无偏所必需；误差独立不能仅靠残差图证明。",
+      "examples": [
+        "w1-7",
+        "w1-8",
+        "w1-9"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "ANOVA、复杂度与模型选择",
+      "recognize": "补ANOVA表、总体检验、解释R²/adjusted R²。",
+      "method": "自由度 → 均方 → F；同样本比较复杂度。",
+      "steps": [
+        "含截距、p个斜率：回归df=p，残差df=n−p−1，总df=n−1。",
+        "\\(F=(SSR/p)/(SSE/(n-p-1))\\)，总体零假设是所有斜率同时为0。",
+        "\\(R^2_{adj}=1-\\{SSE/(n-p-1)\\}/\\{SST/(n-1)\\}\\)。额外复杂度应有统计与实际上的价值。"
+      ],
+      "pitfall": "总体显著不表示每个系数显著；普通R²自动随加变量非降。",
+      "examples": [
+        "w1-11",
+        "w1-6"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "残差诊断：模型哪里可能不合适",
+      "recognize": "散点、Residuals vs Fitted、Q–Q、Leverage图或异常值。",
+      "method": "把每个图映到均值、方差、正态或影响问题。",
+      "steps": [
+        "曲线看均值形式；扇形看误差方差；Q–Q看误差尾部。",
+        "预测变量不要求正态；独立性应结合采样机制及观测顺序。",
+        "异常值先查记录；高杠杆不必高影响，高影响常需要杠杆和响应异常共同考虑。"
+      ],
+      "pitfall": "不要把预测变量直方图当误差正态检验，也不要仅因离群就删观测。",
+      "examples": [
+        "w1-12"
+      ]
+    },
+    {
+      "week": 2,
+      "title": "证明指数族：拆 log 密度",
+      "recognize": "问 identify h,T,η,A 或充分统计量。",
+      "method": "先检查支持，再按参数与数据拆分。",
+      "steps": [
+        "课件形式 \\(f(y;\\theta)=h(y)\\exp\\{\\eta(\\theta)^TT(y)-A(\\theta)\\}\\)。",
+        "h 只能含数据和已知常数；T 只含数据，η 和 A 只含未知参数。",
+        "独立样本的统计量常由各观测 T 求和得到，用因子分解定理确认充分性。"
+      ],
+      "pitfall": "哪些量已知决定如何拆分；支持含未知参数的 Uniform 不能照套固定支持的正则结果。",
+      "examples": [
+        "w2-1",
+        "w2-2",
+        "w2-3",
+        "w2-5"
+      ]
+    },
+    {
+      "week": 2,
+      "title": "自然参数下用 A 的导数求矩",
+      "recognize": "给 A 并问均值、方差。",
+      "method": "把 log-normalizer 写成自然参数的函数再求导。",
+      "steps": [
+        "正则一维自然形式给 \\(E[T]=A\\,\\!\\prime(\\eta),Var[T]=A\\,\\!\\prime\\prime(\\eta)\\)。",
+        "Poisson：\\(\\eta=\\log\\lambda,A=e^\\eta\\)；Binomial：\\(A=n\\log(1+e^\\eta)\\)。",
+        "若用 θ 作原参数而 η不是θ，需先换参数，不能直接用 A 对θ导数作矩。"
+      ],
+      "pitfall": "结果属于 T 的矩，不一定是原始 Y 的矩。",
+      "examples": [
+        "w2-2",
+        "w2-4"
+      ]
+    },
+    {
+      "week": 2,
+      "title": "GLM 三部件与响应类型",
+      "recognize": "要求选模型或比较 linear / logistic / Poisson。",
+      "method": "分布 → η=Xβ → g(μ)=η。",
+      "steps": [
+        "正态 identity；Bernoulli/binomial logit；Poisson log。",
+        "μ 是 \\(E(Y|x)\\)，link 作用于均值而非每一个观测。",
+        "线性是预测子对系数线性；均值可通过逆 link 与 x 呈非线性。"
+      ],
+      "pitfall": "Poisson 均值方差相等需检查，分类标签不能当数值大小。",
+      "examples": [
+        "w2-6",
+        "w2-7"
+      ]
+    },
+    {
+      "week": 2,
+      "title": "逆链接与变化单位",
+      "recognize": "给 η 或系数，问均值/概率/倍数。",
+      "method": "先代入 η，再按 link 反解。",
+      "steps": [
+        "identity：μ=η；log：μ=eη；logit：\\(p=e^\\eta/(1+e^\\eta)\\)。",
+        "log link 每增 Δx 的均值比为 \\(e^{\\beta\\Delta x}\\)。",
+        "一个系数在不同 link 的解释不同；明确取值范围。"
+      ],
+      "pitfall": "别把 logit 的指数 odds 直接当概率。",
+      "examples": [
+        "w2-7"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "概率、odds、OR 与系数",
+      "recognize": "给2×2表，或要求解释 β。",
+      "method": "固定事件方向及参考组，区分三种尺度。",
+      "steps": [
+        "\\(odds=p/(1-p)\\)；OR是两组 odds 比，风险比是两组 p 比。",
+        "\\(\\logit(p)=x^T\\beta\\)；无相关交互时 Δx 使 odds 乘 \\(e^{\\beta_j\\Delta x}\\)。",
+        "两组饱和模型的截距是参考组 log-odds，斜率是组间 log-odds 差。"
+      ],
+      "pitfall": "OR 不等于概率倍数；有交互时需连同交互项解释。",
+      "examples": [
+        "w3-1",
+        "w3-2",
+        "w3-3"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "MLE、IRLS 与标准误",
+      "recognize": "问如何估计、做一轮迭代或得到 SE。",
+      "method": "Bernoulli log 似然求导，利用 Fisher 信息。",
+      "steps": [
+        "\\(U=X^T(y-p),I=X^TWX,W_{ii}=p_i(1-p_i)\\)。",
+        "\\(\\beta^{new}=\\beta+I^{-1}U\\)；IRLS 每轮重新计算 p、W 与 working response。",
+        "\\(\\widehat{Var}(\\hat\\beta)=(X^T\\hat WX)^{-1}\\)，SE取对角元素平方根。"
+      ],
+      "pitfall": "经典 OLS 一次逆矩阵公式不能直接当 Logistic 的闭式解；分离会破坏有限 MLE。",
+      "examples": [
+        "w3-4",
+        "w3-5",
+        "w3-12"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "Wald 与 OR 区间",
+      "recognize": "给 estimate、SE、z 或 p。",
+      "method": "先在 log-odds 尺度推断，再转 OR。",
+      "steps": [
+        "\\(z=(\\hat\\beta_j-\\beta_{j,0})/SE\\)，大样本参考 N(0,1)。",
+        "β区间 \\(\\hat\\beta\\pm1.96SE\\)；OR区间是两个端点分别指数化。",
+        "β=0 对应 OR=1；给定其他自变量的条件效应不自动是因果。"
+      ],
+      "pitfall": "近分离、小样本时 Wald 可不稳定；不要把 SE(β) 当 SE(OR)。",
+      "examples": [
+        "w3-6",
+        "w3-7"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "LRT 与信息准则",
+      "recognize": "给 null/residual deviance 或多个候选模型。",
+      "method": "检验用 deviance 差；选择用 fit 加复杂度惩罚。",
+      "steps": [
+        "同样本嵌套模型 \\(G^2=D_R-D_F\\)，df为新增参数数，正则大样本参考 χ²。",
+        "\\(AIC=-2\\hat\\ell+2k,BIC=-2\\hat\\ell+k\\log n\\)，k含截距。",
+        "同一数据、同一响应与似然约定才可合理比较；数值越小越优。"
+      ],
+      "pitfall": "逐人0/1 residual deviance 本身不能随便用 χ² 残差df 作拟合优度检验；组计数情形不同。",
+      "examples": [
+        "w3-8"
+      ]
+    },
+    {
+      "week": 3,
+      "title": "分类、ROC/AUC 与数据分析",
+      "recognize": "问预测、混淆矩阵或模型表现。",
+      "method": "先指定概率输出和阈值，再选正确评价指标。",
+      "steps": [
+        "Sensitivity=TP/(TP+FN)，Specificity=TN/(TN+FP)，Precision=TP/(TP+FP)。",
+        "ROC 横轴 FPR，纵轴 TPR；AUC 衡量阳性比阴性得分高的成对比例，平局计半分。",
+        "测试集/交叉验证看泛化；原始数据的0值先按变量语义确认，不把训练样本表现当外部表现。"
+      ],
+      "pitfall": "类不平衡时 accuracy 可误导；AUC 不替代校准；预处理应避免测试信息泄漏。",
+      "examples": [
+        "w3-9",
+        "w3-10",
+        "w3-11",
+        "w3-12"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "无序分类：基准 logits 与参数数",
+      "recognize": "响应有 K>2 个类别。",
+      "method": "选参考类并估 K−1 套系数。",
+      "steps": [
+        "\\(\\log(\\pi_k/\\pi_K)=x^T\\beta_k,k<K\\)。p个预测列加截距时参数数 (K−1)(p+1)。",
+        "无序响应用 baseline-category 模型；有序响应可考虑比例 odds 等利用顺序的模型。",
+        "βK=0 是识别约束；各自由 logits 同加相同量，概率不变。"
+      ],
+      "pitfall": "p应计设计矩阵列，不只是原始变量名字；分类预测变量可能展开多列。",
+      "examples": [
+        "w4-1"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Softmax 与任意两类比较",
+      "recognize": "给多条 logits，问概率、RRR 或改基准。",
+      "method": "共用分母；比较系数差。",
+      "steps": [
+        "\\(\\pi_k=e^{\\eta_k}/\\sum_m e^{\\eta_m}\\)，基准ηK=0。",
+        "\\(\\log(\\pi_k/\\pi_l)=x^T(\\beta_k-\\beta_l)\\)。",
+        "同一无惩罚模型改变基准只重新表达系数，不改变概率；对数变换自变量增加10%时比值乘 1.1^β。"
+      ],
+      "pitfall": "不可各自 sigmoid；类别相对基准的 RRR 不等于该类别概率比。",
+      "examples": [
+        "w4-2",
+        "w4-3",
+        "w4-6"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "概率边际效应",
+      "recognize": "问正系数是否意味该类概率增加。",
+      "method": "对共享分母求导。",
+      "steps": [
+        "\\(\\frac{\\partial\\pi_k}{\\partial x_j}=\\pi_k\\left(\\beta_{kj}-\\sum_m\\pi_m\\beta_{mj}\\right)\\)。",
+        "导数依赖当前 x；可以对样本各点导数取平均得到 AME。",
+        "各类导数和为0，因为总概率恒为1。"
+      ],
+      "pitfall": "β正只说明相对基准比增加；竞争类别可增长更快。",
+      "examples": [
+        "w4-4"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Multinomial 似然、计数与联合检验",
+      "recognize": "给多类频数，或问变量整体显著性。",
+      "method": "联合 categorical likelihood 与 K−1 组 score。",
+      "steps": [
+        "计数 \\(P(N=n)=m!\\prod_k\\pi_k^{n_k}/\\prod_k n_k!\\)；不同类别计数协方差为 \\(-m\\pi_k\\pi_l\\)。",
+        "\\(U_k=\\sum_i(y_{ik}-\\pi_{ik})x_i\\)；有限内点MLE的截距score给拟合总数等于观察数。",
+        "删除一个数值预测列涉及K−1个系数，LRT需联合检验这些约束。"
+      ],
+      "pitfall": "有限MLE需要无分离等条件；计数总和固定，所以类别计数不独立。",
+      "examples": [
+        "w4-5",
+        "w4-7",
+        "w4-8"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "R 工作流、分离与 IIA",
+      "recognize": "问如何拟合或解释模型局限。",
+      "method": "先设factor与基准，联合拟合并检查收敛。",
+      "steps": [
+        "nnet::multinom 使用响应 factor 的参考级；用 relevel 明确设置。",
+        "预测 probs 返回各类概率，class 返回类别；训练和测试的 factor levels 应一致。",
+        "基准模型的 \\(\\pi_k/\\pi_l=e^{x^T(\\beta_k-\\beta_l)}\\) 不含其他类别logit，体现 IIA；相近替代品需特别考虑该结构是否合理。"
+      ],
+      "pitfall": "优化停止不保证有限稳定MLE；惩罚、变量选择与验证应明确。",
+      "examples": [
+        "w4-9"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "w1-1",
+      "week": 1,
+      "title": "从 R 输出写方程与解释斜率",
+      "source": "Regression practice · Q1(a–c) · 数值据原题",
+      "question": "咖啡收入回归给出截距 42.318、温度系数 6.742；温度范围为 14–33°C。写拟合式，解释斜率与截距。",
+      "answer": "\\(\\widehat{revenue}=42.318+6.742\\,temperature\\)。温度每增 1°C，平均收入估计增 $6.74；截距对应 0°C，属于范围外。",
+      "steps": [
+        "模型是 \\(E(Y|x)=\\beta_0+\\beta_1x\\)。把系数估计代入，得到 \\(\\hat y=42.318+6.742x\\)，注意写的是拟合值，不是每个观测都恰好等于它。",
+        "斜率 6.742 表示 x 增加一个单位时，估计的条件平均收入增加 6.742 美元；不是说每一天的实际收入都必定增加这个数，也不能由回归直接推出因果关系。",
+        "令 x=0 得截距 42.318。但数据温度最小是 14°C，0°C 在范围外，截距在这里主要用于定位直线，不宜作可靠的现实预测。"
+      ],
+      "method": "先写均值模型，再把系数放回变量单位与观测范围。",
+      "choices": [
+        {
+          "text": "先写拟合均值，按变量单位解释斜率，并核对截距是否在数据范围内。",
+          "correct": true
+        },
+        {
+          "text": "把系数 6.742 解释成相关系数。",
+          "correct": false
+        },
+        {
+          "text": "截距必然是观测中的最低收入。",
+          "correct": false
+        }
+      ],
+      "reason": "先写均值模型，再把系数放回变量单位与观测范围。"
+    },
+    {
+      "id": "w1-2",
+      "week": 1,
+      "title": "手算最小二乘与残差",
+      "source": "Regression practice · Q2(a–c) · 数值据原题",
+      "question": "n=8，\\(\\sum x=56,\\sum y=386,\\sum x^2=484,\\sum xy=3005\\)。求拟合线，并求观测 (6,46) 的残差。",
+      "answer": "\\(\\hat y=25.1957+3.2935x\\)；在 x=6，\\(\\hat y=44.9565,e=1.0435\\)。",
+      "steps": [
+        "均值 \\(\\bar x=56/8=7,\\bar y=386/8=48.25\\)。先中心化：\\(S_{xx}=484-8(7^2)=92\\)，\\(S_{xy}=3005-8(7)(48.25)=303\\)。",
+        "\\(\\hat\\beta_1=S_{xy}/S_{xx}=303/92=3.293478\\)。\\(\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x=48.25-7(303/92)=25.195652\\)。保留中间精度后写出拟合线。",
+        "\\(\\hat y(6)=25.195652+6(3.293478)=44.956522\\)。残差是实际减拟合：\\(e=46-44.956522=1.043478>0\\)，说明这一个观测被低估。"
+      ],
+      "method": "先算中心化和，再算斜率、截距；残差始终是 y−ŷ。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-3",
+      "week": 1,
+      "title": "平方和、R² 与误差方差",
+      "source": "Regression practice · Q2(d–e) · 数值据原题",
+      "question": "上题再给 \\(\\sum y^2=19640\\)。求 SST、SSR、SSE、R²、误差方差估计及斜率标准误。",
+      "answer": "\\(SST=1015.50,SSR=997.92,SSE=17.58,R^2=0.9827,s^2=2.9293,SE(\\hat\\beta_1)=0.1784\\)。",
+      "steps": [
+        "\\(SST=S_{yy}=19640-8(48.25)^2=1015.5\\)。有截距的简单回归，\\(SSR=S_{xy}^2/S_{xx}=303^2/92=997.923913\\)。",
+        "\\(SSE=SST-SSR=17.576087\\)。\\(R^2=SSR/SST=0.982693\\)，约 98.27% 的样本响应变异由此线性拟合解释，不是预测正确率。",
+        "估计两个参数，残差自由度 \\(n-2=6\\)。\\(s^2=SSE/6=2.929348\\)，\\(s=1.711534\\)。\\(SE(\\hat\\beta_1)=s/\\sqrt{S_{xx}}=1.711534/\\sqrt{92}=0.178437\\)。不要先把 SSE 四舍五入再继续计算。"
+      ],
+      "method": "先用含截距的平方和分解，再用残差自由度估计方差。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-4",
+      "week": 1,
+      "title": "斜率的 t 检验与置信区间",
+      "source": "Regression practice · Q1(d,g,h) · 数值据原题",
+      "question": "温度斜率估计 6.742，SE=0.2378，n=60。检验 \\(H_0:\\beta_1=0\\)，并用临界值 2.000 构造 95% CI。",
+      "answer": "\\(t=28.35\\)，自由度58，拒绝零斜率；CI 为 (6.2664,7.2176)。单一斜率的总体 F 检验满足 F=t²。",
+      "steps": [
+        "写 \\(H_0:\\beta_1=0,H_1:\\beta_1\\ne0\\)。统计量 \\(t=(6.742-0)/0.2378=28.3516\\)。在独立、同方差正态误差模型下，零假设时参考分布是 \\(t_{60-2}=t_{58}\\)。",
+        "5% 双侧规则是 |t|>2.000 时拒绝。这里远超临界值，说明温度与平均收入有统计上的线性关联。",
+        "CI 用同一个 SE：\\(6.742\\pm2(0.2378)=6.742\\pm0.4756\\)。区间不含0，与双侧检验一致。总体只有一个斜率约束时，\\(F=t^2\\approx803.81\\)，分布为 \\(F_{1,58}\\)。"
+      ],
+      "method": "完整检验要写假设、统计量、分布、决定和语境；CI 与同一双侧检验对应。",
+      "choices": [
+        {
+          "text": "用估计减零再除以 SE，采用 t₅₈，并用同一 SE 构造区间。",
+          "correct": true
+        },
+        {
+          "text": "用 6.742/60 作为 t 统计量。",
+          "correct": false
+        },
+        {
+          "text": "直接用标准正态分布，并省略模型假设和自由度。",
+          "correct": false
+        }
+      ],
+      "reason": "完整检验要写假设、统计量、分布、决定和语境；CI 与同一双侧检验对应。"
+    },
+    {
+      "id": "w1-5",
+      "week": 1,
+      "title": "分类自变量与交互项",
+      "source": "Regression practice · Q3(a–d) · 数值据原题",
+      "question": "\\(\\widehat{Usage}=972.858-19.130T-99.768d+2.095Td\\)，d=1 代表有保温，d=0 无保温。写两组拟合线，并解释交互项。",
+      "answer": "d=0：\\(972.858-19.130T\\)；d=1：\\(873.090-17.035T\\)。保温组斜率比无保温组高 2.095。",
+      "steps": [
+        "先代 d=0，含 d 的两项消失，得到无保温组截距972.858、斜率−19.130。",
+        "代 d=1：截距 \\(972.858-99.768=873.090\\)，斜率 \\(-19.130+2.095=-17.035\\)。两组差为 \\(-99.768+2.095T\\)，不是恒定差。",
+        "交互系数表示斜率之差。温度每增 1°C，有保温组平均用电的下降幅度比无保温组小 2.095 kWh。−99.768 仅表示 T=0 时的组间差；不能在有交互时把它解释成所有温度下的固定差。"
+      ],
+      "method": "分别代入指示变量，再整理截距与斜率。",
+      "choices": [
+        {
+          "text": "代 d=0 和 d=1，分别合并截距与温度系数。",
+          "correct": true
+        },
+        {
+          "text": "忽略 Td，因为它只是两个变量相乘。",
+          "correct": false
+        },
+        {
+          "text": "直接把 −99.768 当所有温度下不变的组间差。",
+          "correct": false
+        }
+      ],
+      "reason": "分别代入指示变量，再整理截距与斜率。"
+    },
+    {
+      "id": "w1-6",
+      "week": 1,
+      "title": "嵌套模型：额外平方和 F 检验",
+      "source": "Regression practice · Q3(e–g) · 数值据原题",
+      "question": "删掉一个交互项的模型 SSE=238221，残差 df=57；完整模型 SSE=232871，df=56。给定 p=0.2615，用 5% 水平比较。",
+      "answer": "\\(F=1.2866\\)，参考分布 \\(F_{1,56}\\)；不拒绝零交互，可优先采用简单的平行线模型。",
+      "steps": [
+        "\\(H_0:\\beta_{interaction}=0\\)，\\(H_1:\\beta_{interaction}\\ne0\\)。两个模型使用同一批观测，且删去交互项的模型嵌套在完整模型内。",
+        "\\[F=\\frac{(238221-232871)/(57-56)}{232871/56}=\\frac{5350}{4158.4107}=1.28655.\\]",
+        "零假设及经典正态误差条件下用 \\(F_{1,56}\\)。p=0.2615>0.05，不拒绝。没有足够证据说两组斜率不同；不是证明斜率绝对相等。增加变量 R² 自动非降，所以不能仅凭完整模型 R² 更大来选择它。"
+      ],
+      "method": "同一数据的嵌套线性模型，比较 SSE 降幅并除以新增参数数目。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-7",
+      "week": 1,
+      "title": "矩阵 OLS：推导、无偏与方差",
+      "source": "Regression practice · Q4(a), Q5(a–c) · 推导展开",
+      "question": "设 \\(Y=X\\beta+\\epsilon\\)，X 满列秩，\\(E\\epsilon=0,Var(\\epsilon)=\\sigma^2I\\)。推导 OLS 及其均值和方差。",
+      "answer": "\\(\\hat\\beta=(X^TX)^{-1}X^TY\\)，\\(E\\hat\\beta=\\beta,Var(\\hat\\beta)=\\sigma^2(X^TX)^{-1}\\)。",
+      "steps": [
+        "展开 \\(S(b)=(Y-Xb)^T(Y-Xb)=Y^TY-2b^TX^TY+b^TX^TXb\\)。梯度 \\(-2X^TY+2X^TXb\\)。设为0得正规方程 \\(X^TX\\hat\\beta=X^TY\\)。满列秩使 XᵀX 正定可逆，且 Hessian=2XᵀX 正定，故这是最小值。",
+        "令 \\(A=(X^TX)^{-1}X^T\\)。则 \\(E\\hat\\beta=AEY=AX\\beta=\\beta\\)。这一步不需要误差正态，只需要均值为0及固定 X（或给定 X 的条件均值假设）。",
+        "\\(Var(\\hat\\beta)=A(\\sigma^2I)A^T=\\sigma^2(X^TX)^{-1}X^TX(X^TX)^{-1}=\\sigma^2(X^TX)^{-1}\\)。Gauss–Markov 还给出 OLS 在上述条件下是线性无偏估计中方差最小者；精确 t/F 推断另需正态等条件。"
+      ],
+      "method": "矩阵平方展开 → 正规方程；均值与方差用线性变换规则。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-8",
+      "week": 1,
+      "title": "帽子矩阵与残差正交",
+      "source": "Regression practice · Q4(c), Q6 · 推导展开",
+      "question": "令 \\(H=X(X^TX)^{-1}X^T\\)，\\(e=Y-X\\hat\\beta\\)，模型有截距。证明 H²=H、Xᵀe=0、残差和为0，并说明平方和分解。",
+      "answer": "H 对称且幂等；残差与每个设计列正交；含截距时 \\(\\sum e_i=0\\)，并有 SST=SSR+SSE。",
+      "steps": [
+        "\\(H^2=X(X^TX)^{-1}[X^TX](X^TX)^{-1}X^T=H\\)。转置后也等于 H，因 XᵀX 的逆对称。",
+        "\\(X^Te=X^TY-X^TX\\hat\\beta=0\\)，即正规方程。截距列为全1，其正交关系给 \\(\\sum e_i=0\\)。同时 \\(\\hat Y^Te=\\hat\\beta^TX^Te=0\\)。",
+        "写 \\(Y_i-\\bar Y=(\\hat Y_i-\\bar Y)+e_i\\)。平方求和的交叉项为 \\(2\\sum(\\hat Y_i-\\bar Y)e_i=2(\\hat Y^Te-\\bar Y\\sum e_i)=0\\)。故 SST=SSR+SSE。无截距时不能原样套用这里的均值中心化分解。"
+      ],
+      "method": "从正规方程得到正交，借正交消去平方展开的交叉项。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-9",
+      "week": 1,
+      "title": "共线性与 Ridge",
+      "source": "Regression practice · Q4(b), Q5(d), Q7 · 方法整理",
+      "question": "同时放入身高厘米和身高米会怎样？推导所有系数均被惩罚时的 ridge 估计，并说明偏差。",
+      "answer": "重复尺度造成完全共线，OLS 逆矩阵不存在；\\(\\hat\\beta_\\lambda=(X^TX+\\lambda I)^{-1}X^TY\\)。λ>0 时通常有偏。",
+      "steps": [
+        "厘米=100×米，两个设计列线性相关，X 不满列秩，XᵀX 奇异。近似共线则可逆但系数 SE 常变大、估计不稳定。",
+        "本题目标是 \\(Q(b)=\\|Y-Xb\\|^2+\\lambda b^Tb\\)。梯度 \\(-2X^TY+2X^TXb+2\\lambda b=0\\)，得到 ridge 公式。λ>0 时对非零 v，\\(v^T(X^TX+\\lambda I)v=\\|Xv\\|^2+\\lambda\\|v\\|^2>0\\)，因此可逆。",
+        "期望为 \\((X^TX+\\lambda I)^{-1}X^TX\\beta\\)，一般不等于 β。Ridge 以偏差换方差下降。这里按题意惩罚所有系数；实际常将截距不惩罚并先标准化变量，相应将 I 换成适当惩罚矩阵。"
+      ],
+      "method": "检查设计列线性关系，再在目标函数中加入二次惩罚并求导。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-10",
+      "week": 1,
+      "title": "均值置信区间与个体预测区间",
+      "source": "Regression 课件 · 区间题型；补充计算例题",
+      "question": "简单回归 n=20，s=3，x̄=5，Sxx=100；x₀=7 时 ŷ₀=30，t*=2.101。分别计算均值的 95% CI 和新观测的 95% PI。",
+      "answer": "均值 CI≈(28.1091,31.8909)；个体 PI≈(23.4195,36.5805)。",
+      "steps": [
+        "均值估计标准误 \\(s\\sqrt{1/n+(x_0-\\bar x)^2/S_{xx}}=3\\sqrt{1/20+4/100}=0.9\\)。CI 为 \\(30\\pm2.101(0.9)=30\\pm1.8909\\)。",
+        "一个新观测还含新误差。预测标准误为 \\(s\\sqrt{1+1/n+(x_0-\\bar x)^2/S_{xx}}=3\\sqrt{1.09}=3.132092\\)。PI 为 \\(30\\pm2.101(3.132092)\\approx30\\pm6.580526\\)。",
+        "两个区间中心相同，但 PI 多出的1代表新观测本身的方差，所以更宽。计算假定经典正态、同方差回归模型和新观测独立。"
+      ],
+      "method": "先识别问的是条件平均值，还是一个新的个体；预测标准误多一个1。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-11",
+      "week": 1,
+      "title": "补全 ANOVA 与 adjusted R²",
+      "source": "Regression practice · Q11–12 · 数值据原题",
+      "question": "n=45，3个斜率；SSR=1520.4，SSE=986.2，SST=2506.6。补出自由度、MSR、MSE、总体F及adjusted R²。F₃,₄₁ 的5%临界值为2.83。",
+      "answer": "df=(3,41,44)；MSR=506.80，MSE≈24.0537，F≈21.0696；R²≈0.6066，adjusted R²≈0.5778，拒绝所有斜率为0。",
+      "steps": [
+        "含截距有4个参数，回归自由度3，残差45−4=41，总自由度45−1=44。MSR=1520.4/3=506.8；MSE=986.2/41≈24.053659。",
+        "\\(F=MSR/MSE≈21.06956\\)。检验 \\(H_0:\\beta_1=\\beta_2=\\beta_3=0\\)，备择至少一者非零；正态误差下用 F₃,₄₁。21.07>2.83，拒绝，不能据此说每个斜率都显著。",
+        "\\(R^2=1520.4/2506.6≈0.606559\\)。\\(R^2_{adj}=1-\\frac{986.2/41}{2506.6/44}≈0.577770\\)。同样本增加变量令 SSE 非增，因此普通R²非降；自由度惩罚使adjusted R²可能下降。"
+      ],
+      "method": "先数设计列与残差自由度，再取均方比；adjusted R²用自由度校正。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w1-12",
+      "week": 1,
+      "title": "诊断：检验的是误差，不是 X",
+      "source": "Regression practice · Q10(c), Q13 · 题型改编",
+      "question": "预测变量直方图偏斜；残差图有曲线、随 fitted 增大的散布；Q–Q 两端偏离。如何解释？残差特别大就一定高影响吗？",
+      "answer": "X 不要求正态；曲线提示均值形式不足，扇形提示异方差，Q–Q 提示误差正态可能不合适；高影响还要结合杠杆与 Cook 距离。",
+      "steps": [
+        "经典模型正态性是条件误差 ε 的假设，而非自变量 X 的边际分布。二元或偏斜的 X 本身不妨碍使用回归。",
+        "Residuals vs Fitted 的系统曲线提示平均关系可能非线性，可考虑有依据的变换/多项式等；散布随 fitted 增大提示方差不恒定。Q–Q 查看误差近似正态，但有限样本残差只是诊断线索，不是严格证明。",
+        "大残差是响应方向异常；高杠杆来自自变量位置偏离。是否显著改变拟合要结合两者及 Cook 距离、删点敏感性分析。先查原始记录，不因异常就机械删除；独立性还需结合采样设计或时间顺序检查。"
+      ],
+      "method": "按诊断图对应模型假设；异常、杠杆和影响不是同一个概念。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w2-1",
+      "week": 2,
+      "title": "二项分布写成指数族",
+      "source": "Exponential Family 课件 · p12；Class 2 · p5–6 · 推导展开",
+      "question": "固定 n，0<p<1，\\(Y\\sim Binomial(n,p)\\)。写出 h、T、自然参数 η 和自然参数下的对数配分函数。",
+      "answer": "\\(h(y)=\\binom ny,T(y)=y,\\eta=\\log[p/(1-p)],A(\\eta)=n\\log(1+e^\\eta)\\)。",
+      "steps": [
+        "原 pmf 为 \\(\\binom ny p^y(1-p)^{n-y}\\)。取指数形式：\\(f(y)=\\binom ny\\exp\\{y\\log[p/(1-p)]+n\\log(1-p)\\}\\)。",
+        "因此 T=y、η=logit(p)。因 \\(p=e^\\eta/(1+e^\\eta)\\)，\\(\\log(1-p)=-\\log(1+e^\\eta)\\)，得到 \\(f=h\\exp\\{\\eta T-A(\\eta)\\}\\)。",
+        "固定 n 的支持为 {0,…,n}，不依赖 p。注意课件也写 A(θ)：若 θ=p，那么 A(p)=−nlog(1−p)；用导数得到矩时必须对自然参数 η 求导，不能把对 p 的导数直接当均值。"
+      ],
+      "method": "先取 log，把数据乘参数的项、纯数据项与归一化项分开。",
+      "choices": [
+        {
+          "text": "先展开 log pmf，分出 y·logit(p)、组合数与归一化项。",
+          "correct": true
+        },
+        {
+          "text": "把 y 当成参数，把 p 当作充分统计量。",
+          "correct": false
+        },
+        {
+          "text": "任意找两个函数相乘，就已经证明属于指数族。",
+          "correct": false
+        }
+      ],
+      "reason": "先取 log，把数据乘参数的项、纯数据项与归一化项分开。"
+    },
+    {
+      "id": "w2-2",
+      "week": 2,
+      "title": "Poisson 指数族与充分统计量",
+      "source": "Exponential Family 课件 · Poisson 题型；补充推导",
+      "question": "\\(Y\\sim Poisson(\\lambda),\\lambda>0\\)。给出指数族形式，并对独立样本找充分统计量与 λ 的 MLE。",
+      "answer": "\\(\\eta=\\log\\lambda,A(\\eta)=e^\\eta,h(y)=1/y!,T=y\\)；样本充分统计量为 \\(\\sum Y_i\\)，MLE=Ȳ（全零时是边界值0）。",
+      "steps": [
+        "从正确 pmf \\(f(y)=e^{-\\lambda}\\lambda^y/y!\\) 出发：\\(f(y)=\\frac1{y!}\\exp\\{y\\log\\lambda-\\lambda\\}\\)。取 η=logλ，即 A=eη。",
+        "独立样本似然 \\(L=\\left(\\prod1/y_i!\\right)\\exp\\{(\\sum y_i)\\log\\lambda-n\\lambda\\}\\)。参数依赖只通过总和进入，因子分解定理给充分统计量 ΣYᵢ。",
+        "\\(\\ell'(\\lambda)=\\sum y_i/\\lambda-n\\)。总和>0 时解得 λ̂=Σyᵢ/n，二阶导数为负。若全零，则似然随 λ>0 单调减，最大值在允许的闭边界 λ=0；若严格只允许 λ>0，只有趋零的上确界。"
+      ],
+      "method": "正确写出负号，再用样本 log 似然找充分统计量和 MLE。",
+      "choices": [
+        {
+          "text": "从 log pmf 分离 Σy 与 λ，再对 λ 求导求 MLE。",
+          "correct": true
+        },
+        {
+          "text": "Poisson 指数是正 λ，故所有概率随 λ 增加。",
+          "correct": false
+        },
+        {
+          "text": "将 λ 的二阶导数为0当成 Poisson 的方差。",
+          "correct": false
+        }
+      ],
+      "reason": "正确写出负号，再用样本 log 似然找充分统计量和 MLE。"
+    },
+    {
+      "id": "w2-3",
+      "week": 2,
+      "title": "正态分布：已知方差与双参数",
+      "source": "Class 2 · 正态指数族题型；补充推导",
+      "question": "先假设 σ² 已知，证明 \\(N(\\mu,\\sigma^2)\\) 是指数族；若均值和方差都未知，要哪些统计量？",
+      "answer": "已知方差时 \\(T=y,\\eta=\\mu/\\sigma^2,A=\\mu^2/(2\\sigma^2)\\)。二者未知时 T=(y,y²)，自然参数 (μ/σ²,−1/(2σ²))。",
+      "steps": [
+        "展开平方：\\(-\\frac{(y-\\mu)^2}{2\\sigma^2}=-\\frac{y^2}{2\\sigma^2}+\\frac{\\mu y}{\\sigma^2}-\\frac{\\mu^2}{2\\sigma^2}\\)。已知方差时把首项和正态常数并入 h(y)。",
+        "\\(h(y)=(2\\pi\\sigma^2)^{-1/2}e^{-y^2/(2\\sigma^2)}\\)，η=μ/σ²，T=y，A=μ²/(2σ²)。h 不依赖未知 μ，支持实轴不依赖 μ。",
+        "若 σ² 也未知，不能再把含它的 y² 项放在纯数据 h 中。用 \\(T=(y,y^2)\\)，\\(\\eta_1=\\mu/\\sigma^2,\\eta_2=-1/(2\\sigma^2)<0\\)。可取 h=1，归一化 A=μ²/(2σ²)+½log(2πσ²)。独立样本充分统计量为 (ΣYᵢ,ΣYᵢ²)。"
+      ],
+      "method": "先说明哪些参数已知；纯数据项不能含未知参数。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w2-4",
+      "week": 2,
+      "title": "对数配分函数的导数给矩",
+      "source": "Exponential Family 课件 · p13；补充严格推导",
+      "question": "在一维自然参数形式 \\(f(y;\\eta)=h(y)e^{\\eta T(y)-A(\\eta)}\\) 下，说明 E(T)=A′、Var(T)=A″，再应用于 Poisson。",
+      "answer": "在可交换积分与求导的正则条件下 \\(E(T)=A\\,\\!\\prime(\\eta),Var(T)=A\\,\\!\\prime\\prime(\\eta)\\)。Poisson 两者都为 eη=λ。",
+      "steps": [
+        "归一化给 \\(e^{A(\\eta)}=\\int h(y)e^{\\eta T(y)}dy\\)，离散情形换成求和。对两边求导再除以 eᴬ：\\(A'=\\int T(y)f(y;\\eta)dy=ET\\)。",
+        "二阶求导得 \\(A''=E(T^2)-(ET)^2=Var(T)\\)。所求是充分统计量 T 的矩；当 T=y 才直接是 Y 的矩。",
+        "Poisson 的 A(η)=eη，故 A′=A″=eη=λ。若改用 λ 作参数、A(λ)=λ，对 λ 的二阶导数为0，并不是方差；导数公式必须使用自然参数。"
+      ],
+      "method": "先核对参数是否为自然参数，导数得到的是 T 的矩。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w2-5",
+      "week": 2,
+      "title": "支持依赖参数的陷阱",
+      "source": "Class 2 · 指数族定义与 Uniform 题型；补充反例",
+      "question": "\\(Y\\sim Uniform(0,\\theta)\\)，θ>0。能否因为 pdf=1/θ 就说它是本课固定支持的正则指数族？",
+      "answer": "不能；指示条件 0<y<θ 含未知参数，支持随 θ 改变。",
+      "steps": [
+        "完整 pdf 是 \\(f(y;\\theta)=\\theta^{-1}I(0<y<\\theta)\\)，不能省略指示函数。",
+        "本课所用固定支持的指数族要求支持 S 不依赖参数。这里参数不仅影响密度高度，还改变哪些 y 的概率密度非零。",
+        "因此不能用 h=1、A=logθ 的表面分解来证明属于该正则族。它仍是有限参数的 parametric family；参数族比正则指数族更广。"
+      ],
+      "method": "先检查支持，不能只对支持内部的密度做形式拆分。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w2-6",
+      "week": 2,
+      "title": "按响应类型选择 GLM",
+      "source": "Exponential Family and GLMs · p18–21 · 题型改编",
+      "question": "给三种响应：连续且近似正态的身高、是否购买、固定观察窗口中的次数。分别写随机成分、线性预测子和常用 link。",
+      "answer": "正态+identity；Bernoulli+logit；Poisson+log。三者线性预测子均可写 xᵀβ。",
+      "steps": [
+        "GLM 的三部件是条件响应分布、\\(\\eta_i=x_i^T\\beta\\)、\\(g(\\mu_i)=\\eta_i\\)。线性说的是 η 对系数线性，不要求 μ 对 x 线性。",
+        "身高模型可用 \\(Y_i|x_i\\sim N(\\mu_i,\\sigma^2)\\)，identity 给 μᵢ=ηᵢ。是否购买用 Bernoulli(pᵢ)，logit 给 log[pᵢ/(1−pᵢ)]=ηᵢ，逆链接保证 p 在 (0,1)。",
+        "次数可用 Poisson(μᵢ)，log link 给 logμᵢ=ηᵢ，μᵢ=eηᵢ>0。Poisson 还假定条件均值等于方差；若明显过度离散，应进一步检查模型，可考虑负二项。"
+      ],
+      "method": "从响应的取值范围出发，再选分布与能将均值映回合法范围的 link。",
+      "choices": [
+        {
+          "text": "先看响应连续、二元还是计数，再匹配分布与 link。",
+          "correct": true
+        },
+        {
+          "text": "所有响应都先套普通线性回归，不需要检查预测范围。",
+          "correct": false
+        },
+        {
+          "text": "link 是对每个实际观测 y 直接取 log，而不是对条件均值。",
+          "correct": false
+        }
+      ],
+      "reason": "从响应的取值范围出发，再选分布与能将均值映回合法范围的 link。"
+    },
+    {
+      "id": "w2-7",
+      "week": 2,
+      "title": "Link 与逆链接：计数和二元",
+      "source": "GLM 课件 · p18–20；补充数值例题",
+      "question": "① Poisson 模型 logμ=0.5+0.2x，x=3，求均值及 x 增 1 的均值比。② Bernoulli logit(p)=−2+0.5x，x=2，求概率。",
+      "answer": "① μ=e¹·¹≈3.0042，均值比=e⁰·²≈1.2214；② η=−1，p≈0.2689。",
+      "steps": [
+        "① 先算 η=0.5+0.2×3=1.1，再用 log 的逆函数指数：μ=e¹·¹。x 增一单位使 η 加0.2，所以新旧均值比 e⁰·²，不是均值加0.2。",
+        "② η=−2+0.5×2=−1。由 \\(\\log[p/(1-p)]=\\eta\\) 得 odds=e⁻¹，再解 \\(p=odds/(1+odds)=1/(1+e)\\)。",
+        "同一个 η 在不同 link 下对应不同均值；不能把 log link 的逆函数用于 logit。"
+      ],
+      "method": "先算 η，再使用题目指定的逆链接。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-1",
+      "week": 3,
+      "title": "2×2 表：odds、OR 与风险比",
+      "source": "Class 3 · p5；Binary Logistic · 药物例题",
+      "question": "药物组80成功20失败；对照组60成功40失败。求两组概率、odds、OR，并与概率比区分。",
+      "answer": "概率为0.8和0.6；odds=4和1.5；OR=8/3≈2.6667；概率比=4/3≈1.3333。",
+      "steps": [
+        "成功概率为成功数/组内总数：80/100=0.8，60/100=0.6。",
+        "odds 为成功概率/失败概率，等于成功数/失败数：80/20=4，60/40=1.5。",
+        "按药物相对于对照，\\(OR=(80/20)/(60/40)=8/3\\)。风险/概率比是0.8/0.6=4/3。OR≈2.67 表示成功 odds 的倍数，不表示成功概率变成2.67倍。"
+      ],
+      "method": "先固定成功与对照方向，odds 用成功除失败，再取两组比。",
+      "choices": [
+        {
+          "text": "先算每组成功/失败，再把药物 odds 除以对照 odds。",
+          "correct": true
+        },
+        {
+          "text": "把 0.8/0.6 当成 OR。",
+          "correct": false
+        },
+        {
+          "text": "直接用 80/60，因为只需比较成功人数。",
+          "correct": false
+        }
+      ],
+      "reason": "先固定成功与对照方向，odds 用成功除失败，再取两组比。"
+    },
+    {
+      "id": "w3-2",
+      "week": 3,
+      "title": "从组比例还原 Logistic 系数",
+      "source": "Class 3 · 药物例题；Binary Logistic · p55",
+      "question": "在上题令 x=1 为药物、0 为对照，\\(logit(p)=\\beta_0+\\beta_1x\\)。求饱和两组模型的 MLE。",
+      "answer": "\\(\\hat\\beta_0=\\log1.5≈0.4055,\\hat\\beta_1=\\log(8/3)≈0.9808\\)。",
+      "steps": [
+        "每组样本均含成功和失败，两组独立概率均可由样本比例精确拟合。x=0 时 p̂₀=0.6，故 β̂₀=log(0.6/0.4)=log1.5。",
+        "x=1 时 p̂₁=0.8，故 β̂₀+β̂₁=log(0.8/0.2)=log4。两式相减 β̂₁=log4−log1.5=log(8/3)。",
+        "检验逆链接：σ(β̂₀)=0.6，σ(β̂₀+β̂₁)=0.8。指数化斜率就是药物对照的 OR。一般多个连续自变量时没有这种两比例的闭式解。"
+      ],
+      "method": "基准组 log-odds 给截距，两组 log-odds 差给斜率。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-3",
+      "week": 3,
+      "title": "连续变量：多单位 OR 与预测概率",
+      "source": "Binary Logistic · 系数解释题型；补充例题",
+      "question": "\\(logit(p)=-2+0.4x\\)。求 x=3、4 的 p，解释 x 增3单位的效应。",
+      "answer": "p(3)≈0.3100，p(4)≈0.4013；增加3单位使 odds 乘 e¹·²≈3.3201，概率差并非恒定。",
+      "steps": [
+        "x=3 时 η=−0.8，p=1/(1+e⁰·⁸)=0.310026；x=4 时 η=−0.4，p=1/(1+e⁰·⁴)=0.401312。",
+        "一般从 x 到 x+Δx，log-odds 改变0.4Δx，odds 比=e⁰·⁴Δˣ。Δx=3 时为e¹·²。",
+        "这里从3到4的概率差约0.0913；从其他 x 出发，概率差通常不同。系数0.4不是每单位的概率增量。无交互的情况下解释效应还应说其他自变量保持不变。"
+      ],
+      "method": "log-odds 是加法效应，odds 是乘法效应，概率必须另算。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-4",
+      "week": 3,
+      "title": "Likelihood、score 与 Hessian",
+      "source": "Class 4 · p5–6；Binary Logistic · 估计部分 · 推导展开",
+      "question": "独立 Bernoulli 响应，\\(\\eta_i=x_i^T\\beta,p_i=\\sigma(\\eta_i)\\)。推导 log 似然、score 与 Hessian。",
+      "answer": "\\(\\ell=\\sum[y_i\\eta_i-\\log(1+e^{\\eta_i})]\\)，\\(U=X^T(y-p),H=-X^TWX\\)，\\(W_{ii}=p_i(1-p_i)\\)。",
+      "steps": [
+        "独立性给 \\(L=\\prod p_i^{y_i}(1-p_i)^{1-y_i}\\)。取 log 得 \\(\\sum[y_i\\log p_i+(1-y_i)\\log(1-p_i)]\\)。代入 logit 的逆函数后，整理为答案中的形式。",
+        "\\(\\partial\\eta_i/\\partial\\beta=x_i\\)，\\(\\partial\\log(1+e^{\\eta_i})/\\partial\\beta=p_ix_i\\)，故 U=Σ(yᵢ−pᵢ)xᵢ=Xᵀ(y−p)。",
+        "继续求导，\\(\\partial p_i/\\partial\\beta=p_i(1-p_i)x_i\\)，所以 \\(H=-\\sum p_i(1-p_i)x_ix_i^T\\)。二阶矩阵负半定，log 似然凹；若要有限唯一 MLE，还需可识别及没有分离等条件。"
+      ],
+      "method": "先写 Bernoulli 似然，代 logit 后对 β 求导。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-5",
+      "week": 3,
+      "title": "手算一次 Newton / IRLS",
+      "source": "Class 4 · p7；Binary Logistic · p54–55 · 数值据例题",
+      "question": "沿用药物80/100、对照60/100，设计列 (1,x)。从 β⁽⁰⁾=(0,0) 开始，算一次 Newton 更新。",
+      "answer": "\\(\\beta^{(1)}=(0.4,0.8)^T\\)。",
+      "steps": [
+        "初始 η=0，所以所有 p=0.5，所有权重 w=0.25。score 的截距分量是140−200×0.5=40；斜率分量只累计药物组，80−100×0.5=30。\\(U=(40,30)^T\\)。",
+        "\\(I=X^TWX=\\begin{pmatrix}50&25\\\\25&25\\end{pmatrix}\\)。行列式625，\\(I^{-1}=\\frac1{625}\\begin{pmatrix}25&-25\\\\-25&50\\end{pmatrix}\\)。",
+        "\\(I^{-1}U=(0.4,0.8)^T\\)。Newton 最大化更新为 β新=β旧−H⁻¹U=β旧+I⁻¹U。这只是第一步，并非最终 MLE；继续更新收敛到约(0.4055,0.9808)。"
+      ],
+      "method": "先算 p、W、score，再用信息矩阵更新；注意最大化的符号。",
+      "choices": [
+        {
+          "text": "在当前 β 算 p 和 W，用 β新=β旧+(XᵀWX)⁻¹Xᵀ(y−p)。",
+          "correct": true
+        },
+        {
+          "text": "用无权重的 (XᵀX)⁻¹Xᵀy，一次就完成 Logistic MLE。",
+          "correct": false
+        },
+        {
+          "text": "固定第一次的 p=0.5，以后所有迭代不再更新权重。",
+          "correct": false
+        }
+      ],
+      "reason": "先算 p、W、score，再用信息矩阵更新；注意最大化的符号。"
+    },
+    {
+      "id": "w3-6",
+      "week": 3,
+      "title": "Wald 检验与 OR 区间",
+      "source": "Binary Logistic · p59–62；Class 4 · p8–9",
+      "question": "药物斜率 β̂₁=0.980829，SE=0.322749。进行双侧 Wald 检验并构造 OR 的95% CI，给定 z*=1.96。",
+      "answer": "z≈3.039，p≈0.0024；β CI≈(0.3482,1.6134)，OR CI≈(1.4166,5.0199)。",
+      "steps": [
+        "\\(H_0:\\beta_1=0,H_1:\\beta_1\\ne0\\)。大样本参考标准正态，\\(z=0.980829/0.322749≈3.039\\)。双侧 p=2[1−Φ(|z|)]≈0.0024，5% 水平拒绝。",
+        "β 区间 \\(0.980829\\pm1.96(0.322749)\\)，得到约(0.34824,1.61342)。",
+        "OR=eβ，用指数函数的单调性将两个端点指数化。不能用 OR±1.96×SE(β)；SE 在 log-odds 尺度。区间不含1，与零斜率检验一致。"
+      ],
+      "method": "先在 β 尺度用 z 推断，再指数化端点得到 OR 区间。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-7",
+      "week": 3,
+      "title": "Diabetes：解读 Wald 与单位变化",
+      "source": "Diabetes Example · p5–6 · 392 行清理后模型",
+      "question": "Glucose 系数0.03827、SE=0.005768；BMI 系数0.07054、SE=0.02734。计算 Glucose 的 z、每增10单位的 OR，并解释 BMI。",
+      "answer": "z≈6.6349；Glucose 增10单位 OR=e⁰·³⁸²⁷≈1.4662；BMI 每增1单位 odds 乘 e⁰·⁰⁷⁰⁵⁴≈1.0731。",
+      "steps": [
+        "先识别输出是 binomial GLM，列为 z 而非经典线性回归的 t。Glucose 的零系数 Wald 统计量=0.03827/0.005768≈6.6349。",
+        "每增10单位，log-odds 增加10×0.03827=0.3827，所以 OR=e⁰·³⁸²⁷≈1.4662。它描述其余预测变量固定后的条件 odds 比。",
+        "BMI 系数正，odds 每单位估计乘1.0731，约提高7.31%。这不是患病概率增加7.31个百分点，也不是临床或因果结论。数值对应该 PDF 的392行模型，不与另份课件的768行模型混用。"
+      ],
+      "method": "先认 z 输出，再将单位变化乘系数并指数化。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-8",
+      "week": 3,
+      "title": "Deviance、LRT、AIC 与 BIC",
+      "source": "Diabetes Example · p6 · 数值据原模型",
+      "question": "同一392行模型：null deviance=498.10（df391），residual deviance=344.02（df383），有8个斜率加截距。计算整体 LRT、AIC、BIC。",
+      "answer": "G²=154.08，新增8参数；AIC=362.02；BIC≈397.7614。",
+      "steps": [
+        "零假设为8个斜率全部为0。两个模型同样本且嵌套；\\(G^2=D_0-D_1=498.10-344.02=154.08\\)，自由度为391−383=8，在正则大样本条件下参考 χ²₈。数值远大于5%临界值约15.51，拒绝。",
+        "这是逐人0/1数据，饱和 log 似然为0，D=−2ℓ。参数总数 k=9，含截距。\\(AIC=D+2k=344.02+18=362.02\\)。",
+        "\\(BIC=D+k\\log n=344.02+9\\log392≈397.7614\\)。BIC 的单参数惩罚约5.9713大于AIC的2；实际选哪个模型仍取决于候选模型的拟合与复杂度，不是保证两准则每次选择都不同。",
+        "不能把逐人 residual deviance 直接与 χ²₃₈₃ 比较当通用拟合优度检验；嵌套 deviance 差的 LRT 是这里使用的检验。"
+      ],
+      "method": "嵌套比较用 deviance 差及参数差；信息准则计入截距并保持同一数据。",
+      "choices": [
+        {
+          "text": "整体检验取两个 deviance 的差，df 为新增参数数；AIC/BIC 使用总参数数。",
+          "correct": true
+        },
+        {
+          "text": "把 residual deviance 的383个 df 直接当整体 LRT 的 df。",
+          "correct": false
+        },
+        {
+          "text": "比较不同清理样本的 AIC，谁小就一定更好。",
+          "correct": false
+        }
+      ],
+      "reason": "嵌套比较用 deviance 差及参数差；信息准则计入截距并保持同一数据。"
+    },
+    {
+      "id": "w3-9",
+      "week": 3,
+      "title": "概率预测与 R 的 response/link",
+      "source": "Diabetes Example · p6；Binary Logistic · R predict 题型",
+      "question": "某新观测的预测 log-odds 为 −1.30413794。计算 odds 和 p；R 中哪种 type 直接返回 p？",
+      "answer": "odds≈0.2714064，p≈0.2134694；使用 `predict(fit,newdata=...,type=\"response\")`。",
+      "steps": [
+        "η 是 log-odds，不是概率。先指数化：odds=e⁻¹·³⁰⁴¹³⁷⁹⁴≈0.2714064。",
+        "\\(p=odds/(1+odds)=1/(1+e^{-\\eta})≈0.2134694\\)。应在0与1之间；负的 η 说明概率小于0.5。",
+        "对 binomial logit GLM，`type=\"link\"` 返回 η，`type=\"response\"` 返回 p。若题目提供四舍五入系数，手算结果可能与 R 的完整精度预测略有差异。"
+      ],
+      "method": "明确输出尺度：link 是 η，response 才是条件均值/概率。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-10",
+      "week": 3,
+      "title": "混淆矩阵与阈值",
+      "source": "Binary Logistic · p72–73 · 六人例题",
+      "question": "概率依次 (0.9,0.7,0.6,0.4,0.3,0.2)，实际响应 (1,1,0,1,0,0)。以 p≥c 判为1，算 c=0.5 的四格及指标，再改成0.35。",
+      "answer": "c=0.5：TP2、FN1、FP1、TN2，accuracy/sensitivity/specificity/precision 均2/3。c=0.35：TP3、FN0、FP1、TN2，accuracy5/6、sensitivity1、specificity2/3。",
+      "steps": [
+        "阈值0.5时前3人预测1。实际前3人为1,1,0，因此 TP=2、FP=1；后三人为1,0,0，因此 FN=1、TN=2。",
+        "Accuracy=(TP+TN)/6=4/6；Sensitivity=TP/(TP+FN)=2/3；Specificity=TN/(TN+FP)=2/3；Precision=TP/(TP+FP)=2/3。每个分母必须看条件是哪一组人。",
+        "降到0.35，概率0.4的人由预测0改为1，她实际是1，所以 FN减少1、TP增加1，其余不变。一般降低阈值使预测阳性集合扩张，敏感度不降、特异度不升；准确率并不保证上升。"
+      ],
+      "method": "先逐人标预测与实际，再填四格；指标分母对应不同条件。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-11",
+      "week": 3,
+      "title": "AUC 用成对比较手算",
+      "source": "Binary Logistic · p79–82 · 六人例题",
+      "question": "继续上题，实际阳性的概率为0.9,0.7,0.4；阴性为0.6,0.3,0.2。手算 AUC，并说明高 AUC 能否保证概率校准。",
+      "answer": "AUC=8/9≈0.8889；不保证校准。",
+      "steps": [
+        "共有3×3=9个阳性阴性配对。以阳性预测概率大于阴性为1分，平局为0.5分。",
+        "0.9赢3次，0.7赢3次，0.4只赢0.3和0.2共2次，总8分，AUC=8/9。",
+        "AUC 衡量排序区分能力。对所有分数作严格递增变换，排序及 AUC 不变，但数值概率可能失去校准。因此 AUC 不等于预测准确率，也不能替代概率校准或测试集验证。"
+      ],
+      "method": "比较全部阳性阴性配对；排序指标与概率校准分开。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w3-12",
+      "week": 3,
+      "title": "完全分离与数据清理",
+      "source": "Binary Logistic · p56；Diabetes Example · p3 · 方法整理",
+      "question": "① x=(1,2,3,4,5,6)，y=(0,0,0,1,1,1)，拟合系数不断变大。② Diabetes 数据有 Glucose/BMI 为0，能否把所有变量的0都删除？",
+      "answer": "① 完全分离，通常无有限 MLE。② 不应删所有0；需按变量语义确认缺失编码，Pregnancies=0 与 Outcome=0 可能合法。",
+      "steps": [
+        "① 取 \\(\\eta=M(x-3.5)\\)。当 M→∞，前三个 p→0、后三个 p→1，所有观测对应的似然趋向1，却无有限 M 达到该极限。软件大系数不等于稳定的有限估计。",
+        "可检查数据与模型，考虑合适的惩罚方法。Wald SE/检验在这种情形可能不可靠，不能仅多运行几次迭代就认为解决。",
+        "② 先区分合法0与缺失/不合理测量编码。该示例仅对指定测量列过滤，样本768变392。删除近一半记录会改变分析样本，需报告规则与可能的选择偏差；训练/测试划分及任何插补参数应避免泄漏测试信息。"
+      ],
+      "method": "估计不收敛先查分离；清理数据先看每个变量的含义。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-1",
+      "week": 4,
+      "title": "响应类别与参数个数",
+      "source": "Multinomial Logistic · p6,22–23 · 题型改编",
+      "question": "响应为三种无顺序的出行方式，自变量有2个数值预测量并含截距。写 baseline-category logits，并数参数。",
+      "answer": "以类别3为基准，写两条 log(πₖ/π₃)=xᵀβₖ；共有 (3−1)(2+1)=6 个参数。",
+      "steps": [
+        "三种方式是 nominal，不把编码1,2,3 当作等距数值。选择基准3，固定 β₃=0。",
+        "\\(\\log(\\pi_1/\\pi_3)=\\beta_{10}+\\beta_{11}x_1+\\beta_{12}x_2\\)，\\(\\log(\\pi_2/\\pi_3)=\\beta_{20}+\\beta_{21}x_1+\\beta_{22}x_2\\)。",
+        "每条方程有截距加2斜率，共3参数；K−1=2条，故6。不能再估一条自由 β₃，否则所有 logits 同加同一线性函数而概率不变，参数不可识别。"
+      ],
+      "method": "先分清有无自然顺序，选基准，再数 K−1 组系数。",
+      "choices": [
+        {
+          "text": "为两个非基准类别各写一条相对基准的 logit，每条包含截距。",
+          "correct": true
+        },
+        {
+          "text": "把类别编码1,2,3直接当连续响应做 OLS。",
+          "correct": false
+        },
+        {
+          "text": "估计三套完全自由系数，无需任何识别约束。",
+          "correct": false
+        }
+      ],
+      "reason": "先分清有无自然顺序，选基准，再数 K−1 组系数。"
+    },
+    {
+      "id": "w4-2",
+      "week": 4,
+      "title": "Softmax 概率：共享分母",
+      "source": "Multinomial Logistic · p24–25；补充数值例题",
+      "question": "以第3类为基准，η₁=log2，η₂=log3。求三类概率，说明为什么不能各自套二元 sigmoid。",
+      "answer": "\\((\\pi_1,\\pi_2,\\pi_3)=(1/3,1/2,1/6)\\)。",
+      "steps": [
+        "基准 η₃=0，未标准化权重分别为 eη₁=2、eη₂=3、e⁰=1。总权重 S=2+3+1=6。",
+        "每类除同一个 S：π₁=2/6、π₂=3/6、π₃=1/6。三类概率均非负且和为1。",
+        "若把两条非基准 η 各自用 sigmoid，会给2/3和3/4，两者之和已大于1。η₁控制 π₁/π₃，不是 π₁/(1−π₁)；分母含其他类别权重。"
+      ],
+      "method": "先指数化全部 logits，包含基准权重1，再除共享总和。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-3",
+      "week": 4,
+      "title": "更换基准与非基准比较",
+      "source": "Multinomial Logistic · p26,29；补充数值例题",
+      "question": "以类别3为基准：η₁=0.2+0.8x，η₂=−0.1+0.3x。改以类别2为基准，并解释1相对2的每单位效应。",
+      "answer": "新 logits：1对2为0.3+0.5x，3对2为0.1−0.3x；每增1单位，π₁/π₂乘e⁰·⁵≈1.6487。",
+      "steps": [
+        "\\(\\log(\\pi_1/\\pi_2)=\\log(\\pi_1/\\pi_3)-\\log(\\pi_2/\\pi_3)=\\eta_1-\\eta_2=0.3+0.5x\\)。",
+        "\\(\\log(\\pi_3/\\pi_2)=-\\eta_2=0.1-0.3x\\)。新基准2的 logit=0。",
+        "只是改变表达，不改变拟合概率或 likelihood。比较1对2的斜率是0.8−0.3=0.5，不是原来的0.8。若要其 SE，还需 \\(Var(\\hat\\beta_{1j}-\\hat\\beta_{2j})=Var_1+Var_2-2Cov_{12}\\)，不能仅相减两个 SE。"
+      ],
+      "method": "任何两类比较用系数向量相减；改变基准不改变概率。",
+      "choices": [
+        {
+          "text": "用类别系数向量相减重写 logits，拟合概率保持不变。",
+          "correct": true
+        },
+        {
+          "text": "改基准后必须让新基准类别的概率等于零。",
+          "correct": false
+        },
+        {
+          "text": "两个非基准类别比较时直接取原来的第一套系数。",
+          "correct": false
+        }
+      ],
+      "reason": "任何两类比较用系数向量相减；改变基准不改变概率。"
+    },
+    {
+      "id": "w4-4",
+      "week": 4,
+      "title": "正系数不一定让类别概率增加",
+      "source": "Multinomial Logistic · p27,30–31；补充数值例题",
+      "question": "某 x 点，概率 (0.2,0.5,0.3)，三个类别对 x 的斜率分别 (1,3,0)，第三类为基准。求三类概率边际导数。",
+      "answer": "导数分别 −0.14、0.65、−0.51，和为0；第一类斜率虽为正，概率却在该点下降。",
+      "steps": [
+        "Softmax 导数为 \\(\\partial\\pi_k/\\partial x=\\pi_k(\\beta_k-\\bar\\beta)\\)，其中 \\(\\bar\\beta=\\sum_m\\pi_m\\beta_m\\)。由商法则：分子导数为 eηₖβₖ，分母导数为Σeηₘβₘ，除以共享分母即可得到公式。",
+        "此点加权平均斜率=0.2×1+0.5×3+0.3×0=1.7。故第一类0.2(1−1.7)=−0.14；第二类0.5(3−1.7)=0.65；第三类0.3(0−1.7)=−0.51。",
+        "三者和为0，符合总概率恒为1。β₁=1>0 说明相对于基准的概率比 π₁/π₃ 增加，但别的类别增长更快时 π₁ 自身仍会下降。"
+      ],
+      "method": "概率变化要减去全类别概率加权的平均斜率，不能只看 β 的符号。",
+      "choices": [
+        {
+          "text": "计算概率加权平均斜率，再用 πₖ(βₖ−平均斜率)。",
+          "correct": true
+        },
+        {
+          "text": "第一类 β>0，就直接断言 π₁ 必增加。",
+          "correct": false
+        },
+        {
+          "text": "每个概率的导数都等于其对应 β，无需考虑分母。",
+          "correct": false
+        }
+      ],
+      "reason": "概率变化要减去全类别概率加权的平均斜率，不能只看 β 的符号。"
+    },
+    {
+      "id": "w4-5",
+      "week": 4,
+      "title": "多项分布的概率与协方差",
+      "source": "Multinomial Logistic · p18；补充计数例题",
+      "question": "4次独立试验，三类概率 (0.5,0.3,0.2)。求计数 (2,1,1) 的概率、第一类均值方差、第一二类协方差。",
+      "answer": "概率0.18；E(N₁)=2，Var(N₁)=1，Cov(N₁,N₂)=−0.6。",
+      "steps": [
+        "多项系数 \\(4!/(2!1!1!)=12\\)。概率 \\(12(0.5)^2(0.3)(0.2)=0.18\\)。不能漏掉不同排列数。",
+        "\\(E(N_1)=4(0.5)=2\\)，\\(Var(N_1)=4(0.5)(1-0.5)=1\\)。",
+        "不同类别计数协方差 \\(-m\\pi_1\\pi_2=-4(0.5)(0.3)=-0.6\\)。各计数必须和为4，因而不独立；增加某类计数会挤占其他类。"
+      ],
+      "method": "排列系数乘各类概率幂；计数和固定使类别之间负相关。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-6",
+      "week": 4,
+      "title": "课堂学校例题：手算多项 MLE",
+      "source": "Multinomial Logistic · p40–41 · 数值据例题",
+      "question": "类别为 Academic、General、Vocation。Private 计数(24,6,2)，Public(81,39,48)。以 Academic 为基准，x=1 Public、0 Private，求两套截距和斜率。",
+      "answer": "General：(−1.3863,0.6554)；Vocation：(−2.4849,1.9617)。Public 的类别概率为(81,39,48)/168。",
+      "steps": [
+        "两种 x 值、每种三类概率有2个自由度，总4个；模型恰有4参数，是饱和的两组模型。所有计数为正，有限解可取各组观察比例。",
+        "General 截距 \\(\\hat\\beta_{G0}=\\log(6/24)=-1.386294\\)。斜率 \\(\\hat\\beta_{G1}=\\log[(39/81)/(6/24)]≈0.655407\\)。",
+        "Vocation 截距 \\(\\hat\\beta_{V0}=\\log(2/24)=-2.484907\\)。斜率 \\(\\hat\\beta_{V1}=\\log[(48/81)/(2/24)]≈1.961659\\)。",
+        "Public x=1 时两 logits 为 log(39/81)、log(48/81)，共享分母 \\(1+39/81+48/81=168/81\\)。所以三个概率恢复81/168、39/168、48/168，检验正确。斜率解释 public 相对 private 的类别/academic 概率比之比。"
+      ],
+      "method": "饱和两组模型用组内比例，截距是基准组 log 比，斜率是两组 log 比之差。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-7",
+      "week": 4,
+      "title": "联合检验一个预测变量",
+      "source": "Multinomial Logistic · 估计及模型比较题型；补充例题",
+      "question": "三分类模型中删除一个数值预测变量，会删掉两条 logit 各一个斜率。相同样本的 log 似然：reduced=−120、full=−114。给定 χ²₂ 的5%临界值5.991，做联合检验。",
+      "answer": "G²=12，df=2，拒绝两条斜率同时为0。",
+      "steps": [
+        "零假设 \\(H_0:\\beta_{1j}=\\beta_{2j}=0\\)，备择为至少一者非零。不能只检验一条 logit 就声称检验了变量整体贡献。",
+        "\\(G^2=2(\\ell_{full}-\\ell_{reduced})=2[-114-(-120)]=12\\)。两个自由约束，自由度为K−1=2。",
+        "在正则大样本条件下参考 χ²₂。12>5.991，拒绝零假设，说明该变量整体增加模型解释能力。要求相同响应、同一批数据、嵌套模型；分离或极小样本时渐近结论需谨慎。"
+      ],
+      "method": "数被删除的系数，不是数自变量名字；多类别的一列可能对应多条约束。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-8",
+      "week": 4,
+      "title": "Multinomial score 与拟合计数",
+      "source": "Multinomial Logistic · p35–37 · 推导展开",
+      "question": "以类别K为基准，用 one-hot yᵢₖ 推导第k套系数的 score；模型含截距、存在有限 MLE 时，拟合类别总数有什么性质？",
+      "answer": "\\(U_k=\\sum_i(y_{ik}-\\pi_{ik})x_i\\)；收敛 MLE 的各类拟合概率和等于该类观察人数。",
+      "steps": [
+        "log 似然 \\[\\ell=\\sum_i\\left[\\sum_{k<K}y_{ik}x_i^T\\beta_k-\\log\\left(1+\\sum_{k<K}e^{x_i^T\\beta_k}\\right)\\right].\\]",
+        "对 βₖ 求导，第一项给 yᵢₖxᵢ；第二项给 πᵢₖxᵢ，所以 score 为 Σ(yᵢₖ−πᵢₖ)xᵢ。与 binary 的形式对应，但不同类别通过共享分母耦合。",
+        "截距分量在有限内点 MLE 处为0，故 \\(\\sum_i\\hat\\pi_{ik}=\\sum_i y_{ik}=n_k\\)。基准类也由总概率和为1推得。拟合总数一致不代表每个人被分类正确，也不代表模型校准在外部样本必然好。"
+      ],
+      "method": "one-hot 似然求导，再取 score 的截距分量。",
+      "choices": null,
+      "reason": null
+    },
+    {
+      "id": "w4-9",
+      "week": 4,
+      "title": "R 实操：基准与预测概率",
+      "source": "Multinomial Logistic · p38,55–57 · 代码题型整理",
+      "question": "响应 factor 有三个无序类别，想以 Academic 为基准，拟合 y~x₁+x₂，并获得新样本各类概率。写关键 R 操作与检查。",
+      "answer": "先 relevel；用 nnet::multinom 拟合；predict(...,type=\"probs\") 返回类别概率。",
+      "steps": [
+        "`d$y <- relevel(factor(d$y), ref=\"Academic\")`。先确保标签确实存在；不要用数值编码让软件误认为连续响应。",
+        "`fit <- nnet::multinom(y ~ x1 + x2, data=d, Hess=TRUE, trace=FALSE)`。检查优化是否收敛、是否有极大系数或分离；用 `summary(fit)` 获取系数与 SE。",
+        "`predict(fit, newdata=new, type=\"probs\")` 返回类别概率，检查各行和约为1、列顺序对应标签。`type=\"class\"` 返回选择的类别，不是概率。改变基准可改系数表达，正常拟合同一模型时概率不变。"
+      ],
+      "method": "factor/relevel 定基准，multinom 联合拟合，probs 与 class 输出分开。",
+      "choices": null,
+      "reason": null
+    }
+  ],
+  "strategies": [
+    "w1-1",
+    "w1-4",
+    "w1-5",
+    "w2-1",
+    "w2-6",
+    "w3-1",
+    "w3-5",
+    "w3-8",
+    "w4-1",
+    "w4-4",
+    "w2-2",
+    "w4-3"
+  ],
+  "weekNote": "Week 1–4 按现有四讲的主题顺序整理，不代表已核实的官方日历；大纲 Course Schedule 为 N/A。Class 4 的二元估计与拟合评估并入 Week 3。",
+  "sourceNote": "依据你提供的 STA313 回归/指数族/二元与多项 Logistic 课件、Class 1–4、Regression practice 与 Diabetes Example 整理。保留课件符号，使用中文题型讲解并展开推导；补充计算例题已注明。Diabetes 数值采用清理后的392行版本。"
+}
