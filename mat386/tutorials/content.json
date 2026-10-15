@@ -15,6 +15,10 @@
     {
       "id": 4,
       "title": "CRR 无套利、测度与复制"
+    },
+    {
+      "id": 5,
+      "title": "完备性、CRR 看涨公式与三期树"
     }
   ],
   "exercises": [
@@ -24,7 +28,7 @@
       "ref": "1",
       "title": "外汇套利：借美元、存英镑",
       "topic": "套利构造",
-      "pages": "3–4",
+      "pages": "8–9",
       "question": "今天即期报价1.60 USD/GBP；可借美元年利率4%，存英镑年利率6%；Dealer A 今天同意一年后按1.58 USD/GBP 买入英镑，合约今天不收费。无交易成本且合约履行。用10,000美元借款构造套利，算利润，并解释为何今天必须签远期。",
       "english": "Dealer A agrees today to buy GBP in one year at 1.58 USD/GBP. Dealer B sells GBP today at 1.60 USD/GBP. USD may be borrowed at 4% for a year, and GBP deposited at 6%. The agreement with A costs nothing today; there are no transaction costs and contracts are honoured. Starting with no money, use a USD 10,000 loan to construct an arbitrage, compute the final USD profit, and explain why A’s agreement must be made today.",
       "answer": "\\(V_0=0,V_1=67.50\\) USD，确定盈利。",
@@ -65,7 +69,7 @@
       "ref": "2(b)",
       "title": "数值远期：两种方法核验",
       "topic": "远期与期权平价",
-      "pages": "11–12",
+      "pages": "12",
       "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 给 \\(B_0=S_0=100,B_1=110,u=1.2,d=0.8\\)，求 F 与 \\(\\Pi_0(F_{105})\\)，并用两状态支付核验。",
       "english": "Use the same frictionless one-period model with \\(B_0=S_0=100,B_1=110,u=1.2,d=0.8\\). Compute the fair delivery price F and the time-0 value of the forward with delivery price 105. Verify the value using its two state payoffs.",
       "answer": "\\(F=110,\\ \\Pi_0(F_{105})=50/11\\approx4.54545\\)，q=0.75。",
@@ -85,7 +89,7 @@
       "ref": "2(c)",
       "title": "远期复制：份数不等于金额",
       "topic": "远期与期权平价",
-      "pages": "12–13",
+      "pages": "13–14",
       "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 求复制 \\(F_K=S_1-K\\) 的组合 \\((\\alpha,\\beta)\\)。本题 α 是银行账户份数，β 是股票股数。",
       "english": "In the frictionless one-period model \\(B_1=B_0(1+r_B),S_1\\in\\{S_0u,S_0d\\}\\), with \\(B_0,S_0>0,0<d<1+r_B<u\\), find a replicating portfolio for \\(F_K=S_1-K\\). Here α counts bank-account units and β counts shares.",
       "answer": "\\(\\beta=1,\\ \\alpha=-K/B_1=-K/[B_0(1+r_B)]\\)。",
@@ -105,7 +109,7 @@
       "ref": "3(a)",
       "title": "看涨看跌平价：先比支付",
       "topic": "远期与期权平价",
-      "pages": "13–14",
+      "pages": "15–16",
       "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 \\(C_K=(S_1-K)^+,P_K=(K-S_1)^+\\)，同一欧式到期日和执行价。证明支付恒等式与 put-call parity。",
       "english": "In the same frictionless one-period model with \\(0<d<1+r_B<u\\), let \\(x^+=\\max(x,0)\\), \\(C_K=(S_1-K)^+\\), and \\(P_K=(K-S_1)^+\\). Prove \\(C_K-P_K=S_1-K\\) in every state, and hence \\(\\Pi_0(C_K)-\\Pi_0(P_K)=S_0-K/(1+r_B)\\).",
       "answer": "\\(C_K-P_K=S_1-K\\)；\\(\\Pi_0(C_K)+K/(1+r_B)=\\Pi_0(P_K)+S_0\\)。",
@@ -125,7 +129,7 @@
       "ref": "3(b)",
       "title": "平价违背：卖贵、买便宜、存差额",
       "topic": "套利构造",
-      "pages": "5–6",
+      "pages": "17–19",
       "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 若 \\(\\delta=\\Pi_0(C_K)+K/(1+r_B)-\\Pi_0(P_K)-S_0>0\\)，构造零成本套利并计算终值。",
       "english": "For European call/put payoffs with common strike K and maturity 1, assume \\(\\delta=\\Pi_0(C_K)+K/(1+r_B)-\\Pi_0(P_K)-S_0>0\\). Short one call, borrow the present value of K, buy one put and one share, and invest the remaining δ in the bank. Show this is an arbitrage.",
       "answer": "\\(V_0=0,V_1=\\delta(1+r_B)>0\\)。",
@@ -145,7 +149,7 @@
       "ref": "2.1",
       "title": "同币种无风险收益率必须一致",
       "topic": "套利构造",
-      "pages": "4–5",
+      "pages": "20",
       "question": "B与B′为同一货币、同一区间[s,t]的无风险资产，价格为正，可自由买卖空。区间收益率分别\\(r_B\\)、\\(r_{B\\prime}\\)。证明无套利时二者相同。",
       "english": "Let B and B′ be positive-price risk-free assets in the same currency, with returns \\(r_B\\) and \\(r_{B\\prime}\\) over the same interval [s,t]. Trading and shorting are allowed. Show that an arbitrage-free market requires \\(r_B=r_{B\\prime}\\).",
       "answer": "\\(r_B=r_{B\\prime}\\)。",
@@ -165,7 +169,7 @@
       "ref": "2.2",
       "title": "单利与复利：严格比较及极限",
       "topic": "复利与贷款",
-      "pages": "15–16",
+      "pages": "21–22",
       "question": "\\(B_{n,s}=B_0(1+nr),B_{n,c}=B_0(1+r)^n\\)，B₀,r>0，n为正整数。证明n>1时前者严格较小，并证明比值趋0。",
       "english": "For \\(B_0,r>0\\), define simple-interest and compound-interest values \\(B_{n,s}=B_0(1+nr)\\), \\(B_{n,c}=B_0(1+r)^n\\). Show \\(B_{n,s}<B_{n,c}\\) for each integer n>1 and \\(\\lim_{n\\to\\infty}B_{n,s}/B_{n,c}=0\\).",
       "answer": "n≥2时严格小于；\\(B_{n,s}/B_{n,c}\\to0\\)。",
@@ -185,7 +189,7 @@
       "ref": "2.3",
       "title": "复利频率：单调性与连续复利极限",
       "topic": "复利与贷款",
-      "pages": "16–17",
+      "pages": "23–24",
       "question": "r>0固定，证明 \\(a_m=(1+r/m)^m\\) 随正整数m严格增加，并趋于eʳ。",
       "english": "For fixed r>0, prove that \\(a_m=(1+r/m)^m\\) is strictly increasing in the positive integer m and converges to eʳ.",
       "answer": "\\(a_{m+1}>a_m\\)，\\(\\lim a_m=e^r\\)。",
@@ -205,7 +209,7 @@
       "ref": "2.5",
       "title": "贷款余额：递推与剩余付款现值",
       "topic": "复利与贷款",
-      "pages": "18–19",
+      "pages": "25–27",
       "question": "r>0，贷款L₀=L，每期末付M，\\(L_k=(1+r)L_{k-1}-M\\)，\\(M=Lr/[1-(1+r)^{-n}]\\)。证明付款后余额等于剩余付款在k时刻现值，并检查Lₙ。",
       "english": "Let \\(L_0=L\\), \\(L_k=(1+r)L_{k-1}-M\\), and \\(M=Lr/[1-(1+r)^{-n}]\\), with r>0. For every k=0,…,n show \\(L_k=\\sum_{j=1}^{n-k}M(1+r)^{-j}=M[1-(1+r)^{-(n-k)}]/r\\). In particular show \\(L_n=0\\).",
       "answer": "\\(L_k=M\\frac{1-(1+r)^{-(n-k)}}r=\\sum_{j=1}^{n-k}M(1+r)^{-j}\\)，Lₙ=0。",
@@ -225,7 +229,7 @@
       "ref": "2.6",
       "title": "摊销表与首次低于半本金",
       "topic": "复利与贷款",
-      "pages": "20–22",
+      "pages": "28–31",
       "question": "L=100，每期利率10%，共10期，期末等额付M。算M、完整摊销表及付款后余额首次严格低于50的期数。",
       "english": "Take L=100, r=10% per period and n=10, with \\(L_k=(1+r)L_{k-1}-M\\) and \\(M=Lr/[1-(1+r)^{-n}]\\). Compute M and the amortization schedule. Determine after how many payments the balance first falls below L/2.",
       "answer": "\\(M≈16.2745394883\\)；L₆≈51.588100，L₇≈40.472371，所以首次是第7次付款后。",
@@ -340,7 +344,7 @@
       "ref": "2.4.9",
       "title": "久期与凸性：加权方差恒等式",
       "topic": "久期、凸性与组合",
-      "pages": "23–24",
+      "pages": "32–33",
       "question": "现金流cₖ在k年支付，\\(P(y)=\\sum c_ke^{-ky},w_k=c_ke^{-ky}/P(y)\\)。D=Σkwₖ，C=Σk²wₖ，证明 \\(C=D^2+\\sum(k-D)^2w_k\\)，并说明何时C≥D²、等号何时成立。",
       "english": "With \\(P(y)=\\sum_{k=1}^Nc_ke^{-ky}\\), present-value weights \\(w_k=c_ke^{-ky}/P(y)\\), \\(D=\\sum kw_k\\), and \\(C=\\sum k^2w_k\\), show \\(C=D^2+\\sum_{k=1}^N(k-D)^2w_k\\). Discuss the nonnegative-cash-flow case.",
       "answer": "恒等式成立；非负现金流且P>0时C≥D²，正权重只在同一个支付时间时等号成立。",
@@ -360,7 +364,7 @@
       "ref": "2.4.11",
       "title": "年复利的修正凸性",
       "topic": "久期、凸性与组合",
-      "pages": "24–25",
+      "pages": "34–35",
       "question": "\\(P(r)=\\sum c_k(1+r)^{-k},r>-1\\)。按相同现值权重定义D=Σkwₖ、C=Σk²wₖ，\\(C_{mod}=P^{\\prime\\prime}(r)/P(r)\\)。证明修正凸性公式。",
       "english": "For annually compounded rate r>−1, \\(P(r)=\\sum_{k=1}^Nc_k(1+r)^{-k}\\). Let D and C be the first and second moments of payment times under the current present-value weights, and \\(C_{mod}=P^{\\prime\\prime}(r)/P(r)\\). Show \\(C_{mod}=(C+D)/(1+r)^2\\).",
       "answer": "\\(C_{mod}=\\frac{C+D}{(1+r)^2}\\)。",
@@ -380,7 +384,7 @@
       "ref": "2.4.13(a)–(b)",
       "title": "每年m次复利：收益率换元与二阶链式法则",
       "topic": "久期、凸性与组合",
-      "pages": "25–27",
+      "pages": "36–38",
       "question": "年度票息c、n年到期面值1，\\(P(s)=\\sum_{t=1}^n c(1+s/m)^{-mt}+(1+s/m)^{-mn}\\)，1+s/m>0。求等价连续收益率y(s)，并证明Dmod、Cmod。m只改变复利频率，不改变年度付息。",
       "english": "A bond pays annual coupon c and face value 1 at year n. Under nominal annual rate s compounded m times per year, \\(P(s)=\\sum_{t=1}^nc(1+s/m)^{-mt}+(1+s/m)^{-mn}\\). (a) Find y(s) such that \\(e^{-ty(s)}=(1+s/m)^{-mt}\\). (b) Show \\(D_{mod}=D/(1+s/m)\\) and \\(C_{mod}=(C+D/m)/(1+s/m)^2\\), where D,C use the equivalent continuously compounded yield.",
       "answer": "\\(y(s)=m\\log(1+s/m)\\)，\\(D_{mod}=D/(1+s/m)\\)，\\(C_{mod}=(C+D/m)/(1+s/m)^2\\)。",
@@ -402,7 +406,7 @@
       "ref": "2.4.15(1)–(4)",
       "title": "价格与久期匹配：凸性优势与价格近似",
       "topic": "久期、凸性与组合",
-      "pages": "28–33",
+      "pages": "39–45",
       "question": "A为5年零息债、面值100；B由1年零息面值F₁与9年零息面值F₉组成。连续复利利率r=5%。(1)求A价格、D、C；(2)选F₁,F₉使B同价同久期；(3)求\\(C_B\\)并比较；(4)利率分别变3%和7%，求精确价格、一阶久期和二阶凸性估计，并比较表现。",
       "english": "Bond A is a 5-year zero-coupon bond with face value 100. Bond B consists of 1-year and 9-year zero-coupon bonds with face values F₁ and F₉. At continuous rate r=5%: (1) compute \\(P_A,D_A,C_A\\); (2) find F₁,F₉ so \\(P_B=P_A\\) and \\(D_B=D_A\\); (3) compute and compare \\(C_B\\); (4) after separate rate changes to 3% and 7%, compute exact prices, duration-only and duration-plus-convexity estimates, and compare the two bonds.",
       "answer": "\\(P_0\\approx77.88007831,\\ D_A=D_B=5\\)；\\(F_1\\approx40.93653765,F_9\\approx61.07013791\\)；\\(C_A=25,C_B=41\\)。两个给定利率情景均是B价格更高、涨多跌少。",
@@ -472,7 +476,7 @@
       "ref": "3.4.14(1)",
       "title": "CRR 无套利：必要性、等号边界与充分性",
       "topic": "CRR 风险中性与复制",
-      "pages": "7–9",
+      "pages": "46–50",
       "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 证明无套利当且仅当d<R<u，必须讨论R=u、R=d边界及多期自融资策略。",
       "english": "For \\(T\\ge1,S_0>0,0<d<u,r>-1\\), let \\(B_t=(1+r)^t\\) and \\(S_t=S_0u^{N_t}d^{t-N_t}\\) on \\(\\Omega=\\{u,d\\}^T\\), with P giving positive probability to every path. The filtration is generated by the price history. Show that no-arbitrage holds if and only if \\(d<1+r<u\\). Each node is a copy of a one-period market.",
       "answer": "\\(NA\\iff d<1+r<u\\)；两个等号边界也有套利。",
@@ -494,7 +498,7 @@
       "ref": "3.4.14(2)",
       "title": "风险中性测度：路径、条件概率与二项分布",
       "topic": "CRR 风险中性与复制",
-      "pages": "34–36",
+      "pages": "51–54",
       "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 假设d<R<u，q=(R−d)/(u−d)。构造独立乘积测度Q，证明Q∼P、贴现股票为鞅，并求终端上涨k次的概率。解释为何相同的每期边际概率本身不够。",
       "english": "In the same full-support CRR model assume d<1+r<u and q=(1+r−d)/(u−d). Take Q to be the independent product measure with up probability q at each date. Prove Q is risk-neutral and show \\(Q(S_T=S_0u^kd^{T-k})=\\binom Tkq^k(1-q)^{T-k}\\), k=0,…,T. Explain why marginal up probabilities alone do not define the required joint law.",
       "answer": "\\(Q(\\{\\omega\\})=q^{N_T(\\omega)}(1-q)^{T-N_T(\\omega)}\\)，\\(E_Q[\\widetilde S_{t+1}|\\mathcal F_t]=\\widetilde S_t\\)，终端概率为二项式。",
@@ -516,7 +520,7 @@
       "ref": "3.4.14(3)",
       "title": "节点一步复制：股票股数、债券份数与倒推",
       "topic": "CRR 风险中性与复制",
-      "pages": "37–39",
+      "pages": "55–60",
       "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 在t<T节点，下一期目标值为Vᵘₜ₊₁、Vᵈₜ₊₁。求(t,t+1]持有的股票Δ、债券β，证明复制成本等于风险中性一期贴现期望。",
       "english": "At a node of the CRR model at t<T with stock price \\(S_t\\), a claim has successor values \\(V^u_{t+1}\\) and \\(V^d_{t+1}\\). Find the shares Δ and bond units β held over (t,t+1] that replicate both values. Show \\(V_t=[qV^u_{t+1}+(1-q)V^d_{t+1}]/(1+r)\\), with q=(1+r−d)/(u−d).",
       "answer": "\\(\\Delta=\\frac{V^u_{t+1}-V^d_{t+1}}{(u-d)S_t}\\)，\\(\\beta=\\frac{uV^d_{t+1}-dV^u_{t+1}}{(u-d)R^{t+1}}\\)，\\(V_t=\\frac{qV^u_{t+1}+(1-q)V^d_{t+1}}R\\)。",
@@ -531,6 +535,258 @@
       ],
       "pitfall": "TUT4：Δ股票、β债券，与TUT1的β含义不同。",
       "tables": []
+    },
+    {
+      "id": "t5-rep",
+      "tutorial": 5,
+      "ref": "3.4.14(3)",
+      "title": "一步复制：从节点走向整棵树",
+      "topic": "CRR 风险中性与复制",
+      "pages": "61–65",
+      "english": "In the CRR model, \\(T\\ge1,S_0>0,0<d<u,R=1+r>0\\), \\(B_t=R^t\\), \\(S_t=S_0u^{N_t}d^{t-N_t}\\), and \\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\). Every path has positive physical probability. Assume \\(d<R<u\\) and set \\(q=(R-d)/(u-d)\\). At a node at time \\(t<T\\), a claim has successor values \\(V^u_{t+1},V^d_{t+1}\\). Find the shares \\(\\Delta\\) and bond units \\(\\beta\\) held over \\((t,t+1]\\) to replicate both values. Show \\(V_t=[qV^u_{t+1}+(1-q)V^d_{t+1}]/R\\).",
+      "question": "当前节点选择同一组股票股数 \\(\\Delta\\) 和债券份数 \\(\\beta\\)，同时复制下一期两个分支，并计算当前成本。本问与 TUT 4 第(3)问重复，按原章节保留。",
+      "answer": "\\(\\Delta=\\frac{V^u_{t+1}-V^d_{t+1}}{(u-d)S_t}\\)，\\(\\beta=\\frac{uV^d_{t+1}-dV^u_{t+1}}{(u-d)R^{t+1}}\\)，\\(V_t=\\frac{qV^u_{t+1}+(1-q)V^d_{t+1}}R\\)。",
+      "method": "列两个分支方程，相减求股票股数，代回上涨分支求债券份数，再计算当前成本。",
+      "steps": [
+        "固定当前历史，\\(B_t=R^t,B_{t+1}=R^{t+1}\\)。同一组持仓须满足 \\(\\Delta uS_t+\\beta R^{t+1}=V^u_{t+1}\\)，\\(\\Delta dS_t+\\beta R^{t+1}=V^d_{t+1}\\)。",
+        "相减消去债券：\\(\\Delta(u-d)S_t=V^u_{t+1}-V^d_{t+1}\\)，所以 \\(\\Delta=(V^u_{t+1}-V^d_{t+1})/[(u-d)S_t]\\)。",
+        "代回上涨分支：\\(\\beta R^{t+1}=V^u-u(V^u-V^d)/(u-d)=[(u-d)V^u-uV^u+uV^d]/(u-d)=(uV^d-dV^u)/(u-d)\\)。因此 \\(\\beta=(uV^d-dV^u)/[(u-d)R^{t+1}]\\)。此处省略的下标均为 t+1。",
+        "检查下分支：\\(\\Delta dS_t+\\beta R^{t+1}=[d(V^u-V^d)+uV^d-dV^u]/(u-d)=V^d\\)。两个分支都匹配，且 \\((u-d)S_tR^{t+1}>0\\)，解唯一。",
+        "当前成本 \\(V_t=\\Delta S_t+\\beta R^t=[R(V^u-V^d)+uV^d-dV^u]/[R(u-d)]\\)。收集系数得 \\(V_t=[(R-d)V^u+(u-R)V^d]/[R(u-d)]=[qV^u+(1-q)V^d]/R\\)。"
+      ],
+      "pitfall": "\\(\\beta\\) 是债券份数，不能省去分母中的 \\(B_{t+1}\\)。下一期金额用于匹配支付，当前金额用于计算成本。",
+      "tables": [],
+      "provenance": "新版指南说明：TUT 5 原解答页为空；以下为沿用 TA 题目与符号补写并核验的解答，并非 TA 手写答案转录。"
+    },
+    {
+      "id": "t5-complete",
+      "tutorial": 5,
+      "ref": "3.4.14(4)",
+      "title": "完备性证明：递推持仓与一般支付",
+      "topic": "CRR 完备性与定价",
+      "pages": "66–69",
+      "english": "In the CRR model, \\(T\\ge1,S_0>0,0<d<u,R=1+r>0\\), \\(B_t=R^t\\), \\(S_t=S_0u^{N_t}d^{t-N_t}\\), and \\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\). Every path has positive physical probability. Assume \\(d<R<u\\) and set \\(q=(R-d)/(u-d)\\). Use one-step replication recursively to prove that the CRR model is complete. For an arbitrary \\(\\mathcal F_T\\)-measurable payoff \\(X\\), construct a predictable self-financing replicating strategy and show \\(V_t=R^{-(T-t)}E_Q[X\\mid\\mathcal F_t]\\). In particular, derive \\(V_0=R^{-T}E_Q[X]\\), and the binomial-sum formula when \\(X=f(S_T)\\).",
+      "question": "把一步复制用于每个历史节点，证明任意终端支付都可复制；说明持仓可预测、自融资，推导条件期望定价。只有最终股价型支付才可按上涨次数合并。",
+      "answer": "模型完备。\\(V_t=R^{-(T-t)}E_Q[X\\mid\\mathcal F_t]\\)，\\(V_0=R^{-T}E_Q[X]\\)。若 \\(X=f(S_T)\\)，则 \\(V_0=R^{-T}\\sum_{k=0}^T\\binom Tk q^k(1-q)^{T-k}f(S_0u^kd^{T-k})\\)。",
+      "method": "从终端支付出发，按完整历史逐节点倒推，验证可预测、自融资和终端复制，再用塔式法则。",
+      "steps": [
+        "终端规定 \\(V_T(\\omega)=X(\\omega)\\)。在时刻 t 的任一历史 h，假定两个子历史 hu、hd 的价值 \\(V_{t+1}(hu),V_{t+1}(hd)\\) 已知。",
+        "使用第(3)问：\\(\\Delta_{t+1}(h)=[V_{t+1}(hu)-V_{t+1}(hd)]/[(u-d)S_t(h)]\\)，\\(\\beta_{t+1}(h)=[uV_{t+1}(hd)-dV_{t+1}(hu)]/[(u-d)R^{t+1}]\\)。定义 \\(V_t(h)=\\Delta_{t+1}(h)S_t(h)+\\beta_{t+1}(h)B_t\\)。",
+        "从 \\(t=T-1\\) 依次倒推至 0，全部持仓均被定义。用于 \\((t,t+1]\\) 的持仓只依赖当前历史 h，因此是 \\(\\mathcal F_t\\)-可测的，即可预测。不能用下一期尚未观察到的结果选持仓。",
+        "到达任一下一期节点，旧持仓恰好价值 \\(\\Delta_{t+1}S_{t+1}+\\beta_{t+1}B_{t+1}=V_{t+1}\\)。若尚未到期，新持仓的成本也为 \\(\\Delta_{t+2}S_{t+1}+\\beta_{t+2}B_{t+1}=V_{t+1}\\)。新旧成本相等，调仓无须额外注资或取款，故自融资。终端价值为 X，任意 X 均可复制，故完备。",
+        "每个节点满足 \\(V_t=[qV_{t+1}(hu)+(1-q)V_{t+1}(hd)]/R=R^{-1}E_Q[V_{t+1}\\mid\\mathcal F_t]\\)。反复代入并用塔式法则，得到 \\(V_t=R^{-(T-t)}E_Q[X\\mid\\mathcal F_t]\\)，在初始信息平凡时 \\(V_0=R^{-T}E_Q[X]\\)。",
+        "复制成本是唯一无套利价格：若同一支付的合约与复制组合价格不同，卖出较贵者、买入较便宜者，把今天的正差额存入债券；到期两者支付抵消，留下正收益。",
+        "仅当 \\(X=f(S_T)\\) 时，同一上涨次数的路径支付相同，可用 \\(Q(N_T=k)=\\binom Tkq^k(1-q)^{T-k}\\) 合并为答案中的二项和。若 X 依赖完整路径，仍可按历史复制并使用条件期望公式，但不可只根据终端股价合并。"
+      ],
+      "pitfall": "完备性需要构造并验证策略；只写风险中性期望不能代替复制证明。一般路径支付不要合并成只依赖股价的节点。",
+      "tables": [],
+      "provenance": "新版指南说明：TUT 5 原解答页为空；以下为沿用 TA 题目与符号补写并核验的解答，并非 TA 手写答案转录。"
+    },
+    {
+      "id": "t5-call",
+      "tutorial": 5,
+      "ref": "3.4.14(5)",
+      "title": "欧洲看涨：严格阈值与两个二项尾概率",
+      "topic": "CRR 看涨期权公式",
+      "pages": "70–73",
+      "english": "In the CRR model, \\(T\\ge1,S_0>0,0<d<u,R=1+r>0\\), \\(B_t=R^t\\), \\(S_t=S_0u^{N_t}d^{t-N_t}\\), and \\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\). Every path has positive physical probability. Assume \\(d<R<u\\) and set \\(q=(R-d)/(u-d)\\). For the European call \\(X=(S_T-K)^+\\), \\(K>0\\), let a be the smallest terminal up-count k with \\(S_0u^kd^{T-k}>K\\). Define \\(\\Psi(a;T,p)=\\sum_{k=a}^T\\binom Tk p^k(1-p)^{T-k}\\). Show that \\(\\widehat q=qu/R\\in(0,1)\\) and derive \\(C_0=S_0\\Psi(a;T,\\widehat q)-KR^{-T}\\Psi(a;T,q)\\). Include the cases of no positive payoff and positive payoff at every terminal node.",
+      "question": "找出严格正支付的最小上涨次数，证明新的权重在 0 与 1 之间，把看涨定价和拆成股票项与执行价项，得到 CRR 公式。",
+      "answer": "\\(\\widehat q=qu/R\\)，\\(1-\\widehat q=(1-q)d/R\\)。\\(C_0=S_0\\Psi(a;T,\\widehat q)-KR^{-T}\\Psi(a;T,q)\\)。令 \\(b=\\ln[K/(S_0d^T)]/\\ln(u/d)\\)，则 \\(a=\\max\\{0,\\min\\{T+1,\\lfloor b\\rfloor+1\\}\\}\\)。",
+      "method": "先找严格正支付节点，展开二项期望，把股票增长因子吸收到新的概率权重里。",
+      "steps": [
+        "终端股价 \\(S_T(k)=S_0d^T(u/d)^k\\) 随 k 严格递增。正支付条件为 \\(S_T(k)>K\\)，取对数得到 \\(k>b=\\ln[K/(S_0d^T)]/\\ln(u/d)\\)。严格大于 b 的最小整数是 \\(\\lfloor b\\rfloor+1\\)，再截到 0 与 T+1 之间。",
+        "约定全部节点正支付时 a=0；没有正支付时 a=T+1，求和为空。若 b 恰为整数，k=b 的支付是零，不能把它当作第一个严格正支付节点。",
+        "用第(4)问定价：\\(C_0=R^{-T}\\sum_{k=a}^T\\binom Tk q^k(1-q)^{T-k}(S_0u^kd^{T-k}-K)\\)。展开括号，执行价部分直接为 \\(-KR^{-T}\\Psi(a;T,q)\\)。",
+        "股票部分为 \\(S_0\\sum_{k=a}^T\\binom Tk (qu)^k[(1-q)d]^{T-k}/R^T\\)。由 \\(qu+(1-q)d=R\\)，定义 \\(\\widehat q=qu/R\\)，于是 \\(1-\\widehat q=(1-q)d/R\\)。两者严格为正且和为 1，所以 \\(0<\\widehat q<1\\)。",
+        "因为 \\(k+(T-k)=T\\)，有 \\((qu)^k[(1-q)d]^{T-k}/R^T=(qu/R)^k[(1-q)d/R]^{T-k}=\\widehat q^k(1-\\widehat q)^{T-k}\\)。股票部分因此等于 \\(S_0\\Psi(a;T,\\widehat q)\\)。",
+        "合并得到 \\(C_0=S_0\\Psi(a;T,\\widehat q)-KR^{-T}\\Psi(a;T,q)\\)。同一阈值 a，股票项用新权重，执行价项用 q。股票项的贴现已吸收到新权重，不能再贴现一次。",
+        "边界核对：\\(\\Psi(0;T,p)=1\\)，\\(\\Psi(T+1;T,p)=0\\)。全无正支付时价格为 0；全有正支付时价格为 \\(S_0-K/R^T\\)，与支付 \\(S_T-K\\) 的复制成本一致。"
+      ],
+      "pitfall": "严格阈值使用 floor(b)+1；b 为整数时不能直接用 ceil(b)。两个尾概率参数不同，股票项不要重复贴现。",
+      "tables": [],
+      "provenance": "新版指南说明：TUT 5 原解答页为空；以下为沿用 TA 题目与符号补写并核验的解答，并非 TA 手写答案转录。"
+    },
+    {
+      "id": "t5-tree",
+      "tutorial": 5,
+      "ref": "3.4.14(6)",
+      "title": "三期看涨期权：画树、倒推与 CRR 复算",
+      "topic": "CRR 数值树与倒推",
+      "pages": "74–79",
+      "english": "In the CRR model, \\(T\\ge1,S_0>0,0<d<u,R=1+r>0\\), \\(B_t=R^t\\), \\(S_t=S_0u^{N_t}d^{t-N_t}\\), and \\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\). Every path has positive physical probability. Take \\(T=3,S_0=100,K=100,u=1.2,d=0.8,r=5\\%\\). (a) Check that the model is arbitrage-free and compute q. (b) Draw the stock price tree and compute the call price \\(C_0\\) by backward induction, using part (3). (c) Compute \\(C_0\\) again using the CRR formula in part (5), and check that the two answers agree.",
+      "question": "三期模型，初始股价与执行价均为 100，上涨因子 1.2、下跌因子 0.8、利率 5%。检验无套利，画股价树并倒推看涨价格，再用 CRR 公式复算。",
+      "answer": "\\(q=5/8\\)，\\(\\widehat q=5/7\\)，\\(a=2\\)。两种方法均得到 \\(C_0=195625/9261\\approx21.123529\\)。",
+      "method": "先检验严格无套利，向前画股价树，终端取正部，然后逐层倒推；最后用两个尾概率交叉核对。",
+      "steps": [
+        "〔a〕\\(R=1.05=21/20\\)，严格满足 \\(0.8<1.05<1.2\\)，故无套利。\\(q=(1.05-0.8)/(1.2-0.8)=0.25/0.4=5/8\\)，\\(1-q=3/8\\)。",
+        "〔b〕每条上边乘 1.2，下边乘 0.8。第一期为 120、80；第二期为 144、96、64；第三期为 172.8、115.2、76.8、51.2。中间路径 ud 与 du 股价相同，可合并。下方两张树分别标股价与期权价值。",
+        "终端支付 \\(C_3=(S_3-100)^+\\)，因此从高股价到低股价依次为 72.8、15.2、0、0。低于执行价的节点支付为零，不是负数。",
+        "从第3期倒推至第2期：\\(C_2(144)=[(5/8)72.8+(3/8)15.2]/1.05=51.2/1.05=1024/21\\approx48.761905\\)；\\(C_2(96)=[(5/8)15.2+(3/8)0]/1.05=9.5/1.05=190/21\\approx9.047619\\)；\\(C_2(64)=0\\)。",
+        "倒推至第1期：\\(C_1(120)=[(5/8)(1024/21)+(3/8)(190/21)]/(21/20)=14225/441\\approx32.256236\\)；\\(C_1(80)=[(5/8)(190/21)]/(21/20)=2375/441\\approx5.385488\\)。",
+        "根节点 \\(C_0=[(5/8)(14225/441)+(3/8)(2375/441)]/(21/20)=195625/9261\\approx21.123529\\)。每次向前倒推一层只除以 R 一次，中间使用分数保留精度。",
+        "〔c〕终端上涨至少两次才有正支付，所以 a=2。\\(\\widehat q=qu/R=(5/8)(6/5)/(21/20)=5/7\\)，\\(1-\\widehat q=2/7\\)。",
+        "\\(\\Psi(2;3,p)=3p^2(1-p)+p^3\\)。代入 q 得 \\(\\Psi(2;3,5/8)=(225+125)/512=175/256\\)；代入新权重得 \\(\\Psi(2;3,5/7)=(150+125)/343=275/343\\)。",
+        "CRR 公式给出 \\(C_0=100(275/343)-[100/(21/20)^3](175/256)=(742500-546875)/9261=195625/9261\\)。与倒推完全相同。",
+        "也可直接对终端支付求和：\\(C_0=[(5/8)^3(72.8)+3(5/8)^2(3/8)(15.2)]/1.05^3=24.453125/1.157625\\)。组合数 3 用于合并三条终端路径；逐节点倒推不额外乘组合数。"
+      ],
+      "pitfall": "股价树向前画，期权价值向后算。不要把股价当期权支付；不要在单节点倒推中乘组合数或重复贴现。",
+      "tables": [
+        {
+          "title": "终端支付与风险中性概率",
+          "headers": [
+            "上涨次数 k",
+            "S₃",
+            "C₃",
+            "Q(N₃=k)"
+          ],
+          "rows": [
+            [
+              "3",
+              "172.8",
+              "72.8",
+              "125/512"
+            ],
+            [
+              "2",
+              "115.2",
+              "15.2",
+              "225/512"
+            ],
+            [
+              "1",
+              "76.8",
+              "0",
+              "135/512"
+            ],
+            [
+              "0",
+              "51.2",
+              "0",
+              "27/512"
+            ]
+          ]
+        },
+        {
+          "title": "逐节点倒推：股价与期权价值分开看",
+          "headers": [
+            "t",
+            "Sₜ",
+            "Cₜ（精确）",
+            "Cₜ（约值）"
+          ],
+          "rows": [
+            [
+              "0",
+              "100",
+              "195625/9261",
+              "21.123529"
+            ],
+            [
+              "1",
+              "120",
+              "14225/441",
+              "32.256236"
+            ],
+            [
+              "1",
+              "80",
+              "2375/441",
+              "5.385488"
+            ],
+            [
+              "2",
+              "144",
+              "1024/21",
+              "48.761905"
+            ],
+            [
+              "2",
+              "96",
+              "190/21",
+              "9.047619"
+            ],
+            [
+              "2",
+              "64",
+              "0",
+              "0"
+            ],
+            [
+              "3",
+              "172.8",
+              "364/5",
+              "72.8"
+            ],
+            [
+              "3",
+              "115.2",
+              "76/5",
+              "15.2"
+            ],
+            [
+              "3",
+              "76.8",
+              "0",
+              "0"
+            ],
+            [
+              "3",
+              "51.2",
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "provenance": "新版指南说明：TUT 5 原解答页为空；以下为沿用 TA 题目与符号补写并核验的解答，并非 TA 手写答案转录。",
+      "trees": [
+        {
+          "title": "Stock price tree · Sₜ",
+          "levels": [
+            [
+              "100"
+            ],
+            [
+              "120",
+              "80"
+            ],
+            [
+              "144",
+              "96",
+              "64"
+            ],
+            [
+              "172.8",
+              "115.2",
+              "76.8",
+              "51.2"
+            ]
+          ]
+        },
+        {
+          "title": "Call value tree · Cₜ",
+          "levels": [
+            [
+              "21.123529"
+            ],
+            [
+              "32.256236",
+              "5.385488"
+            ],
+            [
+              "48.761905",
+              "9.047619",
+              "0"
+            ],
+            [
+              "72.8",
+              "15.2",
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ]
     }
   ],
   "notes": [
@@ -921,6 +1177,163 @@
       "pitfall": "TUT4 β是债券份数；不要与TUT1 β股票股数混用。",
       "examples": [
         "t4-rep"
+      ]
+    },
+    {
+      "id": "n25",
+      "tutorial": 5,
+      "title": "股票股数、债券份数与时点",
+      "recognize": "给下一期两个价值，要求当前持仓。",
+      "method": "列两个分支方程，相减求股票股数，代回上涨分支求债券份数，再计算当前成本。",
+      "steps": [
+        "固定当前历史，\\(B_t=R^t,B_{t+1}=R^{t+1}\\)。同一组持仓须满足 \\(\\Delta uS_t+\\beta R^{t+1}=V^u_{t+1}\\)，\\(\\Delta dS_t+\\beta R^{t+1}=V^d_{t+1}\\)。",
+        "相减消去债券：\\(\\Delta(u-d)S_t=V^u_{t+1}-V^d_{t+1}\\)，所以 \\(\\Delta=(V^u_{t+1}-V^d_{t+1})/[(u-d)S_t]\\)。",
+        "代回上涨分支：\\(\\beta R^{t+1}=V^u-u(V^u-V^d)/(u-d)=[(u-d)V^u-uV^u+uV^d]/(u-d)=(uV^d-dV^u)/(u-d)\\)。因此 \\(\\beta=(uV^d-dV^u)/[(u-d)R^{t+1}]\\)。此处省略的下标均为 t+1。"
+      ],
+      "pitfall": "\\(\\beta\\) 是债券份数，不能省去分母中的 \\(B_{t+1}\\)。下一期金额用于匹配支付，当前金额用于计算成本。",
+      "examples": [
+        "t5-rep"
+      ]
+    },
+    {
+      "id": "n26",
+      "tutorial": 5,
+      "title": "从两个分支到整棵树",
+      "recognize": "题目要求证明任意终端支付可复制。",
+      "method": "终端赋值，再按完整历史向根递推。",
+      "steps": [
+        "终端规定 \\(V_T(\\omega)=X(\\omega)\\)。在时刻 t 的任一历史 h，假定两个子历史 hu、hd 的价值 \\(V_{t+1}(hu),V_{t+1}(hd)\\) 已知。",
+        "使用第(3)问：\\(\\Delta_{t+1}(h)=[V_{t+1}(hu)-V_{t+1}(hd)]/[(u-d)S_t(h)]\\)，\\(\\beta_{t+1}(h)=[uV_{t+1}(hd)-dV_{t+1}(hu)]/[(u-d)R^{t+1}]\\)。定义 \\(V_t(h)=\\Delta_{t+1}(h)S_t(h)+\\beta_{t+1}(h)B_t\\)。"
+      ],
+      "pitfall": "完备性需要构造并验证策略；只写风险中性期望不能代替复制证明。一般路径支付不要合并成只依赖股价的节点。",
+      "examples": [
+        "t5-complete"
+      ]
+    },
+    {
+      "id": "n27",
+      "tutorial": 5,
+      "title": "可预测与自融资分别证明",
+      "recognize": "写完递推公式后，需要验证这真是可交易的策略。",
+      "method": "可预测检查依赖的信息；自融资检查调仓前后价值。",
+      "steps": [
+        "从 \\(t=T-1\\) 依次倒推至 0，全部持仓均被定义。用于 \\((t,t+1]\\) 的持仓只依赖当前历史 h，因此是 \\(\\mathcal F_t\\)-可测的，即可预测。不能用下一期尚未观察到的结果选持仓。",
+        "到达任一下一期节点，旧持仓恰好价值 \\(\\Delta_{t+1}S_{t+1}+\\beta_{t+1}B_{t+1}=V_{t+1}\\)。若尚未到期，新持仓的成本也为 \\(\\Delta_{t+2}S_{t+1}+\\beta_{t+2}B_{t+1}=V_{t+1}\\)。新旧成本相等，调仓无须额外注资或取款，故自融资。终端价值为 X，任意 X 均可复制，故完备。"
+      ],
+      "pitfall": "可预测不是预知未来；自融资不是持仓永远不变。",
+      "examples": [
+        "t5-complete"
+      ]
+    },
+    {
+      "id": "n28",
+      "tutorial": 5,
+      "title": "塔式法则与唯一无套利价格",
+      "recognize": "从逐节点公式推一般条件期望，并说明价格为何唯一。",
+      "method": "反复条件期望，再用复制与合约价差构造套利。",
+      "steps": [
+        "每个节点满足 \\(V_t=[qV_{t+1}(hu)+(1-q)V_{t+1}(hd)]/R=R^{-1}E_Q[V_{t+1}\\mid\\mathcal F_t]\\)。反复代入并用塔式法则，得到 \\(V_t=R^{-(T-t)}E_Q[X\\mid\\mathcal F_t]\\)，在初始信息平凡时 \\(V_0=R^{-T}E_Q[X]\\)。",
+        "复制成本是唯一无套利价格：若同一支付的合约与复制组合价格不同，卖出较贵者、买入较便宜者，把今天的正差额存入债券；到期两者支付抵消，留下正收益。"
+      ],
+      "pitfall": "先构造复制策略，再给唯一价格，证明才完整。",
+      "examples": [
+        "t5-complete"
+      ]
+    },
+    {
+      "id": "n29",
+      "tutorial": 5,
+      "title": "路径支付与终端股价型支付",
+      "recognize": "收益含路径最大值或中途股价，而非只含最终股价。",
+      "method": "保留历史；只有相同支付的节点才可合并。",
+      "steps": [
+        "仅当 \\(X=f(S_T)\\) 时，同一上涨次数的路径支付相同，可用 \\(Q(N_T=k)=\\binom Tkq^k(1-q)^{T-k}\\) 合并为答案中的二项和。若 X 依赖完整路径，仍可按历史复制并使用条件期望公式，但不可只根据终端股价合并。"
+      ],
+      "pitfall": "股价相同不保证路径支付相同。",
+      "examples": [
+        "t5-complete"
+      ]
+    },
+    {
+      "id": "n30",
+      "tutorial": 5,
+      "title": "严格正支付阈值与边界",
+      "recognize": "要求找第一个有正支付的终端节点。",
+      "method": "从股价严格大于执行价出发，解出整数阈值。",
+      "steps": [
+        "终端股价 \\(S_T(k)=S_0d^T(u/d)^k\\) 随 k 严格递增。正支付条件为 \\(S_T(k)>K\\)，取对数得到 \\(k>b=\\ln[K/(S_0d^T)]/\\ln(u/d)\\)。严格大于 b 的最小整数是 \\(\\lfloor b\\rfloor+1\\)，再截到 0 与 T+1 之间。",
+        "约定全部节点正支付时 a=0；没有正支付时 a=T+1，求和为空。若 b 恰为整数，k=b 的支付是零，不能把它当作第一个严格正支付节点。"
+      ],
+      "pitfall": "严格阈值使用 floor(b)+1；b 为整数时不能直接用 ceil(b)。两个尾概率参数不同，股票项不要重复贴现。",
+      "examples": [
+        "t5-call"
+      ]
+    },
+    {
+      "id": "n31",
+      "tutorial": 5,
+      "title": "为什么股票项改用新权重",
+      "recognize": "推导 CRR 看涨公式，出现两个不同参数。",
+      "method": "把股票增长因子配进路径概率，再用风险中性关系归一化。",
+      "steps": [
+        "用第(4)问定价：\\(C_0=R^{-T}\\sum_{k=a}^T\\binom Tk q^k(1-q)^{T-k}(S_0u^kd^{T-k}-K)\\)。展开括号，执行价部分直接为 \\(-KR^{-T}\\Psi(a;T,q)\\)。",
+        "股票部分为 \\(S_0\\sum_{k=a}^T\\binom Tk (qu)^k[(1-q)d]^{T-k}/R^T\\)。由 \\(qu+(1-q)d=R\\)，定义 \\(\\widehat q=qu/R\\)，于是 \\(1-\\widehat q=(1-q)d/R\\)。两者严格为正且和为 1，所以 \\(0<\\widehat q<1\\)。",
+        "因为 \\(k+(T-k)=T\\)，有 \\((qu)^k[(1-q)d]^{T-k}/R^T=(qu/R)^k[(1-q)d/R]^{T-k}=\\widehat q^k(1-\\widehat q)^{T-k}\\)。股票部分因此等于 \\(S_0\\Psi(a;T,\\widehat q)\\)。",
+        "合并得到 \\(C_0=S_0\\Psi(a;T,\\widehat q)-KR^{-T}\\Psi(a;T,q)\\)。同一阈值 a，股票项用新权重，执行价项用 q。股票项的贴现已吸收到新权重，不能再贴现一次。"
+      ],
+      "pitfall": "新权重不是实际上涨概率，也不能把执行价项的 q 一并换掉。",
+      "examples": [
+        "t5-call"
+      ]
+    },
+    {
+      "id": "n32",
+      "tutorial": 5,
+      "title": "二项尾概率与极端执行价",
+      "recognize": "所有节点支付为零，或全部为正。",
+      "method": "使用空和及完整二项概率和。",
+      "steps": [
+        "边界核对：\\(\\Psi(0;T,p)=1\\)，\\(\\Psi(T+1;T,p)=0\\)。全无正支付时价格为 0；全有正支付时价格为 \\(S_0-K/R^T\\)，与支付 \\(S_T-K\\) 的复制成本一致。"
+      ],
+      "pitfall": "至少 a 次的尾概率不等于恰好 a 次的概率。",
+      "examples": [
+        "t5-call"
+      ]
+    },
+    {
+      "id": "n33",
+      "tutorial": 5,
+      "title": "数值树：先股价、再支付、后倒推",
+      "recognize": "给 u、d、r、S₀、K 和期数，要求画树定价。",
+      "method": "先检验严格无套利，向前画股价树，终端取正部，然后逐层倒推；最后用两个尾概率交叉核对。",
+      "steps": [
+        "〔a〕\\(R=1.05=21/20\\)，严格满足 \\(0.8<1.05<1.2\\)，故无套利。\\(q=(1.05-0.8)/(1.2-0.8)=0.25/0.4=5/8\\)，\\(1-q=3/8\\)。",
+        "〔b〕每条上边乘 1.2，下边乘 0.8。第一期为 120、80；第二期为 144、96、64；第三期为 172.8、115.2、76.8、51.2。中间路径 ud 与 du 股价相同，可合并。下方两张树分别标股价与期权价值。",
+        "终端支付 \\(C_3=(S_3-100)^+\\)，因此从高股价到低股价依次为 72.8、15.2、0、0。低于执行价的节点支付为零，不是负数。",
+        "从第3期倒推至第2期：\\(C_2(144)=[(5/8)72.8+(3/8)15.2]/1.05=51.2/1.05=1024/21\\approx48.761905\\)；\\(C_2(96)=[(5/8)15.2+(3/8)0]/1.05=9.5/1.05=190/21\\approx9.047619\\)；\\(C_2(64)=0\\)。",
+        "倒推至第1期：\\(C_1(120)=[(5/8)(1024/21)+(3/8)(190/21)]/(21/20)=14225/441\\approx32.256236\\)；\\(C_1(80)=[(5/8)(190/21)]/(21/20)=2375/441\\approx5.385488\\)。",
+        "根节点 \\(C_0=[(5/8)(14225/441)+(3/8)(2375/441)]/(21/20)=195625/9261\\approx21.123529\\)。每次向前倒推一层只除以 R 一次，中间使用分数保留精度。"
+      ],
+      "pitfall": "股价树向前画，期权价值向后算。不要把股价当期权支付；不要在单节点倒推中乘组合数或重复贴现。",
+      "examples": [
+        "t5-tree"
+      ]
+    },
+    {
+      "id": "n34",
+      "tutorial": 5,
+      "title": "用 CRR 和终端期望交叉复算",
+      "recognize": "倒推完成，需要检查价格。",
+      "method": "分别求 q、股票新权重和严格阈值，计算两个尾概率。",
+      "steps": [
+        "〔c〕终端上涨至少两次才有正支付，所以 a=2。\\(\\widehat q=qu/R=(5/8)(6/5)/(21/20)=5/7\\)，\\(1-\\widehat q=2/7\\)。",
+        "\\(\\Psi(2;3,p)=3p^2(1-p)+p^3\\)。代入 q 得 \\(\\Psi(2;3,5/8)=(225+125)/512=175/256\\)；代入新权重得 \\(\\Psi(2;3,5/7)=(150+125)/343=275/343\\)。",
+        "CRR 公式给出 \\(C_0=100(275/343)-[100/(21/20)^3](175/256)=(742500-546875)/9261=195625/9261\\)。与倒推完全相同。",
+        "也可直接对终端支付求和：\\(C_0=[(5/8)^3(72.8)+3(5/8)^2(3/8)(15.2)]/1.05^3=24.453125/1.157625\\)。组合数 3 用于合并三条终端路径；逐节点倒推不额外乘组合数。"
+      ],
+      "pitfall": "终端求和除以 Rᵀ；逐层倒推每层除以 R，两种贴现方法不能叠加。",
+      "examples": [
+        "t5-tree"
       ]
     }
   ],
@@ -1428,10 +1841,220 @@
         }
       ],
       "reason": "期数是离散整数，严格不等式决定最小可行值。"
+    },
+    {
+      "id": "r5-1",
+      "exerciseId": "t5-rep",
+      "title": "节点复制：先消去什么？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "同一持仓列两个分支方程，相减求 Δ，代回求 β，再算当前成本。",
+          "correct": true
+        },
+        {
+          "text": "上涨和下跌后分别选择不同持仓。",
+          "correct": false
+        },
+        {
+          "text": "直接把两个终值做算术平均，不需要贴现。",
+          "correct": false
+        }
+      ],
+      "reason": "当前持仓必须同时覆盖两个分支，定价使用风险中性权重并贴现。"
+    },
+    {
+      "id": "r5-2",
+      "exerciseId": "t5-rep",
+      "title": "债券份数：用哪个时刻的价格？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "下一期债券金额除以 Bₜ₊₁ 得 β，再用 βBₜ 计算当前成本。",
+          "correct": true
+        },
+        {
+          "text": "下一期金额除以 Bₜ 就是 β。",
+          "correct": false
+        },
+        {
+          "text": "β 本身就是当前现金金额。",
+          "correct": false
+        }
+      ],
+      "reason": "先分清单位与时点，债券份数乘对应时刻单价才是金额。"
+    },
+    {
+      "id": "r5-3",
+      "exerciseId": "t5-complete",
+      "title": "完备性：如何开始构造？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "令 V_T=X，从每个历史节点的两个子价值倒推持仓，验证可预测与自融资。",
+          "correct": true
+        },
+        {
+          "text": "只写 V₀=E_Q[X] 就已经证明完备。",
+          "correct": false
+        },
+        {
+          "text": "先把所有同股价节点合并，无须检查支付是否依赖历史。",
+          "correct": false
+        }
+      ],
+      "reason": "完整证明需要构造复制策略；路径支付必须保留历史。"
+    },
+    {
+      "id": "r5-4",
+      "exerciseId": "t5-complete",
+      "title": "动态调仓：怎样验证自融资？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "证明到达节点时旧持仓价值等于新持仓成本，均为 Vₜ。",
+          "correct": true
+        },
+        {
+          "text": "只要每次股票股数不变，就算自融资。",
+          "correct": false
+        },
+        {
+          "text": "每次调仓另存一笔钱，只要最后能复制就行。",
+          "correct": false
+        }
+      ],
+      "reason": "自融资允许调仓，但不允许从组合之外注入或抽走资金。"
+    },
+    {
+      "id": "r5-5",
+      "exerciseId": "t5-complete",
+      "title": "一般支付：何时能用二项和？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先用历史树和条件期望；确认 X=f(S_T) 后才按上涨次数合并。",
+          "correct": true
+        },
+        {
+          "text": "任何路径支付都只取决于上涨总次数。",
+          "correct": false
+        },
+        {
+          "text": "路径相关支付在二叉市场一定不能复制。",
+          "correct": false
+        }
+      ],
+      "reason": "完备性覆盖一般支付，但终端二项分组要求同组路径支付相同。"
+    },
+    {
+      "id": "r5-6",
+      "exerciseId": "t5-call",
+      "title": "严格阈值：整数临界点怎么办？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "从 S_T>K 得 k>b，取 floor(b)+1，再处理 0 与 T+1 的边界。",
+          "correct": true
+        },
+        {
+          "text": "直接取 ceil(b)，即使 b 为整数也不调整。",
+          "correct": false
+        },
+        {
+          "text": "始终取 a=1，因为至少要上涨一次。",
+          "correct": false
+        }
+      ],
+      "reason": "股价恰等于执行价时支付为零，所以必须使用严格不等式。"
+    },
+    {
+      "id": "r5-7",
+      "exerciseId": "t5-call",
+      "title": "CRR 公式：两个尾概率怎么来？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "拆开股票与执行价项；股票项吸收增长因子得到新权重，执行价项保留 q 和贴现。",
+          "correct": true
+        },
+        {
+          "text": "两项都改用新权重，再把整个式子贴现。",
+          "correct": false
+        },
+        {
+          "text": "只算上涨 a 次的单个节点，忽略更高节点。",
+          "correct": false
+        }
+      ],
+      "reason": "正支付对应整个尾部，股票增长因子改变求和权重。"
+    },
+    {
+      "id": "r5-8",
+      "exerciseId": "t5-call",
+      "title": "新权重：怎样证明小于 1？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "由 qu+(1−q)d=R 得新权重与其补数均正且和为 1。",
+          "correct": true
+        },
+        {
+          "text": "只证明新权重大于零就足够。",
+          "correct": false
+        },
+        {
+          "text": "因为新权重等于物理概率，所以自动小于 1。",
+          "correct": false
+        }
+      ],
+      "reason": "要同时检查新权重为正、补数为正；它并不是物理概率。"
+    },
+    {
+      "id": "r5-9",
+      "exerciseId": "t5-tree",
+      "title": "三期例子：正确计算顺序",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "检验 d<R<u，画股价树，终端取正部，再逐层做风险中性贴现。",
+          "correct": true
+        },
+        {
+          "text": "把终端股价直接按风险中性概率平均作为期权价格。",
+          "correct": false
+        },
+        {
+          "text": "每个倒推节点都再乘一个组合数。",
+          "correct": false
+        }
+      ],
+      "reason": "先计算期权支付；组合数用于合并终端路径，不用于单节点倒推。"
+    },
+    {
+      "id": "r5-10",
+      "exerciseId": "t5-tree",
+      "title": "两个算法：怎样核对？",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "倒推每层除以 R；另用 a=2、q=5/8、新权重 5/7 的 CRR 公式复算。",
+          "correct": true
+        },
+        {
+          "text": "倒推完成后还要把 C₀ 再除以 R³。",
+          "correct": false
+        },
+        {
+          "text": "两个尾概率都用 5/8 就能得到 CRR 两项式。",
+          "correct": false
+        }
+      ],
+      "reason": "每层倒推已经完成贴现；CRR 股票项与执行价项使用不同权重。"
     }
   ],
-  "sourceTitle": "MAT386 Tutorials 1–4 · 按题型整理的完整解答",
-  "sourceNote": "依据你提供的40页完整解答整理，覆盖18个题目条目及全部小问；页码均指本册。TUT2原题编号由2.3跳至2.5，没有Exercise 2.4。",
-  "reviewNote": "本复习以该PDF的Tutorial 1–4为范围，不代表已核实的正式midterm考试范围。题目与ABC选项随机排列；选择任一答案后均显示正确性及完整推导。",
-  "symbolNote": "TUT1：α是银行账户份数，β是股票股数；TUT4：Δ是股票股数，β是债券份数。TUT3须区分连续复利y/r/ρ、年复利r与每年m次复利的名义s。"
+  "sourceTitle": "MAT386 Tutorials 1–5 Complete Exam Guide",
+  "sourceNote": "依据你提供的83页新版指南整理，覆盖22个题目条目及全部小问；页码均指新版。TUT2原题编号没有2.4。TUT5第(3)问与TUT4重复，按原章节保留。TUT5原解答页为空，指南中的解答为按TA符号补写核验。",
+  "reviewNote": "本复习覆盖所提供指南的Tutorial 1–5。题目与ABC选项在当前TUT和题型范围内随机排列；每次选择后均显示对错与完整推导。",
+  "symbolNote": "TUT1：α是银行账户份数，β是股票股数；TUT4–5：Δ是股票股数，β是债券份数。TUT3须区分连续复利y/r/ρ、年复利r与每年m次复利的名义s。"
 }
