@@ -1,0 +1,1437 @@
+{
+  "tutorials": [
+    {
+      "id": 1,
+      "title": "套利、远期与期权平价"
+    },
+    {
+      "id": 2,
+      "title": "利率、复利与贷款摊销"
+    },
+    {
+      "id": 3,
+      "title": "久期、凸性与债券组合"
+    },
+    {
+      "id": 4,
+      "title": "CRR 无套利、测度与复制"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "t1-1",
+      "tutorial": 1,
+      "ref": "1",
+      "title": "外汇套利：借美元、存英镑",
+      "topic": "套利构造",
+      "pages": "3–4",
+      "question": "今天即期报价1.60 USD/GBP；可借美元年利率4%，存英镑年利率6%；Dealer A 今天同意一年后按1.58 USD/GBP 买入英镑，合约今天不收费。无交易成本且合约履行。用10,000美元借款构造套利，算利润，并解释为何今天必须签远期。",
+      "english": "Dealer A agrees today to buy GBP in one year at 1.58 USD/GBP. Dealer B sells GBP today at 1.60 USD/GBP. USD may be borrowed at 4% for a year, and GBP deposited at 6%. The agreement with A costs nothing today; there are no transaction costs and contracts are honoured. Starting with no money, use a USD 10,000 loan to construct an arbitrage, compute the final USD profit, and explain why A’s agreement must be made today.",
+      "answer": "\\(V_0=0,V_1=67.50\\) USD，确定盈利。",
+      "method": "统一币种，按借款→即期兑换→存款→远期锁定→偿债列现金流。",
+      "steps": [
+        "今天借10,000 USD，一年后需还 \\(10000(1.04)=10400\\) USD。初始借款收入全部用于建仓，不投入自有本金。",
+        "按每英镑1.60美元买入 \\(10000/1.60=6250\\) GBP。存英镑一年得 \\(6250(1.06)=6625\\) GBP。",
+        "今天签好远期，把一年后的6625 GBP按1.58出售，锁定美元收入 \\(6625(1.58)=10467.50\\)。远期今天不收费。",
+        "到期偿还10400，净利润 \\(10467.50-10400=67.50\\)。所有状态均相同，故初始零成本、终值非负且严格盈利。",
+        "如果等一年后才卖英镑，实际即期汇率未知，就不能锁定美元收入，可能不足偿债。必须今天把未来汇率固定。"
+      ],
+      "pitfall": "报价是 USD/GBP，美元换英镑要除；未来未知的即期汇率不能当已知。",
+      "tables": []
+    },
+    {
+      "id": "t1-2a",
+      "tutorial": 1,
+      "ref": "2(a)",
+      "title": "远期价值与公平交割价",
+      "topic": "远期与期权平价",
+      "pages": "10–11",
+      "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 对支付 \\(F_K=S_1-K\\) 用 Q 下贴现期望求 \\(\\Pi_0(F_K)\\)，再求初始价值为0的公平交割价 F。",
+      "english": "In the frictionless one-period model, \\(B_1=B_0(1+r_B), S_1(\\omega_u)=S_0u, S_1(\\omega_d)=S_0d\\), with \\(B_0,S_0>0\\) and \\(0<d<1+r_B<u\\). For the forward payoff \\(F_K=S_1-K\\), use discounted expectation under Q to find its time-0 price. Then find the fair delivery price F.",
+      "answer": "\\(\\Pi_0(F_K)=S_0-\\frac K{1+r_B}\\)，\\(F=S_0(1+r_B)\\)。",
+      "method": "写支付→求 Q 期望→贴现；公平交割价另令合约初始价值为0。",
+      "steps": [
+        "风险中性要求 \\(qu+(1-q)d=1+r_B\\)，所以 \\(q=(1+r_B-d)/(u-d)\\in(0,1)\\)。",
+        "\\(E_Q[S_1]=S_0[qu+(1-q)d]=S_0(1+r_B)\\)。这是原始价格的期望增长关系；贴现股票才是鞅。",
+        "\\[\\Pi_0(F_K)=\\frac{E_Q[S_1-K]}{1+r_B}=\\frac{S_0(1+r_B)-K}{1+r_B}=S_0-\\frac K{1+r_B}.\\]",
+        "公平交割价 F 使 \\(0=\\Pi_0(F_F)=S_0-F/(1+r_B)\\)，解得 \\(F=S_0(1+r_B)\\)。固定K的合约价值与使价值为零的交割价是不同量。"
+      ],
+      "pitfall": "不要混淆 F（交割价）与 \\(\\Pi_0(F_K)\\)（合约价值）。",
+      "tables": []
+    },
+    {
+      "id": "t1-2b",
+      "tutorial": 1,
+      "ref": "2(b)",
+      "title": "数值远期：两种方法核验",
+      "topic": "远期与期权平价",
+      "pages": "11–12",
+      "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 给 \\(B_0=S_0=100,B_1=110,u=1.2,d=0.8\\)，求 F 与 \\(\\Pi_0(F_{105})\\)，并用两状态支付核验。",
+      "english": "Use the same frictionless one-period model with \\(B_0=S_0=100,B_1=110,u=1.2,d=0.8\\). Compute the fair delivery price F and the time-0 value of the forward with delivery price 105. Verify the value using its two state payoffs.",
+      "answer": "\\(F=110,\\ \\Pi_0(F_{105})=50/11\\approx4.54545\\)，q=0.75。",
+      "method": "先由 B₁/B₀ 得增长因子，再用公式与状态期望双重核验。",
+      "steps": [
+        "无风险增长因子 \\(1+r_B=B_1/B_0=110/100=1.10\\)，不是把110当利率。",
+        "公平交割价 \\(F=S_0(1+r_B)=100(1.10)=110\\)。",
+        "\\(\\Pi_0(F_{105})=100-105/1.10=100-1050/11=50/11\\)。",
+        "两状态股价120、80，所以支付15、−25。\\(q=(1.10-0.8)/(1.2-0.8)=0.75\\)。贴现期望 \\([0.75(15)+0.25(-25)]/1.10=5/1.10=50/11\\)，一致。"
+      ],
+      "pitfall": "支付可能为负；不能把负的远期支付截成0。",
+      "tables": []
+    },
+    {
+      "id": "t1-2c",
+      "tutorial": 1,
+      "ref": "2(c)",
+      "title": "远期复制：份数不等于金额",
+      "topic": "远期与期权平价",
+      "pages": "12–13",
+      "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 求复制 \\(F_K=S_1-K\\) 的组合 \\((\\alpha,\\beta)\\)。本题 α 是银行账户份数，β 是股票股数。",
+      "english": "In the frictionless one-period model \\(B_1=B_0(1+r_B),S_1\\in\\{S_0u,S_0d\\}\\), with \\(B_0,S_0>0,0<d<1+r_B<u\\), find a replicating portfolio for \\(F_K=S_1-K\\). Here α counts bank-account units and β counts shares.",
+      "answer": "\\(\\beta=1,\\ \\alpha=-K/B_1=-K/[B_0(1+r_B)]\\)。",
+      "method": "列上涨、下跌两个复制方程，相减消掉银行头寸，再代回。",
+      "steps": [
+        "同一组持仓须同时满足 \\(\\alpha B_1+\\beta S_0u=S_0u-K\\)，\\(\\alpha B_1+\\beta S_0d=S_0d-K\\)。",
+        "相减得 \\(\\beta S_0(u-d)=S_0(u-d)\\)。因分母严格为正，β=1。",
+        "代回得到 \\(\\alpha B_1=-K\\)，所以 α=−K/B₁。负银行份数代表借款，今天借入金额为 \\(-\\alpha B_0=K/(1+r_B)\\)。",
+        "终值 \\(V_1=-K+S_1=F_K\\)；成本 \\(V_0=\\alpha B_0+S_0=S_0-K/(1+r_B)\\)，与风险中性定价相同。"
+      ],
+      "pitfall": "TUT1：α银行、β股票。B₀未必为1，不要把份数当借入现金。",
+      "tables": []
+    },
+    {
+      "id": "t1-3a",
+      "tutorial": 1,
+      "ref": "3(a)",
+      "title": "看涨看跌平价：先比支付",
+      "topic": "远期与期权平价",
+      "pages": "13–14",
+      "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 \\(C_K=(S_1-K)^+,P_K=(K-S_1)^+\\)，同一欧式到期日和执行价。证明支付恒等式与 put-call parity。",
+      "english": "In the same frictionless one-period model with \\(0<d<1+r_B<u\\), let \\(x^+=\\max(x,0)\\), \\(C_K=(S_1-K)^+\\), and \\(P_K=(K-S_1)^+\\). Prove \\(C_K-P_K=S_1-K\\) in every state, and hence \\(\\Pi_0(C_K)-\\Pi_0(P_K)=S_0-K/(1+r_B)\\).",
+      "answer": "\\(C_K-P_K=S_1-K\\)；\\(\\Pi_0(C_K)+K/(1+r_B)=\\Pi_0(P_K)+S_0\\)。",
+      "method": "分两种价内/价外状态证明支付相同，再用无套利的一价定律。",
+      "steps": [
+        "若 S₁≥K，call=S₁−K、put=0，差为S₁−K。若 S₁<K，call=0、put=K−S₁，差仍是S₁−K。等号处二者均0。",
+        "所以 long call+到期K的银行存款，与 long put+一股股票的终值完全相同。无套利下它们今天成本必须相同。",
+        "银行存款的初始成本为\\(K/(1+r_B)\\)，故 \\(\\Pi_0(C_K)+K/(1+r_B)=\\Pi_0(P_K)+S_0\\)。",
+        "也可直接对支付差取 Q 期望并贴现，得到 \\(\\Pi_0(C_K)-\\Pi_0(P_K)=E_Q[S_1-K]/(1+r_B)=S_0-K/(1+r_B)\\)。"
+      ],
+      "pitfall": "这里是同执行价、同到期日的欧式期权；K的支付时点在未来。",
+      "tables": []
+    },
+    {
+      "id": "t1-3b",
+      "tutorial": 1,
+      "ref": "3(b)",
+      "title": "平价违背：卖贵、买便宜、存差额",
+      "topic": "套利构造",
+      "pages": "5–6",
+      "question": "无摩擦、无股息的一期模型：\\(B_1=B_0(1+r_B),\\ S_1(\\omega_u)=S_0u,\\ S_1(\\omega_d)=S_0d\\)，\\(B_0,S_0>0,\\ 0<d<1+r_B<u\\)。 若 \\(\\delta=\\Pi_0(C_K)+K/(1+r_B)-\\Pi_0(P_K)-S_0>0\\)，构造零成本套利并计算终值。",
+      "english": "For European call/put payoffs with common strike K and maturity 1, assume \\(\\delta=\\Pi_0(C_K)+K/(1+r_B)-\\Pi_0(P_K)-S_0>0\\). Short one call, borrow the present value of K, buy one put and one share, and invest the remaining δ in the bank. Show this is an arbitrage.",
+      "answer": "\\(V_0=0,V_1=\\delta(1+r_B)>0\\)。",
+      "method": "卖出较贵的同终值组合、买入较便宜组合，将全部初始价差存银行。",
+      "steps": [
+        "卖call收入\\(\\Pi_0(C_K)\\)，借入\\(K/(1+r_B)\\)；买put花\\(\\Pi_0(P_K)\\)，买股花S₀，剩δ。把δ全部存入银行。",
+        "今天净收入为 \\(\\Pi_0(C_K)+K/(1+r_B)-\\Pi_0(P_K)-S_0-\\delta=0\\)。若不处理剩余δ，就没有完整展示零初始成本的组合。",
+        "到期价值 \\(V_1=-C_K-K+P_K+S_1+\\delta(1+r_B)\\)。用\\(C_K-P_K=S_1-K\\)，前四项完全抵消。",
+        "剩 \\(\\delta(1+r_B)>0\\)，每个状态都确定盈利。若价格不等式反向，就反转贵便宜两组头寸并把正价差存银行。"
+      ],
+      "pitfall": "借款到期为−K；差额δ的到期值是\\(\\delta(1+r_B)\\)。",
+      "tables": []
+    },
+    {
+      "id": "t2-21",
+      "tutorial": 2,
+      "ref": "2.1",
+      "title": "同币种无风险收益率必须一致",
+      "topic": "套利构造",
+      "pages": "4–5",
+      "question": "B与B′为同一货币、同一区间[s,t]的无风险资产，价格为正，可自由买卖空。区间收益率分别\\(r_B\\)、\\(r_{B\\prime}\\)。证明无套利时二者相同。",
+      "english": "Let B and B′ be positive-price risk-free assets in the same currency, with returns \\(r_B\\) and \\(r_{B\\prime}\\) over the same interval [s,t]. Trading and shorting are allowed. Show that an arbitrage-free market requires \\(r_B=r_{B\\prime}\\).",
+      "answer": "\\(r_B=r_{B\\prime}\\)。",
+      "method": "反证法：低利率融资，将相同金额投入高利率无风险资产。",
+      "steps": [
+        "假设 \\(r_B>r_{B\\prime}\\)。在 s 买 \\(1/B_s\\) 份 B，卖空 \\(1/B_s^{\\prime}\\) 份 B′，两边的初始金额均为1。",
+        "成本 \\(V_s=(1/B_s)B_s-(1/B^{\\prime}_s)B^{\\prime}_s=0\\)。注意两个单位价格不同，不能简单买卖相同份数。",
+        "到t，\\(V_t=B_t/B_s-B^{\\prime}_t/B^{\\prime}_s=(1+r_B)-(1+r_{B\\prime})=r_B-r_{B\\prime}>0\\)，构成确定套利。",
+        "若 \\(r_B<r_{B\\prime}\\)，交换方向仍套利，所以只能相等。若 s>0，在 s 以前保持零头寸，再于 s 建立该零成本组合。"
+      ],
+      "pitfall": "这里假定融资与做空条件允许；不同货币或不同期限不能直接套结论。",
+      "tables": []
+    },
+    {
+      "id": "t2-22",
+      "tutorial": 2,
+      "ref": "2.2",
+      "title": "单利与复利：严格比较及极限",
+      "topic": "复利与贷款",
+      "pages": "15–16",
+      "question": "\\(B_{n,s}=B_0(1+nr),B_{n,c}=B_0(1+r)^n\\)，B₀,r>0，n为正整数。证明n>1时前者严格较小，并证明比值趋0。",
+      "english": "For \\(B_0,r>0\\), define simple-interest and compound-interest values \\(B_{n,s}=B_0(1+nr)\\), \\(B_{n,c}=B_0(1+r)^n\\). Show \\(B_{n,s}<B_{n,c}\\) for each integer n>1 and \\(\\lim_{n\\to\\infty}B_{n,s}/B_{n,c}=0\\).",
+      "answer": "n≥2时严格小于；\\(B_{n,s}/B_{n,c}\\to0\\)。",
+      "method": "二项式展开保留正的二次项，比较并构造比值上界。",
+      "steps": [
+        "\\((1+r)^n=1+nr+\\sum_{j=2}^n\\binom njr^j\\)。n≥2且r>0时，二次项 \\(\\binom n2r^2>0\\)，其余非负，故复利因子严格大于1+nr。",
+        "约掉B₀，\\(0<(1+nr)/(1+r)^n\\)。分母至少为 \\(n(n-1)r^2/2\\)，所以比值≤\\(2(1+nr)/[n(n-1)r^2]\\)。",
+        "分子分母除n²，上界为 \\(2(1/n^2+r/n)/[(1-1/n)r^2]\\to0\\)。夹逼得所求极限0。",
+        "n=1时两者相同；r=0时也相同，不能删掉使不等式严格的条件。"
+      ],
+      "pitfall": "n=1或r=0不具有题中的严格不等式。",
+      "tables": []
+    },
+    {
+      "id": "t2-23",
+      "tutorial": 2,
+      "ref": "2.3",
+      "title": "复利频率：单调性与连续复利极限",
+      "topic": "复利与贷款",
+      "pages": "16–17",
+      "question": "r>0固定，证明 \\(a_m=(1+r/m)^m\\) 随正整数m严格增加，并趋于eʳ。",
+      "english": "For fixed r>0, prove that \\(a_m=(1+r/m)^m\\) is strictly increasing in the positive integer m and converges to eʳ.",
+      "answer": "\\(a_{m+1}>a_m\\)，\\(\\lim a_m=e^r\\)。",
+      "method": "先取log并连续化指标；证明导数为正，再夹逼log极限。",
+      "steps": [
+        "设 \\(f(x)=x\\log(1+r/x)\\)，x>0，\\(\\log a_m=f(m)\\)。求导得 \\(f^{\\prime}(x)=\\log(1+r/x)-r/(x+r)\\)。",
+        "令z=r/x>0，h(z)=log(1+z)−z/(1+z)。h(0)=0，\\(h'(z)=z/(1+z)^2>0\\)，所以f′(x)>0，\\(\\log a_m\\)及a_m严格递增。",
+        "同理 \\(g(z)=z-\\log(1+z)\\) 满足g(0)=0、g′(z)=z/(1+z)>0。因此 \\(z/(1+z)<\\log(1+z)<z\\)。",
+        "代z=r/m并乘m：\\(r/(1+r/m)<m\\log(1+r/m)<r\\)。两端趋r，\\(\\log a_m\\to r\\)；指数函数连续，a_m→eʳ。"
+      ],
+      "pitfall": "m是复利频率；此处固定总参数r，每小期利率为r/m。",
+      "tables": []
+    },
+    {
+      "id": "t2-25",
+      "tutorial": 2,
+      "ref": "2.5",
+      "title": "贷款余额：递推与剩余付款现值",
+      "topic": "复利与贷款",
+      "pages": "18–19",
+      "question": "r>0，贷款L₀=L，每期末付M，\\(L_k=(1+r)L_{k-1}-M\\)，\\(M=Lr/[1-(1+r)^{-n}]\\)。证明付款后余额等于剩余付款在k时刻现值，并检查Lₙ。",
+      "english": "Let \\(L_0=L\\), \\(L_k=(1+r)L_{k-1}-M\\), and \\(M=Lr/[1-(1+r)^{-n}]\\), with r>0. For every k=0,…,n show \\(L_k=\\sum_{j=1}^{n-k}M(1+r)^{-j}=M[1-(1+r)^{-(n-k)}]/r\\). In particular show \\(L_n=0\\).",
+      "answer": "\\(L_k=M\\frac{1-(1+r)^{-(n-k)}}r=\\sum_{j=1}^{n-k}M(1+r)^{-j}\\)，Lₙ=0。",
+      "method": "明确付款后时点，展开递推并用等比和；再用剩余付款现值核验。",
+      "steps": [
+        "令a=1+r。L₁=aL−M，L₂=a²L−M(a+1)，一般 \\(L_k=a^kL-M(1+a+\\cdots+a^{k-1})=a^kL-(M/r)(a^k-1)\\)。k=0时已付金额是空和0。",
+        "由付款公式 \\(L=(M/r)(1-a^{-n})\\)，代回：\\(L_k=(M/r)[a^k(1-a^{-n})-a^k+1]=(M/r)(1-a^{k-n})\\)。",
+        "第k次付款刚结束，只剩k+1,…,n，共n−k笔，相对k的折现期数是1,…,n−k。令q=a⁻¹，等比和 \\(M\\sum_{j=1}^{n-k}q^j=Mq(1-q^{n-k})/(1-q)\\)。因q/(1−q)=1/r，恰等于上式。",
+        "k=n时没有剩余付款，空和为0；公式也给M(1−a⁰)/r=0。r=0的极限是每期L/n、付款后余额L(1−k/n)，但这里证明采用r>0。"
+      ],
+      "pitfall": "第k期利息根据\\(L_{k-1}\\)；第k次付款后余额不含已付的第k笔。",
+      "tables": []
+    },
+    {
+      "id": "t2-26",
+      "tutorial": 2,
+      "ref": "2.6",
+      "title": "摊销表与首次低于半本金",
+      "topic": "复利与贷款",
+      "pages": "20–22",
+      "question": "L=100，每期利率10%，共10期，期末等额付M。算M、完整摊销表及付款后余额首次严格低于50的期数。",
+      "english": "Take L=100, r=10% per period and n=10, with \\(L_k=(1+r)L_{k-1}-M\\) and \\(M=Lr/[1-(1+r)^{-n}]\\). Compute M and the amortization schedule. Determine after how many payments the balance first falls below L/2.",
+      "answer": "\\(M≈16.2745394883\\)；L₆≈51.588100，L₇≈40.472371，所以首次是第7次付款后。",
+      "method": "先算M，逐期利息→还本→余额；用闭式余额解严格整数不等式。",
+      "steps": [
+        "\\(M=100(0.1)/[1-(1.1)^{-10}]≈16.2745394883\\)。保留完整精度递推，只在表格显示时舍入。",
+        "每期 \\(I_k=0.1L_{k-1},P_k=M-I_k,L_k=L_{k-1}-P_k\\)。第1期I₁=10，P₁≈6.2745394883，L₁≈93.7254605117。第2期I₂≈9.3725460512，P₂≈6.9019934371，L₂≈86.8234670747。",
+        "完整10期表见下。总还本100；总付款10M≈162.7453948825，总利息约62.7453948825。L₆>50、L₇<50，表明首次为7。",
+        "独立核对：\\(L_k=L[(1+r)^n-(1+r)^k]/[(1+r)^n-1]\\)。\\(L_k<L/2\\)等价于 \\((1+r)^k>((1+r)^n+1)/2\\)。",
+        "因为log1.1>0，\\(k>\\log[(1.1^{10}+1)/2]/\\log1.1≈6.1488389608\\)。最小满足严格不等式的整数为7。若阈值刚好是整数，也必须取下一个整数。"
+      ],
+      "pitfall": "使用未舍入余额；“严格低于”不能无条件直接ceil一个恰为整数的阈值。",
+      "tables": [
+        {
+          "title": "完整贷款摊销表（显示6位小数）",
+          "headers": [
+            "期k",
+            "期初余额",
+            "利息Iₖ",
+            "付款M",
+            "还本Pₖ",
+            "付款后Lₖ"
+          ],
+          "rows": [
+            [
+              "1",
+              "100.000000",
+              "10.000000",
+              "16.274539",
+              "6.274539",
+              "93.725461"
+            ],
+            [
+              "2",
+              "93.725461",
+              "9.372546",
+              "16.274539",
+              "6.901993",
+              "86.823467"
+            ],
+            [
+              "3",
+              "86.823467",
+              "8.682347",
+              "16.274539",
+              "7.592193",
+              "79.231274"
+            ],
+            [
+              "4",
+              "79.231274",
+              "7.923127",
+              "16.274539",
+              "8.351412",
+              "70.879862"
+            ],
+            [
+              "5",
+              "70.879862",
+              "7.087986",
+              "16.274539",
+              "9.186553",
+              "61.693309"
+            ],
+            [
+              "6",
+              "61.693309",
+              "6.169331",
+              "16.274539",
+              "10.105209",
+              "51.588100"
+            ],
+            [
+              "7",
+              "51.588100",
+              "5.158810",
+              "16.274539",
+              "11.115729",
+              "40.472371"
+            ],
+            [
+              "8",
+              "40.472371",
+              "4.047237",
+              "16.274539",
+              "12.227302",
+              "28.245069"
+            ],
+            [
+              "9",
+              "28.245069",
+              "2.824507",
+              "16.274539",
+              "13.450033",
+              "14.795036"
+            ],
+            [
+              "10",
+              "14.795036",
+              "1.479504",
+              "16.274539",
+              "14.795036",
+              "0.000000"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t3-249",
+      "tutorial": 3,
+      "ref": "2.4.9",
+      "title": "久期与凸性：加权方差恒等式",
+      "topic": "久期、凸性与组合",
+      "pages": "23–24",
+      "question": "现金流cₖ在k年支付，\\(P(y)=\\sum c_ke^{-ky},w_k=c_ke^{-ky}/P(y)\\)。D=Σkwₖ，C=Σk²wₖ，证明 \\(C=D^2+\\sum(k-D)^2w_k\\)，并说明何时C≥D²、等号何时成立。",
+      "english": "With \\(P(y)=\\sum_{k=1}^Nc_ke^{-ky}\\), present-value weights \\(w_k=c_ke^{-ky}/P(y)\\), \\(D=\\sum kw_k\\), and \\(C=\\sum k^2w_k\\), show \\(C=D^2+\\sum_{k=1}^N(k-D)^2w_k\\). Discuss the nonnegative-cash-flow case.",
+      "answer": "恒等式成立；非负现金流且P>0时C≥D²，正权重只在同一个支付时间时等号成立。",
+      "method": "展开加权平方偏差，分别认出权重和、D与C。",
+      "steps": [
+        "\\(\\sum w_k=1\\)。把平方展开：\\((k-D)^2=k^2-2kD+D^2\\)。",
+        "求和得 \\(\\sum(k-D)^2w_k=\\sum k^2w_k-2D\\sum kw_k+D^2\\sum w_k=C-2D^2+D^2=C-D^2\\)。移项即得题式。",
+        "若cₖ≥0且价格P>0，权重非负，所以平方偏差和≥0，得到C≥D²。等号要求每个正权重对应的k都等于D，即所有非零现金流发生在同一时间。",
+        "连续复利下零息债券期限τ有D=τ、C=τ²。带负现金流的组合虽仍可有代数恒等式，但不能直接把权重当概率并据此推出非负方差。"
+      ],
+      "pitfall": "C≥D²依赖非负现金流/非负权重；C定义不含1/2。",
+      "tables": []
+    },
+    {
+      "id": "t3-2411",
+      "tutorial": 3,
+      "ref": "2.4.11",
+      "title": "年复利的修正凸性",
+      "topic": "久期、凸性与组合",
+      "pages": "24–25",
+      "question": "\\(P(r)=\\sum c_k(1+r)^{-k},r>-1\\)。按相同现值权重定义D=Σkwₖ、C=Σk²wₖ，\\(C_{mod}=P^{\\prime\\prime}(r)/P(r)\\)。证明修正凸性公式。",
+      "english": "For annually compounded rate r>−1, \\(P(r)=\\sum_{k=1}^Nc_k(1+r)^{-k}\\). Let D and C be the first and second moments of payment times under the current present-value weights, and \\(C_{mod}=P^{\\prime\\prime}(r)/P(r)\\). Show \\(C_{mod}=(C+D)/(1+r)^2\\).",
+      "answer": "\\(C_{mod}=\\frac{C+D}{(1+r)^2}\\)。",
+      "method": "对同一个利率变量连续求两次导数，用k(k+1)=k²+k重写。",
+      "steps": [
+        "\\(P^{\\prime}(r)=-\\sum kc_k(1+r)^{-k-1}\\)。再求导：\\(P^{\\prime\\prime}(r)=\\sum k(k+1)c_k(1+r)^{-k-2}\\)。",
+        "除以P并提出 \\((1+r)^{-2}\\)，得 \\(C_{mod}=(1+r)^{-2}\\sum k(k+1)w_k\\)，其中 \\(w_k=c_k(1+r)^{-k}/P(r)\\)。",
+        "k(k+1)=k²+k，故求和=C+D。分子多出的D来自二次求导，不能漏掉。",
+        "对应连续收益率y=log(1+r)，D、C需按当前相同贴现现金流的权重计算；求导变量换成r时得到的就是修正敏感度。"
+      ],
+      "pitfall": "利率r与连续复利y的二阶导数不同；Cmod定义本身也不含1/2。",
+      "tables": []
+    },
+    {
+      "id": "t3-2413",
+      "tutorial": 3,
+      "ref": "2.4.13(a)–(b)",
+      "title": "每年m次复利：收益率换元与二阶链式法则",
+      "topic": "久期、凸性与组合",
+      "pages": "25–27",
+      "question": "年度票息c、n年到期面值1，\\(P(s)=\\sum_{t=1}^n c(1+s/m)^{-mt}+(1+s/m)^{-mn}\\)，1+s/m>0。求等价连续收益率y(s)，并证明Dmod、Cmod。m只改变复利频率，不改变年度付息。",
+      "english": "A bond pays annual coupon c and face value 1 at year n. Under nominal annual rate s compounded m times per year, \\(P(s)=\\sum_{t=1}^nc(1+s/m)^{-mt}+(1+s/m)^{-mn}\\). (a) Find y(s) such that \\(e^{-ty(s)}=(1+s/m)^{-mt}\\). (b) Show \\(D_{mod}=D/(1+s/m)\\) and \\(C_{mod}=(C+D/m)/(1+s/m)^2\\), where D,C use the equivalent continuously compounded yield.",
+      "answer": "\\(y(s)=m\\log(1+s/m)\\)，\\(D_{mod}=D/(1+s/m)\\)，\\(C_{mod}=(C+D/m)/(1+s/m)^2\\)。",
+      "method": "先由贴现因子相同求换元，再用完整的一阶/二阶链式法则。",
+      "steps": [
+        "(a)取log：−ty(s)=−mt log(1+s/m)，对t>0除−t，得到y(s)=m log(1+s/m)。代回指数即恢复离散贴现因子。",
+        "设连续价格 \\(f(y)=\\sum_{t=1}^nce^{-ty}+e^{-ny}\\)，则P(s)=f(y(s))，D=−f′/f，C=f″/f，均在当前y(s)处计算。",
+        "\\(y^{\\prime}(s)=1/(1+s/m)\\)，\\(y^{\\prime\\prime}(s)=-1/[m(1+s/m)^2]\\)。",
+        "(b) \\(P^{\\prime}=f^{\\prime}y^{\\prime}\\)，所以 \\(D_{mod}=-P^{\\prime}/P=Dy^{\\prime}=D/(1+s/m)\\)。",
+        "二阶必须包含两项：\\(P^{\\prime\\prime}=f^{\\prime\\prime}(y^{\\prime})^2+f^{\\prime}y^{\\prime\\prime}\\)。除以f：\\(C_{mod}=C(y^{\\prime})^2-Dy^{\\prime\\prime}=C/(1+s/m)^2+D/[m(1+s/m)^2]\\)，得到所求。",
+        "m=1时恢复(C+D)/(1+s)²。题目现金流仍为年度票息c，不能凭m次复利就改成每小期付c/m。"
+      ],
+      "pitfall": "复利m次≠付息m次；二阶链式法则漏项会漏掉D/m。",
+      "tables": []
+    },
+    {
+      "id": "t3-2415",
+      "tutorial": 3,
+      "ref": "2.4.15(1)–(4)",
+      "title": "价格与久期匹配：凸性优势与价格近似",
+      "topic": "久期、凸性与组合",
+      "pages": "28–33",
+      "question": "A为5年零息债、面值100；B由1年零息面值F₁与9年零息面值F₉组成。连续复利利率r=5%。(1)求A价格、D、C；(2)选F₁,F₉使B同价同久期；(3)求\\(C_B\\)并比较；(4)利率分别变3%和7%，求精确价格、一阶久期和二阶凸性估计，并比较表现。",
+      "english": "Bond A is a 5-year zero-coupon bond with face value 100. Bond B consists of 1-year and 9-year zero-coupon bonds with face values F₁ and F₉. At continuous rate r=5%: (1) compute \\(P_A,D_A,C_A\\); (2) find F₁,F₉ so \\(P_B=P_A\\) and \\(D_B=D_A\\); (3) compute and compare \\(C_B\\); (4) after separate rate changes to 3% and 7%, compute exact prices, duration-only and duration-plus-convexity estimates, and compare the two bonds.",
+      "answer": "\\(P_0\\approx77.88007831,\\ D_A=D_B=5\\)；\\(F_1\\approx40.93653765,F_9\\approx61.07013791\\)；\\(C_A=25,C_B=41\\)。两个给定利率情景均是B价格更高、涨多跌少。",
+      "method": "先把未知面值换成现值解线性方程，再求凸性；固定现金流重定价并作Taylor近似。",
+      "steps": [
+        "(1) \\(P_A(r)=100e^{-5r}\\)，\\(P_0=100e^{-0.25}\\approx77.8800783071\\)。唯一支付时间为5，故 \\(D_A=5,C_A=25\\)，也可由 \\(-P_A^{\\prime}/P_A\\) 及 \\(P_A^{\\prime\\prime}/P_A\\) 核验。",
+        "(2)令两笔初始现值x=F₁e⁻⁰·⁰⁵、z=F₉e⁻⁰·⁴⁵。同价要求x+z=P₀，同久期要求x+9z=5P₀。相减得8z=4P₀，x=z=P₀/2。",
+        "还原面值 \\(F_1=(P_0/2)e^{0.05}=50e^{-0.20}≈40.9365376539\\)，\\(F_9=(P_0/2)e^{0.45}=50e^{0.20}≈61.0701379080\\)。现值相等不等于面值相等。",
+        "(3)两个现值权重各1/2，\\(C_B=(1^2+9^2)/2=41>25\\)。时间分散增加加权方差：\\(C_B-D^2=16\\)，而A为0。",
+        "(4)固定刚求得的F₁,F₉，任意新利率ρ下，\\(P_A(\\rho)=100e^{-5\\rho}\\)，\\(P_B(\\rho)=F_1e^{-\\rho}+F_9e^{-9\\rho}\\)。不能在每个新利率重新调整F₁,F₉。",
+        "令h=ρ−0.05，一阶估计为 \\(P_0(1-5h)\\)；二阶为 \\(P_0[1-5h+\\tfrac12Ch^2]\\)，分别代C=25、41。3%用h=−0.02；7%用h=+0.02。完整数值表见下。",
+        "3%时A精确约86.07079764、B约86.34637112；7%时A约70.46880897、B约70.69442945。相同初始价格下B降息涨得更多、升息跌得更少。高凸性是二阶优势；一般不能据局部Taylor就断言全局。",
+        "本题可用精确式进一步证明全局：\\(P_A(0.05+h)=P_0e^{-5h}\\)，\\(P_B(0.05+h)=\\tfrac{P_0}2(e^{-h}+e^{-9h})\\)。比值 \\((e^{4h}+e^{-4h})/2=\\cosh(4h)>1\\) 对h≠0成立。因此在该固定现金流、单一利率平移模型下，任何非零h时B精确价格都高于A。"
+      ],
+      "pitfall": "y/r/ρ在本题均为连续复利收益率；面值与现值、局部近似与精确比较要分清。",
+      "tables": [
+        {
+          "title": "精确重定价与Taylor估计（初始利率5%）",
+          "headers": [
+            "新利率",
+            "债券",
+            "精确价格",
+            "仅久期一阶",
+            "久期+凸性二阶",
+            "精确价格变化"
+          ],
+          "rows": [
+            [
+              "3%",
+              "A",
+              "86.07079764",
+              "85.66808614",
+              "86.05748653",
+              "+10.5171%"
+            ],
+            [
+              "3%",
+              "B",
+              "86.34637112",
+              "85.66808614",
+              "86.30670278",
+              "+10.8709%"
+            ],
+            [
+              "7%",
+              "A",
+              "70.46880897",
+              "70.09207048",
+              "70.48147087",
+              "-9.5163%"
+            ],
+            [
+              "7%",
+              "B",
+              "70.69442945",
+              "70.09207048",
+              "70.73068712",
+              "-9.2266%"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "t4-na",
+      "tutorial": 4,
+      "ref": "3.4.14(1)",
+      "title": "CRR 无套利：必要性、等号边界与充分性",
+      "topic": "CRR 风险中性与复制",
+      "pages": "7–9",
+      "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 证明无套利当且仅当d<R<u，必须讨论R=u、R=d边界及多期自融资策略。",
+      "english": "For \\(T\\ge1,S_0>0,0<d<u,r>-1\\), let \\(B_t=(1+r)^t\\) and \\(S_t=S_0u^{N_t}d^{t-N_t}\\) on \\(\\Omega=\\{u,d\\}^T\\), with P giving positive probability to every path. The filtration is generated by the price history. Show that no-arbitrage holds if and only if \\(d<1+r<u\\). Each node is a copy of a one-period market.",
+      "answer": "\\(NA\\iff d<1+r<u\\)；两个等号边界也有套利。",
+      "method": "先在不满足严格不等式时构造一期套利，再以正权重节点关系反向归纳排除套利。",
+      "steps": [
+        "令R=1+r>0，B₀=1。若R≥u，取股票Δ=−1、债券β=S₀，初值−S₀+S₀B₀=0。终值上分支S₀(R−u)≥0，下分支S₀(R−d)>0。R=u时仍在下分支严格赚。",
+        "若R≤d，取Δ=1、β=−S₀。终值上分支S₀(u−R)>0，下分支S₀(d−R)≥0。R=d时仍在上分支严格赚。实际P全支持保证有盈利分支的事件有正概率。",
+        "T>1时在第1期平掉股票，将净值 \\(V_1\\) 全部转入银行，此后终值 \\(V_T=V_1R^{T-1}\\)。只重新分配已有资金，保持自融资和非负/正盈利，所以多期也套利。",
+        "反向假设d<R<u，定义q=(R−d)/(u−d)，1−q=(u−R)/(u−d)，都严格正，且qu+(1−q)d=R。",
+        "任意节点在 \\((t,t+1]\\) 使用同一组已知持仓 Δ、β。自融资给 \\(V_t=\\Delta S_t+\\beta B_t\\)，后继值 \\(V^u_{t+1}=\\Delta uS_t+\\beta B_{t+1}\\)、\\(V^d_{t+1}=\\Delta dS_t+\\beta B_{t+1}\\)。加权相加得 \\(qV^u_{t+1}+(1-q)V^d_{t+1}=RV_t\\)。",
+        "所以 \\(V_t=[qV^u_{t+1}+(1-q)V^d_{t+1}]/R\\)。若所有叶子终值非负且至少一条路径严格正，正权重使该正值沿祖先节点传到根，得到V₀>0，与零成本套利矛盾。故充分性成立。"
+      ],
+      "pitfall": "不要把必要性的一组交易当充分性；一期套利要说明如何延长到T。",
+      "tables": []
+    },
+    {
+      "id": "t4-q",
+      "tutorial": 4,
+      "ref": "3.4.14(2)",
+      "title": "风险中性测度：路径、条件概率与二项分布",
+      "topic": "CRR 风险中性与复制",
+      "pages": "34–36",
+      "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 假设d<R<u，q=(R−d)/(u−d)。构造独立乘积测度Q，证明Q∼P、贴现股票为鞅，并求终端上涨k次的概率。解释为何相同的每期边际概率本身不够。",
+      "english": "In the same full-support CRR model assume d<1+r<u and q=(1+r−d)/(u−d). Take Q to be the independent product measure with up probability q at each date. Prove Q is risk-neutral and show \\(Q(S_T=S_0u^kd^{T-k})=\\binom Tkq^k(1-q)^{T-k}\\), k=0,…,T. Explain why marginal up probabilities alone do not define the required joint law.",
+      "answer": "\\(Q(\\{\\omega\\})=q^{N_T(\\omega)}(1-q)^{T-N_T(\\omega)}\\)，\\(E_Q[\\widetilde S_{t+1}|\\mathcal F_t]=\\widetilde S_t\\)，终端概率为二项式。",
+      "method": "先完整定义路径测度与条件概率，再验证贴现鞅；最后按上涨次数数路径。",
+      "steps": [
+        "d<R<u使q及1−q正。定义每条路径概率 \\(Q(\\{\\omega\\})=q^{N_T}(1-q)^{T-N_T}\\)。按上涨次数加总，\\(\\sum_{k=0}^T\\binom Tkq^k(1-q)^{T-k}=(q+1-q)^T=1\\)。",
+        "每条路径Q>0，P也对每条路径正，因此Q与P零事件相同，Q∼P。这里不需要假设P的路径增量独立。",
+        "给定具体历史 \\(H_t\\)，其有 n 次上，\\(Q(H_t)=q^n(1-q)^{t-n}\\)；再发生一次上多乘q，所以 \\(Q(\\omega_{t+1}=u|\\mathcal F_t)=q\\)。这是条件概率，不只是某期边际。",
+        "\\(E_Q[S_{t+1}|\\mathcal F_t]=S_t[qu+(1-q)d]=RS_t\\)。除下一期银行价格Rᵗ⁺¹，\\(E_Q[S_{t+1}/R^{t+1}|\\mathcal F_t]=S_t/R^t\\)。贴现银行恒为1，因此Q风险中性。",
+        "\\(S_T=S_0u^kd^{T-k}\\) 等价于 \\(N_T=k\\)，因为 \\(u/d>1\\) 使不同k产生不同价格。选择k个上涨位置有 \\(\\binom Tk\\) 条路径，每条概率 \\(q^k(1-q)^{T-k}\\)，得到二项式。",
+        "只给每期Q(up)=q不决定相关性，也不保证给定历史仍是q，因而不能单独推出鞅或二项分布。本题明确采用独立乘积Q来补全联合分布。"
+      ],
+      "pitfall": "单条路径概率没有组合数；终端同上涨次数事件才乘组合数。",
+      "tables": []
+    },
+    {
+      "id": "t4-rep",
+      "tutorial": 4,
+      "ref": "3.4.14(3)",
+      "title": "节点一步复制：股票股数、债券份数与倒推",
+      "topic": "CRR 风险中性与复制",
+      "pages": "37–39",
+      "question": "CRR 模型：\\(T\\ge1,S_0>0,0<d<u,r>-1\\)，\\(R=1+r,B_t=R^t\\)，\\(\\Omega=\\{u,d\\}^T\\)，每条路径的实际概率 P 都为正。\\(S_t=S_0u^{N_t}d^{t-N_t}\\)，\\(\\mathcal F_t=\\sigma(S_0,\\ldots,S_t)\\)。 在t<T节点，下一期目标值为Vᵘₜ₊₁、Vᵈₜ₊₁。求(t,t+1]持有的股票Δ、债券β，证明复制成本等于风险中性一期贴现期望。",
+      "english": "At a node of the CRR model at t<T with stock price \\(S_t\\), a claim has successor values \\(V^u_{t+1}\\) and \\(V^d_{t+1}\\). Find the shares Δ and bond units β held over (t,t+1] that replicate both values. Show \\(V_t=[qV^u_{t+1}+(1-q)V^d_{t+1}]/(1+r)\\), with q=(1+r−d)/(u−d).",
+      "answer": "\\(\\Delta=\\frac{V^u_{t+1}-V^d_{t+1}}{(u-d)S_t}\\)，\\(\\beta=\\frac{uV^d_{t+1}-dV^u_{t+1}}{(u-d)R^{t+1}}\\)，\\(V_t=\\frac{qV^u_{t+1}+(1-q)V^d_{t+1}}R\\)。",
+      "method": "列两分支线性方程，相减先求Δ，代回求β，再算当前成本。",
+      "steps": [
+        "持仓在节点已确定，不能等下一期结果出来才选。复制条件是 \\(\\Delta uS_t+\\beta R^{t+1}=V^u_{t+1}\\)，\\(\\Delta dS_t+\\beta R^{t+1}=V^d_{t+1}\\)。",
+        "相减得到 \\(\\Delta(u-d)S_t=V^u_{t+1}-V^d_{t+1}\\)，解出Δ。分母\\(S_t\\)(u−d)>0。",
+        "代入下分支：\\(\\beta R^{t+1}=V^d_{t+1}-d(V^u_{t+1}-V^d_{t+1})/(u-d)=(uV^d_{t+1}-dV^u_{t+1})/(u-d)\\)。再除Rᵗ⁺¹才是债券份数β。",
+        "这组解满足下分支；代上分支得分子 \\(u(V^u-V^d)+uV^d-dV^u=(u-d)V^u\\)，也满足。系数矩阵行列式 \\((u-d)S_tR^{t+1}\\ne0\\)，故复制解唯一。",
+        "当前成本 \\(V_t=\\Delta S_t+\\beta R^t=[R(V^u-V^d)+uV^d-dV^u]/[R(u-d)]\\)。收集得 \\([(R-d)V^u+(u-R)V^d]/[R(u-d)]\\)，即q加权再贴现。",
+        "节点到节点重复此过程可从终端支付向根倒推。每个节点把已有组合价值重新分配为下一段持仓，且不注入/取走资金，形成自融资复制策略。"
+      ],
+      "pitfall": "TUT4：Δ股票、β债券，与TUT1的β含义不同。",
+      "tables": []
+    }
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "tutorial": 1,
+      "title": "套利的三项检查与外汇单位",
+      "recognize": "要求construct arbitrage或解释零成本。",
+      "method": "把初始交易和每个终端状态逐项列出来。",
+      "steps": [
+        "检查\\(V_0=0,V_T\\ge0,P(V_T>0)>0\\)。交易受题目无摩擦、借贷和做空条件约束。",
+        "USD/GBP表示每英镑美元数；美元换GBP用除法，GBP换USD用乘法。",
+        "跨币种利差不能代替对未来汇率的锁定。"
+      ],
+      "pitfall": "不能用未来不确定即期汇率保证偿债。",
+      "examples": [
+        "t1-1"
+      ]
+    },
+    {
+      "id": "n2",
+      "tutorial": 2,
+      "title": "同币种、同区间：借低存高",
+      "recognize": "两个正价格无风险资产收益率不同。",
+      "method": "按相同初始金额标准化，再比较终值。",
+      "steps": [
+        "买\\(1/B_s\\)份高收益资产，卖\\(1/B^{\\prime}_s\\)份低收益资产。",
+        "两边初始金额相等为1，成本0；终值差为收益率差。",
+        "若s>0，在s之前保持零头寸。"
+      ],
+      "pitfall": "相同金额不是相同份数；必须相同币种及时间区间。",
+      "examples": [
+        "t2-21"
+      ]
+    },
+    {
+      "id": "n3",
+      "tutorial": 1,
+      "title": "先写支付：远期不是看涨期权",
+      "recognize": "看到forward、delivery price、fair price。",
+      "method": "远期支付S₁−K可以为负，价值取Q期望再贴现。",
+      "steps": [
+        "\\(\\Pi_0(F_K)=S_0-K/(1+r_B)\\)。",
+        "公平交割价满足\\(\\Pi_0(F_F)=0\\)，故\\(F=S_0(1+r_B)\\)。",
+        "先由银行价格比算无风险增长因子。"
+      ],
+      "pitfall": "不能把远期支付截成正部，也不能把公平交割价当合约初始价值。",
+      "examples": [
+        "t1-2a",
+        "t1-2b"
+      ]
+    },
+    {
+      "id": "n4",
+      "tutorial": 1,
+      "title": "风险中性期望与贴现",
+      "recognize": "二状态定价，问Q如何使用。",
+      "method": "解qu+(1−q)d=1+\\(r_B\\)。",
+      "steps": [
+        "\\(q=(1+r_B-d)/(u-d)\\)，严格NA保证0<q<1。",
+        "\\(E_Q[S_1]=S_0(1+r_B)\\)，不是一般等于S₀。",
+        "价值在期初，支付在期末，二者差一个贴现因子。"
+      ],
+      "pitfall": "Q用于无套利定价，不是直接套真实概率P。",
+      "examples": [
+        "t1-2a",
+        "t1-2b"
+      ]
+    },
+    {
+      "id": "n5",
+      "tutorial": 1,
+      "title": "复制：终值方程与单位",
+      "recognize": "求α、β或replicating portfolio。",
+      "method": "同一组持仓满足两分支方程，相减去掉无风险项。",
+      "steps": [
+        "TUT1定义\\(V_1=\\alpha B_1+\\beta S_1\\)。",
+        "远期复制：β=1，α=−K/B₁；今天借款金额为\\(K/(1+r_B)\\)。",
+        "持仓份数乘该时点每份价格才是现金价值。"
+      ],
+      "pitfall": "不要因为B₀未写成1就默认1。",
+      "examples": [
+        "t1-2c"
+      ]
+    },
+    {
+      "id": "n6",
+      "tutorial": 1,
+      "title": "Put-call parity：从状态到价格",
+      "recognize": "同K、同到期的欧式call与put。",
+      "method": "分S₁≥K与S₁<K检查支付。",
+      "steps": [
+        "\\(C_K-P_K=S_1-K\\)。",
+        "\\(\\Pi_0(C_K)+K/(1+r_B)=\\Pi_0(P_K)+S_0\\)。",
+        "对应两组相同终值：call+到期K的存款，与put+股票。"
+      ],
+      "pitfall": "执行价K须折现；现金流条件不同的期权不可盲套。",
+      "examples": [
+        "t1-3a"
+      ]
+    },
+    {
+      "id": "n7",
+      "tutorial": 1,
+      "title": "错价套利：完整处理初始剩余现金",
+      "recognize": "给价格平价严格不等式。",
+      "method": "卖贵的组合，买便宜的组合，剩余价差入银行。",
+      "steps": [
+        "先计算正的初始价差δ，明确每个头寸正负号。",
+        "用支付恒等式令随机部分相消。",
+        "零初始价值与终值\\(\\delta(1+r_B)>0\\)一起核验。"
+      ],
+      "pitfall": "只卖贵资产不保证对冲；不能忘记存入δ。",
+      "examples": [
+        "t1-3b"
+      ]
+    },
+    {
+      "id": "n8",
+      "tutorial": 2,
+      "title": "单利与复利：严格不等式",
+      "recognize": "比较B₀(1+nr)和B₀(1+r)ⁿ。",
+      "method": "二项式展开看高阶正项。",
+      "steps": [
+        "n≥2、r>0时二次项严格为正。",
+        "B₀>0允许直接保留不等号方向。",
+        "n=1或r=0时只是相等。"
+      ],
+      "pitfall": "写明n与r条件，不能把复利因子当作线性近似的精确式。",
+      "examples": [
+        "t2-22"
+      ]
+    },
+    {
+      "id": "n9",
+      "tutorial": 2,
+      "title": "长期比值：夹逼优于空泛比较",
+      "recognize": "证明单利/复利趋0。",
+      "method": "只保留分母二次项即可给出趋零上界。",
+      "steps": [
+        "\\((1+r)^n\\ge n(n-1)r^2/2\\)。",
+        "\\(0<(1+nr)/(1+r)^n\\le2(1+nr)/[n(n-1)r^2]\\)。",
+        "分子分母除n²，得到上界趋0。"
+      ],
+      "pitfall": "只说“指数更快”不等于按题要求给出证明。",
+      "examples": [
+        "t2-22"
+      ]
+    },
+    {
+      "id": "n10",
+      "tutorial": 2,
+      "title": "底数与指数都变：先取log",
+      "recognize": "证明\\((1+r/m)^m\\)的单调性或极限。",
+      "method": "将log序列延拓为x log(1+r/x)。",
+      "steps": [
+        "\\(f^{\\prime}(x)=\\log(1+r/x)-r/(x+r)>0\\)。",
+        "用\\(z/(1+z)<\\log(1+z)<z\\)夹逼对数。",
+        "先证明log极限r，再指数还原eʳ。"
+      ],
+      "pitfall": "不能仅看底数下降或指数上升。",
+      "examples": [
+        "t2-23"
+      ]
+    },
+    {
+      "id": "n11",
+      "tutorial": 2,
+      "title": "等额贷款：时点、递推与付款",
+      "recognize": "给L、r、n，求M或余额。",
+      "method": "先画期末付款时间线。",
+      "steps": [
+        "付款后\\(L_k=(1+r)L_{k-1}-M\\)。",
+        "\\(M=Lr/[1-(1+r)^{-n}]\\)，r>0。",
+        "付款刚结束剩n−k笔，未来第一笔再过1期。"
+      ],
+      "pitfall": "\\(L_k\\)不是付款前余额；每笔M同时包含利息及本金。",
+      "examples": [
+        "t2-25",
+        "t2-26"
+      ]
+    },
+    {
+      "id": "n12",
+      "tutorial": 2,
+      "title": "贷款余额的两种表示",
+      "recognize": "要求余额等于剩余付款现值。",
+      "method": "向前展开递推，向后折现剩余付款。",
+      "steps": [
+        "\\(L_k=(1+r)^kL-(M/r)[(1+r)^k-1]\\)。",
+        "\\(L_k=M[1-(1+r)^{-(n-k)}]/r\\)。",
+        "核对k=0本金、k=n空和为0。"
+      ],
+      "pitfall": "剩余付款折现指数从1而不是0开始。",
+      "examples": [
+        "t2-25"
+      ]
+    },
+    {
+      "id": "n13",
+      "tutorial": 2,
+      "title": "摊销与严格阈值的整数期数",
+      "recognize": "求表格、总利息、何时首次低于某余额。",
+      "method": "\\(I_k\\to P_k\\to L_k\\)；阈值用闭式解。",
+      "steps": [
+        "\\(I_k=rL_{k-1},P_k=M-I_k,L_k=L_{k-1}-P_k\\)。",
+        "中间不舍入，显示再取小数。",
+        "半本金条件\\((1+r)^k>((1+r)^n+1)/2\\)，最后选满足严格不等式的最小整数。"
+      ],
+      "pitfall": "付款期数不是按还本比例线性分配；整数阈值恰好等于整数时要再加1。",
+      "examples": [
+        "t2-26"
+      ]
+    },
+    {
+      "id": "n14",
+      "tutorial": 3,
+      "title": "债券现值权重、久期与凸性",
+      "recognize": "连续复利债券现金流与敏感度。",
+      "method": "先写价格，再用现值权重取时间矩。",
+      "steps": [
+        "\\(P(y)=\\sum c_ke^{-ky},w_k=c_ke^{-ky}/P\\)。",
+        "\\(D=\\sum kw_k=-P_y/P,C=\\sum k^2w_k=P_{yy}/P\\)。",
+        "非负现金流下w是概率权重；零息τ年债D=τ、C=τ²。"
+      ],
+      "pitfall": "现值权重依赖当前利率；C定义不含1/2。",
+      "examples": [
+        "t3-249",
+        "t3-2415"
+      ]
+    },
+    {
+      "id": "n15",
+      "tutorial": 3,
+      "title": "凸性与支付时间分散",
+      "recognize": "证明C−D²非负或比较同久期组合。",
+      "method": "展开加权方差。",
+      "steps": [
+        "\\(C-D^2=\\sum(k-D)^2w_k\\)。",
+        "非负现金流、P>0时右端非负。",
+        "只有正权重都在一个时点才为0。"
+      ],
+      "pitfall": "负现金流组合的权重可能为负，不能无条件推非负方差。",
+      "examples": [
+        "t3-249"
+      ]
+    },
+    {
+      "id": "n16",
+      "tutorial": 3,
+      "title": "修正敏感度：先问对谁求导",
+      "recognize": "连续收益率、年复利r、名义s混在题中。",
+      "method": "固定现金流，按实际利率变量求导。",
+      "steps": [
+        "年复利\\(C_{mod}=(C+D)/(1+r)^2\\)。",
+        "k(k+1)拆成k²+k，所以分子多D。",
+        "D、C按与当前r对应的相同现值权重计算。"
+      ],
+      "pitfall": "不能把连续收益率的导数直接当离散利率的导数。",
+      "examples": [
+        "t3-2411"
+      ]
+    },
+    {
+      "id": "n17",
+      "tutorial": 3,
+      "title": "复利换元与二阶链式法则",
+      "recognize": "名义年利率s，每年复利m次。",
+      "method": "让贴现因子相同，再复合价格函数。",
+      "steps": [
+        "\\(y(s)=m\\log(1+s/m),y^{\\prime}=1/(1+s/m),y^{\\prime\\prime}=-1/[m(1+s/m)^2]\\)。",
+        "\\(P^{\\prime\\prime}=f^{\\prime\\prime}(y^{\\prime})^2+f^{\\prime}y^{\\prime\\prime}\\)。",
+        "\\(D_{mod}=D/(1+s/m),C_{mod}=(C+D/m)/(1+s/m)^2\\)。"
+      ],
+      "pitfall": "二阶换元的f′y″不能省；复利频率不是票息支付频率。",
+      "examples": [
+        "t3-2413"
+      ]
+    },
+    {
+      "id": "n18",
+      "tutorial": 3,
+      "title": "同价同久期：用现值作未知数",
+      "recognize": "给两笔支付的面值，要求匹配目标债券。",
+      "method": "未知量改成各笔现值，把条件线性化。",
+      "steps": [
+        "\\(x+z=P_0,t_1x+t_2z=D_0P_0\\)。",
+        "解出x,z后，面值还原为\\(xe^{rt_1}\\)、\\(ze^{rt_2}\\)。",
+        "TUT3实例两现值各占1/2，但F₁≠F₉。"
+      ],
+      "pitfall": "先匹配面值总和通常是错的；权重由现值决定。",
+      "examples": [
+        "t3-2415"
+      ]
+    },
+    {
+      "id": "n19",
+      "tutorial": 3,
+      "title": "价格近似：一阶久期与二阶凸性",
+      "recognize": "利率变动后的价格或收益近似。",
+      "method": "确认连续/离散求导变量后写Taylor。",
+      "steps": [
+        "连续收益率变化h：\\(P(y+h)\\approx P_0[1-Dh+\\tfrac12Ch^2]\\)。",
+        "相同P₀、D意味着一阶反应相同，C控制二阶差异。",
+        "h要以小数表示，如5%到3%是−0.02；现金流保持不变。"
+      ],
+      "pitfall": "不可把近似当恒等式，也不要漏1/2。",
+      "examples": [
+        "t3-2415"
+      ]
+    },
+    {
+      "id": "n20",
+      "tutorial": 3,
+      "title": "凸性优势：局部与精确结论",
+      "recognize": "问higher convexity是否总更好。",
+      "method": "先作局部比较；全局需另用精确公式。",
+      "steps": [
+        "本题B的C=41大于A的25，正负h的二阶项都更大。",
+        "本题精确比值\\(P_B/P_A=\\cosh(4h)>1\\)，h≠0。",
+        "该结论依赖特定固定现金流和统一利率变动，并非任意两只债券的普遍全局定理。"
+      ],
+      "pitfall": "高凸性一般是局部敏感度信息，不能跨模型无条件推广。",
+      "examples": [
+        "t3-2415"
+      ]
+    },
+    {
+      "id": "n21",
+      "tutorial": 4,
+      "title": "CRR 无套利与等号边界",
+      "recognize": "要求NA iff d<1+r<u。",
+      "method": "必要性做反例，充分性考虑所有自融资策略。",
+      "steps": [
+        "R≥u时卖股存款；R≤d时借款买股。",
+        "某分支0、另一分支正也已符合套利；一期后清仓存款延长到T。",
+        "d<R<u时每节点是正权重贴现平均，用反向归纳排除零成本正终值。"
+      ],
+      "pitfall": "两个等号也套利，充分性不能只验证一两种策略。",
+      "examples": [
+        "t4-na"
+      ]
+    },
+    {
+      "id": "n22",
+      "tutorial": 4,
+      "title": "测度：路径、边际、条件概率",
+      "recognize": "Q的定义、等价性、鞅条件。",
+      "method": "先给联合路径分布，再算每段历史的条件概率。",
+      "steps": [
+        "\\(Q(\\{\\omega\\})=q^{N_T}(1-q)^{T-N_T}\\)，0<q<1保证全支持。",
+        "P也全支持，故Q∼P；P本身不必具有独立步长。",
+        "\\(Q(up_{t+1}|\\mathcal F_t)=q\\)，由乘积结构得到而非仅靠边际。"
+      ],
+      "pitfall": "相同边际上涨率不自动意味着独立或风险中性。",
+      "examples": [
+        "t4-q"
+      ]
+    },
+    {
+      "id": "n23",
+      "tutorial": 4,
+      "title": "贴现鞅与终端二项分布",
+      "recognize": "要证明风险中性或计算终端股价事件。",
+      "method": "先算条件股票期望，再贴现；按上涨次数计路径。",
+      "steps": [
+        "\\(qu+(1-q)d=R\\)，故\\(E_Q[S_{t+1}|\\mathcal F_t]=RS_t\\)。",
+        "\\(\\widetilde S_t=S_t/R^t\\)才满足鞅等式。",
+        "\\(Q(N_T=k)=\\binom Tkq^k(1-q)^{T-k}\\)。"
+      ],
+      "pitfall": "单路径没有组合数；不同路径可能有相同终端股价。",
+      "examples": [
+        "t4-q"
+      ]
+    },
+    {
+      "id": "n24",
+      "tutorial": 4,
+      "title": "节点复制与动态自融资",
+      "recognize": "给下一期两个价值求当前价格或持仓。",
+      "method": "两个状态列方程，相减求Δ，再求β，逐节点倒推。",
+      "steps": [
+        "\\(\\Delta=(V^u-V^d)/[(u-d)S_t]\\)。",
+        "\\(\\beta=(uV^d-dV^u)/[(u-d)B_{t+1}]\\)。",
+        "\\(V_t=\\Delta S_t+\\beta B_t=[qV^u+(1-q)V^d]/R\\)。",
+        "调仓只重分配原组合价值，下一段持仓由当前信息确定。"
+      ],
+      "pitfall": "TUT4 β是债券份数；不要与TUT1 β股票股数混用。",
+      "examples": [
+        "t4-rep"
+      ]
+    }
+  ],
+  "strategies": [
+    {
+      "id": "r-t1-1",
+      "exerciseId": "t1-1",
+      "title": "外汇套利：借美元、存英镑",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "列同一币种的完整现金流，并在今天用远期锁定未来换汇收入。",
+          "correct": true
+        },
+        {
+          "text": "一年后再看即期汇率，只要当前利差为正就一定套利。",
+          "correct": false
+        },
+        {
+          "text": "把美元10,000乘1.60得到英镑数量，再比较两国利息。",
+          "correct": false
+        }
+      ],
+      "reason": "利差本身不足以排除汇率风险；汇率单位及今天签远期这两点决定构造。"
+    },
+    {
+      "id": "r-t1-2a",
+      "exerciseId": "t1-2a",
+      "title": "远期价值与公平交割价",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "对 S₁−K 取风险中性期望并贴现，再令该价值为0求公平交割价。",
+          "correct": true
+        },
+        {
+          "text": "用真实上涨概率 P 取期望，直接把结果当无套利价值。",
+          "correct": false
+        },
+        {
+          "text": "远期今天必定价值为0，所以任何交割价K都一样。",
+          "correct": false
+        }
+      ],
+      "reason": "风险中性定价得到合约价值；只有公平交割价才使新合约今天价值为零。"
+    },
+    {
+      "id": "r-t1-2b",
+      "exerciseId": "t1-2b",
+      "title": "数值远期：两种方法核验",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先算 B₁/B₀，代入远期公式，再用 q 加权两状态支付贴现核验。",
+          "correct": true
+        },
+        {
+          "text": "把 B₁=110 当作110%的利率。",
+          "correct": false
+        },
+        {
+          "text": "公平交割价110就是交割价105的合约今天价值。",
+          "correct": false
+        }
+      ],
+      "reason": "资产价格、增长因子、交割价与合约价值必须分别计算。"
+    },
+    {
+      "id": "r-t1-2c",
+      "exerciseId": "t1-2c",
+      "title": "远期复制：份数不等于金额",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先列两个终值方程，相减求股票股数，再按B₁换算银行份数。",
+          "correct": true
+        },
+        {
+          "text": "直接写银行份数为−K，不需要看 B₁。",
+          "correct": false
+        },
+        {
+          "text": "在上涨和下跌发生后分别挑选股票股数，保证各分支支付正确即可。",
+          "correct": false
+        }
+      ],
+      "reason": "持仓必须事先确定、同时覆盖两个分支；α要除以每份银行账户终值。"
+    },
+    {
+      "id": "r-t1-3a",
+      "exerciseId": "t1-3a",
+      "title": "看涨看跌平价：先比支付",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先证明逐状态支付差等于 S₁−K，再比较同终值组合的今天价格。",
+          "correct": true
+        },
+        {
+          "text": "直接把 call 和 put 的价格都设成其某一分支支付。",
+          "correct": false
+        },
+        {
+          "text": "使用 C−P=S₀−K，执行价不需要贴现。",
+          "correct": false
+        }
+      ],
+      "reason": "价格平价来自状态支付恒等式与无套利，不能跳过时点。"
+    },
+    {
+      "id": "r-t1-3b",
+      "exerciseId": "t1-3b",
+      "title": "平价违背：卖贵、买便宜、存差额",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "比较两组相同终值的组合，卖贵买便宜，初始差额存银行。",
+          "correct": true
+        },
+        {
+          "text": "因为call较贵，就只卖call而不对冲其他支付。",
+          "correct": false
+        },
+        {
+          "text": "把初始剩余δ忽略，只检查期末四项相加为0。",
+          "correct": false
+        }
+      ],
+      "reason": "对冲使随机支付抵消，存下的正价差才是最终无风险利润。"
+    },
+    {
+      "id": "r-t2-21",
+      "exerciseId": "t2-21",
+      "title": "同币种无风险收益率必须一致",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "假设利率不同，统一投入金额后借低存高，写零成本与确定正终值。",
+          "correct": true
+        },
+        {
+          "text": "只要两种资产价格不同，就能直接买低价卖高价。",
+          "correct": false
+        },
+        {
+          "text": "比较不同货币的两个存款利率，不需要换汇对冲。",
+          "correct": false
+        }
+      ],
+      "reason": "无套利比较的是同币种同期间的收益率，价格水平本身可以不同。"
+    },
+    {
+      "id": "r-t2-22",
+      "exerciseId": "t2-22",
+      "title": "单利与复利：严格比较及极限",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "二项式展开找正的二次项，并用同一项给比值的趋零上界。",
+          "correct": true
+        },
+        {
+          "text": "底数1+r大于1，所以无需证明就能直接断言比值严格为0。",
+          "correct": false
+        },
+        {
+          "text": "把 (1+r)ⁿ 直接等同于1+nr。",
+          "correct": false
+        }
+      ],
+      "reason": "严格性由正的高阶项给出；极限需要控制比值而非只说指数增长快。"
+    },
+    {
+      "id": "r-t2-23",
+      "exerciseId": "t2-23",
+      "title": "复利频率：单调性与连续复利极限",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "取 log，把 m 扩展为实数求导，用对数不等式夹逼极限。",
+          "correct": true
+        },
+        {
+          "text": "底数随m下降，所以整个幂一定下降。",
+          "correct": false
+        },
+        {
+          "text": "指数随m增加，所以不用看底数就能判定单调。",
+          "correct": false
+        }
+      ],
+      "reason": "底数与指数反向变化，必须整体处理；取log把幂变成乘积。"
+    },
+    {
+      "id": "r-t2-25",
+      "exerciseId": "t2-25",
+      "title": "贷款余额：递推与剩余付款现值",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先确定余额是付款后，展开递推并用剩余n−k笔付款现值核验。",
+          "correct": true
+        },
+        {
+          "text": "第k次付款后仍把当前第k笔算进剩余付款。",
+          "correct": false
+        },
+        {
+          "text": "每期M全用于还本，所以余额直接等于L−kM。",
+          "correct": false
+        }
+      ],
+      "reason": "每期付款先覆盖利息，再还本金；付款后时点决定剩余次数与折现指数。"
+    },
+    {
+      "id": "r-t2-26",
+      "exerciseId": "t2-26",
+      "title": "摊销表与首次低于半本金",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先把付款拆成利息与还本，再用闭式余额解严格不等式取最小整数。",
+          "correct": true
+        },
+        {
+          "text": "10期的一半就是5期，所以第5次付款后一定还掉一半本金。",
+          "correct": false
+        },
+        {
+          "text": "把每期利息固定成初始本金的10%，不随余额改变。",
+          "correct": false
+        }
+      ],
+      "reason": "等额付款不等于等额还本，前期利息占比更高。"
+    },
+    {
+      "id": "r-t3-249",
+      "exerciseId": "t3-249",
+      "title": "久期与凸性：加权方差恒等式",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "展开 (k−D)²，再用 Σw=1、Σkw=D、Σk²w=C。",
+          "correct": true
+        },
+        {
+          "text": "因为 C 看起来比 D 阶数高，就直接说 C 总比 D²大。",
+          "correct": false
+        },
+        {
+          "text": "不管现金流正负，都把现值权重当概率。",
+          "correct": false
+        }
+      ],
+      "reason": "代数恒等式与非负权重下的大小关系要分开证明。"
+    },
+    {
+      "id": "r-t3-2411",
+      "exerciseId": "t3-2411",
+      "title": "年复利的修正凸性",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "对 \\((1+r)^{-k}\\) 连求两次导数，再将 k(k+1) 拆成 k²+k。",
+          "correct": true
+        },
+        {
+          "text": "只把连续凸性C除以(1+r)²，分子不用增加D。",
+          "correct": false
+        },
+        {
+          "text": "直接将 Cmod 设成 D²，因为所有债券都像零息债。",
+          "correct": false
+        }
+      ],
+      "reason": "二次求导同时改变指数系数，正是D项的来源。"
+    },
+    {
+      "id": "r-t3-2413",
+      "exerciseId": "t3-2413",
+      "title": "每年m次复利：收益率换元与二阶链式法则",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "先令两种贴现因子相等，再用 P″=f″(y′)²+f′y″ 完整换元。",
+          "correct": true
+        },
+        {
+          "text": "二阶链式法则只有 f″(y′)²，不需要 f′y″。",
+          "correct": false
+        },
+        {
+          "text": "每年复利m次，所以直接把年度现金流改成每期c/m。",
+          "correct": false
+        }
+      ],
+      "reason": "换元是非线性的，y″项不可省；计息频率与付息频率是不同条件。"
+    },
+    {
+      "id": "r-t3-2415",
+      "exerciseId": "t3-2415",
+      "title": "价格与久期匹配：凸性优势与价格近似",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "用初始现值作未知量匹配价格和久期，还原面值后固定现金流重定价，并加½Ch²。",
+          "correct": true
+        },
+        {
+          "text": "面值F₁=F₉=50就保证现值权重各一半。",
+          "correct": false
+        },
+        {
+          "text": "每次利率变化后重新挑F₁,F₉，再把新组合价格当原组合收益。",
+          "correct": false
+        }
+      ],
+      "reason": "匹配条件在初始利率下施加；之后比较的是同一组固定现金流，二阶项必须有1/2。"
+    },
+    {
+      "id": "r-t4-na",
+      "exerciseId": "t4-na",
+      "title": "CRR 无套利：必要性、等号边界与充分性",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "不等式失败时分两方向构造零成本组合；成立时用正权重节点关系反向归纳。",
+          "correct": true
+        },
+        {
+          "text": "只证明d≤R≤u，等号边界也认为无套利。",
+          "correct": false
+        },
+        {
+          "text": "只检查买入股票赚钱与否，就能排除所有自融资策略套利。",
+          "correct": false
+        }
+      ],
+      "reason": "无套利是对所有策略的陈述；等号边界已有一支为正的零成本交易，充分性需一般论证。"
+    },
+    {
+      "id": "r-t4-q",
+      "exerciseId": "t4-q",
+      "title": "风险中性测度：路径、条件概率与二项分布",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "定义每条路径的乘积概率，再算给定历史的条件概率、贴现鞅与路径计数。",
+          "correct": true
+        },
+        {
+          "text": "每期边际Q(up)=q已经自动推出各期独立和二项分布。",
+          "correct": false
+        },
+        {
+          "text": "未贴现股票必须满足 \\(E_Q[S_{t+1}|\\mathcal F_t]=S_t\\)，才叫风险中性。",
+          "correct": false
+        }
+      ],
+      "reason": "鞅条件使用条件期望且要贴现；二项分布还需乘积结构而非只有边际。"
+    },
+    {
+      "id": "r-t4-rep",
+      "exerciseId": "t4-rep",
+      "title": "节点一步复制：股票股数、债券份数与倒推",
+      "prompt": "看到这道题，应该优先采用哪套解题思路？",
+      "choices": [
+        {
+          "text": "相减两分支方程求股票Δ，再除下一期债券价格求β，最后计算当前成本。",
+          "correct": true
+        },
+        {
+          "text": "把债券份数β直接写成下一期债券现金价值。",
+          "correct": false
+        },
+        {
+          "text": "在t节点的两个后继分支分别选不同Δ，算完再决定t时持仓。",
+          "correct": false
+        }
+      ],
+      "reason": "复制需同一可预测持仓；债券份数必须除以Bₜ₊₁，当前金额再乘Bₜ。"
+    },
+    {
+      "id": "r-t3-chain",
+      "exerciseId": "t3-2413",
+      "title": "二阶换元：为什么多一个D/m？",
+      "prompt": "已写出P(s)=f(y(s))。要求Cmod时，下一步应怎样求P″？",
+      "choices": [
+        {
+          "text": "用 P″=f″(y′)²+f′y″，再除P。",
+          "correct": true
+        },
+        {
+          "text": "只用 P″=f″y″。",
+          "correct": false
+        },
+        {
+          "text": "只用 P″=f″(y′)²，因为y′可当常数。",
+          "correct": false
+        }
+      ],
+      "reason": "y(s)非线性，第二个链式法则项产生D/m。"
+    },
+    {
+      "id": "r-t3-convex",
+      "exerciseId": "t3-2415",
+      "title": "同久期为什么仍有不同凸性？",
+      "prompt": "已匹配P与D，比较\\(C_A\\)和\\(C_B\\)，最直接的方法是什么？",
+      "choices": [
+        {
+          "text": "用初始现值权重计算支付时间平方的加权平均。",
+          "correct": true
+        },
+        {
+          "text": "用两个面值的简单平均作为凸性。",
+          "correct": false
+        },
+        {
+          "text": "同P同D直接推出同C，不需要计算。",
+          "correct": false
+        }
+      ],
+      "reason": "相同时间一阶矩不代表相同二阶矩；本题\\(C_B=41\\)、\\(C_A=25\\)。"
+    },
+    {
+      "id": "r-t3-taylor",
+      "exerciseId": "t3-2415",
+      "title": "利率移动：二阶估计的符号",
+      "prompt": "初始5%变为3%，要求久期加凸性估计，怎样代入？",
+      "choices": [
+        {
+          "text": "h=−0.02，固定原现金流，使用P₀[1−Dh+½Ch²]。",
+          "correct": true
+        },
+        {
+          "text": "h=−2，直接把百分点数字代公式。",
+          "correct": false
+        },
+        {
+          "text": "重新匹配F₁,F₉后，再把新组合价格当原组合估计。",
+          "correct": false
+        }
+      ],
+      "reason": "h是利率小数变化；二阶平方为正，现金流必须固定。"
+    },
+    {
+      "id": "r-t4-boundary",
+      "exerciseId": "t4-na",
+      "title": "CRR等号边界",
+      "prompt": "若R=u，为什么仍不能判无套利？",
+      "choices": [
+        {
+          "text": "卖空股并存入S₀；上分支为0，下分支严格正。",
+          "correct": true
+        },
+        {
+          "text": "所有分支都是0，所以是无套利。",
+          "correct": false
+        },
+        {
+          "text": "只有每个分支都严格正才称套利，故等号可以。",
+          "correct": false
+        }
+      ],
+      "reason": "套利只要求所有状态非负、至少一正概率状态严格盈利。"
+    },
+    {
+      "id": "r-t4-conditional",
+      "exerciseId": "t4-q",
+      "title": "边际上涨概率是否足够？",
+      "prompt": "若只知道每一期Q(up)=q，可以直接用二项式和鞅条件吗？",
+      "choices": [
+        {
+          "text": "不能；应定义联合路径分布，并检查给定历史的条件上涨率。",
+          "correct": true
+        },
+        {
+          "text": "可以；相同边际概率的随机变量必独立。",
+          "correct": false
+        },
+        {
+          "text": "可以；风险中性不需要条件期望，只需总体均值。",
+          "correct": false
+        }
+      ],
+      "reason": "边际不决定依赖；本册使用独立乘积Q来保证每节点条件概率q。"
+    },
+    {
+      "id": "r-loan-threshold",
+      "exerciseId": "t2-26",
+      "title": "严格低于半本金：如何取整数",
+      "prompt": "已解得k>6.1488389608，付款次数应怎样选？",
+      "choices": [
+        {
+          "text": "选满足严格不等式的最小整数7，并核对L₆和L₇。",
+          "correct": true
+        },
+        {
+          "text": "四舍五入得到6。",
+          "correct": false
+        },
+        {
+          "text": "因为总共10期，所以固定取5。",
+          "correct": false
+        }
+      ],
+      "reason": "期数是离散整数，严格不等式决定最小可行值。"
+    }
+  ],
+  "sourceTitle": "MAT386 Tutorials 1–4 · 按题型整理的完整解答",
+  "sourceNote": "依据你提供的40页完整解答整理，覆盖18个题目条目及全部小问；页码均指本册。TUT2原题编号由2.3跳至2.5，没有Exercise 2.4。",
+  "reviewNote": "本复习以该PDF的Tutorial 1–4为范围，不代表已核实的正式midterm考试范围。题目与ABC选项随机排列；选择任一答案后均显示正确性及完整推导。",
+  "symbolNote": "TUT1：α是银行账户份数，β是股票股数；TUT4：Δ是股票股数，β是债券份数。TUT3须区分连续复利y/r/ρ、年复利r与每年m次复利的名义s。"
+}
