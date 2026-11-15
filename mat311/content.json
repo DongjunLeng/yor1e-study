@@ -19,6 +19,31 @@
       "id": 4,
       "title": "能量法与热方程",
       "lectures": "Lecture 7 · HW4 · Tutorial 3"
+    },
+    {
+      "id": 5,
+      "title": "全直线热核与长期行为",
+      "lectures": "Week 5 Practice"
+    },
+    {
+      "id": 6,
+      "title": "半直线：奇偶延拓与镜像核",
+      "lectures": "Week 6 Practice"
+    },
+    {
+      "id": 7,
+      "title": "带源项的热方程",
+      "lectures": "Week 7 Practice"
+    },
+    {
+      "id": 8,
+      "title": "带源项的波动方程与非零边界",
+      "lectures": "Week 8 Practice"
+    },
+    {
+      "id": "review",
+      "title": "Term Test 3 · 考前复习",
+      "lectures": "Practice Term Test 3"
     }
   ],
   "notes": [
@@ -30,7 +55,8 @@
       "steps": [
         "把 \\(u\\) 及各导数视为未知量；系数可依赖自变量。",
         "线性算子满足 \\(L(au+bv)=aLu+bLv\\)。",
-        "齐次线性解可叠加；非齐次解一般是一个特解加齐次通解。"
+        "齐次线性解可叠加；非齐次解一般是一个特解加齐次通解。",
+        "例如 \\(u_{xxy}+yu=x^2\\)：三阶、线性、非齐次。\\(y\\) 是独立变量，所以 \\(yu\\) 仍是线性项。"
       ],
       "pitfall": "u 与导数相乘、导数平方均非线性；低阶不影响阶数。",
       "examples": [
@@ -77,7 +103,8 @@
       "steps": [
         "对齐次输运，u 沿每条特征线不变。",
         "找到不变量 H 后，可用光滑 bump \\(B(H)\\) 构造局部非零解。",
-        "检查同一水平集是否包含多条不相连轨迹。"
+        "检查同一水平集是否包含多条不相连轨迹。",
+        "“vanishes along \\(y=x\\)” 表示 \\(u(t,t)=0\\)。先由题设得交点为零，再沿同一条特征线传播零值。“not zero everywhere”只要求某个点非零。"
       ],
       "pitfall": "不能自动把所有具有同一 H 的不同连通分支当成一条轨迹。",
       "examples": [
@@ -290,6 +317,318 @@
       "examples": [
         "w4-5",
         "w4-6"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "比较函数与长期一致极限",
+      "recognize": "For the finite-interval heat problem in HW4 Q1, use the maximum principle, then construct comparison functions to find the uniform limit.",
+      "method": "先用抛物边界粗估，再减掉稳态，用上下比较函数控制余项。",
+      "steps": [
+        "具体数据、上下界与一致收敛见逐步推导。"
+      ],
+      "pitfall": "比较函数必须满足 PDE 不等式及整个抛物边界上的次序。",
+      "examples": [
+        "hw-4-Q1"
+      ]
+    },
+    {
+      "week": 5,
+      "title": "高斯初值：配方与求导",
+      "recognize": "Solve \\(u_t=2u_{xx}\\) on the line for (a) \\(e^{-(x-1)^2}\\) and (b) \\((x-1)e^{-(x-1)^2}\\).",
+      "method": "(a) 热核卷积并配方；(b) 识别初值是 (a) 的导数乘 −1/2。",
+      "steps": [
+        "令 \\(D=1+8t\\)。两解分别为 \\(D^{-1/2}e^{-(x-1)^2/D}\\) 和 \\((x-1)D^{-3/2}e^{-(x-1)^2/D}\\)。"
+      ],
+      "pitfall": "展开平方时保留积分外的因子；求空间导数会多一个 D 的倒数。",
+      "examples": [
+        "hw-5-Q1"
+      ]
+    },
+    {
+      "week": 5,
+      "title": "固定位置的热核长时间极限",
+      "recognize": "For compactly supported \\(\\phi\\) with mass \\(M\\), find \\(\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)\\) at fixed x.",
+      "method": "先乘根号 t，再在紧支集上估计指数与 1 的差。",
+      "steps": [
+        "\\(M/\\sqrt{4\\pi\\kappa}\\)。"
+      ],
+      "pitfall": "固定 x 后，支集上的指数参数统一为 O(1/t)。",
+      "examples": [
+        "hw-5-Q4"
+      ]
+    },
+    {
+      "week": 6,
+      "title": "半直线波动：零斜率与偶延拓",
+      "recognize": "Solve the half-line wave equation with \\(u_x(0,t)=0\\) and initial displacement \\(\\phi\\) and velocity \\(\\psi\\).",
+      "method": "把位移与速度都做偶延拓，再用全直线 d’Alembert 公式。",
+      "steps": [
+        "解为偶延拓后的位移平均与速度积分之和。"
+      ],
+      "pitfall": "零斜率对应偶对称；两个初始数据都要延拓。",
+      "examples": [
+        "hw-6-Q1"
+      ]
+    },
+    {
+      "week": 6,
+      "title": "半直线热方程：零值边界的镜像核",
+      "recognize": "For the half-line heat equation with \\(u(0,t)=0\\), derive the kernel and analyze its positivity and long-time behavior.",
+      "method": "对初温做奇延拓；镜像热核相减后再比较符号或展开指数。",
+      "steps": [
+        "核为 \\(S(x-y,t)-S(x+y,t)\\)。"
+      ],
+      "pitfall": "在 x=0 两核抵消；若非负初值在一段上为正，内部解严格为正。",
+      "examples": [
+        "hw-6-Q2"
+      ]
+    },
+    {
+      "week": 7,
+      "title": "三角特征模态：把热方程化为 ODE",
+      "recognize": "Solve \\(u_t-u_{xx}=e^{-t}\\cos(2x)\\), \\(u(x,0)=\\sin x\\). Then solve for source \\(e^{-4t}\\cos(2x)\\) and zero initial data.",
+      "method": "分别写正弦和余弦模态，再对时间 ODE 用积分因子。",
+      "steps": [
+        "(a) \\(e^{-t}\\sin x+(e^{-t}-e^{-4t})\\cos(2x)/3\\)；(b) \\(te^{-4t}\\cos(2x)\\)。"
+      ],
+      "pitfall": "空间频率 2 的二阶导数系数为 −4。",
+      "examples": [
+        "hw-7-Q1"
+      ]
+    },
+    {
+      "week": 7,
+      "title": "有限时段热源与长时间极限",
+      "recognize": "For zero initial data and source \\(a(t)g(x)\\) supported on \\((0,T)\\times[-R,R]\\), find the fixed-x limit of \\(\\sqrt t\\,u(x,t)\\).",
+      "method": "对过去每个时刻用核 S(x−y,t−s)，将积分限制于源区，缩放后在源区统一估计。",
+      "steps": [
+        "\\(AM/\\sqrt{4\\pi\\kappa}\\)，其中 \\(A=\\int_0^T a\\) 且 \\(M=\\int g\\)。"
+      ],
+      "pitfall": "s 是热量加入的时刻，t−s 才是它扩散的时间。",
+      "examples": [
+        "hw-7-Q3"
+      ]
+    },
+    {
+      "week": 8,
+      "title": "过去三角形：没碰到源区还是已包住",
+      "recognize": "With zero initial data and wave source supported on \\([-R,R]\\times[0,T]\\), prove vanishing outside the wave region and identify the eventual value at fixed x.",
+      "method": "比较过去三角形与源区矩形，分别证明不相交和完全覆盖。",
+      "steps": [
+        "\\(|x|\\ge R+ct\\) 时为零；\\(t\\ge T+(|x|+R)/c\\) 时等于源项总积分除以 \\(2c\\)。"
+      ],
+      "pitfall": "固定位置后等足够久，会保留过去的源项积分。",
+      "examples": [
+        "hw-8-Q2"
+      ]
+    },
+    {
+      "week": 8,
+      "title": "非零 Dirichlet 波动边界",
+      "recognize": "For \\(u_{tt}-c^2u_{xx}=f\\) on \\(x>0\\) with \\(u(0,t)=h(t)\\), reduce to a zero-boundary problem and solve using the data \\(\\phi,\\psi\\).",
+      "method": "设 v=u−h(t)，重算源项和初值，做奇延拓，最后加回 h(t)。",
+      "steps": [
+        "\\(v(0,t)=0\\)，源项 \\(f-h^{\\prime\\prime}\\)。一般初值为 \\(\\phi-h(0)\\)、\\(\\psi-h^{\\prime}(0)\\)。"
+      ],
+      "pitfall": "题中 h 在 0 附近为零，所以初始两项恰好保持不变。",
+      "examples": [
+        "hw-8-Q3"
+      ]
+    },
+    {
+      "week": 8,
+      "title": "非零 Neumann 波动边界",
+      "recognize": "For the half-line wave equation with \\(u_x(0,t)=h(t)\\), derive the lifted solution and its data.",
+      "method": "设 v=u−xh(t)，重算源项和初值，做偶延拓，最后加回 xh(t)。",
+      "steps": [
+        "\\(v_x(0,t)=0\\)，源项 \\(f-xh^{\\prime\\prime}\\)。一般初值为 \\(\\phi-xh(0)\\)、\\(\\psi-xh^{\\prime}(0)\\)。"
+      ],
+      "pitfall": "延拓源项时只镜像空间变量，时间 s 不动。",
+      "examples": [
+        "hw-8-Q4"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "半直线热方程：严格为正与 t³ᐟ² 极限",
+      "recognize": "Let \\(\\phi\\) be nonnegative, nonzero, and supported away from 0 and vanishing for x ≥ R. Solve \\(u_t=u_{xx}\\) on \\(x>0\\) with \\(u(0,t)=0\\), \\(u(x,0)=\\phi(x)\\); prove strict positivity and find \\(\\lim t^{3/2}u(x,t)\\).",
+      "method": "奇延拓给差核，先逐点比较两个指数，再展开估计缩放后的余项。",
+      "steps": [
+        "内部严格为正，极限为 \\(x\\int_0^R y\\phi(y)\\,dy/(2\\sqrt\\pi)\\)。"
+      ],
+      "pitfall": "非负且不恒零的连续初值在一段内为正；指数中的常数项相消。",
+      "examples": [
+        "hw-test-Q2"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "移动的波峰：逐点与全域最大值",
+      "recognize": "Solve the half-line unit-speed wave equation with zero initial data and boundary \\(b(t)\\), vanishing outside \\((1,3)\\). Compare the fixed-x limit and \\(\\sup_{x\\ge0}|u(x,t)|\\).",
+      "method": "按特征线何时触及边界分段；固定位置和跟着波峰移动分别计算。",
+      "steps": [
+        "\\(t\\ge x\\) 时为 \\(b(t-x)\\)，否则为零；固定 x 趋零，但 \\(t\\ge3\\) 时最大绝对值等于 \\(\\max|b|\\)。"
+      ],
+      "pitfall": "峰值位置可随时间移动；信号到 x 需要 x 单位时间。",
+      "examples": [
+        "hw-test-Q3"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "判断题：速度积分何时为零",
+      "recognize": "For the unit-speed Neumann half-line wave equation, zero displacement and \\(\\psi=0\\) on \\([0,2]\\), prove \\(u=0\\) on \\(0\\le x,t\\le1\\).",
+      "method": "偶延拓后比较取样区间 [x−t,x+t] 与初速度的零区间。",
+      "steps": [
+        "真。取样区间落在 [−1,2]，完全包含于延拓后的零区间 [−2,2]。"
+      ],
+      "pitfall": "这里每一点的速度都为零，无需正负抵消。",
+      "examples": [
+        "hw-test-Q4b"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "判断题：固定位置的温度为何不减",
+      "recognize": "For \\(u_t-u_{xx}=f(x)\\ge0\\) on the line with zero initial data, is \\(u(x,t)\\) nondecreasing for fixed x?",
+      "method": "令 r=t−s，把时间依赖移到上限，再比较两个时刻的积分。",
+      "steps": [
+        "真。\\(u(x,t_2)-u(x,t_1)=\\int_{t_1}^{t_2}H_x(r)\\,dr\\ge0\\)。"
+      ],
+      "pitfall": "源项不随时间变，换元后才得到固定的非负被积函数。",
+      "examples": [
+        "hw-test-Q4c"
+      ]
+    },
+    {
+      "week": 1,
+      "title": "分离变量：找回零特征线",
+      "recognize": "For \\(u_x+2xyu_y=0\\), find the characteristic curves, including the case \\(y=0\\).",
+      "method": "分离变量，并将除法排除的零解代回原 ODE。",
+      "steps": [
+        "\\(y=Ce^{x^2}\\)，其中 \\(C\\in\\mathbb R\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-1-Q5"
+      ]
+    },
+    {
+      "week": 4,
+      "title": "双曲型主部：混合项系数与标准形",
+      "recognize": "Reduce \\(au_{xx}+bu_{xy}+cu_{yy}=0\\), \\(b^2-4ac>0\\), to canonical form. Include \\(a=0\\).",
+      "method": "按混合项 b 求两个根，检查 Jacobian，再做链式法则；a=0 单独处理。",
+      "steps": [
+        "适当换元后 \\(U_{\\xi\\eta}=0\\)，故 \\(U=F(\\xi)+G(\\eta)\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-4-Q3"
+      ]
+    },
+    {
+      "week": 5,
+      "title": "紧支集与高斯衰减",
+      "recognize": "If \\(\\phi\\) is supported on \\([-R,R]\\), estimate \\(u,u_x,u_{xx}\\) for fixed \\(t>0\\) and \\(|x|>R\\).",
+      "method": "把积分限制在支集，用 |x−y|≥|x|−R 控制指数，再求核的导数。",
+      "steps": [
+        "三个量均按高斯乘多项式衰减，详见各项上界。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-5-Q2"
+      ]
+    },
+    {
+      "week": 5,
+      "title": "总质量与平均位置守恒",
+      "recognize": "For nonnegative, nonzero smooth compactly supported data, prove conservation of mass and mean position.",
+      "method": "交换积分，用热核总质量为 1，或用分部积分验一阶矩。",
+      "steps": [
+        "总质量和一阶空间矩保持初值，故其比值也不变。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-5-Q3"
+      ]
+    },
+    {
+      "week": 6,
+      "title": "半直线热方程：绝热边界与守恒",
+      "recognize": "For the Neumann half-line heat problem, prove mass conservation and determine the leading long-time term.",
+      "method": "偶延拓得到镜像核相加，合并半轴积分，再估计长时间核。",
+      "steps": [
+        "半轴质量 \\(M\\) 守恒；固定 x 时 \\(\\sqrt t\\,u\\to 2M/\\sqrt{4\\pi\\kappa}\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-6-Q3"
+      ]
+    },
+    {
+      "week": 6,
+      "title": "镜像核相减：首项为何慢一个 1/t",
+      "recognize": "For a Dirichlet heat kernel on the half-line and compactly supported data, find the scaled limit \\(t^{3/2}u\\).",
+      "method": "对两个指数各展开到一阶，再检查余项乘缩放因子后趋零。",
+      "steps": [
+        "\\(x\\int_0^R y\\phi(y)\\,dy/(2\\sqrt\\pi\\,\\kappa^{3/2})\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-6-asymptotic"
+      ]
+    },
+    {
+      "week": 7,
+      "title": "热核稳定性与非负性",
+      "recognize": "Prove \\(|u_1-u_2|\\le A+Bt\\) for initial/source differences bounded by A/B. Is the solution nonnegative for nonnegative data?",
+      "method": "两解相减并取绝对值，使用热核非负且积分为 1。",
+      "steps": [
+        "误差界为 \\(A+Bt\\)；非负初值与源项给 \\(u\\ge0\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-7-Q2"
+      ]
+    },
+    {
+      "week": 8,
+      "title": "非齐次波动：初值项与源项积分",
+      "recognize": "Solve \\(u_{tt}-u_{xx}=x^2\\), with initial data \\((\\cos x,0)\\). Then solve with source \\(\\cos t\\sin x\\) and zero initial data.",
+      "method": "逐项辨认位移、速度、源项；源积分先固定 s 积 y，再积 s。",
+      "steps": [
+        "(a) \\(\\cos x\\cos t+x^2t^2/2+t^4/12\\)；(b) \\((t/2)\\sin t\\sin x\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-8-Q1"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "全直线：一题区分热公式与波动公式",
+      "recognize": "(a) Solve \\(u_t-u_{xx}=e^{-t}\\sin x\\), \\(u(x,0)=\\cos 2x\\). (b) Solve \\(u_{tt}-u_{xx}=x^2\\) with zero displacement and velocity.",
+      "method": "先看时间导数阶数，再各自套全直线带源项公式。",
+      "steps": [
+        "(a) \\(e^{-4t}\\cos(2x)+te^{-t}\\sin x\\)；(b) \\(x^2t^2/2+t^4/12\\)。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-test-Q1"
+      ]
+    },
+    {
+      "week": "review",
+      "title": "判断题：波动源停止后仍可非零",
+      "recognize": "For zero initial data and nonnegative, nonzero wave source supported on \\(|x|<1,1<t<2\\), is \\(u(0,t)=0\\) for all \\(t\\ge3\\)?",
+      "method": "画过去三角形，检查是否完整覆盖源项支集。",
+      "steps": [
+        "假。源积分全部被覆盖，剩下严格正的常数。"
+      ],
+      "pitfall": "展开关联练习，核对假设、计算步骤和边界条件。",
+      "examples": [
+        "hw-test-Q4a"
       ]
     }
   ],
@@ -981,6 +1320,656 @@
         }
       ],
       "reason": "线性让差满足齐次问题；零初值、零边界和能量估计才推出唯一。"
+    },
+    {
+      "week": 1,
+      "id": "hw-1-Q5",
+      "title": "分离变量：找回零特征线",
+      "source": "HW · 特征线讲解 · Q5",
+      "question": "For \\(u_x+2xyu_y=0\\), find the characteristic curves, including the case \\(y=0\\).",
+      "method": "分离变量，并将除法排除的零解代回原 ODE。",
+      "answer": "\\(y=Ce^{x^2}\\)，其中 \\(C\\in\\mathbb R\\)。",
+      "steps": [
+        "第 5 题是\n\\[\nu_x+2xyu_y=0.\n\\]\n特征曲线满足\n\\[\n\\frac{dy}{dx}=\\frac{u_y\\text{ 前的系数}}{u_x\\text{ 前的系数}}\n=\\frac{2xy}{1}=2xy.\n\\]",
+        "接下来就是解这个 ODE。先假设 \\(y\\ne0\\)，**分离变量**：\n\\[\n\\frac{1}{y}\\,dy=2x\\,dx.\n\\]\n两边积分：\n\\[\n\\ln|y|=x^2+K.\n\\]\n两边取指数：\n\\[\n|y|=e^{x^2+K}=e^K e^{x^2}.\n\\]\n\n把正负号和常数 \\(e^K\\) 一起记成一个新常数 \\(C\\)，就得到\n\\[\n\\boxed{y=Ce^{x^2}.}\n\\]\n\n刚才除以 \\(y\\) 时排除了 \\(y=0\\)，但 \\(y=0\\) 也满足原来的 ODE，正好对应 \\(C=0\\)。所以最终 **\\(C\\) 可以是任意实数**。"
+      ]
+    },
+    {
+      "week": 4,
+      "id": "hw-4-Q1",
+      "title": "比较函数与长期一致极限",
+      "source": "HW4 Practice · Q1",
+      "question": "For the finite-interval heat problem in HW4 Q1, use the maximum principle, then construct comparison functions to find the uniform limit.",
+      "method": "先用抛物边界粗估，再减掉稳态，用上下比较函数控制余项。",
+      "answer": "具体数据、上下界与一致收敛见逐步推导。",
+      "steps": [
+        "**HW4，第 1 题。先理解题目给了什么。**\n\n方程是\n\\[\nu_t=u_{xx},\\qquad 0<x<1,\\quad t>0.\n\\]\n\n这里可以把 \\(u(x,t)\\) 理解为一根长度为 \\(1\\) 的杆，在位置 \\(x\\)、时间 \\(t\\) 的温度。\n\n两端温度始终固定：\n\\[\nu(0,t)=1,\\qquad u(1,t)=2.\n\\]\n\n开始时的温度是\n\\[\nu(x,0)=1+x+\\sin^2(\\pi x).\n\\]\n\n这道题主要使用**最大值原理**：\n\n如果开始时和两端的温度都不超过某个数，那么之后内部的温度也不会超过这个数。下界同理。",
+        "**(a) 证明 \\(1\\le u(x,t)\\le3\\)。**",
+        "先检查初始温度。\n\n因为 \\(0\\le x\\le1\\)，所以\n\\[\n1\\le1+x\\le2.\n\\]\n又因为\n\\[\n0\\le\\sin^2(\\pi x)\\le1,\n\\]\n相加得到\n\\[\n1\\le1+x+\\sin^2(\\pi x)\\le3.\n\\]\n也就是说：\n\\[\n1\\le u(x,0)\\le3.\n\\]",
+        "再检查两端：\n\\[\nu(0,t)=1,\\qquad u(1,t)=2,\n\\]\n它们也都在 \\([1,3]\\) 内。",
+        "因此，初始温度和两端温度都在 \\([1,3]\\) 内。由最大值原理，\n\\[\n\\boxed{1\\le u(x,t)\\le3.}\n\\]\n\n这里不用先求出 \\(u\\) 的具体表达式。",
+        "**HW4，第 1 题 (b)。这次要用两个已知函数夹住 \\(u\\)。**\n\n要证明：\n\\[\n1+x\\le u(x,t)\\le1+x+e^{-\\pi^2t}\\sin(\\pi x).\n\\]",
+        "先说明下界中的 \\(1+x\\) 是怎么来的。\n\n我们想找一个**不随时间变化、并且符合两端温度的解**。不随时间变化意味着\n\\[\nu_t=0.\n\\]\n为了满足 \\(u_t=u_{xx}\\)，就需要\n\\[\nu_{xx}=0.\n\\]\n对 \\(x\\) 积分两次：\n\\[\nu_x=A,\\qquad u=Ax+B.\n\\]\n\n代入两端条件：\n\\[\nu(0)=B=1,\n\\]\n\\[\nu(1)=A+B=2.\n\\]\n由 \\(B=1\\)，得到 \\(A=1\\)。",
+        "所以这个不随时间变化的解是\n\\[\nw(x,t)=1+x.\n\\]\n\n现在看题目给的上方比较函数：\n\\[\nv(x,t)=1+x+e^{-\\pi^2t}\\sin(\\pi x).\n\\]\n\n我们要做三件事：\n\n1. 确认 \\(w,v\\) 都满足同一个热方程。\n2. 确认它们与 \\(u\\) 的两端值相同。\n3. 比较三个函数在 \\(t=0\\) 时的大小。",
+        "先检查 \\(w\\)：\n\\[\nw_t=0,\\qquad w_{xx}=0.\n\\]\n所以 \\(w_t=w_{xx}\\)，而且\n\\[\nw(0,t)=1,\\qquad w(1,t)=2.\n\\]",
+        "再检查 \\(v\\)。对 \\(t\\) 求导：\n\\[\nv_t=-\\pi^2e^{-\\pi^2t}\\sin(\\pi x).\n\\]\n对 \\(x\\) 求两次导数：\n\\[\nv_x=1+\\pi e^{-\\pi^2t}\\cos(\\pi x),\n\\]\n\\[\nv_{xx}=-\\pi^2e^{-\\pi^2t}\\sin(\\pi x).\n\\]\n因此\n\\[\nv_t=v_{xx}.\n\\]\n\n检查边界：\n\\[\nv(0,t)=1+0+e^{-\\pi^2t}\\sin0=1,\n\\]\n\\[\nv(1,t)=1+1+e^{-\\pi^2t}\\sin\\pi=2.\n\\]\n\n接着比较初始值：\n\\[\nw(x,0)=1+x,\n\\]\n\\[\nu(x,0)=1+x+\\sin^2(\\pi x),\n\\]\n\\[\nv(x,0)=1+x+\\sin(\\pi x).\n\\]\n\n因为 \\(0\\le x\\le1\\)，所以\n\\[\n0\\le\\sin(\\pi x)\\le1.\n\\]\n把不等式 \\(\\sin(\\pi x)\\le1\\) 两边乘以非负数 \\(\\sin(\\pi x)\\)，得到\n\\[\n\\sin^2(\\pi x)\\le\\sin(\\pi x).\n\\]\n因此\n\\[\n0\\le\\sin^2(\\pi x)\\le\\sin(\\pi x).\n\\]\n两边都加上 \\(1+x\\)：\n\\[\nw(x,0)\\le u(x,0)\\le v(x,0).\n\\]",
+        "**为什么初始时的大小关系，之后还成立？**\n\n以 \\(u\\le v\\) 为例。两者都满足热方程，因此它们的差也满足热方程：\n\\[\n(u-v)_t=u_t-v_t=u_{xx}-v_{xx}=(u-v)_{xx}.\n\\]\n\n而且：\n\n- 初始时 \\(u-v\\le0\\)；\n- 左端 \\(u-v=1-1=0\\)；\n- 右端 \\(u-v=2-2=0\\)。\n\n由最大值原理，之后仍然有\n\\[\nu-v\\le0,\n\\]\n也就是 \\(u\\le v\\)。\n\n同样，对 \\(w-u\\) 使用最大值原理，得到 \\(w\\le u\\)。",
+        "所以\n\\[\n\\boxed{\n1+x\\le u(x,t)\\le1+x+e^{-\\pi^2t}\\sin(\\pi x).\n}\n\\]",
+        "**HW4，第 1 题 (c)。求 \\(t\\to\\infty\\) 时的极限。**",
+        "从刚才的结果开始：\n\\[\n1+x\\le u(x,t)\\le1+x+e^{-\\pi^2t}\\sin(\\pi x).\n\\]\n\n全部减去 \\(1+x\\)：\n\\[\n0\\le u(x,t)-(1+x)\\le e^{-\\pi^2t}\\sin(\\pi x).\n\\]",
+        "再使用 \\(\\sin(\\pi x)\\le1\\)：\n\\[\n0\\le u(x,t)-(1+x)\\le e^{-\\pi^2t}.\n\\]\n\n由于差值非负，\n\\[\n|u(x,t)-(1+x)|=u(x,t)-(1+x).\n\\]\n因此\n\\[\n|u(x,t)-(1+x)|\\le e^{-\\pi^2t}.\n\\]\n\n这个不等式对每个 \\(x\\in[0,1]\\) 都成立，所以\n\\[\n\\boxed{\n\\max_{0\\le x\\le1}|u(x,t)-(1+x)|\n\\le e^{-\\pi^2t}.\n}\n\\]\n\n当 \\(t\\to\\infty\\)，右边趋于零，于是\n\\[\n\\boxed{u(x,t)\\to1+x.}\n\\]\n\n这还是**一致收敛**，因为右边的误差上界不含 \\(x\\)。无论你取杆上的哪个位置，都由同一个数 \\(e^{-\\pi^2t}\\) 控制误差。"
+      ],
+      "choices": [
+        {
+          "text": "先用抛物边界粗估，再减掉稳态，用上下比较函数控制余项。",
+          "correct": true
+        },
+        {
+          "text": "只看初始温度，忽略边界。",
+          "correct": false
+        },
+        {
+          "text": "用任意点的逐点收敛推出一致收敛。",
+          "correct": false
+        }
+      ],
+      "reason": "比较函数必须满足 PDE 不等式及整个抛物边界上的次序。"
+    },
+    {
+      "week": 4,
+      "id": "hw-4-Q3",
+      "title": "双曲型主部：混合项系数与标准形",
+      "source": "HW4 Practice · Q3",
+      "question": "Reduce \\(au_{xx}+bu_{xy}+cu_{yy}=0\\), \\(b^2-4ac>0\\), to canonical form. Include \\(a=0\\).",
+      "method": "按混合项 b 求两个根，检查 Jacobian，再做链式法则；a=0 单独处理。",
+      "answer": "适当换元后 \\(U_{\\xi\\eta}=0\\)，故 \\(U=F(\\xi)+G(\\eta)\\)。",
+      "steps": [
+        "**HW4，第 3 题。整道题的目标是把复杂的 PDE 换成容易积分的方程。**\n\n原方程：\n\\[\nau_{xx}+bu_{xy}+cu_{yy}=0,\n\\qquad \\Delta=b^2-4ac>0.\n\\]\n\n我们最终要把它变成\n\\[\nU_{\\xi\\eta}=0.\n\\]\n\n这里 \\(U\\) 和 \\(u\\) 表示的是同一个解，只是：\n\n- \\(u\\) 使用旧坐标 \\((x,y)\\)；\n- \\(U\\) 使用新坐标 \\((\\xi,\\eta)\\)。",
+        "**(a) 先求 \\(m_1,m_2\\)。**\n\n假设 \\(a\\ne0\\)，按照题目要求分解：\n\\[\na(\\partial_x+m_1\\partial_y)(\\partial_x+m_2\\partial_y).\n\\]\n\n把它作用在 \\(u\\) 上并展开：\n\\[\n\\begin{aligned}\n&a(\\partial_x+m_1\\partial_y)(u_x+m_2u_y)\\\\\n&=a\\bigl(u_{xx}+m_2u_{xy}+m_1u_{yx}+m_1m_2u_{yy}\\bigr).\n\\end{aligned}\n\\]\n由于 \\(u_{xy}=u_{yx}\\)，得到\n\\[\nau_{xx}+a(m_1+m_2)u_{xy}+am_1m_2u_{yy}.\n\\]\n\n要与原方程\n\\[\nau_{xx}+bu_{xy}+cu_{yy}\n\\]\n相同，就必须满足\n\\[\na(m_1+m_2)=b,\\qquad am_1m_2=c.\n\\]\n除以 \\(a\\)：\n\\[\nm_1+m_2=\\frac ba,\\qquad m_1m_2=\\frac ca.\n\\]",
+        "因此 \\(m_1,m_2\\) 是二次方程\n\\[\nam^2-bm+c=0\n\\]\n的根。\n\n求根公式给出\n\\[\n\\boxed{\nm_1=\\frac{b+\\sqrt{b^2-4ac}}{2a},\\qquad\nm_2=\\frac{b-\\sqrt{b^2-4ac}}{2a}.\n}\n\\]\n因为 \\(\\Delta>0\\)，两个根都是实数，而且 \\(m_1\\ne m_2\\)。",
+        "**HW4，第 3 题 (b)。换坐标，并直接用链式法则计算。**\n\n定义\n\\[\n\\xi=y-m_1x,\\qquad \\eta=y-m_2x,\n\\]\n\\[\nu(x,y)=U(\\xi,\\eta).\n\\]",
+        "先说明为什么可以由新坐标找回旧坐标。\n\n两式相减：\n\\[\n\\xi-\\eta=(m_2-m_1)x.\n\\]\n因为 \\(m_2-m_1\\ne0\\)，所以\n\\[\nx=\\frac{\\xi-\\eta}{m_2-m_1}.\n\\]\n再由 \\(\\xi=y-m_1x\\)，得到\n\\[\ny=\\xi+m_1x.\n\\]",
+        "所以给定 \\((\\xi,\\eta)\\)，可以唯一找回 \\((x,y)\\)。这就证明了换元可逆。",
+        "接下来把旧偏导数换成新偏导数。\n\n由定义：\n\\[\n\\xi_x=-m_1,\\quad \\eta_x=-m_2,\n\\]\n\\[\n\\xi_y=1,\\quad \\eta_y=1.\n\\]",
+        "因此一阶导数为\n\\[\n\\begin{aligned}\nu_x\n&=U_\\xi\\xi_x+U_\\eta\\eta_x\\\\\n&=-m_1U_\\xi-m_2U_\\eta,\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nu_y\n&=U_\\xi\\xi_y+U_\\eta\\eta_y\\\\\n&=U_\\xi+U_\\eta.\n\\end{aligned}\n\\]\n\n现在算二阶导数。",
+        "先算 \\(u_{xx}\\)。因为\n\\[\n\\partial_xU_\\xi\n=U_{\\xi\\xi}\\xi_x+U_{\\xi\\eta}\\eta_x\n=-m_1U_{\\xi\\xi}-m_2U_{\\xi\\eta},\n\\]\n以及\n\\[\n\\partial_xU_\\eta\n=U_{\\eta\\xi}\\xi_x+U_{\\eta\\eta}\\eta_x\n=-m_1U_{\\xi\\eta}-m_2U_{\\eta\\eta},\n\\]\n所以\n\\[\n\\begin{aligned}\nu_{xx}\n&=-m_1\\partial_xU_\\xi-m_2\\partial_xU_\\eta\\\\\n&=m_1^2U_{\\xi\\xi}\n+2m_1m_2U_{\\xi\\eta}\n+m_2^2U_{\\eta\\eta}.\n\\end{aligned}\n\\]",
+        "再算 \\(u_{xy}\\)。由于\n\\[\n\\partial_yU_\\xi=U_{\\xi\\xi}+U_{\\xi\\eta},\n\\]\n\\[\n\\partial_yU_\\eta=U_{\\xi\\eta}+U_{\\eta\\eta},\n\\]\n所以\n\\[\n\\begin{aligned}\nu_{xy}\n&=-m_1\\partial_yU_\\xi-m_2\\partial_yU_\\eta\\\\\n&=-m_1U_{\\xi\\xi}\n-(m_1+m_2)U_{\\xi\\eta}\n-m_2U_{\\eta\\eta}.\n\\end{aligned}\n\\]",
+        "最后，\n\\[\n\\begin{aligned}\nu_{yy}\n&=\\partial_y(U_\\xi+U_\\eta)\\\\\n&=U_{\\xi\\xi}+2U_{\\xi\\eta}+U_{\\eta\\eta}.\n\\end{aligned}\n\\]\n\n把这三个式子代入\n\\[\nau_{xx}+bu_{xy}+cu_{yy}=0.\n\\]\n按三种二阶导数分别合并：\n\\[\n\\begin{aligned}\n0={}&(am_1^2-bm_1+c)U_{\\xi\\xi}\\\\\n&+\\bigl[2am_1m_2-b(m_1+m_2)+2c\\bigr]U_{\\xi\\eta}\\\\\n&+(am_2^2-bm_2+c)U_{\\eta\\eta}.\n\\end{aligned}\n\\]\n\n现在使用 (a) 求根时得到的条件。\n\n因为 \\(m_1,m_2\\) 都满足\n\\[\nam^2-bm+c=0,\n\\]\n所以\n\\[\nam_1^2-bm_1+c=0,\n\\qquad\nam_2^2-bm_2+c=0.\n\\]\n因此 \\(U_{\\xi\\xi}\\) 和 \\(U_{\\eta\\eta}\\) 的项全部消失。\n\n中间项的系数为\n\\[\n\\begin{aligned}\n2am_1m_2-b(m_1+m_2)+2c\n&=2a\\frac ca-b\\frac ba+2c\\\\\n&=2c-\\frac{b^2}{a}+2c\\\\\n&=\\frac{4ac-b^2}{a}\\\\\n&=-\\frac{\\Delta}{a}.\n\\end{aligned}\n\\]\n\n于是原方程变成\n\\[\n-\\frac{\\Delta}{a}U_{\\xi\\eta}=0.\n\\]\n因为 \\(\\Delta>0\\)、\\(a\\ne0\\)，这个系数不为零，除掉它就得到\n\\[\n\\boxed{U_{\\xi\\eta}=0.}\n\\]",
+        "**选这两个新坐标的目的，就是让 \\(U_{\\xi\\xi}\\) 和 \\(U_{\\eta\\eta}\\) 的系数变成零。**",
+        "**HW4，第 3 题 (c)。解 \\(U_{\\xi\\eta}=0\\)。**\n\n把它理解成\n\\[\n\\frac{\\partial}{\\partial\\eta}(U_\\xi)=0.\n\\]\n\n意思是：\\(U_\\xi\\) 对 \\(\\eta\\) 的导数为零，所以它不依赖 \\(\\eta\\)，只可能依赖 \\(\\xi\\)。",
+        "因此可以写成\n\\[\nU_\\xi=A(\\xi).\n\\]\n\n对 \\(\\xi\\) 积分：\n\\[\nU(\\xi,\\eta)=F(\\xi)+G(\\eta),\n\\]\n其中 \\(F'(\\xi)=A(\\xi)\\)。\n\n为什么还有 \\(G(\\eta)\\)？因为我们是对 \\(\\xi\\) 积分，任何只依赖 \\(\\eta\\) 的函数，对 \\(\\xi\\) 求导都是零：\n\\[\n\\partial_\\xi G(\\eta)=0.\n\\]\n\n换回原来的坐标：\n\\[\n\\boxed{u(x,y)=F(y-m_1x)+G(y-m_2x).}\n\\]\n\n也就是\n\\[\n\\boxed{\nu(x,y)=\nF\\!\\left(y-\\frac{b+\\sqrt\\Delta}{2a}x\\right)\n+\nG\\!\\left(y-\\frac{b-\\sqrt\\Delta}{2a}x\\right).\n}\n\\]\n\n其中 \\(F,G\\) 可以是任意 \\(C^2\\) 函数。由于换元可逆，原方程的每个 \\(C^2\\) 解都被包含在这个表达式中。",
+        "**HW4，第 3 题 (d)。当 \\(a=0\\) 时怎么办？**\n\n这时\n\\[\n\\Delta=b^2>0,\n\\]\n所以 \\(b\\ne0\\)。\n\n方程变成\n\\[\nbu_{xy}+cu_{yy}=0.\n\\]\n\n取新坐标\n\\[\n\\xi=x,\\qquad \\eta=y-\\frac cbx.\n\\]\n设\n\\[\nu(x,y)=U(\\xi,\\eta).\n\\]\n\n一阶导数：\n\\[\nu_x=U_\\xi-\\frac cbU_\\eta,\n\\]\n\\[\nu_y=U_\\eta.\n\\]",
+        "再对 \\(y\\) 求导。因为 \\(\\xi_y=0,\\eta_y=1\\)，有\n\\[\nu_{xy}=U_{\\xi\\eta}-\\frac cbU_{\\eta\\eta},\n\\]\n\\[\nu_{yy}=U_{\\eta\\eta}.\n\\]\n\n代入：\n\\[\n\\begin{aligned}\nbu_{xy}+cu_{yy}\n&=b\\left(U_{\\xi\\eta}-\\frac cbU_{\\eta\\eta}\\right)\n+cU_{\\eta\\eta}\\\\\n&=bU_{\\xi\\eta}-cU_{\\eta\\eta}+cU_{\\eta\\eta}\\\\\n&=bU_{\\xi\\eta}.\n\\end{aligned}\n\\]\n因此\n\\[\nbU_{\\xi\\eta}=0.\n\\]\n由于 \\(b\\ne0\\)，\n\\[\nU_{\\xi\\eta}=0.\n\\]\n\n按照 (c) 的积分过程：\n\\[\nU=F(\\xi)+G(\\eta).\n\\]\n所以\n\\[\n\\boxed{u(x,y)=F(x)+G\\!\\left(y-\\frac cbx\\right).}\n\\]",
+        "**HW4，第 3 题 (e)。代入具体系数。**\n\n方程是\n\\[\n2u_{xx}+3u_{xy}-2u_{yy}=0.\n\\]\n所以\n\\[\na=2,\\qquad b=3,\\qquad c=-2.\n\\]",
+        "先算\n\\[\n\\Delta=b^2-4ac\n=3^2-4(2)(-2)\n=9+16=25.\n\\]",
+        "再算两个根：\n\\[\nm_1=\\frac{3+\\sqrt{25}}{2\\cdot2}\n=\\frac84=2,\n\\]\n\\[\nm_2=\\frac{3-\\sqrt{25}}{2\\cdot2}\n=\\frac{-2}{4}=-\\frac12.\n\\]\n\n代入通解：\n\\[\nu=F(y-m_1x)+G(y-m_2x),\n\\]\n得到\n\\[\n\\boxed{u(x,y)=F(y-2x)+G\\!\\left(y+\\frac x2\\right).}\n\\]"
+      ]
+    },
+    {
+      "week": 5,
+      "id": "hw-5-Q1",
+      "title": "高斯初值：配方与求导",
+      "source": "HW5 Practice · Q1",
+      "question": "Solve \\(u_t=2u_{xx}\\) on the line for (a) \\(e^{-(x-1)^2}\\) and (b) \\((x-1)e^{-(x-1)^2}\\).",
+      "method": "(a) 热核卷积并配方；(b) 识别初值是 (a) 的导数乘 −1/2。",
+      "answer": "令 \\(D=1+8t\\)。两解分别为 \\(D^{-1/2}e^{-(x-1)^2/D}\\) 和 \\((x-1)D^{-3/2}e^{-(x-1)^2/D}\\)。",
+      "steps": [
+        "**HW5，第 1 题 (a)。代入热核，再计算高斯积分。**\n\n题目是\n\\[\nu_t=2u_{xx},\\qquad \\phi(x)=e^{-(x-1)^2}.\n\\]\n\n因为 \\(\\kappa=2\\)，\n\\[\n4\\kappa t=8t.\n\\]\n所以\n\\[\nu(x,t)=\n\\frac1{\\sqrt{8\\pi t}}\n\\int_{\\mathbb R}\ne^{-\\frac{(x-y)^2}{8t}}e^{-(y-1)^2}\\,dy.\n\\]\n\n两个指数相乘，指数相加：\n\\[\nu(x,t)=\n\\frac1{\\sqrt{8\\pi t}}\n\\int_{\\mathbb R}\ne^{-\\left[\\frac{(x-y)^2}{8t}+(y-1)^2\\right]}\\,dy.\n\\]\n\n我们要把方括号写成“关于 \\(y\\) 的一个平方，加上与 \\(y\\) 无关的东西”。",
+        "先展开：\n\\[\n\\begin{aligned}\n\\frac{(x-y)^2}{8t}+(y-1)^2\n&=\\frac{x^2-2xy+y^2}{8t}+y^2-2y+1\\\\\n&=\\frac{1+8t}{8t}y^2\n-\\frac{x+8t}{4t}y\n+\\frac{x^2}{8t}+1.\n\\end{aligned}\n\\]",
+        "从前两项提出 \\(\\frac{1+8t}{8t}\\)：\n\\[\n=\\frac{1+8t}{8t}\n\\left[y^2-2\\frac{x+8t}{1+8t}y\\right]\n+\\frac{x^2}{8t}+1.\n\\]\n\n用配平方公式\n\\[\ny^2-2hy=(y-h)^2-h^2,\n\\]\n这里\n\\[\nh=\\frac{x+8t}{1+8t}.\n\\]\n得到\n\\[\n\\begin{aligned}\n\\frac{(x-y)^2}{8t}+(y-1)^2\n={}&\\frac{1+8t}{8t}\n\\left(y-\\frac{x+8t}{1+8t}\\right)^2\\\\\n&+\\frac{x^2+8t}{8t}\n-\\frac{(x+8t)^2}{8t(1+8t)}.\n\\end{aligned}\n\\]",
+        "最后两个常数项通分：\n\\[\n\\frac{(x^2+8t)(1+8t)-(x+8t)^2}\n{8t(1+8t)}.\n\\]\n分子化简为\n\\[\n\\begin{aligned}\n&(x^2+8t)(1+8t)-(x+8t)^2\\\\\n&=x^2+8tx^2+8t+64t^2\n-x^2-16xt-64t^2\\\\\n&=8t(x^2-2x+1)\\\\\n&=8t(x-1)^2.\n\\end{aligned}\n\\]\n所以常数项是\n\\[\n\\frac{(x-1)^2}{1+8t}.\n\\]\n\n配平方完成：\n\\[\n\\boxed{\n\\frac{(x-y)^2}{8t}+(y-1)^2\n=\n\\frac{1+8t}{8t}\n\\left(y-\\frac{x+8t}{1+8t}\\right)^2\n+\\frac{(x-1)^2}{1+8t}.\n}\n\\]\n\n把与 \\(y\\) 无关的指数提出积分：\n\\[\n\\begin{aligned}\nu(x,t)\n={}&\\frac{e^{-(x-1)^2/(1+8t)}}{\\sqrt{8\\pi t}}\\\\\n&\\quad\\cdot\n\\int_{\\mathbb R}\n\\exp\\left[\n-\\frac{1+8t}{8t}\n\\left(y-\\frac{x+8t}{1+8t}\\right)^2\n\\right]dy.\n\\end{aligned}\n\\]\n\n现在令\n\\[\nz=\\sqrt{\\frac{1+8t}{8t}}\n\\left(y-\\frac{x+8t}{1+8t}\\right).\n\\]\n那么\n\\[\ndy=\\sqrt{\\frac{8t}{1+8t}}\\,dz.\n\\]\n积分就变成\n\\[\n\\sqrt{\\frac{8t}{1+8t}}\n\\int_{\\mathbb R}e^{-z^2}\\,dz\n=\n\\sqrt{\\frac{8t}{1+8t}}\\sqrt\\pi.\n\\]\n\n乘上原来的系数：\n\\[\n\\frac1{\\sqrt{8\\pi t}}\n\\sqrt{\\frac{8t}{1+8t}}\\sqrt\\pi\n=\\frac1{\\sqrt{1+8t}}.\n\\]",
+        "所以\n\\[\n\\boxed{\nu(x,t)=\n\\frac1{\\sqrt{1+8t}}\ne^{-\\frac{(x-1)^2}{1+8t}}.\n}\n\\]",
+        "**HW5，第 1 题 (b)。先观察初值与 (a) 的关系。**\n\n现在初值是\n\\[\n(x-1)e^{-(x-1)^2}.\n\\]\n\n注意：\n\\[\n\\frac d{dx}e^{-(x-1)^2}\n=-2(x-1)e^{-(x-1)^2}.\n\\]\n所以\n\\[\n(x-1)e^{-(x-1)^2}\n=-\\frac12\\frac d{dx}e^{-(x-1)^2}.\n\\]\n\n也就是说，**本题的初值等于 (a) 的初值对 \\(x\\) 求导，再乘 \\(-\\frac12\\)**。\n\n为什么可以对 (a) 的解做同样操作？\n\n设 (a) 的解是 \\(v\\)，它满足\n\\[\nv_t=2v_{xx}.\n\\]\n两边对 \\(x\\) 求导：\n\\[\n(v_x)_t=2(v_x)_{xx}.\n\\]\n所以 \\(v_x\\) 仍满足同一个热方程；再乘常数 \\(-\\frac12\\)，仍然满足。",
+        "因此我们取\n\\[\nu=-\\frac12v_x.\n\\]\n\n由 (a)，\n\\[\nv(x,t)=\n\\frac1{\\sqrt{1+8t}}\ne^{-\\frac{(x-1)^2}{1+8t}}.\n\\]\n对 \\(x\\) 求导时，所有只含 \\(t\\) 的部分都看作常数：\n\\[\n\\begin{aligned}\nv_x\n&=\\frac1{\\sqrt{1+8t}}\ne^{-\\frac{(x-1)^2}{1+8t}}\n\\left(-\\frac{2(x-1)}{1+8t}\\right)\\\\\n&=-\\frac{2(x-1)}{(1+8t)^{3/2}}\ne^{-\\frac{(x-1)^2}{1+8t}}.\n\\end{aligned}\n\\]\n乘上 \\(-\\frac12\\)：\n\\[\n\\boxed{\nu(x,t)=\n\\frac{x-1}{(1+8t)^{3/2}}\ne^{-\\frac{(x-1)^2}{1+8t}}.\n}\n\\]\n\n检查初值，令 \\(t=0\\)：\n\\[\nu(x,0)=(x-1)e^{-(x-1)^2}.\n\\]\n\n这个操作也与热核积分一致：对核的 \\(x\\) 求导后，可利用\n\\[\n\\partial_xS(x-y,t)=-\\partial_yS(x-y,t)\n\\]\n做分部积分，把导数移到初值上；高斯衰减使边界项为零。因此它确实是所求的热核解。"
+      ],
+      "choices": [
+        {
+          "text": "(a) 热核卷积并配方；(b) 识别初值是 (a) 的导数乘 −1/2。",
+          "correct": true
+        },
+        {
+          "text": "把两个指数分开各积一次。",
+          "correct": false
+        },
+        {
+          "text": "对时间求导来生成第二个初值。",
+          "correct": false
+        }
+      ],
+      "reason": "展开平方时保留积分外的因子；求空间导数会多一个 D 的倒数。"
+    },
+    {
+      "week": 5,
+      "id": "hw-5-Q2",
+      "title": "紧支集与高斯衰减",
+      "source": "HW5 Practice · Q2",
+      "question": "If \\(\\phi\\) is supported on \\([-R,R]\\), estimate \\(u,u_x,u_{xx}\\) for fixed \\(t>0\\) and \\(|x|>R\\).",
+      "method": "把积分限制在支集，用 |x−y|≥|x|−R 控制指数，再求核的导数。",
+      "answer": "三个量均按高斯乘多项式衰减，详见各项上界。",
+      "steps": [
+        "**HW5，第 2 题 (a)。把积分中的高斯用一个更容易控制的数代替。**\n\n已知初值只在 \\([-R,R]\\) 内可能非零，所以\n\\[\nu(x,t)=\n\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_{-R}^{R}\ne^{-\\frac{(x-y)^2}{4\\kappa t}}\\phi(y)\\,dy.\n\\]",
+        "先取绝对值：\n\\[\n|u(x,t)|\n\\le\n\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_{-R}^{R}\ne^{-\\frac{(x-y)^2}{4\\kappa t}}|\\phi(y)|\\,dy.\n\\]\n\n题目考虑 \\(|x|\\ge R\\)，而积分中的 \\(y\\) 满足 \\(|y|\\le R\\)。因此\n\\[\n|x-y|\\ge|x|-|y|\\ge|x|-R.\n\\]\n\n两边非负，平方后：\n\\[\n(x-y)^2\\ge(|x|-R)^2.\n\\]\n\n高斯函数里的距离越大，指数越负，函数值越小，因此\n\\[\ne^{-\\frac{(x-y)^2}{4\\kappa t}}\n\\le\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}.\n\\]\n\n右边不含积分变量 \\(y\\)，所以\n\\[\n\\begin{aligned}\n|u(x,t)|\n&\\le\n\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_{-R}^{R}\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}|\\phi(y)|\\,dy\\\\\n&=\n\\frac{e^{-(|x|-R)^2/(4\\kappa t)}}{\\sqrt{4\\pi\\kappa t}}\n\\int_{-R}^{R}|\\phi(y)|\\,dy.\n\\end{aligned}\n\\]\n\n题目定义\n\\[\nA=\\int_{\\mathbb R}|\\phi(y)|\\,dy.\n\\]\n由于区间外 \\(\\phi=0\\)，这里的积分就是 \\(A\\)。",
+        "因此\n\\[\n\\boxed{\n|u(x,t)|\\le\n\\frac A{\\sqrt{4\\pi\\kappa t}}\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}.\n}\n\\]",
+        "**HW5，第 2 题 (b)。对热核求导，再沿用刚才的估计。**\n\n热核是\n\\[\nS_\\kappa(x-y,t)\n=\\frac1{\\sqrt{4\\pi\\kappa t}}\ne^{-\\frac{(x-y)^2}{4\\kappa t}}.\n\\]\n\n对 \\(x\\) 求导：\n\\[\n\\partial_x\\left(-\\frac{(x-y)^2}{4\\kappa t}\\right)\n=-\\frac{x-y}{2\\kappa t}.\n\\]\n所以\n\\[\n\\boxed{\n\\partial_xS_\\kappa\n=-\\frac{x-y}{2\\kappa t}S_\\kappa.\n}\n\\]",
+        "再求一次导数，用乘积法则：\n\\[\n\\begin{aligned}\n\\partial_x^2S_\\kappa\n&=-\\frac1{2\\kappa t}S_\\kappa\n-\\frac{x-y}{2\\kappa t}\\partial_xS_\\kappa\\\\\n&=-\\frac1{2\\kappa t}S_\\kappa\n+\\frac{(x-y)^2}{4\\kappa^2t^2}S_\\kappa.\n\\end{aligned}\n\\]\n因此\n\\[\n\\boxed{\n\\partial_x^2S_\\kappa\n=\n\\left[\n\\frac{(x-y)^2}{4\\kappa^2t^2}\n-\\frac1{2\\kappa t}\n\\right]S_\\kappa.\n}\n\\]\n\n因为积分区间有限、核在 \\(t>0\\) 时光滑，可以把 \\(x\\) 导数放进积分：\n\\[\nu_x=\\int_{-R}^{R}\\partial_xS_\\kappa\\,\\phi(y)\\,dy.\n\\]\n取绝对值：\n\\[\n|u_x|\n\\le\n\\int_{-R}^{R}\n\\frac{|x-y|}{2\\kappa t}S_\\kappa|\\phi(y)|\\,dy.\n\\]\n\n这里有两个部分需要分别估计。\n\n前面的因子使用\n\\[\n|x-y|\\le|x|+|y|\\le|x|+R.\n\\]\n\n后面的高斯使用 (a)：\n\\[\nS_\\kappa(x-y,t)\n\\le\n\\frac1{\\sqrt{4\\pi\\kappa t}}\ne^{-(|x|-R)^2/(4\\kappa t)}.\n\\]\n\n把这些与 \\(y\\) 无关的量提出积分：\n\\[\n\\boxed{\n|u_x(x,t)|\n\\le\n\\frac{A(|x|+R)}\n{2\\kappa t\\sqrt{4\\pi\\kappa t}}\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}.\n}\n\\]\n\n对于 \\(u_{xx}\\)，先用\n\\[\n|P-Q|\\le|P|+|Q|,\n\\]\n得到\n\\[\n\\begin{aligned}\n|u_{xx}|\n&\\le\\int_{-R}^{R}\n\\left[\n\\frac{(x-y)^2}{4\\kappa^2t^2}\n+\\frac1{2\\kappa t}\n\\right]\nS_\\kappa|\\phi(y)|\\,dy.\n\\end{aligned}\n\\]\n再用\n\\[\n(x-y)^2\\le(|x|+R)^2\n\\]\n和同一个高斯上界：\n\\[\n\\boxed{\n|u_{xx}(x,t)|\n\\le\n\\frac A{\\sqrt{4\\pi\\kappa t}}\n\\left[\n\\frac{(|x|+R)^2}{4\\kappa^2t^2}\n+\\frac1{2\\kappa t}\n\\right]\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}.\n}\n\\]",
+        "最后证明乘任何 \\(|x|^N\\) 后仍趋于零。\n\n固定 \\(t>0\\)。当 \\(|x|\\ge2R\\) 时，\n\\[\n|x|-R\\ge\\frac{|x|}{2},\n\\]\n所以\n\\[\ne^{-\\frac{(|x|-R)^2}{4\\kappa t}}\n\\le\ne^{-\\frac{x^2}{16\\kappa t}}.\n\\]",
+        "因此所有上界都具有这种形式：\n\\[\n\\text{一个关于 }|x|\\text{ 的多项式}\n\\times e^{-\\frac{x^2}{16\\kappa t}}.\n\\]\n\n高斯衰减比任何幂次增长都快。具体来说，对固定 \\(m\\) 和 \\(\\alpha>0\\)，\n\\[\n|x|^m e^{-\\alpha x^2}\n=\\exp\\bigl(m\\log|x|-\\alpha x^2\\bigr).\n\\]\n由于 \\(x^2\\) 比 \\(\\log|x|\\) 增长快，指数趋于 \\(-\\infty\\)，所以整个表达式趋于零。\n\n于是\n\\[\n\\boxed{\n|x|^N\\bigl(|u|+|u_x|+|u_{xx}|\\bigr)\\to0\n\\qquad(x\\to\\pm\\infty).\n}\n\\]"
+      ]
+    },
+    {
+      "week": 5,
+      "id": "hw-5-Q3",
+      "title": "总质量与平均位置守恒",
+      "source": "HW5 Practice · Q3",
+      "question": "For nonnegative, nonzero smooth compactly supported data, prove conservation of mass and mean position.",
+      "method": "交换积分，用热核总质量为 1，或用分部积分验一阶矩。",
+      "answer": "总质量和一阶空间矩保持初值，故其比值也不变。",
+      "steps": [
+        "**HW5，第 3 题 (a)。证明总质量不变。**\n\n总质量就是函数对整个空间的积分：\n\\[\n\\int_{\\mathbb R}u(x,t)\\,dx.\n\\]\n\n把热核公式代入：\n\\[\n\\int_{\\mathbb R}u(x,t)\\,dx\n=\n\\int_{\\mathbb R}\\int_{\\mathbb R}\nS_\\kappa(x-y,t)\\phi(y)\\,dy\\,dx.\n\\]\n\n由于 \\(\\phi\\ge0\\) 且热核非负，可以交换积分次序：\n\\[\n=\n\\int_{\\mathbb R}\\phi(y)\n\\left[\\int_{\\mathbb R}S_\\kappa(x-y,t)\\,dx\\right]dy.\n\\]\n\n热核最重要的性质之一是\n\\[\n\\int_{\\mathbb R}S_\\kappa(x-y,t)\\,dx=1.\n\\]\n\n验证这个性质，只需令\n\\[\nz=\\frac{x-y}{\\sqrt{4\\kappa t}},\n\\qquad dx=\\sqrt{4\\kappa t}\\,dz.\n\\]\n于是\n\\[\n\\begin{aligned}\n\\int_{\\mathbb R}S_\\kappa(x-y,t)\\,dx\n&=\n\\frac{\\sqrt{4\\kappa t}}{\\sqrt{4\\pi\\kappa t}}\n\\int_{\\mathbb R}e^{-z^2}\\,dz\\\\\n&=\\frac1{\\sqrt\\pi}\\cdot\\sqrt\\pi\\\\\n&=1.\n\\end{aligned}\n\\]",
+        "因此\n\\[\n\\int_{\\mathbb R}u(x,t)\\,dx\n=\\int_{\\mathbb R}\\phi(y)\\cdot1\\,dy.\n\\]\n右边就是题目定义的 \\(M\\)，所以\n\\[\n\\boxed{\\int_{\\mathbb R}u(x,t)\\,dx=M.}\n\\]",
+        "**HW5，第 3 题 (b)。证明平均位置不变。**\n\n平均位置定义为\n\\[\n\\bar x(t)=\\frac1M\\int_{\\mathbb R}xu(x,t)\\,dx.\n\\]\n\n分母 \\(M\\) 已经证明是常数，因此\n\\[\n\\bar x'(t)\n=\\frac1M\\int_{\\mathbb R}xu_t(x,t)\\,dx.\n\\]\n\n代入热方程：\n\\[\n\\bar x'(t)\n=\\frac{\\kappa}{M}\\int_{\\mathbb R}xu_{xx}(x,t)\\,dx.\n\\]\n\n对积分做分部积分。选择\n\\[\nf=x,\\qquad g'=u_{xx},\n\\]\n所以\n\\[\nf'=1,\\qquad g=u_x.\n\\]\n于是\n\\[\n\\int_{\\mathbb R}xu_{xx}\\,dx\n=[xu_x]_{-\\infty}^{\\infty}\n-\\int_{\\mathbb R}u_x\\,dx.\n\\]\n最后一个积分是\n\\[\n\\int_{\\mathbb R}u_x\\,dx=[u]_{-\\infty}^{\\infty}.\n\\]\n所以\n\\[\n\\bar x'(t)\n=\\frac{\\kappa}{M}\n\\left([xu_x]_{-\\infty}^{\\infty}-[u]_{-\\infty}^{\\infty}\\right).\n\\]\n\n第 2 题已经证明：\n\\[\nu(x,t)\\to0,\\qquad xu_x(x,t)\\to0\n\\]\n当 \\(x\\to\\pm\\infty\\) 时成立。",
+        "因此两个边界项都为零：\n\\[\n\\bar x'(t)=0.\n\\]\n所以平均位置等于初始时的平均位置：\n\\[\n\\boxed{\n\\bar x(t)=\\bar x(0)\n=\\frac1M\\int_{\\mathbb R}x\\phi(x)\\,dx.\n}\n\\]"
+      ]
+    },
+    {
+      "week": 5,
+      "id": "hw-5-Q4",
+      "title": "固定位置的热核长时间极限",
+      "source": "HW5 Practice · Q4",
+      "question": "For compactly supported \\(\\phi\\) with mass \\(M\\), find \\(\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)\\) at fixed x.",
+      "method": "先乘根号 t，再在紧支集上估计指数与 1 的差。",
+      "answer": "\\(M/\\sqrt{4\\pi\\kappa}\\)。",
+      "steps": [
+        "**HW5，第 4 题。这次先把 \\(\\sqrt t\\) 乘进去，直接看要算的极限。**\n\n题目要求，对固定 \\(x\\)，求\n\\[\n\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t).\n\\]",
+        "从热核公式开始：\n\\[\nu(x,t)=\n\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_{-R}^{R}\ne^{-\\frac{(x-y)^2}{4\\kappa t}}\\phi(y)\\,dy.\n\\]\n\n乘以 \\(\\sqrt t\\)：\n\\[\n\\boxed{\n\\sqrt t\\,u(x,t)=\n\\frac1{\\sqrt{4\\pi\\kappa}}\n\\int_{-R}^{R}\ne^{-\\frac{(x-y)^2}{4\\kappa t}}\\phi(y)\\,dy.\n}\n\\]\n\n现在外面的系数不再依赖 \\(t\\)，只需看积分里面。\n\n当 \\(x\\) 固定、\\(y\\in[-R,R]\\) 时，\n\\[\n0\\le\\frac{(x-y)^2}{4\\kappa t}\n\\le\\frac{(|x|+R)^2}{4\\kappa t}.\n\\]\n随着 \\(t\\to\\infty\\)，右边趋于零，所以指数中的数趋于零：\n\\[\ne^{-\\frac{(x-y)^2}{4\\kappa t}}\\to1.\n\\]",
+        "因此预期积分趋于\n\\[\n\\int_{-R}^{R}\\phi(y)\\,dy=M,\n\\]\n极限应该是\n\\[\n\\frac M{\\sqrt{4\\pi\\kappa}}.\n\\]\n\n下面把“预期”严格证明出来。我们直接估计与这个数的差：\n\\[\n\\begin{aligned}\n\\sqrt t\\,u(x,t)-\\frac M{\\sqrt{4\\pi\\kappa}}\n=\n\\frac1{\\sqrt{4\\pi\\kappa}}\n\\int_{-R}^{R}\n\\left[\ne^{-\\frac{(x-y)^2}{4\\kappa t}}-1\n\\right]\\phi(y)\\,dy.\n\\end{aligned}\n\\]\n\n需要一个简单不等式：对 \\(z\\ge0\\)，\n\\[\n0\\le1-e^{-z}\\le z.\n\\]\n它的原因是\n\\[\n1-e^{-z}=\\int_0^z e^{-s}\\,ds,\n\\]\n而 \\(0<e^{-s}\\le1\\)，所以\n\\[\n\\int_0^z e^{-s}\\,ds\\le\\int_0^z1\\,ds=z.\n\\]\n\n取\n\\[\nz=\\frac{(x-y)^2}{4\\kappa t},\n\\]\n便有\n\\[\n\\left|\ne^{-\\frac{(x-y)^2}{4\\kappa t}}-1\n\\right|\n\\le\n\\frac{(x-y)^2}{4\\kappa t}\n\\le\n\\frac{(|x|+R)^2}{4\\kappa t}.\n\\]\n\n由于 \\(\\phi\\) 可以有正有负，积分估计使用 \\(|\\phi|\\)：\n\\[\n\\begin{aligned}\n\\left|\n\\sqrt t\\,u(x,t)-\\frac M{\\sqrt{4\\pi\\kappa}}\n\\right|\n&\\le\n\\frac1{\\sqrt{4\\pi\\kappa}}\n\\int_{-R}^{R}\n\\left|\ne^{-\\frac{(x-y)^2}{4\\kappa t}}-1\n\\right||\\phi(y)|\\,dy\\\\\n&\\le\n\\frac{(|x|+R)^2}\n{4\\kappa t\\sqrt{4\\pi\\kappa}}\n\\int_{-R}^{R}|\\phi(y)|\\,dy.\n\\end{aligned}\n\\]\n\n对固定的 \\(x\\)，右边除了 \\(1/t\\)，其他都是常数。因此右边趋于零，得到\n\\[\n\\boxed{\n\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)\n=\\frac M{\\sqrt{4\\pi\\kappa}}.\n}\n\\]\n\n这还说明\n\\[\n\\sqrt t\\,u(x,t)\n=\\frac M{\\sqrt{4\\pi\\kappa}}+O_x(t^{-1}).\n\\]\n两边除以 \\(\\sqrt t\\)：\n\\[\n\\boxed{\nu(x,t)=\\frac M{\\sqrt{4\\pi\\kappa t}}+O_x(t^{-3/2}).\n}\n\\]\n\n由于 \\(M\\ne0\\)，主项不为零，可以写成\n\\[\n\\boxed{\nu(x,t)\\sim\\frac M{\\sqrt{4\\pi\\kappa t}}.\n}\n\\]\n这里 \\(\\sim\\) 的意思是，两者的比值趋于 \\(1\\)。"
+      ],
+      "choices": [
+        {
+          "text": "先乘根号 t，再在紧支集上估计指数与 1 的差。",
+          "correct": true
+        },
+        {
+          "text": "把未缩放的极限 0 当成答案。",
+          "correct": false
+        },
+        {
+          "text": "将固定 x 的结论直接解释成所有 x 上一致。",
+          "correct": false
+        }
+      ],
+      "reason": "固定 x 后，支集上的指数参数统一为 O(1/t)。"
+    },
+    {
+      "week": 6,
+      "id": "hw-6-Q1",
+      "title": "半直线波动：零斜率与偶延拓",
+      "source": "Week 6 · Half-Line Practice · Q1",
+      "question": "Solve the half-line wave equation with \\(u_x(0,t)=0\\) and initial displacement \\(\\phi\\) and velocity \\(\\psi\\).",
+      "method": "把位移与速度都做偶延拓，再用全直线 d’Alembert 公式。",
+      "answer": "解为偶延拓后的位移平均与速度积分之和。",
+      "steps": [
+        "**第 1 题：波动方程，端点要求 \\(u_x(0,t)=0\\)。**\n\n题目给的是\n\\[\nu_{tt}=c^2u_{xx},\\qquad\nu_x(0,t)=0,\\qquad\nu(x,0)=\\phi(x),\\qquad u_t(x,0)=\\psi(x).\n\\]\n\n这里 \\(\\phi\\) 是初始位移，\\(\\psi\\) 是初始速度。\\(u_x(0,t)=0\\) 说的是**端点处的空间斜率为零**；端点的位移 \\(u(0,t)\\) 可以非零。",
+        "**(a) 为什么要做偶延拓？公式怎么来？**\n\n我们想用全直线的 d’Alembert 公式。但该公式可能用到负位置的数据，例如 \\(x-ct<0\\) 时，就需要知道负半轴上的初始位移和速度。题目只给了右半轴，因此要补出左半轴的数据。\n\n题目指定用**偶延拓**：\n\\[\n\\Phi(s)=\\phi(|s|),\\qquad \\Psi(s)=\\psi(|s|).\n\\]\n例如，\\(\\Phi(-2)=\\phi(2)\\)。这样补出的左右两边互为镜像，满足\n\\[\n\\Phi(-s)=\\Phi(s),\\qquad \\Psi(-s)=\\Psi(s).\n\\]\n\n现在可以在全直线上用 d’Alembert 公式。先把全直线解记为 \\(U\\)：\n\\[\nU(x,t)=\n\\frac{\\Phi(x-ct)+\\Phi(x+ct)}2\n+\\frac1{2c}\\int_{x-ct}^{x+ct}\\Psi(s)\\,ds.\n\\]\n所求的半直线解就是这个公式在 \\(x\\ge0\\) 的部分：\n\\[\n\\boxed{\nu(x,t)=\n\\frac{\\Phi(x-ct)+\\Phi(x+ct)}2\n+\\frac1{2c}\\int_{x-ct}^{x+ct}\\Psi(s)\\,ds,\\qquad x\\ge0.\n}\n\\]",
+        "**还要解释：为什么这个公式保证端点斜率为零？** 我们先证明 \\(U\\) 关于 \\(x\\) 是偶函数。\n\n把 \\(x\\) 换成 \\(-x\\)，位移项的两个函数值交换：\n\\[\n\\Phi(-x-ct)=\\Phi(x+ct),\\qquad\n\\Phi(-x+ct)=\\Phi(x-ct).\n\\]\n所以它们的和不变。\n\n速度积分变成\n\\[\n\\int_{-x-ct}^{-x+ct}\\Psi(s)\\,ds.\n\\]\n令 \\(s=-r\\)，所以 \\(ds=-dr\\)。上下限也要换：\n\n- \\(s=-x-ct\\) 对应 \\(r=x+ct\\)；\n- \\(s=-x+ct\\) 对应 \\(r=x-ct\\)。\n\n于是\n\\[\n\\begin{aligned}\n\\int_{-x-ct}^{-x+ct}\\Psi(s)\\,ds\n&=-\\int_{x+ct}^{x-ct}\\Psi(-r)\\,dr\\\\\n&=\\int_{x-ct}^{x+ct}\\Psi(-r)\\,dr\\\\\n&=\\int_{x-ct}^{x+ct}\\Psi(r)\\,dr.\n\\end{aligned}\n\\]\n第二行是交换上下限，第三行用的是 \\(\\Psi\\) 为偶函数。",
+        "所以两部分都不变，得到 \\(U(-x,t)=U(x,t)\\)。对这个等式关于 \\(x\\) 求导：\n\\[\n-U_x(-x,t)=U_x(x,t).\n\\]\n令 \\(x=0\\)，\n\\[\n-U_x(0,t)=U_x(0,t),\n\\]\n于是 \\(U_x(0,t)=0\\)。这就是半直线所要求的 \\(u_x(0,t)=0\\)。",
+        "**(b) 固定一个位置 \\(x\\)，求最后停在什么值，以及什么时候已经等于这个值。**\n\n题目说要证明当\n\\[\nt>\\frac{x+R}{c}\n\\]\n时，解就**已经精确等于** \\(L\\)。先看这个时间条件为什么有用。\n\n因为 \\(c>0\\)，两边乘以 \\(c\\)：\n\\[\nct>x+R.\n\\]\n因此\n\\[\nx-ct<-R,\n\\qquad\nx+ct>2x+R\\ge R.\n\\]\n\n现在回到 (a) 的公式，分别看两部分：\n\n- \\(x-ct<-R\\)、\\(x+ct>R\\)，两个取值点都在初始位移的支集外，所以 \\(\\Phi(x-ct)=\\Phi(x+ct)=0\\)。\n- 积分从 \\(x-ct\\) 到 \\(x+ct\\)，左端已经越过 \\(-R\\)，右端已经越过 \\(R\\)，所以积分区间覆盖了 \\(\\Psi\\) 所有可能非零的地方。区间再变长，也只是多积分一些零。",
+        "因此\n\\[\nu(x,t)=\\frac1{2c}\\int_{-R}^{R}\\Psi(s)\\,ds.\n\\]",
+        "再利用偶函数左右两半的积分相同：\n\\[\n\\int_{-R}^{R}\\Psi(s)\\,ds\n=2\\int_0^R\\Psi(s)\\,ds\n=2\\int_0^\\infty\\psi(s)\\,ds.\n\\]\n最后一步用了两件事：在 \\(s\\ge0\\) 上 \\(\\Psi(s)=\\psi(s)\\)，而 \\(s\\ge R\\) 的部分为零。",
+        "所以\n\\[\n\\boxed{\nu(x,t)=L=\\frac1c\\int_0^\\infty\\psi(s)\\,ds\n\\qquad\\text{只要 }t>\\frac{x+R}{c}.\n}\n\\]\n\n因为固定 \\(x\\) 后，\\((x+R)/c\\) 是一个有限的时间，所以这也证明了 \\(\\lim_{t\\to\\infty}u(x,t)=L\\)。\n\n题目最后问什么时候 \\(L=0\\)。答案是\n\\[\n\\boxed{L=0\\quad\\Longleftrightarrow\\quad\\int_0^\\infty\\psi(s)\\,ds=0.}\n\\]\n这里要求的是**速度的积分**为零。如果 \\(\\psi\\) 有正有负，它们可以抵消，并不要求每一点的初始速度都是零。",
+        "**(c) 为什么每个固定位置都能到达 \\(L\\)，整个半直线却不一致收敛？**\n\n这一问加了条件：\\(\\phi=0\\)，且 \\(\\psi\\ge0\\)、不恒为零。由于 \\(\\psi\\) 连续，它在某个小区间内严格为正，所以\n\\[\n\\int_0^\\infty\\psi(s)\\,ds>0,\\qquad L>0.\n\\]",
+        "**现在先固定时间 \\(t\\)，再选一个足够远的位置**，例如\n\\[\nx=ct+R+1.\n\\]\n那么\n\\[\nx-ct=R+1>R.\n\\]\n因此积分区间 \\([x-ct,x+ct]\\) 整个都在 \\(R\\) 的右边，在那里 \\(\\Psi=0\\)。位移项也为零，于是这个位置满足\n\\[\nu(x,t)=0.\n\\]",
+        "所以在这个位置，和极限值的误差是\n\\[\n|u(x,t)-L|=|0-L|=L.\n\\]\n而 \\(\\sup_{x\\ge0}\\) 是所有位置误差的最小上界，当然至少要和这个位置的误差一样大：\n\\[\n\\boxed{\n\\sup_{x\\ge0}|u(x,t)-L|\\ge L>0.\n}\n\\]\n\n这对每个有限的 \\(t\\) 都成立。区别在于：**(b) 先固定位置等波到来；(c) 每到一个时间，都可以再往右找一个波还没到的位置。** 因此有逐点收敛，但在整个半直线上没有一致收敛。"
+      ],
+      "choices": [
+        {
+          "text": "把位移与速度都做偶延拓，再用全直线 d’Alembert 公式。",
+          "correct": true
+        },
+        {
+          "text": "对速度做奇延拓。",
+          "correct": false
+        },
+        {
+          "text": "只延拓位移，速度在负轴自动取零。",
+          "correct": false
+        }
+      ],
+      "reason": "零斜率对应偶对称；两个初始数据都要延拓。"
+    },
+    {
+      "week": 6,
+      "id": "hw-6-Q2",
+      "title": "半直线热方程：零值边界的镜像核",
+      "source": "Week 6 · Half-Line Practice · Q2",
+      "question": "For the half-line heat equation with \\(u(0,t)=0\\), derive the kernel and analyze its positivity and long-time behavior.",
+      "method": "对初温做奇延拓；镜像热核相减后再比较符号或展开指数。",
+      "answer": "核为 \\(S(x-y,t)-S(x+y,t)\\)。",
+      "steps": [
+        "**第 2 题：热方程，端点要求 \\(u(0,t)=0\\)。**\n\n题目给出\n\\[\nu_t=\\kappa u_{xx},\\qquad u(0,t)=0,\\qquad u(x,0)=\\phi(x)\n\\]\n以及半直线解公式\n\\[\nu(x,t)=\\int_0^\\infty\n\\bigl[S(x-y,t)-S(x+y,t)\\bigr]\\phi(y)\\,dy,\n\\qquad\nS(z,t)=\\frac1{\\sqrt{4\\pi\\kappa t}}e^{-z^2/(4\\kappa t)}.\n\\]",
+        "先读懂这个减号。\\(S(x-y,t)\\) 对应右边 \\(y\\) 处的初始数据；\\(S(x+y,t)=S(x-(-y),t)\\) 对应它在左边 \\(-y\\) 的镜像。做**奇延拓**时，镜像数据是 \\(-\\phi(y)\\)，所以两项相减。到端点 \\(x=0\\)，热核是偶函数，\\(S(-y,t)=S(y,t)\\)，两项正好抵消，于是 \\(u(0,t)=0\\)。",
+        "**(a) 为什么内部对每个正时间都严格为正？**\n\n题目假设 \\(\\phi\\ge0\\)，而且不恒为零。先判断两个热核相减后的符号。\n\n对 \\(x>0\\)、\\(y>0\\)，展开平方：\n\\[\n(x+y)^2-(x-y)^2\n=(x^2+2xy+y^2)-(x^2-2xy+y^2)\n=4xy>0.\n\\]\n所以\n\\[\n(x-y)^2<(x+y)^2.\n\\]\n两个平方前面都乘以负数 \\(-1/(4\\kappa t)\\)，不等号反过来：\n\\[\n-\\frac{(x-y)^2}{4\\kappa t}>\n-\\frac{(x+y)^2}{4\\kappa t}.\n\\]\n指数函数递增，因此\n\\[\ne^{-(x-y)^2/(4\\kappa t)}>e^{-(x+y)^2/(4\\kappa t)}.\n\\]\n两边再乘同一个正系数 \\(1/\\sqrt{4\\pi\\kappa t}\\)，得到\n\\[\nS(x-y,t)-S(x+y,t)>0.\n\\]\n\n现在乘上 \\(\\phi(y)\\)：如果 \\(\\phi(y)=0\\)，贡献就是零；如果 \\(\\phi(y)>0\\)，贡献就是正的。因为 \\(\\phi\\) 连续且不恒为零，它在某个小区间内严格为正。于是被积函数处处非负，并在一个区间内严格为正，积分就严格大于零：\n\\[\n\\boxed{u(x,t)>0\\qquad(x>0,\\ t>0).}\n\\]",
+        "所以，在任何固定的内部点，解**不会在有限的正时间变成恰好等于零**。下一问会说明它随 \\(t\\to\\infty\\) 趋于零；趋于零和在某个有限时间等于零是两件事。",
+        "**(b) 为什么要乘 \\(t^{3/2}\\)？\\(M_1\\) 又是从哪里来的？**\n\n题目定义\n\\[\nM_1=\\int_0^\\infty y\\phi(y)\\,dy.\n\\]\n它叫**一阶矩**，就是把初值先乘位置 \\(y\\)，再积分。这一问允许 \\(\\phi\\) 有正有负，不沿用 (a) 的非负假设。\n\n固定 \\(x>0\\)，把两个热核共有的系数提出，并利用 \\(\\phi\\) 在 \\(R\\) 外为零：\n\\[\nu(x,t)=\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_0^R\n\\left[e^{-(x-y)^2/(4\\kappa t)}\n-e^{-(x+y)^2/(4\\kappa t)}\\right]\\phi(y)\\,dy.\n\\]\n\n时间很大时，两个指数都接近 \\(1\\)。但**它们是相减的，\\(1-1=0\\)**，所以只知道它们都趋于 \\(1\\) 还不够。我们要看 \\(1\\) 后面的下一项。\n\n使用题目给的 Taylor 公式\n\\[\ne^{-z}=1-z+r(z),\\qquad |r(z)|\\le \\frac{z^2}{2}.\n\\]\n分别代入两个指数：\n\\[\ne^{-(x-y)^2/(4\\kappa t)}\n=1-\\frac{(x-y)^2}{4\\kappa t}+r_-,\n\\]\n\\[\ne^{-(x+y)^2/(4\\kappa t)}\n=1-\\frac{(x+y)^2}{4\\kappa t}+r_+.\n\\]\n这里 \\(r_-\\) 和 \\(r_+\\) 只是第一、第二个展开式的余项。\n\n第一式减第二式：\n\\[\n\\begin{aligned}\n&\\left(1-\\frac{(x-y)^2}{4\\kappa t}+r_-\\right)\n-\\left(1-\\frac{(x+y)^2}{4\\kappa t}+r_+\\right)\\\\\n&=\\frac{(x+y)^2-(x-y)^2}{4\\kappa t}+r_--r_+\\\\\n&=\\frac{4xy}{4\\kappa t}+r_--r_+\n=\\frac{xy}{\\kappa t}+r_--r_+.\n\\end{aligned}\n\\]\n第二个括号前面有减号，所以里面原来负的平方项，减过去以后变成了正的。\n\n现在看主项的积分：\n\\[\n\\begin{aligned}\n\\frac1{\\sqrt{4\\pi\\kappa t}}\\int_0^R\n\\frac{xy}{\\kappa t}\\phi(y)\\,dy\n&=\\frac{x}{\\kappa t\\sqrt{4\\pi\\kappa t}}\n\\int_0^R y\\phi(y)\\,dy\\\\\n&=\\frac{xM_1}{2\\sqrt{\\pi}\\,\\kappa^{3/2}}t^{-3/2}.\n\\end{aligned}\n\\]\n所以 \\(M_1\\) 是从相减后留下的 \\(y\\) 因子来的；而 \\(t^{-3/2}\\) 是外面的 \\(t^{-1/2}\\) 乘括号里留下的 \\(t^{-1}\\)。\n\n还要确认余项乘 \\(t^{3/2}\\) 之后确实趋于零。对 \\(0\\le y\\le R\\)，有\n\\[\n|x-y|\\le x+R,\\qquad x+y\\le x+R.\n\\]\n所以对两个余项，都有\n\\[\n|r_\\pm|\n\\le \\frac12\\left(\\frac{(x+R)^2}{4\\kappa t}\\right)^2\n=\\frac{(x+R)^4}{32\\kappa^2t^2}.\n\\]\n因此\n\\[\n|r_--r_+|\\le |r_-|+|r_+|\n\\le\\frac{(x+R)^4}{16\\kappa^2t^2}.\n\\]\n把它乘上 \\(|\\phi(y)|\\) 再积分，可以控制原积分的误差：\n\\[\n\\left|\nu(x,t)-\\frac{xM_1}{2\\sqrt{\\pi}\\,\\kappa^{3/2}}t^{-3/2}\n\\right|\n\\le\n\\frac{(x+R)^4}{16\\kappa^2\\sqrt{4\\pi\\kappa}}\\,\nt^{-5/2}\\int_0^R|\\phi(y)|\\,dy.\n\\]\n这里用 \\(|\\phi|\\)，因为在估计误差大小，不能依赖初值正负恰好抵消。\n\n乘上 \\(t^{3/2}\\) 后，右边只剩一个固定常数乘 \\(1/t\\)，趋于零。于是\n\\[\n\\boxed{\\lim_{t\\to\\infty}t^{3/2}u(x,t)=\\frac{xM_1}{2\\sqrt{\\pi}\\,\\kappa^{3/2}}.}\n\\]\n如果 \\(M_1\\ne0\\)，这个系数在固定 \\(x>0\\) 时非零，才可以写\n\\[\n\\boxed{\nu(x,t)\\sim\\frac{xM_1}{2\\sqrt{\\pi}\\,\\kappa^{3/2}}t^{-3/2}.\n}\n\\]\n这里 \\(\\sim\\) 表示两边的比值趋于 \\(1\\)。若 \\(M_1=0\\)，上面的极限仍成立，等于零，但不能写成 \\(u\\sim 0\\)。"
+      ],
+      "choices": [
+        {
+          "text": "对初温做奇延拓；镜像热核相减后再比较符号或展开指数。",
+          "correct": true
+        },
+        {
+          "text": "把两个镜像核相加。",
+          "correct": false
+        },
+        {
+          "text": "用波动方程的有限传播区间。",
+          "correct": false
+        }
+      ],
+      "reason": "在 x=0 两核抵消；若非负初值在一段上为正，内部解严格为正。"
+    },
+    {
+      "week": 6,
+      "id": "hw-6-Q3",
+      "title": "半直线热方程：绝热边界与守恒",
+      "source": "Week 6 · Half-Line Practice · Q3",
+      "question": "For the Neumann half-line heat problem, prove mass conservation and determine the leading long-time term.",
+      "method": "偶延拓得到镜像核相加，合并半轴积分，再估计长时间核。",
+      "answer": "半轴质量 \\(M\\) 守恒；固定 x 时 \\(\\sqrt t\\,u\\to 2M/\\sqrt{4\\pi\\kappa}\\)。",
+      "steps": [
+        "**第 3 题：还是热方程，端点改为 \\(u_x(0,t)=0\\)。**\n\n初值还是 \\(\\phi\\)，但题目给出的公式变成\n\\[\nu(x,t)=\\int_0^\\infty\n\\bigl[S(x-y,t)+S(x+y,t)\\bigr]\\phi(y)\\,dy.\n\\]\n这里的加号对应**偶延拓**：右边 \\(y\\) 处的值是 \\(\\phi(y)\\)，左边镜像 \\(-y\\) 处也是 \\(\\phi(y)\\)。得到的全直线解关于 \\(x\\) 是偶函数，所以和第 1 题一样，在原点的空间斜率为零。",
+        "**(a) 证明总积分守恒。**\n\n题目要证\n\\[\n\\int_0^\\infty u(x,t)\\,dx=\\int_0^\\infty\\phi(x)\\,dx.\n\\]\n意思是：把整个右半边的解加起来，结果一直等于初始总量。",
+        "先照提示做最关键的计算：**固定一个初始位置 \\(y\\ge0\\)，对 \\(x\\) 积分**。分别看两项。\n\n第一项令 \\(z=x-y\\)。因为 \\(y\\) 固定，\\(dz=dx\\)。当 \\(x=0\\)，\\(z=-y\\)；当 \\(x\\to\\infty\\)，\\(z\\to\\infty\\)。所以\n\\[\n\\int_0^\\infty S(x-y,t)\\,dx=\\int_{-y}^\\infty S(z,t)\\,dz.\n\\]\n\n第二项令 \\(z=x+y\\)，仍然有 \\(dz=dx\\)，但这次 \\(x=0\\) 对应 \\(z=y\\)，所以\n\\[\n\\int_0^\\infty S(x+y,t)\\,dx=\\int_y^\\infty S(z,t)\\,dz.\n\\]\n\n这两个区间看起来还拼不起来。对**第二个积分**再做一次反射换元：令 \\(z=-r\\)，所以 \\(dz=-dr\\)。原来 \\(z=y\\) 对应 \\(r=-y\\)，而 \\(z\\to\\infty\\) 对应 \\(r\\to-\\infty\\)。因此\n\\[\n\\begin{aligned}\n\\int_y^\\infty S(z,t)\\,dz\n&=-\\int_{-y}^{-\\infty}S(-r,t)\\,dr\\\\\n&=\\int_{-\\infty}^{-y}S(-r,t)\\,dr\\\\\n&=\\int_{-\\infty}^{-y}S(r,t)\\,dr.\n\\end{aligned}\n\\]\n最后一步用了热核的偶性 \\(S(-r,t)=S(r,t)\\)。\n\n现在就能拼起来了：第一项积分是从 \\(-y\\) 到 \\(+\\infty\\)，第二项反射后是从 \\(-\\infty\\) 到 \\(-y\\)。加起来正好是整个实线：\n\\[\n\\int_0^\\infty[S(x-y,t)+S(x+y,t)]\\,dx\n=\\int_{-\\infty}^\\infty S(z,t)\\,dz=1.\n\\]\n最后一个 \\(1\\) 是热核的归一化性质，也就是 HW5 算过的全直线高斯积分。\n\n现在回到总积分，把 \\(u\\) 的公式代进去，交换 \\(x,y\\) 的积分顺序：\n\\[\n\\begin{aligned}\n\\int_0^\\infty u(x,t)\\,dx\n&=\\int_0^\\infty\\int_0^\\infty\n[S(x-y,t)+S(x+y,t)]\\phi(y)\\,dy\\,dx\\\\\n&=\\int_0^\\infty\\phi(y)\n\\underbrace{\\left(\\int_0^\\infty[S(x-y,t)+S(x+y,t)]\\,dx\\right)}_{=1}\n\\,dy\\\\\n&=\\boxed{\\int_0^\\infty\\phi(y)\\,dy}.\n\\end{aligned}\n\\]\n即使 \\(\\phi\\) 有正有负，也可以交换：对被积函数取绝对值后，两个热核仍非负，先对 \\(x\\) 积分得到 \\(1\\)，所以绝对值的双重积分是有限的 \\(\\int_0^\\infty|\\phi(y)|\\,dy\\)。",
+        "**(b) 求两个长期极限，并与第 2 题比较。**\n\n记\n\\[\nM_0=\\int_0^\\infty\\phi(y)\\,dy.\n\\]\n这是初始总量，也叫**零阶矩**。它与第 2 题的 \\(M_1\\) 的区别是：这里积分前没有乘 \\(y\\)。\n\n固定 \\(x\\ge0\\)。把公式乘上 \\(\\sqrt t\\)，正好消掉热核系数里的 \\(1/\\sqrt t\\)：\n\\[\n\\sqrt t\\,u(x,t)\n=\\frac1{\\sqrt{4\\pi\\kappa}}\n\\int_0^R\n\\left[e^{-(x-y)^2/(4\\kappa t)}\n+e^{-(x+y)^2/(4\\kappa t)}\\right]\\phi(y)\\,dy.\n\\]\n\n现在两项是**相加**，所以当两个指数各自趋于 \\(1\\)，括号趋于 \\(2\\)。为了说明整个积分也可以这样取极限，我们控制括号与 \\(2\\) 的差。\n\n利用题目给的 \\(0\\le1-e^{-z}\\le z\\)，两项分别估计：\n\\[\n\\begin{aligned}\n\\left|e^{-(x-y)^2/(4\\kappa t)}+e^{-(x+y)^2/(4\\kappa t)}-2\\right|\n&\\le\\frac{(x-y)^2}{4\\kappa t}\n+\\frac{(x+y)^2}{4\\kappa t}\\\\\n&=\\frac{2x^2+2y^2}{4\\kappa t}\\\\\n&\\le\\frac{x^2+R^2}{2\\kappa t}.\n\\end{aligned}\n\\]\n最后一行用了 \\(y\\le R\\)。这个界对积分区间内的每个 \\(y\\) 都成立，因此\n\\[\n\\left|\\sqrt t\\,u(x,t)-\\frac{2M_0}{\\sqrt{4\\pi\\kappa}}\\right|\n\\le\n\\frac{x^2+R^2}{2\\kappa t\\sqrt{4\\pi\\kappa}}\n\\int_0^R|\\phi(y)|\\,dy.\n\\]\n固定 \\(x\\) 后，右边是一个常数乘 \\(1/t\\)，所以趋于零。于是\n\\[\n\\boxed{\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)=\\frac{M_0}{\\sqrt{\\pi\\kappa}}.}\n\\]",
+        "再求 \\(u\\) 自己的极限：\n\\[\nu(x,t)=\\frac1{\\sqrt t}\\bigl[\\sqrt t\\,u(x,t)\\bigr].\n\\]\n中括号趋于有限值，外面的 \\(1/\\sqrt t\\) 趋于零，所以\n\\[\n\\boxed{\\lim_{t\\to\\infty}u(x,t)=0.}\n\\]\n当 \\(M_0\\ne0\\)，长期主项是\n\\[\n\\boxed{u(x,t)\\sim\\frac{M_0}{\\sqrt{\\pi\\kappa}}\\,t^{-1/2}.}\n\\]\n\n题目最后要求比较衰减速度。**两题的热核外面都有 \\(t^{-1/2}\\)，差别全在括号里：**\n\n边界条件 · 括号里发生什么 · 对应矩非零时的主项量级\n第 2 题：\\(u(0,t)=0\\) · 两个指数相减，\\(1-1=0\\)，留下带 \\(1/t\\) 的下一项 · \\(t^{-1/2}\\cdot t^{-1}=t^{-3/2}\\)\n第 3 题：\\(u_x(0,t)=0\\) · 两个指数相加，\\(1+1=2\\)，常数项保留下来 · \\(t^{-1/2}\\)",
+        "最后，(a) 的总量守恒和 (b) 的逐点趋零可以同时成立：**每个固定位置的值在降低，但解也扩散到越来越宽的区域。** 所以不能先把每个位置换成它的极限 \\(0\\)，再用这个零函数的积分来判断原来解的总量。"
+      ]
+    },
+    {
+      "week": 6,
+      "id": "hw-6-asymptotic",
+      "title": "镜像核相减：首项为何慢一个 1/t",
+      "source": "Week 6 · Half-Line Practice · asymptotic",
+      "question": "For a Dirichlet heat kernel on the half-line and compactly supported data, find the scaled limit \\(t^{3/2}u\\).",
+      "method": "对两个指数各展开到一阶，再检查余项乘缩放因子后趋零。",
+      "answer": "\\(x\\int_0^R y\\phi(y)\\,dy/(2\\sqrt\\pi\\,\\kappa^{3/2})\\)。",
+      "steps": [
+        "你问的是 **Week 6 第 2 题 (b)**。这题最容易卡在这里：**两个指数都趋近 \\(1\\)，相减后趋近 \\(0\\)。但题目要我们进一步算：这个差是以多快的速度趋近 \\(0\\) 的？**\n\n我们先用一个具体数字看。假设 \\(x=y=\\kappa=1\\)，那么括号里的两个指数相减就是\n\\[\ne^{-(1-1)^2/(4t)}-e^{-(1+1)^2/(4t)}\n=1-e^{-1/t}.\n\\]\n当 \\(t\\) 很大时，\\(e^{-1/t}\\) 约等于 \\(1-\\frac1t\\)，所以\n\\[\n1-e^{-1/t}\\approx 1-\\left(1-\\frac1t\\right)=\\frac1t.\n\\]\n这就是为什么**括号里会多出一个 \\(1/t\\)**。下面把这个计算用一般的 \\(x,y,\\kappa\\) 做一遍。",
+        "**第一步：先看括号里的差。**\n\n热核公式是\n\\[\nu(x,t)=\\frac1{\\sqrt{4\\pi\\kappa t}}\\int_0^R\n\\left[e^{-\\frac{(x-y)^2}{4\\kappa t}}\n-e^{-\\frac{(x+y)^2}{4\\kappa t}}\\right]\\phi(y)\\,dy.\n\\]\n\n参考答案用的是 \\(e^{-z}\\approx 1-z\\)。这里 \\(z\\) 分别是两个分式，所以括号里的主要部分是\n\\[\n\\begin{aligned}\n&\\left(1-\\frac{(x-y)^2}{4\\kappa t}\\right)\n-\\left(1-\\frac{(x+y)^2}{4\\kappa t}\\right)\\\\\n&=1-\\frac{(x-y)^2}{4\\kappa t}\n  -1+\\frac{(x+y)^2}{4\\kappa t}\\\\\n&=\\frac{(x+y)^2-(x-y)^2}{4\\kappa t}\\\\\n&=\\frac{(x^2+2xy+y^2)-(x^2-2xy+y^2)}{4\\kappa t}\\\\\n&=\\frac{4xy}{4\\kappa t}\n=\\boxed{\\frac{xy}{\\kappa t}}.\n\\end{aligned}\n\\]\n最容易弄反的是第二行：**减掉第二个括号时，里面的负平方项变成正的。**",
+        "**第二步：把 \\(\\dfrac{xy}{\\kappa t}\\) 代回积分，看看 \\(M_1\\) 怎么出现。**\n\n积分变量是 \\(y\\)，所以 \\(x,\\kappa,t\\) 可以提出积分号，\\(y\\) 要留在里面：\n\\[\n\\begin{aligned}\n\\frac1{\\sqrt{4\\pi\\kappa t}}\n\\int_0^R\\frac{xy}{\\kappa t}\\phi(y)\\,dy\n&=\\frac{x}{\\kappa t\\sqrt{4\\pi\\kappa t}}\n\\int_0^R y\\phi(y)\\,dy\\\\\n&=\\frac{xM_1}{\\kappa\\sqrt{4\\pi\\kappa}}\\,\n\\frac1{t\\sqrt t}\\\\\n&=\\frac{xM_1}{2\\sqrt\\pi\\,\\kappa^{3/2}}\\,t^{-3/2}.\n\\end{aligned}\n\\]\n其中 \\(\\int_0^R y\\phi(y)\\,dy=M_1\\)，因为 \\(y\\ge R\\) 时 \\(\\phi(y)=0\\)。",
+        "所以题目让我们乘 \\(t^{3/2}\\)，就是为了把这里的 \\(t^{-3/2}\\) 抵消。这个次数来自 **热核外面的 \\(1/\\sqrt t\\)** 和 **括号相减后留下的 \\(1/t\\)**。",
+        "**第三步：确认刚才省略的 Taylor 余项不会影响极限。**\n\n上面写的“约等于”具体是\n\\[\ne^{-z}=1-z+r(z),\\qquad |r(z)|\\le\\frac{z^2}{2}.\n\\]\n本题的两个 \\(z\\) 都有 \\(t\\) 在分母。由于固定了 \\(x\\)，且 \\(0\\le y\\le R\\)，它们都满足\n\\[\n0\\le z\\le\\frac{(x+R)^2}{4\\kappa t}.\n\\]\n所以各自的余项至多是\n\\[\n\\frac{z^2}{2}\\le\\frac{(x+R)^4}{32\\kappa^2t^2}.\n\\]\n两个余项相减，绝对值至多是这两个上界的和，仍然是**常数乘 \\(1/t^2\\)**。乘上 \\(|\\phi(y)|\\) 并积分，只会再乘一个有限常数 \\(\\int_0^R|\\phi(y)|\\,dy\\)。最后还要乘热核外面的 \\(1/\\sqrt{4\\pi\\kappa t}\\)，所以 \\(u\\) 里的总误差至多是**常数乘 \\(1/t^{5/2}\\)**。\n\n即使把总误差乘上题目要求的 \\(t^{3/2}\\)，也只剩下常数乘\n\\[\n\\frac{t^{3/2}}{t^{5/2}}=\\frac1t\\longrightarrow0.\n\\]\n因此极限只由刚才算出的主项决定：\n\\[\n\\boxed{\\lim_{t\\to\\infty}t^{3/2}u(x,t)\n=\\frac{xM_1}{2\\sqrt\\pi\\,\\kappa^{3/2}}.}\n\\]\n\n如果 \\(M_1\\ne0\\)，就可以写 \\(u(x,t)\\sim \\dfrac{xM_1}{2\\sqrt\\pi\\,\\kappa^{3/2}}t^{-3/2}\\)。如果 \\(M_1=0\\)，上面的极限就是 \\(0\\)：这说明连我们找到的这一项也抵消了。"
+      ]
+    },
+    {
+      "week": 7,
+      "id": "hw-7-Q1",
+      "title": "三角特征模态：把热方程化为 ODE",
+      "source": "Week 7 Practice · Q1",
+      "question": "Solve \\(u_t-u_{xx}=e^{-t}\\cos(2x)\\), \\(u(x,0)=\\sin x\\). Then solve for source \\(e^{-4t}\\cos(2x)\\) and zero initial data.",
+      "method": "分别写正弦和余弦模态，再对时间 ODE 用积分因子。",
+      "answer": "(a) \\(e^{-t}\\sin x+(e^{-t}-e^{-4t})\\cos(2x)/3\\)；(b) \\(te^{-4t}\\cos(2x)\\)。",
+      "steps": [
+        "**第 1 题 (a)：求 \\(u_t-u_{xx}=e^{-t}\\cos(2x)\\)，其中 \\(u(x,0)=\\sin x\\)。**\n\n这一题用题目的提示，比直接算热核积分更方便。先把解想成两部分：\n\n- 一部分负责满足初始值 \\(\\sin x\\)；\n- 另一部分负责产生右边的 \\(e^{-t}\\cos(2x)\\)，并且一开始等于零，这样不会改掉初始值。",
+        "**先看为什么第一部分是 \\(e^{-t}\\sin x\\)。** 如果只有初始温度 \\(\\sin x\\)，没有源项，我们试着让空间形状保持为 \\(\\sin x\\)，只让它的大小随时间变化，写成 \\(p(t)\\sin x\\)。这是因为 \\(\\sin x\\) 对 \\(x\\) 求两次导数后，只多一个负号：\n\\[\n\\frac{d^2}{dx^2}\\sin x=-\\sin x.\n\\]\n因此\n\\[\n\\partial_t[p(t)\\sin x]-\\partial_{xx}[p(t)\\sin x]\n=p'(t)\\sin x-[-p(t)\\sin x]\n=(p'(t)+p(t))\\sin x.\n\\]\n要让这一部分的右边是零，就需要 \\(p'+p=0\\)。取 \\(p(t)=e^{-t}\\)，确实有 \\(p'+p=-e^{-t}+e^{-t}=0\\)，而且 \\(p(0)=1\\)。所以 \\(e^{-t}\\sin x\\) 正好负责初始值。",
+        "**再看为什么第二部分是 \\(b(t)\\cos(2x)\\)。** 右边的空间形状是 \\(\\cos(2x)\\)，而这个函数求两次空间导数后仍是同一个形状：\n\\[\n\\frac{d}{dx}\\cos(2x)=-2\\sin(2x),\\qquad\n\\frac{d^2}{dx^2}\\cos(2x)=-2\\cdot2\\cos(2x)=-4\\cos(2x).\n\\]\n所以只要选好时间系数 \\(b(t)\\)，就有机会得到题目右边。取\n\\[\nu(x,t)=e^{-t}\\sin x+b(t)\\cos(2x).\n\\]\n\n现在实际代入：\n\\[\nu_t=-e^{-t}\\sin x+b'(t)\\cos(2x),\n\\]\n\\[\nu_{xx}=-e^{-t}\\sin x-4b(t)\\cos(2x).\n\\]\n两式相减时，两个 \\(-e^{-t}\\sin x\\) 抵消，而减去 \\(-4b(t)\\cos(2x)\\) 变成加上它：\n\\[\nu_t-u_{xx}=\\bigl[b'(t)+4b(t)\\bigr]\\cos(2x).\n\\]\n为了等于 \\(e^{-t}\\cos(2x)\\)，需要\n\\[\nb'(t)+4b(t)=e^{-t}.\n\\]\n初始条件则要求\n\\[\nu(x,0)=\\sin x+b(0)\\cos(2x)=\\sin x,\n\\]\n所以 \\(b(0)=0\\)。",
+        "**现在解这个只含 \\(t\\) 的方程。** 题目提示乘 \\(e^{4t}\\)，是因为乘积法则告诉我们：\n\\[\n\\frac{d}{dt}\\bigl[e^{4t}b(t)\\bigr]\n=4e^{4t}b(t)+e^{4t}b'(t)\n=e^{4t}\\bigl[b'(t)+4b(t)\\bigr].\n\\]\n所以乘完以后，左边刚好能合成一个导数：\n\\[\n\\frac{d}{dt}\\bigl[e^{4t}b(t)\\bigr]=e^{4t}e^{-t}=e^{3t}.\n\\]\n用 \\(s\\) 作积分变量，从 \\(0\\) 积到 \\(t\\)：\n\\[\ne^{4t}b(t)-e^0b(0)=\\int_0^t e^{3s}\\,ds\n=\\left[\\frac{e^{3s}}3\\right]_0^t\n=\\frac{e^{3t}-1}{3}.\n\\]\n代入 \\(b(0)=0\\)，再两边乘 \\(e^{-4t}\\)：\n\\[\nb(t)=\\frac{e^{-4t}(e^{3t}-1)}3\n=\\frac{e^{-t}-e^{-4t}}3.\n\\]",
+        "所以\n\\[\n\\boxed{u(x,t)=e^{-t}\\sin x+\\frac{e^{-t}-e^{-4t}}3\\cos(2x).}\n\\]\n在 \\(t=0\\) 时，第二项的系数是 \\((1-1)/3=0\\)，剩下的确实是 \\(\\sin x\\)。",
+        "**第 1 题 (b)：右边改成 \\(e^{-4t}\\cos(2x)\\)，初始值改成 \\(0\\)。**\n\n因为初始温度是零，这次只需要\n\\[\nu(x,t)=b(t)\\cos(2x).\n\\]\n求导：\n\\[\nu_t=b'(t)\\cos(2x),\\qquad u_{xx}=-4b(t)\\cos(2x).\n\\]\n所以\n\\[\nu_t-u_{xx}=(b'+4b)\\cos(2x).\n\\]\n对照题目右边和初始条件，得到\n\\[\nb'+4b=e^{-4t},\\qquad b(0)=0.\n\\]\n\n还是乘 \\(e^{4t}\\)。这次和 (a) 唯一关键的计算差别是，右边变成了 \\(1\\)：\n\\[\n(e^{4t}b)'=e^{4t}e^{-4t}=1.\n\\]\n从 \\(0\\) 积到 \\(t\\)：\n\\[\ne^{4t}b(t)-b(0)=\\int_0^t1\\,ds=t.\n\\]\n所以\n\\[\nb(t)=te^{-4t},\n\\qquad\n\\boxed{u(x,t)=te^{-4t}\\cos(2x).}\n\\]\n\n这里的 **\\(t\\) 来自 \\(\\int_0^t1\\,ds=t\\)**。可以直接检查它的作用：\n\\[\nb'=e^{-4t}-4te^{-4t},\n\\qquad\nb'+4b=e^{-4t}-4te^{-4t}+4te^{-4t}=e^{-4t}.\n\\]\n如果少了前面的 \\(t\\)，取 \\(b=e^{-4t}\\)，就会得到 \\(b'+4b=0\\)，产生不了题目要求的源项。"
+      ],
+      "choices": [
+        {
+          "text": "分别写正弦和余弦模态，再对时间 ODE 用积分因子。",
+          "correct": true
+        },
+        {
+          "text": "把 cos(2x) 的空间二阶导数写成 −cos(2x)。",
+          "correct": false
+        },
+        {
+          "text": "两个模态用同一个时间衰减速率。",
+          "correct": false
+        }
+      ],
+      "reason": "空间频率 2 的二阶导数系数为 −4。"
+    },
+    {
+      "week": 7,
+      "id": "hw-7-Q2",
+      "title": "热核稳定性与非负性",
+      "source": "Week 7 Practice · Q2",
+      "question": "Prove \\(|u_1-u_2|\\le A+Bt\\) for initial/source differences bounded by A/B. Is the solution nonnegative for nonnegative data?",
+      "method": "两解相减并取绝对值，使用热核非负且积分为 1。",
+      "answer": "误差界为 \\(A+Bt\\)；非负初值与源项给 \\(u\\ge0\\)。",
+      "steps": [
+        "**第 2 题 (a)：两组数据有误差，证明解的差不超过 \\(A+Bt\\)。**\n\n题目的两个条件分别是：\n\n- \\(|\\phi_1(x)-\\phi_2(x)|\\le A\\)：两组**初始温度**在每个位置的差，最多是 \\(A\\)。\n- \\(|f_1(x,t)-f_2(x,t)|\\le B\\)：在 \\(0\\le t\\le T\\) 内，两组**源项**在每个位置、每个时刻的差，最多是 \\(B\\)。\n\n题目问的是 \\(|u_1-u_2|\\)，所以先把两份热核公式相减。因为两份解用的是同一个热核，可以把相减放到积分里面：\n\\[\n\\begin{aligned}\nu_1(x,t)-u_2(x,t)\n={}&\\int_{\\mathbb R}S(x-y,t)\\,[\\phi_1(y)-\\phi_2(y)]\\,dy\\\\\n&+\\int_0^t\\int_{\\mathbb R}S(x-y,t-s)\\,[f_1(y,s)-f_2(y,s)]\\,dy\\,ds.\n\\end{aligned}\n\\]\n\n现在取绝对值。先用 \\(|a+b|\\le |a|+|b|\\) 拆成两部分，再用 \\(\\left|\\int h\\right|\\le\\int|h|\\) 把绝对值放进积分。由于 \\(S\\ge0\\)，\\(|S\\cdot h|=S|h|\\)，因此\n\\[\n\\begin{aligned}\n|u_1-u_2|\n\\le{}&\\int_{\\mathbb R}S(x-y,t)|\\phi_1(y)-\\phi_2(y)|\\,dy\\\\\n&+\\int_0^t\\int_{\\mathbb R}S(x-y,t-s)|f_1(y,s)-f_2(y,s)|\\,dy\\,ds.\n\\end{aligned}\n\\]\n当 \\(t\\le T\\)，积分中的所有时刻都满足 \\(0\\le s\\le t\\le T\\)，因此题目给的源项上界 \\(B\\) 可以用在每一个 \\(s\\) 上。代入两个上界：\n\\[\n|u_1-u_2|\n\\le A\\int_{\\mathbb R}S(x-y,t)\\,dy\n+B\\int_0^t\\left[\\int_{\\mathbb R}S(x-y,t-s)\\,dy\\right]ds.\n\\]\n\n为什么两个空间积分都是 \\(1\\)？以任意正的扩散时间 \\(r\\) 为例，令 \\(z=x-y\\)。当 \\(y\\) 从 \\(-\\infty\\) 到 \\(+\\infty\\)，\\(z\\) 从 \\(+\\infty\\) 到 \\(-\\infty\\)，且 \\(dy=-dz\\)。所以\n\\[\n\\int_{-\\infty}^{\\infty}S(x-y,r)\\,dy\n=-\\int_{\\infty}^{-\\infty}S(z,r)\\,dz\n=\\int_{-\\infty}^{\\infty}S(z,r)\\,dz=1.\n\\]\n第一项取 \\(r=t\\)，第二项取 \\(r=t-s\\)。第二项只需要在 \\(s<t\\) 时计算这个核；单个端点 \\(s=t\\) 不改变积分。",
+        "因此\n\\[\n|u_1-u_2|\\le A\\cdot1+B\\int_0^t1\\,ds\n=A+Bt.\n\\]\n在 \\(t=0\\) 时，\\(|u_1-u_2|=|\\phi_1-\\phi_2|\\le A\\)，所以结论也包含 \\(t=0\\)。\n\n\\[\n\\boxed{|u_1(x,t)-u_2(x,t)|\\le A+Bt\\qquad(0\\le t\\le T).}\n\\]",
+        "**\\(A\\) 来自只出现一次的初始误差，\\(Bt\\) 来自最多为 \\(B\\) 的源项误差在整个时间区间 \\([0,t]\\) 上累积。**",
+        "**第 2 题 (b)：如果 \\(\\phi\\ge0\\)、\\(f\\ge0\\)，能否保证 \\(u\\ge0\\)？**",
+        "**能。** 看热核公式里的两个被积函数：\n\n\\[\nS(x-y,t)\\phi(y)\\ge0,\\qquad\nS(x-y,t-s)f(y,s)\\ge0 \\quad(s<t).\n\\]\n\n每一个都是两个非负数相乘，所以积分也非负。两部分相加就得到 \\(u(x,t)\\ge0\\)。在 \\(t=0\\)，题目已经给了 \\(u(x,0)=\\phi(x)\\ge0\\)。\n\n这里题目要求的是 **\\(\\ge0\\)**。例如初始温度和源项都为零时，解就可以一直等于零。"
+      ]
+    },
+    {
+      "week": 7,
+      "id": "hw-7-Q3",
+      "title": "有限时段热源与长时间极限",
+      "source": "Week 7 Practice · Q3",
+      "question": "For zero initial data and source \\(a(t)g(x)\\) supported on \\((0,T)\\times[-R,R]\\), find the fixed-x limit of \\(\\sqrt t\\,u(x,t)\\).",
+      "method": "对过去每个时刻用核 S(x−y,t−s)，将积分限制于源区，缩放后在源区统一估计。",
+      "answer": "\\(AM/\\sqrt{4\\pi\\kappa}\\)，其中 \\(A=\\int_0^T a\\) 且 \\(M=\\int g\\)。",
+      "steps": [
+        "**第 3 题：热源只开到 \\(T\\)，关掉后会发生什么？**\n\n题目的方程是\n\\[\nu_t-\\kappa u_{xx}=a(t)g(x),\\qquad u(x,0)=0.\n\\]\n这里 \\(a(t)\\) 控制热源在**时间**上的强度，\\(g(x)\\) 控制热源在**空间**上的分布。\n\n- \\(a(t)=0\\) 在 \\((0,T)\\) 外：热源只在 \\(0\\) 到 \\(T\\) 之间工作。\n- \\(g(x)=0\\) 在 \\(|x|\\ge R\\) 时：热只从 \\([-R,R]\\) 这段区域加入。\n- 两个函数都连续、非负且不恒为零：它们各自在某一小段区间上严格为正。\n\n题目定义\n\\[\nA=\\int_0^T a(s)\\,ds,\\qquad M=\\int_{\\mathbb R}g(y)\\,dy.\n\\]\n这两个量都为正。后面会算出 **\\(AM\\) 是热源在整个工作期间加入的总量**。",
+        "**(a) 写出解，并证明关掉热源后仍然处处为正。**",
+        "先用总公式。初始温度为零，所以初始温度那项整个消失，只剩\n\\[\nu(x,t)=\\int_0^t\\int_{\\mathbb R}\nS(x-y,t-s)a(s)g(y)\\,dy\\,ds.\n\\]\n\n现在看积分上限。若 \\(t<T\\)，只能积到现在 \\(t\\)；若 \\(t>T\\)，超过 \\(T\\) 的部分 \\(a(s)=0\\)，所以只需要积到 \\(T\\)。统一写成 \\(\\min\\{t,T\\}\\)，也就是 \\(t,T\\) 中较小的那个。又因为 \\(g\\) 在 \\([-R,R]\\) 外为零，所以\n\\[\n\\boxed{\nu(x,t)=\\int_0^{\\min\\{t,T\\}}\\int_{-R}^{R}\nS(x-y,t-s)a(s)g(y)\\,dy\\,ds.\n}\n\\]\n\n现在固定任意 \\(x\\)，并取 \\(t>T\\)。对 \\(0\\le s\\le T\\)，\n\\[\nt-s\\ge t-T>0.\n\\]\n热核在正时间、任何有限距离下都严格为正，因为\n\\[\nS(x-y,t-s)=\n\\frac{1}{\\sqrt{4\\pi\\kappa(t-s)}}\ne^{-(x-y)^2/[4\\kappa(t-s)]}>0.\n\\]\n另一方面，存在一段时间区间使 \\(a(s)>0\\)，也存在一段空间区间使 \\(g(y)>0\\)。在这两段区间组成的积分区域内，三个因子都严格为正。整个被积函数处处非负，并且在一块有正面积的区域上严格为正，所以\n\\[\n\\boxed{u(x,t)>0\\qquad(x\\in\\mathbb R,\\ t>T).}\n\\]\n\n关掉热源的意思是 **以后不再加热**；公式仍然把 \\(0\\) 到 \\(T\\) 期间已经加入的热量算进去。",
+        "**(b) 求任意时刻的总量 \\(\\displaystyle\\int_{\\mathbb R}u(x,t)\\,dx\\)。**\n\n总量是把所有观察位置 \\(x\\) 的温度积起来。将 (a) 的公式放进去：\n\\[\n\\int_{\\mathbb R}u(x,t)\\,dx\n=\\int_{\\mathbb R}\\int_0^{\\min\\{t,T\\}}\\int_{-R}^{R}\nS(x-y,t-s)a(s)g(y)\\,dy\\,ds\\,dx.\n\\]\n\n因为被积函数非负，可以换积分顺序。我们想**先对 \\(x\\) 积分**，因为只有 \\(S(x-y,t-s)\\) 依赖 \\(x\\)，而这个热核的空间积分正好等于 \\(1\\)：\n\\[\n\\begin{aligned}\n\\int_{\\mathbb R}u(x,t)\\,dx\n&=\\int_0^{\\min\\{t,T\\}}\\int_{-R}^{R}\na(s)g(y)\\left[\\int_{\\mathbb R}S(x-y,t-s)\\,dx\\right]dy\\,ds\\\\\n&=\\int_0^{\\min\\{t,T\\}}\\int_{-R}^{R}a(s)g(y)\\cdot1\\,dy\\,ds.\n\\end{aligned}\n\\]\n内层对 \\(y\\) 积分时，\\(a(s)\\) 是常数，所以\n\\[\n\\int_{-R}^{R}a(s)g(y)\\,dy\n=a(s)\\int_{-R}^{R}g(y)\\,dy\n=a(s)M.\n\\]\n因此\n\\[\n\\boxed{\\int_{\\mathbb R}u(x,t)\\,dx=M\\int_0^{\\min\\{t,T\\}}a(s)\\,ds.}\n\\]\n\n特别地，当 \\(t\\ge T\\)，积分上限固定为 \\(T\\)，所以\n\\[\n\\boxed{\\int_{\\mathbb R}u(x,t)\\,dx=M\\int_0^T a(s)\\,ds=AM.}\n\\]\n热源工作时，总量随加入的热而增加；关掉后，总量保持 \\(AM\\)。",
+        "**(c) 固定一个 \\(x\\)，求 \\(\\displaystyle\\lim_{t\\to\\infty}u(x,t)\\) 和 \\(\\displaystyle\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)\\)。**\n\n这一问和 Week 6 第 3 题 (b) 的逻辑一样：**先找积分里的那一块会趋向什么，再证明用它的极限替换时，产生的误差趋于零。**",
+        "先把 (a) 的热核展开。因为现在考虑 \\(t>T\\)，积分上限是 \\(T\\)：\n\\[\nu(x,t)=\\int_0^T\\int_{-R}^{R}\n\\frac{1}{\\sqrt{4\\pi\\kappa(t-s)}}\ne^{-\\frac{(x-y)^2}{4\\kappa(t-s)}}a(s)g(y)\\,dy\\,ds.\n\\]\n两边乘 \\(\\sqrt t\\)。注意这里分母里是 \\(\\sqrt{t-s}\\)，所以乘完后还剩\n\\[\n\\frac{\\sqrt t}{\\sqrt{t-s}}=\\sqrt{\\frac{t}{t-s}}.\n\\]\n因此\n\\[\n\\sqrt t\\,u(x,t)=\\frac1{\\sqrt{4\\pi\\kappa}}\\int_0^T\\int_{-R}^{R}\n\\underbrace{\\sqrt{\\frac t{t-s}}e^{-\\frac{(x-y)^2}{4\\kappa(t-s)}}}_{\\text{现在要估计的因子}}\na(s)g(y)\\,dy\\,ds.\n\\]\n\n这个因子是两块相乘。根号那块趋于 \\(1\\)，因为 \\(t/(t-s)=1+s/(t-s)\\)，而 \\(s\\) 最多是固定的 \\(T\\)。指数那块也趋于 \\(1\\)，因为 \\(x\\) 固定、\\(y\\) 只在 \\([-R,R]\\) 内，而 \\(t-s\\) 越来越大。",
+        "所以我们**猜到**，如果把这个乘积换成 \\(1\\)，会得到\n\\[\n\\frac1{\\sqrt{4\\pi\\kappa}}\\int_0^T\\int_{-R}^{R}a(s)g(y)\\,dy\\,ds\n=\\frac{AM}{\\sqrt{4\\pi\\kappa}}.\n\\]\n但现在还要证明：**对积分里所有的 \\(s,y\\)，误差都能用同一个趋于零的数控制。** 这就是题目说的“一致趋于 \\(1\\)”。",
+        "先估计**根号离 \\(1\\) 的距离**。为了让式子短一点，暂时记\n\\[\nP=\\sqrt{\\frac{t}{t-s}}.\n\\]\n因为 \\(s\\ge0\\)，有 \\(P\\ge1\\)。我们想估计 \\(P-1\\)。平方更容易算，所以用 \\((P-1)(P+1)=P^2-1\\)：\n\\[\n\\begin{aligned}\nP-1\n&=\\frac{P^2-1}{P+1}\\\\\n&=\\frac{\\frac{t}{t-s}-1}{P+1}\\\\\n&=\\frac{t-(t-s)}{(t-s)(P+1)}\\\\\n&=\\frac{s}{(t-s)(P+1)}.\n\\end{aligned}\n\\]\n现在，分子 \\(s\\le T\\)，而分母中 \\(t-s\\ge t-T>0\\)、\\(P+1\\ge2\\)。因此\n\\[\n\\boxed{0\\le P-1\\le \\frac{T}{2(t-T)}.}\n\\]\n右边已经没有 \\(s\\)，所以对每个 \\(s\\in[0,T]\\) 都成立。",
+        "再估计**指数离 \\(1\\) 的距离**。记\n\\[\nE=e^{-\\frac{(x-y)^2}{4\\kappa(t-s)}}.\n\\]\n用 Week 6 同一个不等式：如果 \\(z\\ge0\\)，那么 \\(0\\le1-e^{-z}\\le z\\)。这里\n\\[\nz=\\frac{(x-y)^2}{4\\kappa(t-s)}.\n\\]\n因为\n\\[\n|x-y|\\le |x|+|y|\\le |x|+R,\n\\]\n而 \\(t-s\\ge t-T\\)，所以\n\\[\n\\boxed{\n0\\le1-E\\le \\frac{(x-y)^2}{4\\kappa(t-s)}\n\\le\\frac{(|x|+R)^2}{4\\kappa(t-T)}.\n}\n\\]\n右边没有 \\(s\\) 或 \\(y\\)。\n\n现在把两块合起来。要估计的是 \\(PE-1\\)。**为什么中间要加减一个 \\(E\\)？** 因为这样可以把总误差拆成刚刚已经控制的两种误差：\n\\[\nPE-1=PE-E+E-1=E(P-1)+(E-1).\n\\]\n取绝对值，再用 \\(0<E\\le1\\)：\n\\[\n\\begin{aligned}\n|PE-1|\n&\\le E|P-1|+|E-1|\\\\\n&\\le |P-1|+|E-1|\\\\\n&\\le\\frac{T}{2(t-T)}+\\frac{(|x|+R)^2}{4\\kappa(t-T)}.\n\\end{aligned}\n\\]\n固定 \\(x\\) 后，右边分子都是常数，分母里的 \\(t-T\\to\\infty\\)。所以整个上界趋于零，而且这个上界对**积分里的每一个 \\(s,y\\)** 都适用。",
+        "最后接回题目。实际值减去我们猜到的极限：\n\\[\n\\sqrt t\\,u(x,t)-\\frac{AM}{\\sqrt{4\\pi\\kappa}}\n=\\frac1{\\sqrt{4\\pi\\kappa}}\\int_0^T\\int_{-R}^{R}\n(PE-1)a(s)g(y)\\,dy\\,ds.\n\\]\n取绝对值，用刚刚的上界。因为那个上界不含 \\(s,y\\)，可以提出积分号；剩下的 \\(\\iint a(s)g(y)\\,dy\\,ds\\) 就是 \\(AM\\)。于是\n\\[\n\\left|\\sqrt t\\,u(x,t)-\\frac{AM}{\\sqrt{4\\pi\\kappa}}\\right|\n\\le\\frac{AM}{\\sqrt{4\\pi\\kappa}}\n\\left[\\frac{T}{2(t-T)}+\\frac{(|x|+R)^2}{4\\kappa(t-T)}\\right]\n\\longrightarrow0.\n\\]\n所以\n\\[\n\\boxed{\\lim_{t\\to\\infty}\\sqrt t\\,u(x,t)=\\frac{AM}{\\sqrt{4\\pi\\kappa}}.}\n\\]",
+        "再求 \\(u\\) 自己的极限。写成\n\\[\nu(x,t)=\\frac1{\\sqrt t}\\bigl[\\sqrt t\\,u(x,t)\\bigr].\n\\]\n方括号趋于有限常数，前面的 \\(1/\\sqrt t\\) 趋于零，因此\n\\[\n\\boxed{\\lim_{t\\to\\infty}u(x,t)=0.}\n\\]",
+        "**为什么每个位置都趋于零，总积分却还是 \\(AM\\)？** 因为积分是对整个实线做的，热可以摊到越来越宽的区域。想象一个面积固定的长方形：宽度从 \\(2\\) 变成 \\(20\\)，高度只需要变成原来的 \\(1/10\\)，面积就不变。这里也是一样：**(b) 看的是全空间的总量，(c) 看的是一个固定位置的高度。**"
+      ],
+      "choices": [
+        {
+          "text": "对过去每个时刻用核 S(x−y,t−s)，将积分限制于源区，缩放后在源区统一估计。",
+          "correct": true
+        },
+        {
+          "text": "把每次加热的扩散时间都当成 t。",
+          "correct": false
+        },
+        {
+          "text": "把热源停掉解释为解立即变成零。",
+          "correct": false
+        }
+      ],
+      "reason": "s 是热量加入的时刻，t−s 才是它扩散的时间。"
+    },
+    {
+      "week": 8,
+      "id": "hw-8-Q1",
+      "title": "非齐次波动：初值项与源项积分",
+      "source": "Week 8 Practice · Q1",
+      "question": "Solve \\(u_{tt}-u_{xx}=x^2\\), with initial data \\((\\cos x,0)\\). Then solve with source \\(\\cos t\\sin x\\) and zero initial data.",
+      "method": "逐项辨认位移、速度、源项；源积分先固定 s 积 y，再积 s。",
+      "answer": "(a) \\(\\cos x\\cos t+x^2t^2/2+t^4/12\\)；(b) \\((t/2)\\sin t\\sin x\\)。",
+      "steps": [
+        "**第 1 题 (a)：求 \\(u_{tt}-u_{xx}=x^2\\)，且 \\(u(x,0)=\\cos x,\\ u_t(x,0)=0\\)。**",
+        "先对照公式认出每一项。\\(u_{xx}\\) 前面的系数是 \\(1=c^2\\)，而 \\(c>0\\)，所以 \\(c=1\\)。另外，\n\\[\n\\phi(y)=\\cos y,\\qquad \\psi(y)=0,\\qquad f(y,s)=y^2.\n\\]\n为什么源项从 \\(x^2\\) 变成了 \\(y^2\\)？因为公式里用 \\(y\\) 表示**源项所在的位置**，而 \\(x\\) 留给你正在观察的位置。\n\n初始位移项是\n\\[\n\\frac{\\cos(x+t)+\\cos(x-t)}2=\\cos x\\cos t.\n\\]\n这是因为展开两项后，\n\\[\n\\cos(x+t)=\\cos x\\cos t-\\sin x\\sin t,\\qquad\n\\cos(x-t)=\\cos x\\cos t+\\sin x\\sin t,\n\\]\n相加时带 \\(\\sin x\\sin t\\) 的项抵消。初始速度为零，所以公式第二项也为零。\n\n剩下源项：\n\\[\n\\frac12\\int_0^t \\int_{x-(t-s)}^{x+(t-s)} y^2\\,dy\\,ds.\n\\]",
+        "**先算里面对 \\(y\\) 的积分。** 在这一步，\\(s,t,x\\) 都固定。暂时记 \\(r=t-s\\)，区间就是 \\([x-r,x+r]\\)。令 \\(z=y-x\\)，也就是 \\(y=x+z\\)，于是 \\(dy=dz\\)。当 \\(y=x-r\\) 时 \\(z=-r\\)，当 \\(y=x+r\\) 时 \\(z=r\\)，所以\n\\[\n\\begin{aligned}\n\\int_{x-r}^{x+r}y^2\\,dy\n&=\\int_{-r}^{r}(x+z)^2\\,dz\\\\\n&=x^2\\int_{-r}^r1\\,dz\n+2x\\int_{-r}^r z\\,dz\n+\\int_{-r}^r z^2\\,dz.\n\\end{aligned}\n\\]\n三项分别是：\n\\[\nx^2[z]_{-r}^{r}=2x^2r,\\qquad\n2x\\left[\\frac{z^2}2\\right]_{-r}^{r}=0,\\qquad\n\\left[\\frac{z^3}3\\right]_{-r}^{r}=\\frac{2r^3}3.\n\\]\n中间一项为零，是因为上下限平方后都是 \\(r^2\\)，相减刚好抵消。这也解释了**为什么要把区间移到以零为中心**：原来展开后可能出现的交叉项，现在很容易看出积分为零。",
+        "**再算外面对时间的积分。** 把 \\(r=t-s\\) 换回去，并乘上前面的 \\(\\frac12\\)：\n\\[\n\\frac12\\int_0^t\\left[2x^2(t-s)+\\frac{2(t-s)^3}3\\right]ds\n=x^2\\int_0^t(t-s)\\,ds+\\frac13\\int_0^t(t-s)^3\\,ds.\n\\]\n这次把 \\(r=t-s\\) 正式当作换元：\\(ds=-dr\\)，而 \\(s=0\\) 对应 \\(r=t\\)、\\(s=t\\) 对应 \\(r=0\\)。负号和交换上下限抵消，所以\n\\[\n\\int_0^t(t-s)\\,ds=\\int_0^t r\\,dr=\\frac{t^2}{2},\n\\qquad\n\\int_0^t(t-s)^3\\,ds=\\int_0^t r^3\\,dr=\\frac{t^4}{4}.\n\\]\n加回初始位移的贡献：\n\\[\n\\boxed{u(x,t)=\\cos x\\cos t+\\frac{x^2t^2}{2}+\\frac{t^4}{12}.}\n\\]\n\n检查一下：\\(t=0\\) 时，只剩 \\(\\cos x\\)；而\n\\[\nu_t=-\\cos x\\sin t+x^2t+\\frac{t^3}{3},\n\\]\n所以 \\(u_t(x,0)=0\\)。再求出\n\\[\nu_{tt}=-\\cos x\\cos t+x^2+t^2,\\qquad\nu_{xx}=-\\cos x\\cos t+t^2,\n\\]\n相减确实只留下 \\(x^2\\)。",
+        "**第 1 题 (b)：求 \\(u_{tt}-u_{xx}=\\cos t\\sin x\\)，初始位移和速度都为零。**\n\n仍然是 \\(c=1\\)。这次公式 (★) 的前两项都消失，只剩\n\\[\nu(x,t)=\\frac12\\int_0^t\\int_{x-(t-s)}^{x+(t-s)}\n\\cos s\\,\\sin y\\,dy\\,ds.\n\\]",
+        "先对 \\(y\\) 积分。固定 \\(s\\) 后，\\(\\cos s\\) 可以提出。记 \\(r=t-s\\)，则\n\\[\n\\begin{aligned}\n\\int_{x-r}^{x+r}\\sin y\\,dy\n&=[-\\cos y]_{x-r}^{x+r}\\\\\n&=-\\cos(x+r)+\\cos(x-r)\\\\\n&=2\\sin x\\sin r.\n\\end{aligned}\n\\]\n最后一步可以直接展开：\\(\\cos(x-r)\\) 里是 \\(+\\sin x\\sin r\\)，减去 \\(\\cos(x+r)\\) 里的 \\(-\\sin x\\sin r\\)，就得到两份。把 \\(r=t-s\\) 放回来，前面的 \\(\\frac12\\) 与这里的 \\(2\\) 抵消：\n\\[\nu(x,t)=\\sin x\\int_0^t\\cos s\\sin(t-s)\\,ds.\n\\]",
+        "**右边这个积分为什么要用积化和差？** 因为直接看是两个随 \\(s\\) 变化的函数相乘；拆成两项后，其中一项会变成对 \\(s\\) 的常数。具体地，\n\\[\n\\cos s\\sin(t-s)\n=\\frac12\\bigl[\\sin((t-s)+s)+\\sin((t-s)-s)\\bigr]\n=\\frac12[\\sin t+\\sin(t-2s)].\n\\]\n第一项积分是 \\(\\frac12t\\sin t\\)，因为积分变量是 \\(s\\)，所以 \\(\\sin t\\) 固定。第二项：\n\\[\n\\frac12\\int_0^t\\sin(t-2s)\\,ds\n=\\frac14[\\cos(t-2s)]_0^t\n=\\frac14[\\cos(-t)-\\cos t]=0.\n\\]\n这里原函数的符号是**正的**，因为对 \\(\\cos(t-2s)\\) 求 \\(s\\) 导数，会得到 \\(-\\sin(t-2s)\\cdot(-2)=2\\sin(t-2s)\\)。最后 \\(\\cos(-t)=\\cos t\\)，所以相减为零。\n\n于是\n\\[\n\\boxed{u(x,t)=\\frac{t}{2}\\sin t\\sin x.}\n\\]\n验证时，可以把时间部分记为 \\(b(t)=\\frac t2\\sin t\\)。那么\n\\[\nb'(t)=\\tfrac12\\sin t+\\tfrac t2\\cos t,\\qquad\nb''(t)=\\cos t-\\tfrac t2\\sin t.\n\\]\n所以 \\(b(0)=b'(0)=0\\)，并且\n\\[\nu_{tt}-u_{xx}=(b''+b)\\sin x=\\cos t\\sin x,\n\\]\n正好符合题目。"
+      ]
+    },
+    {
+      "week": 8,
+      "id": "hw-8-Q2",
+      "title": "过去三角形：没碰到源区还是已包住",
+      "source": "Week 8 Practice · Q2",
+      "question": "With zero initial data and wave source supported on \\([-R,R]\\times[0,T]\\), prove vanishing outside the wave region and identify the eventual value at fixed x.",
+      "method": "比较过去三角形与源区矩形，分别证明不相交和完全覆盖。",
+      "answer": "\\(|x|\\ge R+ct\\) 时为零；\\(t\\ge T+(|x|+R)/c\\) 时等于源项总积分除以 \\(2c\\)。",
+      "steps": [
+        "**第 2 题：源项只在一块有限区域内发生。**\n\n题目说 \\(f(y,s)=0\\) 如果 \\(|y|\\ge R\\)，或者 \\(s\\notin(0,T)\\)。意思是：源项只可能出现在**空间上的 \\([-R,R]\\)**、**时间上的 \\([0,T]\\)**。在位置–时间图上，这两条限制合起来是一个矩形。\n\n初始位移和速度都是零，所以只剩公式 (★) 的第三项：\n\\[\nu(x,t)=\\frac1{2c}\\int_0^t\n\\int_{x-c(t-s)}^{x+c(t-s)} f(y,s)\\,dy\\,ds.\n\\]\n这个积分扫过的区域满足\n\\[\n0\\le s\\le t,\\qquad |x-y|\\le c(t-s).\n\\]\n它在 \\(s=t\\) 收缩成观察点 \\((x,t)\\)，越往过去，区间越宽，所以叫**过去特征三角形**。",
+        "**(a) 为什么 \\(|x|\\ge R+ct\\) 时，\\(u(x,t)=0\\)？**\n\n我们要证明：**积分扫到的每个点，源项都是零。** 因此随便拿三角形内的一点 \\((y,s)\\)。它满足\n\\[\n|x-y|\\le c(t-s).\n\\]\n再用三角不等式：\n\\[\n|x|=|(x-y)+y|\\le |x-y|+|y|.\n\\]\n移项得到\n\\[\n|y|\\ge |x|-|x-y|.\n\\]\n现在把题目的 \\(|x|\\ge R+ct\\) 和三角形的 \\(|x-y|\\le c(t-s)\\) 都用进去：\n\\[\n\\begin{aligned}\n|y|\n&\\ge |x|-|x-y|\\\\\n&\\ge R+ct-c(t-s)\\\\\n&=R+cs\\\\\n&\\ge R.\n\\end{aligned}\n\\]\n最后一步因为 \\(c>0,s\\ge0\\)。所以这个被积分到的 \\(y\\) 处一定满足 \\(|y|\\ge R\\)，在那里 \\(f(y,s)=0\\)。每个被积分到的点都一样，于是\n\\[\n\\boxed{u(x,t)=0\\qquad\\text{当 }|x|\\ge R+ct.}\n\\]\n这也包括等号，因为题目给的是在 \\(|y|\\ge R\\) 时源项为零。",
+        "**(b) 为什么固定 \\(x\\) 等够久，\\(u(x,t)\\) 会精确等于一个常数？**\n\n这次反过来：我们要让过去三角形**把整个源项矩形包住**。只要包住了，以后扩大积分区域，也只是多积一些 \\(f=0\\) 的点。\n\n任取源项矩形里的一点 \\((y,s)\\)。因为 \\(|y|\\le R\\)，\n\\[\n|x-y|\\le |x|+|y|\\le |x|+R.\n\\]\n另一方面，源项最晚在时刻 \\(T\\) 发生，所以对所有 \\(s\\le T\\)，\n\\[\nt-s\\ge t-T.\n\\]\n\n把这两个事实连起来：只要**最晚发生的影响**也有足够时间走过距离上界 \\(|x|+R\\)，矩形里的所有点就都能被算进去。因此要求\n\\[\nc(t-T)\\ge |x|+R.\n\\]\n除以 \\(c\\) 再加上 \\(T\\)，得到一个足够晚的时刻：\n\\[\n\\boxed{t\\ge T+\\frac{|x|+R}{c}.}\n\\]\n\n在这个条件下，对矩形里的任意点，\n\\[\n|x-y|\\le |x|+R\\le c(t-T)\\le c(t-s),\n\\]\n并且 \\(0\\le s\\le T\\le t\\)。这正好满足过去三角形的两个条件。因此三角形积分可以换成整个源项矩形的积分：\n\\[\n\\boxed{\nu(x,t)=\\frac1{2c}\\int_0^T\\int_{-R}^R f(y,s)\\,dy\\,ds\n\\quad\\text{当 }t\\ge T+\\frac{|x|+R}{c}.\n}\n\\]\n右边没有观察时间 \\(t\\)，所以从那个时刻起，解已经**精确等于这个常数**。它不一定是零：例如 \\(f\\ge0\\) 且在某处严格为正，由光滑性，它会在附近一小块区域内为正，所以积分大于零。\n\n这和 (a) 没有矛盾：**(b) 是先选定 \\(x\\) 再等；(a) 是在给定的时刻 \\(t\\)，往外找波还没到的位置。**"
+      ],
+      "choices": [
+        {
+          "text": "比较过去三角形与源区矩形，分别证明不相交和完全覆盖。",
+          "correct": true
+        },
+        {
+          "text": "源项一停止，解立即归零。",
+          "correct": false
+        },
+        {
+          "text": "用热核公式代替有限传播。",
+          "correct": false
+        }
+      ],
+      "reason": "固定位置后等足够久，会保留过去的源项积分。"
+    },
+    {
+      "week": 8,
+      "id": "hw-8-Q3",
+      "title": "非零 Dirichlet 波动边界",
+      "source": "Week 8 Practice · Q3",
+      "question": "For \\(u_{tt}-c^2u_{xx}=f\\) on \\(x>0\\) with \\(u(0,t)=h(t)\\), reduce to a zero-boundary problem and solve using the data \\(\\phi,\\psi\\).",
+      "method": "设 v=u−h(t)，重算源项和初值，做奇延拓，最后加回 h(t)。",
+      "answer": "\\(v(0,t)=0\\)，源项 \\(f-h^{\\prime\\prime}\\)。一般初值为 \\(\\phi-h(0)\\)、\\(\\psi-h^{\\prime}(0)\\)。",
+      "steps": [
+        "**第 3 题 (a)：已经给了 \\(v(0,t)=0\\)，怎样求 \\(v\\)？**\n\n这一小问先单独给你一个辅助问题：\n\\[\nv_{tt}-c^2v_{xx}=g(x,t),\\qquad\nv(x,0)=\\alpha(x),\\quad v_t(x,0)=\\beta(x),\\quad v(0,t)=0.\n\\]\n现在还不用管原题的 \\(h(t)\\)。",
+        "**第一步：把三个数据分别做奇延拓。** 为什么？因为全直线公式里可能出现负位置，比如 \\(x-ct<0\\)，而题目只给了右半边的数据。要补出左边，同时让两边的贡献在原点抵消，就用奇延拓：**去右边的镜像位置查值，再变号。**\n\n例如在 \\(y=-2\\) 处，三个数据一一对应：\n\\[\n\\begin{aligned}\n\\alpha_o(-2)&=-\\alpha(2), &&\\text{初始位移},\\\\\n\\beta_o(-2)&=-\\beta(2), &&\\text{初始速度},\\\\\ng_o(-2,s)&=-g(2,s), &&\\text{时刻 }s\\text{ 的源项}.\n\\end{aligned}\n\\]\n正半轴保留原值，三个奇延拓在 \\(y=0\\) 都取零。源项的时间 \\(s\\) 不变。",
+        "**第二步：把这三个数据放进全直线公式的三个位置。**\n\\[\n\\boxed{\n\\begin{aligned}\nv(x,t)\n={}&\\underbrace{\\frac{\\alpha_o(x+ct)+\\alpha_o(x-ct)}2}_{\\text{放初始位移 }\\alpha_o}\\\\\n&+\\underbrace{\\frac1{2c}\\int_{x-ct}^{x+ct}\\beta_o(y)\\,dy}_{\\text{放初始速度 }\\beta_o}\\\\\n&+\\underbrace{\\frac1{2c}\\int_0^t\n\\int_{x-c(t-s)}^{x+c(t-s)}g_o(y,s)\\,dy\\,ds}_{\\text{放源项 }g_o}.\n\\end{aligned}\n}\n\\]\n这个公式在全直线上计算，最后取 \\(x\\ge0\\) 的部分。",
+        "**第三步：看这个公式为什么真的给出 \\(v(0,t)=0\\)。** 把 \\(x=0\\) 代进每一项：\n\n- 位移项变成 \\(\\frac12[\\alpha_o(ct)+\\alpha_o(-ct)]=0\\)。\n- 速度项变成 \\(\\frac1{2c}\\int_{-ct}^{ct}\\beta_o(y)\\,dy=0\\)，因为左右位置的函数值互为相反数。\n- 源项里，对每个 \\(s\\)，空间积分的区间是 \\([-c(t-s),c(t-s)]\\)。\\(g_o(y,s)\\) 左右也反号，所以空间积分为零，再对 \\(s\\) 积分仍是零。\n\n这也能看出整个解是奇函数：把观察点 \\(x\\) 改成 \\(-x\\) 时，位移项的两个取值点变成原来两点的镜像；每个空间积分的区间也变成原来的镜像。具体来说，一个区间 \\([a,b]\\) 镜像后是 \\([-b,-a]\\)，令 \\(y=-z\\)：\n\\[\n\\int_{-b}^{-a}q_o(y)\\,dy\n=-\\int_b^a q_o(-z)\\,dz\n=\\int_a^b q_o(-z)\\,dz\n=-\\int_a^b q_o(z)\\,dz.\n\\]\n因此每一项都变号，\\(v(-x,t)=-v(x,t)\\)。",
+        "**第 3 题 (b)：原题给的是 \\(u(0,t)=h(t)\\)，怎么变成 (a)？**\n\n(a) 能处理的是**端点高度为零**的题。原题的端点高度是 \\(h(t)\\)，所以我们设\n\\[\nv(x,t)=u(x,t)-h(t).\n\\]\n先代入 \\(x=0\\) 检查设得对不对：\n\\[\nv(0,t)=u(0,t)-h(t)=h(t)-h(t)=0.\n\\]\n边界已经对上 (a) 了。现在逐个填 \\(\\alpha,\\beta,g\\)。\n\n1. **填 \\(\\alpha\\)：把 \\(t=0\\) 代入 \\(v\\)。**\n   \\[\n   v(x,0)=u(x,0)-h(0)=\\phi(x)-h(0)=\\phi(x).\n   \\]\n   因为题目说 \\(h\\) 在 \\(0\\) 附近恒为零，所以 \\(h(0)=0\\)。因此 \\(\\alpha=\\phi\\)。\n\n2. **填 \\(\\beta\\)：先对 \\(t\\) 求导，再代 \\(t=0\\)。**\n   \\[\n   v_t(x,t)=u_t(x,t)-h'(t).\n   \\]\n   因此\n   \\[\n   v_t(x,0)=\\psi(x)-h'(0)=\\psi(x).\n   \\]\n   \\(h\\) 在 \\(0\\) 附近恒为零，所以 \\(h'(0)=0\\)。因此 \\(\\beta=\\psi\\)。\n\n3. **填 \\(g\\)：算 \\(v\\) 的 PDE 左边。** 对 \\(t\\) 再求一次导数得到 \\(v_{tt}=u_{tt}-h''(t)\\)。对 \\(x\\) 求导时，\\(h(t)\\) 是常数，所以 \\(v_x=u_x\\)、\\(v_{xx}=u_{xx}\\)。于是\n   \\[\n   \\begin{aligned}\n   v_{tt}-c^2v_{xx}\n   &=(u_{tt}-h''(t))-c^2u_{xx}\\\\\n   &=(u_{tt}-c^2u_{xx})-h''(t)\\\\\n   &=f(x,t)-h''(t).\n   \\end{aligned}\n   \\]",
+        "所以 (b) 的答案就是把这三个位置填好：\n\\[\n\\boxed{\\alpha=\\phi,\\qquad \\beta=\\psi,\\qquad g(x,t)=f(x,t)-h''(t).}\n\\]",
+        "**第 3 题 (c)：把 (b) 算出的三个数据代回 (a)，再找回 \\(u\\)。**",
+        "先做奇延拓：\\(\\alpha_o=\\phi_o\\)、\\(\\beta_o=\\psi_o\\)。第三个位置放的是**修改后的整个源项** \\(g=f-h''\\)，所以\n\\[\ng_o(y,s)=\n\\begin{cases}\nf(y,s)-h''(s),&y>0,\\\\\n0,&y=0,\\\\\n-\\bigl[f(-y,s)-h''(s)\\bigr],&y<0.\n\\end{cases}\n\\]\n比如 \\(y=-2\\)，先到 \\(2\\) 取 \\(f(2,s)-h''(s)\\)，再给整个结果加负号，得到 \\(-f(2,s)+h''(s)\\)。\n\n(a) 的公式算出来的是 \\(v\\)。因为刚才设 \\(v=u-h\\)，移项得到 \\(u=v+h\\)。因此\n\\[\n\\boxed{\n\\begin{aligned}\nu(x,t)\n={}&h(t)\n+\\frac{\\phi_o(x+ct)+\\phi_o(x-ct)}2\\\\\n&+\\frac1{2c}\\int_{x-ct}^{x+ct}\\psi_o(y)\\,dy\\\\\n&+\\frac1{2c}\\int_0^t\\int_{x-c(t-s)}^{x+c(t-s)}g_o(y,s)\\,dy\\,ds.\n\\end{aligned}\n}\n\\]\n\n现在检查：\n\n- **初始位移**：\\(t=0\\) 时，\\(h(0)=0\\)，两个积分的区间都缩成零长度，位移项变成 \\([\\phi_o(x)+\\phi_o(x)]/2=\\phi(x)\\)。\n- **初始速度**：(a) 的全直线公式给 \\(v\\) 的初始速度是第二个输入 \\(\\beta_o\\)。在右半边，\\(\\beta_o(x)=\\psi(x)\\)。所以 \\(u_t(x,0)=v_t(x,0)+h'(0)=\\psi(x)+0\\)。\n- **边界**：\\(u(0,t)=v(0,t)+h(t)=0+h(t)\\)。\n- **方程**：加回 \\(h(t)\\) 后，\\(u_{tt}-c^2u_{xx}\\) 比 \\(v_{tt}-c^2v_{xx}\\) 多出 \\(h''(t)\\)，所以右边是 \\([f-h'']+h''=f\\)。"
+      ],
+      "choices": [
+        {
+          "text": "设 v=u−h(t)，重算源项和初值，做奇延拓，最后加回 h(t)。",
+          "correct": true
+        },
+        {
+          "text": "减 xh(t) 来消掉端点值。",
+          "correct": false
+        },
+        {
+          "text": "不先把边界归零就直接奇延拓。",
+          "correct": false
+        }
+      ],
+      "reason": "题中 h 在 0 附近为零，所以初始两项恰好保持不变。"
+    },
+    {
+      "week": 8,
+      "id": "hw-8-Q4",
+      "title": "非零 Neumann 波动边界",
+      "source": "Week 8 Practice · Q4",
+      "question": "For the half-line wave equation with \\(u_x(0,t)=h(t)\\), derive the lifted solution and its data.",
+      "method": "设 v=u−xh(t)，重算源项和初值，做偶延拓，最后加回 xh(t)。",
+      "answer": "\\(v_x(0,t)=0\\)，源项 \\(f-xh^{\\prime\\prime}\\)。一般初值为 \\(\\phi-xh(0)\\)、\\(\\psi-xh^{\\prime}(0)\\)。",
+      "steps": [
+        "**第 4 题 (a)：已经给了 \\(v_x(0,t)=0\\)，怎样求 \\(v\\)？**\n\n这一小问给的是\n\\[\nv_{tt}-c^2v_{xx}=g(x,t),\\qquad\nv(x,0)=\\alpha(x),\\quad v_t(x,0)=\\beta(x),\\quad v_x(0,t)=0.\n\\]\n\n这次零的是**端点斜率**。我们要让曲线在原点左右镜像，所以用**偶延拓**：去右边的镜像位置取值，**原样照抄**。\n\n三个数据分别延拓：\n\\[\n\\alpha_e(y)=\\alpha(|y|),\\qquad\n\\beta_e(y)=\\beta(|y|),\\qquad\ng_e(y,s)=g(|y|,s).\n\\]\n例如 \\(y=-2\\) 时，对应的是 \\(\\alpha(2)\\)、\\(\\beta(2)\\)、\\(g(2,s)\\)。\n\n把这三份数据放进全直线公式：\n\\[\n\\boxed{\n\\begin{aligned}\nv(x,t)\n={}&\\underbrace{\\frac{\\alpha_e(x+ct)+\\alpha_e(x-ct)}2}_{\\text{放初始位移 }\\alpha_e}\\\\\n&+\\underbrace{\\frac1{2c}\\int_{x-ct}^{x+ct}\\beta_e(y)\\,dy}_{\\text{放初始速度 }\\beta_e}\\\\\n&+\\underbrace{\\frac1{2c}\\int_0^t\n\\int_{x-c(t-s)}^{x+c(t-s)}g_e(y,s)\\,dy\\,ds}_{\\text{放源项 }g_e}.\n\\end{aligned}\n}\n\\]\n\n检查左右镜像：\\(x\\) 换成 \\(-x\\) 后，位移项里的两个值互换，但加起来不变。积分区间换成镜像区间后，令 \\(y=-z\\)：\n\\[\n\\int_{-b}^{-a}q_e(y)\\,dy\n=-\\int_b^a q_e(-z)\\,dz\n=\\int_a^b q_e(-z)\\,dz\n=\\int_a^b q_e(z)\\,dz.\n\\]\n最后一步是因为偶延拓左右值相同。所以整个解满足 \\(v(-x,t)=v(x,t)\\)。",
+        "**再从偶函数得到零斜率。** 上面的解在原点关于 \\(x\\) 可导：初始位移项可以直接求导，两个积分项对 \\(x\\) 求导时用的是连续被积函数在左右端点的值。对 \\(v(-x,t)=v(x,t)\\) 关于 \\(x\\) 求导：\n\\[\n-v_x(-x,t)=v_x(x,t).\n\\]\n左边的负号来自内层 \\(-x\\) 的导数。代入 \\(x=0\\)：\n\\[\n-v_x(0,t)=v_x(0,t)\\quad\\Longrightarrow\\quad 2v_x(0,t)=0.\n\\]\n因此 \\(v_x(0,t)=0\\)，正好满足这一小问的边界。",
+        "**第 4 题 (b)：原题给的是 \\(u_x(0,t)=h(t)\\)，怎么变成 (a)？**\n\n(a) 需要**零斜率**，所以要找一个函数，让它对 \\(x\\) 求导以后等于 \\(h(t)\\)。\\(xh(t)\\) 正好：\n\\[\n\\partial_x[xh(t)]=h(t).\n\\]\n因此我们设\n\\[\nv(x,t)=u(x,t)-xh(t).\n\\]\n先对 \\(x\\) 求导，再代 \\(x=0\\)：\n\\[\nv_x(x,t)=u_x(x,t)-h(t),\n\\qquad\nv_x(0,t)=h(t)-h(t)=0.\n\\]\n注意这里检查的是 \\(v_x(0,t)\\)。虽然 \\(xh(t)\\) 在 \\(x=0\\) 的**值**是零，它在那里仍然有**斜率** \\(h(t)\\)。\n\n接着填三个位置。\n\n1. **填 \\(\\alpha\\)：**\n   \\[\n   v(x,0)=u(x,0)-xh(0)=\\phi(x)-x\\cdot0=\\phi(x).\n   \\]\n2. **填 \\(\\beta\\)：**\n   \\[\n   v_t(x,t)=u_t(x,t)-xh'(t),\n   \\]\n   所以\n   \\[\n   v_t(x,0)=\\psi(x)-xh'(0)=\\psi(x)-x\\cdot0=\\psi(x).\n   \\]\n3. **填 \\(g\\)：** 对 \\(t\\) 再求一次导数，得到\n   \\[\n   v_{tt}=u_{tt}-xh''(t).\n   \\]\n   而 \\(v_x=u_x-h(t)\\)，再对 \\(x\\) 求一次导数，\\(h(t)\\) 的导数是零，所以 \\(v_{xx}=u_{xx}\\)。代入：\n   \\[\n   \\begin{aligned}\n   v_{tt}-c^2v_{xx}\n   &=(u_{tt}-xh''(t))-c^2u_{xx}\\\\\n   &=(u_{tt}-c^2u_{xx})-xh''(t)\\\\\n   &=f(x,t)-xh''(t).\n   \\end{aligned}\n   \\]",
+        "所以第 4 题 (b) 的三个输入是\n\\[\n\\boxed{\\alpha=\\phi,\\qquad \\beta=\\psi,\\qquad g(x,t)=f(x,t)-xh''(t).}\n\\]",
+        "**第 4 题 (c)：把 (b) 的三个数据代回 (a)，再找回 \\(u\\)。**\n\n这次做的是**偶延拓**。三个位置分别填：\n\\[\n\\alpha_e(y)=\\phi(|y|),\\qquad\n\\beta_e(y)=\\psi(|y|),\\qquad\ng_e(y,s)=g(|y|,s).\n\\]\n把 (b) 的 \\(g(x,s)=f(x,s)-xh''(s)\\) 代进去，里面的每个空间输入 \\(x\\) 都换成 \\(|y|\\)：\n\\[\n\\boxed{g_e(y,s)=f(|y|,s)-|y|h''(s).}\n\\]\n例如 \\(y=-2\\)，偶延拓是**照抄右边 \\(2\\) 的整个值**，所以 \\(g_e(-2,s)=f(2,s)-2h''(s)\\)。\n\n(a) 算出来的是 \\(v\\)。因为 \\(v=u-xh(t)\\)，所以 \\(u=v+xh(t)\\)。代入得到\n\\[\n\\boxed{\n\\begin{aligned}\nu(x,t)\n={}&xh(t)\n+\\frac{\\phi_e(x+ct)+\\phi_e(x-ct)}2\\\\\n&+\\frac1{2c}\\int_{x-ct}^{x+ct}\\psi_e(y)\\,dy\\\\\n&+\\frac1{2c}\\int_0^t\\int_{x-c(t-s)}^{x+c(t-s)}g_e(y,s)\\,dy\\,ds.\n\\end{aligned}\n}\n\\]\n\n现在检查：\n\n- **初始位移**：\\(t=0\\) 时，\\(xh(0)=0\\)，两个积分都为零，位移项是 \\([\\phi_e(x)+\\phi_e(x)]/2=\\phi(x)\\)。\n- **初始速度**：(a) 的公式给 \\(v_t(x,0)=\\beta_e(x)=\\psi(x)\\)，所以 \\(u_t(x,0)=v_t(x,0)+xh'(0)=\\psi(x)+0\\)。\n- **边界**：先求导 \\(u_x=v_x+h(t)\\)，再代入原点，得到 \\(u_x(0,t)=0+h(t)=h(t)\\)。\n- **方程**：加回 \\(xh(t)\\) 后，时间二阶导数多 \\(xh''(t)\\)，空间二阶导数不变，所以右边恢复为 \\([f-xh'']+xh''=f\\)。"
+      ],
+      "choices": [
+        {
+          "text": "设 v=u−xh(t)，重算源项和初值，做偶延拓，最后加回 xh(t)。",
+          "correct": true
+        },
+        {
+          "text": "只减 h(t)。",
+          "correct": false
+        },
+        {
+          "text": "归零后对三个数据都做奇延拓。",
+          "correct": false
+        }
+      ],
+      "reason": "延拓源项时只镜像空间变量，时间 s 不动。"
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q1",
+      "title": "全直线：一题区分热公式与波动公式",
+      "source": "Practice Term Test 3 · Q1",
+      "question": "(a) Solve \\(u_t-u_{xx}=e^{-t}\\sin x\\), \\(u(x,0)=\\cos 2x\\). (b) Solve \\(u_{tt}-u_{xx}=x^2\\) with zero displacement and velocity.",
+      "method": "先看时间导数阶数，再各自套全直线带源项公式。",
+      "answer": "(a) \\(e^{-4t}\\cos(2x)+te^{-t}\\sin x\\)；(b) \\(x^2t^2/2+t^4/12\\)。",
+      "steps": [
+        "**第 1 题 (a)：\\(u_t-u_{xx}=e^{-t}\\sin x,\\quad u(x,0)=\\cos(2x)\\)。**",
+        "先读题：\\(u_t\\) 是对时间求一次导数，所以这是**热方程**。它告诉我们两件事：\n\n- 一开始已经有的温度是 \\(\\cos(2x)\\)。\n- 之后每个时刻都有一个源项 \\(e^{-t}\\sin x\\)。",
+        "因此，我们要算**初始温度扩散后的结果**，再加上**中途所有源项扩散后的结果**。",
+        "**第一步：算初始的 \\(\\cos(2x)\\) 怎么扩散。**\n\n暂时把右边的源项去掉，只求\n\\[\nw_t=w_{xx},\\qquad w(x,0)=\\cos(2x).\n\\]\n参考答案直接写 \\(w=e^{-4t}\\cos(2x)\\)。这个 \\(4\\) 来自对空间求两次导数：\n\\[\n\\frac{d}{dx}\\cos(2x)=-2\\sin(2x),\\qquad\n\\frac{d}{dx}[-2\\sin(2x)]=-4\\cos(2x).\n\\]\n两次求导以后，空间形状还是 \\(\\cos(2x)\\)，只多了一个 \\(-4\\)。所以我们试着写\n\\[\nw(x,t)=a(t)\\cos(2x),\n\\]\n让 \\(a(t)\\) 负责描述这个形状随时间怎么变。代入 \\(w_t=w_{xx}\\)：\n\\[\na'(t)\\cos(2x)=-4a(t)\\cos(2x).\n\\]\n要让这个等式对所有 \\(x\\) 成立，两个系数必须相等，即 \\(a'=-4a\\)。初始条件要求 \\(a(0)=1\\)。取 \\(a(t)=e^{-4t}\\)，求导确实得到 \\(-4e^{-4t}\\)，而且 \\(a(0)=1\\)。",
+        "所以**初始温度的贡献**是\n\\[\n\\boxed{e^{-4t}\\cos(2x).}\n\\]",
+        "**第二步：算在时刻 \\(s\\) 加入的源项，到时刻 \\(t\\) 还贡献多少。**\n\n题目右边是 \\(e^{-t}\\sin x\\)。现在我们回头看某个过去的时刻 \\(s\\)，所以那一刻的源项是\n\\[\nf(x,s)=e^{-s}\\sin x.\n\\]\n这里 **\\(e^{-s}\\)** 告诉你那一刻的源项有多大。接下来还要算它从 \\(s\\) 到 \\(t\\) **怎么扩散**。",
+        "先只看空间形状 \\(\\sin x\\)。它求两次空间导数是\n\\[\n(\\sin x)'=\\cos x,\\qquad (\\sin x)''=-\\sin x.\n\\]\n和第一步一样，只是这次多出来的系数是 \\(-1\\)。所以一份形状为 \\(\\sin x\\) 的数据，扩散了 \\(r\\) 时间后，就变成 \\(e^{-r}\\sin x\\)。你也可以直接检查：\n\\[\n\\partial_r(e^{-r}\\sin x)=-e^{-r}\\sin x,\\qquad\n\\partial_{xx}(e^{-r}\\sin x)=-e^{-r}\\sin x.\n\\]\n两边相等，而且 \\(r=0\\) 时确实回到 \\(\\sin x\\)。\n\n这一题中，源项在 \\(s\\) 时刻加入，在 \\(t\\) 时刻观察，所以它扩散的时间是 \\(r=t-s\\)。于是参考答案里的两个指数分别来自：\n\\[\n\\underbrace{e^{-s}}_{\\text{在 }s\\text{ 时刻加入的强度}}\n\\ \\cdot\\\n\\underbrace{e^{-(t-s)}}_{\\text{从 }s\\text{ 到 }t\\text{ 的扩散因子}}\n\\ \\cdot\\ \\sin x.\n\\]\n这就是 Week 7 那个 \\(t-s\\) 的用法。参考答案把**空间上的扩散结果**直接写成了 \\(e^{-(t-s)}\\sin x\\)，所以你看到的只剩对加入时刻 \\(s\\) 的积分。",
+        "**第三步：把从 \\(0\\) 到 \\(t\\) 的所有源项贡献加起来。**\n\n\\[\n\\begin{aligned}\n\\int_0^t e^{-s}e^{-(t-s)}\\sin x\\,ds\n&=\\int_0^t e^{-s-t+s}\\sin x\\,ds\\\\\n&=\\int_0^t e^{-t}\\sin x\\,ds\\\\\n&=e^{-t}\\sin x\\int_0^t 1\\,ds\\\\\n&=te^{-t}\\sin x.\n\\end{aligned}\n\\]\n**前面的 \\(t\\) 从哪里来？** 两个指数相乘以后，\\(-s\\) 和 \\(+s\\) 抵消了。于是被积函数不再含 \\(s\\)，对 \\(s\\) 积分就等于用这个常数乘区间长度 \\(t-0\\)。\n\n把第一步和第三步相加：\n\\[\n\\boxed{u(x,t)=e^{-4t}\\cos(2x)+te^{-t}\\sin x.}\n\\]",
+        "**检查答案。** 当 \\(t=0\\)，第一项是 \\(\\cos(2x)\\)，第二项有因子 \\(t\\)，所以是零。再对 \\(t\\) 求导，第二项用乘积法则：\n\\[\n(te^{-t})'=1\\cdot e^{-t}+t(-e^{-t})=(1-t)e^{-t}.\n\\]\n因此\n\\[\nu_t=-4e^{-4t}\\cos(2x)+(1-t)e^{-t}\\sin x.\n\\]\n对 \\(x\\) 求两次导数则得到\n\\[\nu_{xx}=-4e^{-4t}\\cos(2x)-te^{-t}\\sin x.\n\\]\n两式相减，\\(\\cos(2x)\\) 的项抵消，剩下\n\\[\nu_t-u_{xx}\n=\\bigl[(1-t)+t\\bigr]e^{-t}\\sin x\n=e^{-t}\\sin x.\n\\]\n方程和初始条件都对上了。",
+        "**第 1 题 (b)：\\(u_{tt}-u_{xx}=x^2,\\quad u(x,0)=u_t(x,0)=0\\)。**",
+        "先读题：现在是 \\(u_{tt}\\)，即对时间求两次导数，所以这是**波动方程**。与 \\(u_{tt}-c^2u_{xx}=f\\) 比较，得到 \\(c^2=1\\)，而波速 \\(c>0\\)，所以 \\(c=1\\)。两条初始条件说的是：**一开始没有位移，也没有运动速度**。因此解只来自右边的源项。",
+        "**第一步：写出带源项的波动方程公式。**\n\n初始位移和速度对应的两项都为零，所以只剩\n\\[\nu(x,t)=\\frac12\\int_0^t\\int_{x-(t-s)}^{x+(t-s)} y^2\\,dy\\,ds.\n\\]\n\n这里有两个地方要对上：\n\n- **为什么是 \\(t-s\\)？** 源项在时刻 \\(s\\) 发生，波到时刻 \\(t\\) 有 \\(t-s\\) 的时间可走。因为 \\(c=1\\)，最多走 \\(t-s\\) 的距离，所以只算 \\(x\\) 左右各 \\(t-s\\) 以内的位置。\n- **为什么里面是 \\(y^2\\)？** 题目写 \\(f(x,t)=x^2\\)，意思是「在什么位置，就把那个位置平方」。公式里 \\(x\\) 留给观察位置，\\(y\\) 才是正在积分的源项位置，所以 \\(f(y,s)=y^2\\)。\\(y\\) 会在区间里变化，不能把它当成固定的 \\(x\\)。",
+        "**第二步：先算里面的空间积分。**",
+        "先固定 \\(s\\)，把 \\(t-s\\) 暂时叫作 \\(r\\)。于是里面的积分是\n\\[\n\\int_{x-r}^{x+r}y^2\\,dy.\n\\]\n\\(y^2\\) 的原函数是 \\(y^3/3\\)，所以用上限减下限：\n\\[\n\\int_{x-r}^{x+r}y^2\\,dy\n=\\left[\\frac{y^3}{3}\\right]_{x-r}^{x+r}\n=\\frac{(x+r)^3-(x-r)^3}{3}.\n\\]\n把两个立方分别展开：\n\\[\n\\begin{aligned}\n(x+r)^3&=x^3+3x^2r+3xr^2+r^3,\\\\\n(x-r)^3&=x^3-3x^2r+3xr^2-r^3.\n\\end{aligned}\n\\]\n第一行减第二行时，\\(x^3\\) 和 \\(3xr^2\\) 抵消，另外两项各变成两份：\n\\[\n\\frac{(x+r)^3-(x-r)^3}{3}\n=\\frac{6x^2r+2r^3}{3}\n=2x^2r+\\frac23r^3.\n\\]",
+        "**第三步：把 \\(r=t-s\\) 换回来，再算外面的时间积分。**\n\n\\[\n\\begin{aligned}\nu(x,t)\n&=\\frac12\\int_0^t\\left[2x^2(t-s)+\\frac23(t-s)^3\\right]ds\\\\\n&=x^2\\int_0^t(t-s)\\,ds+\\frac13\\int_0^t(t-s)^3\\,ds.\n\\end{aligned}\n\\]\n这两个积分都可以用 \\(r=t-s\\) 换元。这里 \\(t\\) 固定，所以 \\(dr=-ds\\)。当 \\(s=0\\) 时 \\(r=t\\)；当 \\(s=t\\) 时 \\(r=0\\)。因此\n\\[\n\\int_0^t(t-s)\\,ds\n=-\\int_t^0 r\\,dr\n=\\int_0^t r\\,dr\n=\\left[\\frac{r^2}{2}\\right]_0^t\n=\\frac{t^2}{2}.\n\\]\n第二个同理：\n\\[\n\\int_0^t(t-s)^3\\,ds\n=-\\int_t^0 r^3\\,dr\n=\\int_0^t r^3\\,dr\n=\\left[\\frac{r^4}{4}\\right]_0^t\n=\\frac{t^4}{4}.\n\\]\n代回去，记得第二个积分外面还有 \\(\\frac13\\)：\n\\[\nu(x,t)=x^2\\cdot\\frac{t^2}{2}+\\frac13\\cdot\\frac{t^4}{4}\n=\\boxed{\\frac{x^2t^2}{2}+\\frac{t^4}{12}}.\n\\]",
+        "**检查答案。** 先代 \\(t=0\\)，两项都为零，所以 \\(u(x,0)=0\\)。接着对 \\(t\\) 求导：\n\\[\nu_t=x^2t+\\frac{t^3}{3},\n\\qquad\nu_{tt}=x^2+t^2.\n\\]\n所以 \\(u_t(x,0)=0\\)。最后对 \\(x\\) 求导：\n\\[\nu_x=xt^2,\\qquad u_{xx}=t^2.\n\\]\n因此\n\\[\nu_{tt}-u_{xx}=(x^2+t^2)-t^2=x^2,\n\\]\n也正好是题目给的源项。"
+      ]
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q2",
+      "title": "半直线热方程：严格为正与 t³ᐟ² 极限",
+      "source": "Practice Term Test 3 · Q2",
+      "question": "Let \\(\\phi\\) be nonnegative, nonzero, and supported away from 0 and vanishing for x ≥ R. Solve \\(u_t=u_{xx}\\) on \\(x>0\\) with \\(u(0,t)=0\\), \\(u(x,0)=\\phi(x)\\); prove strict positivity and find \\(\\lim t^{3/2}u(x,t)\\).",
+      "method": "奇延拓给差核，先逐点比较两个指数，再展开估计缩放后的余项。",
+      "answer": "内部严格为正，极限为 \\(x\\int_0^R y\\phi(y)\\,dy/(2\\sqrt\\pi)\\)。",
+      "steps": [
+        "**第 2 题 (a)：求 \\(u(x,t)\\)，并证明只要 \\(x>0,\\ t>0\\)，就有 \\(u(x,t)>0\\)。**\n\n题目给的是\n\\[\nu_t=u_{xx}\\quad(x>0,\\ t>0),\\qquad\nu(0,t)=0,\\qquad u(x,0)=\\phi(x).\n\\]\n\\(\\phi\\) 是初始温度，题目说它非负、不恒为零，在原点附近以及 \\(x\\ge R\\) 时都等于零。",
+        "先按刚才的判断顺序读题：\n\n1. 左边是 \\(u_t\\)，所以是**热方程**；\\(u_{xx}\\) 的系数是 \\(1\\)，所以 \\(\\kappa=1\\)。\n2. 题目写 \\(x>0\\)，另外给了 \\(x=0\\) 的条件，所以是**右半直线**。\n3. 给的是 \\(u(0,t)=0\\)，也就是端点**温度**为零，所以用**奇延拓**。\n4. 方程右边没有额外的源项，所以只需要算**初始温度**的贡献。",
+        "**第一步：把右边的初始温度补到左边。** 原来的 \\(\\phi\\) 只在右边给出。奇延拓是去右边的镜像位置取值，然后变号：\n\\[\n\\phi_o(y)=\n\\begin{cases}\n\\phi(y),&y\\ge0,\\\\\n-\\phi(-y),&y<0.\n\\end{cases}\n\\]\n例如 \\(y=-2\\) 时，填进去的是 \\(-\\phi(2)\\)。题目说 \\(\\phi\\) 在原点附近本来就是零，所以左右两边在那里能光滑接上。",
+        "**第二步：套全直线热核公式，看看减号怎么出来。** 令\n\\[\nS(z,t)=\\frac1{\\sqrt{4\\pi t}}e^{-z^2/(4t)}.\n\\]\n我们先用 \\(\\phi_o\\) 在全直线上算，再只保留 \\(x\\ge0\\) 的答案。把积分在 \\(y=0\\) 处分开：\n\\[\n\\begin{aligned}\nu(x,t)\n&=\\int_{-\\infty}^{\\infty}S(x-y,t)\\phi_o(y)\\,dy\\\\\n&=\\int_{-\\infty}^0 S(x-y,t)[-\\phi(-y)]\\,dy\n+\\int_0^\\infty S(x-y,t)\\phi(y)\\,dy.\n\\end{aligned}\n\\]\n\n第一个积分在左边。为了和右边的积分合在一起，令 \\(z=-y\\)。于是 \\(dy=-dz\\)，\\(y=-\\infty\\) 对应 \\(z=\\infty\\)，\\(y=0\\) 对应 \\(z=0\\)。所以\n\\[\n\\begin{aligned}\n\\int_{-\\infty}^0 S(x-y,t)[-\\phi(-y)]\\,dy\n&=\\int_{\\infty}^0 S(x+z,t)[-\\phi(z)](-dz)\\\\\n&=\\int_{\\infty}^0 S(x+z,t)\\phi(z)\\,dz\\\\\n&=-\\int_0^\\infty S(x+z,t)\\phi(z)\\,dz.\n\\end{aligned}\n\\]\n最后把积分变量 \\(z\\) 改名为 \\(y\\)，跟右边合起来。又因为 \\(y\\ge R\\) 时 \\(\\phi(y)=0\\)，上限可以从 \\(\\infty\\) 改成 \\(R\\)：\n\\[\n\\boxed{\nu(x,t)=\\frac1{\\sqrt{4\\pi t}}\\int_0^R\n\\left[e^{-(x-y)^2/(4t)}-e^{-(x+y)^2/(4t)}\\right]\\phi(y)\\,dy.\n}\n\\]\n检查边界：令 \\(x=0\\)，两个指数都变成 \\(e^{-y^2/(4t)}\\)，相减为零，所以 \\(u(0,t)=0\\)。初始条件则由全直线热核公式保证：当 \\(t\\downarrow0\\)，解回到 \\(\\phi_o(x)\\)，而在右边 \\(\\phi_o(x)=\\phi(x)\\)。",
+        "**第三步：为什么括号里的差在内部是正的？** 对 \\(x>0,\\ y>0\\)，\n\\[\n\\begin{aligned}\n(x+y)^2-(x-y)^2\n&=(x^2+2xy+y^2)-(x^2-2xy+y^2)\\\\\n&=4xy>0.\n\\end{aligned}\n\\]\n所以 \\((x-y)^2<(x+y)^2\\)。两个平方都要乘负数 \\(-1/(4t)\\)，因此**不等号反向**：\n\\[\n-\\frac{(x-y)^2}{4t}>-\\frac{(x+y)^2}{4t}.\n\\]\n指数函数 \\(e^z\\) 随 \\(z\\) 增大而增大，所以\n\\[\ne^{-(x-y)^2/(4t)}-e^{-(x+y)^2/(4t)}>0.\n\\]",
+        "最后乘上 \\(\\phi(y)\\)。因为 \\(\\phi\\ge0\\)，被积函数不会是负的；因为 \\(\\phi\\) 连续且不恒为零，它在某个小区间内严格为正，所以被积函数也在那一段严格为正。**整个积分没有负的部分，还有一段正的部分，因此积分严格大于零：**\n\\[\n\\boxed{u(x,t)>0\\quad\\text{对每个 }x>0,\\ t>0.}\n\\]",
+        "**第 2 题 (b)：固定 \\(x>0\\)，求 \\(\\displaystyle\\lim_{t\\to\\infty}t^{3/2}u(x,t)\\)。**\n\n这里要算的是 **\\(t^{3/2}u\\)**。我们要先找出 (a) 里**两个指数相减之后留下的第一项**，再检查误差乘上 \\(t^{3/2}\\) 之后会不会消失。",
+        "**第一步：分别展开两个指数，再相减。** 当 \\(t\\to\\infty\\) 时，两个指数里的分式都趋于零，所以两个指数都趋于 \\(1\\)。但 \\(1-1=0\\)，我们得继续看下一项。题目提示用\n\\[\ne^{-z}=1-z+r(z),\\qquad |r(z)|\\le \\frac{z^2}{2}\\quad(z\\ge0).\n\\]\n分别把 \\(z=\\dfrac{(x-y)^2}{4t}\\) 和 \\(z=\\dfrac{(x+y)^2}{4t}\\) 代进去：\n\\[\n\\begin{aligned}\ne^{-(x-y)^2/(4t)}&=1-\\frac{(x-y)^2}{4t}+r_-,\\\\\ne^{-(x+y)^2/(4t)}&=1-\\frac{(x+y)^2}{4t}+r_+.\n\\end{aligned}\n\\]\n第一行减第二行时，第二行的负平方项变成正的：\n\\[\n\\begin{aligned}\ne^{-(x-y)^2/(4t)}-e^{-(x+y)^2/(4t)}\n&=1-\\frac{(x-y)^2}{4t}+r_-\n  -1+\\frac{(x+y)^2}{4t}-r_+\\\\\n&=\\frac{(x+y)^2-(x-y)^2}{4t}+(r_--r_+)\\\\\n&=\\frac{4xy}{4t}+(r_--r_+)\\\\\n&=\\boxed{\\frac{xy}{t}+(r_--r_+).}\n\\end{aligned}\n\\]",
+        "**第二步：把留下的 \\(\\dfrac{xy}{t}\\) 代回积分，算出主项。** 对 \\(y\\) 积分时，\\(x\\) 和 \\(t\\) 都可以提出去，只有 \\(y\\) 要留在里面：\n\\[\n\\begin{aligned}\n\\frac1{\\sqrt{4\\pi t}}\\int_0^R\\frac{xy}{t}\\phi(y)\\,dy\n&=\\frac{x}{t\\sqrt{4\\pi t}}\\int_0^R y\\phi(y)\\,dy\\\\\n&=\\frac{x}{2\\sqrt{\\pi}\\,t^{3/2}}\\int_0^R y\\phi(y)\\,dy.\n\\end{aligned}\n\\]\n这里的 \\(t^{3/2}\\) 来自**外面的 \\(\\sqrt t\\)** 和**里面留下的 \\(t\\)**：\\(t\\sqrt t=t^{3/2}\\)。所以主项一乘上 \\(t^{3/2}\\)，时间因子就消掉了，剩下\n\\[\nC=\\frac{x}{2\\sqrt\\pi}\\int_0^R y\\phi(y)\\,dy.\n\\]\n这个 \\(C\\) 是我们算出的候选极限。接下来要确认**放大后的误差**确实趋于零。",
+        "**第三步：估计余项，再把整条误差不等式乘上 \\(t^{3/2}\\)。** 积分里 \\(0\\le y\\le R\\)，所以\n\\[\n|x-y|\\le x+R,\\qquad x+y\\le x+R.\n\\]\n因此 Taylor 公式里两个 \\(z\\) 都不超过 \\((x+R)^2/(4t)\\)，每个余项都满足\n\\[\n|r_\\pm|\\le \\frac12\\left(\\frac{(x+R)^2}{4t}\\right)^2\n=\\frac{(x+R)^4}{32t^2}.\n\\]\n两个余项相减，误差的绝对值不超过它们各自绝对值的和：\n\\[\n|r_--r_+|\\le |r_-|+|r_+|\\le\\frac{(x+R)^4}{16t^2}.\n\\]\n\n把这个上界放回 (a) 的积分。因为它不含 \\(y\\)，可以提出积分号。记 \\(A=\\int_0^R|\\phi(y)|\\,dy\\)，那么\n\\[\n\\begin{aligned}\n\\left|u(x,t)-\\frac{C}{t^{3/2}}\\right|\n&\\le \\frac1{\\sqrt{4\\pi t}}\\int_0^R\n\\frac{(x+R)^4}{16t^2}|\\phi(y)|\\,dy\\\\\n&=\\frac{A(x+R)^4}{16\\sqrt{4\\pi}}\\frac1{t^{5/2}}.\n\\end{aligned}\n\\]\n这就是你之前问的**带 \\(16\\) 的那个式子**：它控制的是 **\\(u\\) 和主项之间的误差**。现在把**两边**乘 \\(t^{3/2}\\)：\n\\[\n\\left|t^{3/2}u(x,t)-C\\right|\n\\le \\frac{A(x+R)^4}{16\\sqrt{4\\pi}}\\frac1t\n\\longrightarrow 0.\n\\]\n左边是 \\(t^{3/2}u(x,t)\\) 和 \\(C\\) 之间的距离。这个距离趋于零，就证明了\n\\[\n\\boxed{\\lim_{t\\to\\infty}t^{3/2}u(x,t)\n=\\frac{x}{2\\sqrt{\\pi}}\\int_0^R y\\,\\phi(y)\\,dy.}\n\\]"
+      ],
+      "choices": [
+        {
+          "text": "奇延拓给差核，先逐点比较两个指数，再展开估计缩放后的余项。",
+          "correct": true
+        },
+        {
+          "text": "对两个热核相加后取极限。",
+          "correct": false
+        },
+        {
+          "text": "只使用初温非负便直接断言严格正。",
+          "correct": false
+        }
+      ],
+      "reason": "非负且不恒零的连续初值在一段内为正；指数中的常数项相消。"
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q3",
+      "title": "移动的波峰：逐点与全域最大值",
+      "source": "Practice Term Test 3 · Q3",
+      "question": "Solve the half-line unit-speed wave equation with zero initial data and boundary \\(b(t)\\), vanishing outside \\((1,3)\\). Compare the fixed-x limit and \\(\\sup_{x\\ge0}|u(x,t)|\\).",
+      "method": "按特征线何时触及边界分段；固定位置和跟着波峰移动分别计算。",
+      "answer": "\\(t\\ge x\\) 时为 \\(b(t-x)\\)，否则为零；固定 x 趋零，但 \\(t\\ge3\\) 时最大绝对值等于 \\(\\max|b|\\)。",
+      "steps": [
+        "单位波速下，观察点反向追踪左侧特征线：从 \\((x,t)\\) 出发，每退回一个时间单位，位置减一。若 \\(t\\ge x\\)，经过 x 个时间单位，在 \\((0,t-x)\\) 到达边界，带来 \\(b(t-x)\\)。若 \\(t<x\\)，先碰到初始线，解为零。",
+        "将 b 在负时间延拓为 0。因为 b 在 0 附近为零，\\(u=b(t-x)\\) 在 \\(t=x\\) 两侧平滑衔接，且 \\(u_{tt}=b^{\\prime\\prime}(t-x)=u_{xx}\\)。\\(x=0\\) 给 b(t)，\\(t=0\\) 的初始位移和速度均为零。",
+        "固定 x 后，\\(t\\ge x+3\\) 给 \\(t-x\\ge3\\)，所以解为零。取 \\(s_0\\in[0,3]\\) 使 \\(|b(s_0)|=\\max|b|\\)。对每个 \\(t\\ge3\\)，取 \\(x=t-s_0\\ge0\\)，便有 \\(|u(x,t)|=|b(s_0)|\\)。另一方面任何点的绝对值不超过此最大值，所以最大值保持不变。"
+      ],
+      "choices": [
+        {
+          "text": "按特征线何时触及边界分段；固定位置和跟着波峰移动分别计算。",
+          "correct": true
+        },
+        {
+          "text": "用逐点趋零推出全域最大值趋零。",
+          "correct": false
+        },
+        {
+          "text": "把边界值 b(t) 直接赋给每个位置。",
+          "correct": false
+        }
+      ],
+      "reason": "峰值位置可随时间移动；信号到 x 需要 x 单位时间。"
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q4a",
+      "title": "判断题：波动源停止后仍可非零",
+      "source": "Practice Term Test 3 · Q4a",
+      "question": "For zero initial data and nonnegative, nonzero wave source supported on \\(|x|<1,1<t<2\\), is \\(u(0,t)=0\\) for all \\(t\\ge3\\)?",
+      "method": "画过去三角形，检查是否完整覆盖源项支集。",
+      "answer": "假。源积分全部被覆盖，剩下严格正的常数。",
+      "steps": [
+        "**第 4 题 (a)：源项停了以后，\\(u(0,t)\\) 会不会在 \\(t\\ge3\\) 时等于零？**\n\n题目给的是\n\\[\nu_{tt}-u_{xx}=F(x,t),\\qquad x\\in\\mathbb R,\\qquad\nu(x,0)=u_t(x,0)=0.\n\\]\n\\(F\\) 非负、不恒为零，而且**只有在 \\(|x|<1\\) 且 \\(1<t<2\\) 时才可能非零**。题目要你判断：\\(u(0,t)=0\\) 对所有 \\(t\\ge3\\) 是否成立。",
+        "**第一步：选公式。** 看见 \\(u_{tt}\\)，知道是波动方程；空间是 \\(x\\in\\mathbb R\\)，所以用全直线公式，不做反射。波速是 \\(c=1\\)，初始位移和速度都是零，所以只留下源项：\n\\[\nu(x,t)=\\frac12\\int_0^t\n\\int_{x-(t-s)}^{x+(t-s)}F(y,s)\\,dy\\,ds.\n\\]\n题目只问 \\(x=0\\)，所以把 \\(x=0\\) 代进去：\n\\[\nu(0,t)=\\frac12\\int_0^t\n\\int_{-(t-s)}^{t-s}F(y,s)\\,dy\\,ds.\n\\]",
+        "**第二步：分别看时间和空间的积分范围。**\n\n- **时间上**：\\(F(y,s)\\) 在 \\(1<s<2\\) 之外都是零。现在 \\(t\\ge3\\)，所以 \\([0,t]\\) 已经包含整个 \\([1,2]\\)，只需要算 \\(s=1\\) 到 \\(s=2\\)。\n- **空间上**：对任何还可能有源项的时刻 \\(1<s<2\\)，\n  \\[\n  t-s\\ge3-s>1.\n  \\]\n  所以空间积分的左端点 \\(-(t-s)<-1\\)，右端点 \\(t-s>1\\)。也就是说，积分区间**已经包住了整个 \\([-1,1]\\)**。而 \\([-1,1]\\) 外的源项是零，因此只需要积 \\([-1,1]\\)。\n\n于是对每个 \\(t\\ge3\\)，\n\\[\nu(0,t)=\\frac12\\int_1^2\\int_{-1}^1F(y,s)\\,dy\\,ds.\n\\]",
+        "**第三步：判断这个积分是不是零。** 因为 \\(F\\ge0\\) 且不恒为零，所以它在某一点严格为正。又因为 \\(F\\) 连续，它在那个点附近的一小块区域也严格为正。因此整个积分大于零：\n\\[\n\\boxed{u(0,t)=\\frac12\\int_1^2\\int_{-1}^1F(y,s)\\,dy\\,ds>0\n\\qquad(t\\ge3).}\n\\]",
+        "所以 **(a) 是假**。容易混的是：**\\(F(0,t)=0\\) 说的是现在没有新的源项；\\(u(0,t)\\) 还包含过去的源项贡献。** 从 \\(t=3\\) 起，积分已经把这些过去的贡献全部算进去了，所以结果是一个正的常数。"
+      ]
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q4b",
+      "title": "判断题：速度积分何时为零",
+      "source": "Practice Term Test 3 · Q4b",
+      "question": "For the unit-speed Neumann half-line wave equation, zero displacement and \\(\\psi=0\\) on \\([0,2]\\), prove \\(u=0\\) on \\(0\\le x,t\\le1\\).",
+      "method": "偶延拓后比较取样区间 [x−t,x+t] 与初速度的零区间。",
+      "answer": "真。取样区间落在 [−1,2]，完全包含于延拓后的零区间 [−2,2]。",
+      "steps": [
+        "**第 4 题 (b)：为什么 \\(0\\le x\\le1,\\ 0\\le t\\le1\\) 时，\\(u(x,t)=0\\)？**\n\n题目给的是\n\\[\nu_{tt}=u_{xx}\\quad(x>0),\\qquad u_x(0,t)=0,\n\\]\n\\[\nu(x,0)=0,\\qquad u_t(x,0)=\\psi(x),\n\\qquad \\psi(x)=0\\quad\\text{当 }0\\le x\\le2.\n\\]\n这里 \\(\\psi\\) 是**初始速度**。题目不是说所有位置的初始速度都为零，只说从 \\(0\\) 到 \\(2\\) 这一段为零。",
+        "**第一步：判断怎么反射。** 这是半直线，因为只在 \\(x>0\\) 求解，并在 \\(x=0\\) 给边界条件。这里给的是 **\\(u_x(0,t)=0\\)**，也就是零斜率，所以用**偶延拓**：\n\\[\n\\psi_e(y)=\\psi(|y|).\n\\]\n例如左边 \\(y=-1.5\\) 的值，就照抄右边 \\(1.5\\) 的值。既然右边 \\([0,2]\\) 上全为零，延拓以后，**整个 \\([-2,2]\\) 上也全为零**。",
+        "**第二步：套波动公式。** 初始位移为零，没有源项，所以只留下初始速度这一项。因为 \\(c=1\\)，\n\\[\nu(x,t)=\\frac12\\int_{x-t}^{x+t}\\psi_e(y)\\,dy.\n\\]",
+        "**第三步：检查积分会不会跑出零区间。** 在题目指定的范围 \\(0\\le x\\le1,\\ 0\\le t\\le1\\) 内，\n\\[\nx-t\\ge0-1=-1,\\qquad x+t\\le1+1=2.\n\\]\n所以\n\\[\n[x-t,x+t]\\subseteq[-1,2]\\subseteq[-2,2].\n\\]\n注意，我们不用精确求出每个 \\(x,t\\) 对应的两个端点，只要知道**整个积分区间都在 \\(\\psi_e=0\\) 的地方**就够了。因此\n\\[\nu(x,t)=\\frac12\\int_{x-t}^{x+t}0\\,dy=0.\n\\]",
+        "所以 **(b) 是真**。这问的关键是：即使积分跑到了负半边，**反射过来的那一段初始速度也还是零**。"
+      ],
+      "choices": [
+        {
+          "text": "偶延拓后比较取样区间 [x−t,x+t] 与初速度的零区间。",
+          "correct": true
+        },
+        {
+          "text": "仅凭初始位移为零就设整个解为零。",
+          "correct": false
+        },
+        {
+          "text": "区间对称就能让任何速度积分抵消。",
+          "correct": false
+        }
+      ],
+      "reason": "这里每一点的速度都为零，无需正负抵消。"
+    },
+    {
+      "week": "review",
+      "id": "hw-test-Q4c",
+      "title": "判断题：固定位置的温度为何不减",
+      "source": "Practice Term Test 3 · Q4c",
+      "question": "For \\(u_t-u_{xx}=f(x)\\ge0\\) on the line with zero initial data, is \\(u(x,t)\\) nondecreasing for fixed x?",
+      "method": "令 r=t−s，把时间依赖移到上限，再比较两个时刻的积分。",
+      "answer": "真。\\(u(x,t_2)-u(x,t_1)=\\int_{t_1}^{t_2}H_x(r)\\,dr\\ge0\\)。",
+      "steps": [
+        "**第 4 题 (c)：对每个固定的 \\(x\\)，\\(u(x,t)\\) 会不会随时间不减？**\n\n题目给的是\n\\[\nu_t-u_{xx}=f(x),\\qquad x\\in\\mathbb R,\\qquad u(x,0)=0,\\qquad f(x)\\ge0.\n\\]\n“不减”是说：**固定同一个位置 \\(x\\)**，如果 \\(t_2>t_1\\)，就有 \\(u(x,t_2)\\ge u(x,t_1)\\)。",
+        "**第一步：写出带源项的热方程公式。** 看见 \\(u_t\\)，知道这次是热方程。初始温度为零，所以只留下源项：\n\\[\nu(x,t)=\\int_0^t\\int_{\\mathbb R}\nS(x-y,t-s)f(y)\\,dy\\,ds,\n\\qquad\nS(z,r)=\\frac{1}{\\sqrt{4\\pi r}}e^{-z^2/(4r)}.\n\\]\n这里有一个特别重要的条件：**源项写的是 \\(f(y)\\)，没有 \\(s\\)**。也就是说，每个位置的加热速率不随时间改变。",
+        "**第二步：令 \\(r=t-s\\)，把积分改写成按「已经扩散了多久」来加。** 这里做换元时 \\(t\\) 固定，\n\\[\nr=t-s,\\qquad ds=-dr.\n\\]\n上下限也一起换：\n\n- \\(s=0\\) 时，\\(r=t\\)；\n- \\(s=t\\) 时，\\(r=0\\)。",
+        "因此\n\\[\n\\begin{aligned}\nu(x,t)\n&=-\\int_t^0\\int_{\\mathbb R}S(x-y,r)f(y)\\,dy\\,dr\\\\\n&=\\int_0^t\\int_{\\mathbb R}S(x-y,r)f(y)\\,dy\\,dr.\n\\end{aligned}\n\\]\n第一行的负号来自 \\(ds=-dr\\)；第二行交换上下限，负号就消掉了。",
+        "**为什么要换元？** 因为换完以后，固定 \\(x\\)，**\\(t\\) 只出现在积分上限**，积分里面用的是 \\(r\\)。这样比较两个时刻时，两边的公共部分可以直接抵消。",
+        "**第三步：比较两个时刻。** 为了写得清楚，把内层积分记为\n\\[\nH_x(r)=\\int_{\\mathbb R}S(x-y,r)f(y)\\,dy.\n\\]\n对 \\(r>0\\)，热核 \\(S\\) 是正的，\\(f(y)\\ge0\\)，所以 \\(H_x(r)\\ge0\\)。现在取 \\(0\\le t_1<t_2\\)：\n\\[\n\\begin{aligned}\nu(x,t_2)-u(x,t_1)\n&=\\int_0^{t_2}H_x(r)\\,dr-\\int_0^{t_1}H_x(r)\\,dr\\\\\n&=\\int_{t_1}^{t_2}H_x(r)\\,dr\\\\\n&\\ge0.\n\\end{aligned}\n\\]\n第二行是因为两边都有从 \\(0\\) 到 \\(t_1\\) 的那一段，减掉以后只剩**新增加的一段**。新加的积分非负，所以温度不会降低。",
+        "所以 **(c) 是真**。参考答案用求导来写同一个道理：由于 \\(t\\) 只在上限，\n\\[\nu_t(x,t)=H_x(t)=\\int_{\\mathbb R}S(x-y,t)f(y)\\,dy\\ge0\n\\qquad(t>0).\n\\]\n这里的重点是**换元后多积了一段非负的东西**；只知道 \\(u(x,t)\\ge0\\)，还不能说明 \\(u(x,t)\\) 随时间不减。"
+      ],
+      "choices": [
+        {
+          "text": "令 r=t−s，把时间依赖移到上限，再比较两个时刻的积分。",
+          "correct": true
+        },
+        {
+          "text": "只证明 u≥0 就当作不减。",
+          "correct": false
+        },
+        {
+          "text": "对原式把 t−s 当成与 t 无关。",
+          "correct": false
+        }
+      ],
+      "reason": "源项不随时间变，换元后才得到固定的非负被积函数。"
     }
   ],
   "strategies": [
@@ -995,8 +1984,22 @@
     "w4-4",
     "w4-6",
     "w2-9",
-    "w3-6"
+    "w3-6",
+    "hw-4-Q1",
+    "hw-5-Q1",
+    "hw-5-Q4",
+    "hw-6-Q1",
+    "hw-6-Q2",
+    "hw-7-Q1",
+    "hw-7-Q3",
+    "hw-8-Q2",
+    "hw-8-Q3",
+    "hw-8-Q4",
+    "hw-test-Q2",
+    "hw-test-Q3",
+    "hw-test-Q4b",
+    "hw-test-Q4c"
   ],
-  "weekNote": "Week 按现有 Lectures 1–2 / 3–4 / 5–6 / 7 归组；作业与复习题按主题归入，不代表已核实的官方课程日历。",
-  "sourceNote": "题目据你提供的课堂笔记、HW1–4、Tutorial 1–3、模拟 Test 与思睿讲义整理。解答对照所附答案，并补齐计算。教材章节型例题取自所给讲义，未把它们冒称为 Strauss 原书编号例题。"
+  "weekNote": "Week 1–4 沿用原课程分类；Week 5–8 按对应 Practice 分组；Term Test 3 单列，覆盖热方程、波动方程和边界判断。",
+  "sourceNote": "题目据你提供的课堂笔记、HW1–4、Tutorial 1–3、模拟 Test 与思睿讲义整理。解答对照所附答案，并补齐计算。教材章节型例题取自所给讲义，未把它们冒称为 Strauss 原书编号例题。 新增内容按你提供的 HW 与 Term Test 3 讲解整理。"
 }
